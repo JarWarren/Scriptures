@@ -16,9 +16,9 @@ struct TestamentKeys {
     static let DaC = "doctrine-and-covenants"
     static let PoGP = "pearl-of-great-price"
     
-    static let dictionary = [0 : TestamentKeys.BoM,
-                             1 : TestamentKeys.PoGP,
-                             2 : TestamentKeys.DaC,
-                             3 : TestamentKeys.NT,
-                             4 : TestamentKeys.OT]
+    static let dictionary = [0 : "Book of Mormon",
+                             1 : "Pearl of Great Price",
+                             2 : "Doctrine and Covenants",
+                             3 : "New Testament",
+                             4 : "Old Testament"]
 }

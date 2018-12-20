@@ -133,3 +133,5 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         destinationVC.currentChapter = chapter
     }
 }
+
+// TODO: Potentially add official declarations after section 138 of D&C.
