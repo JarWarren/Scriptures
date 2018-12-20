@@ -43,10 +43,17 @@ class AllGoalsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let goal = GoalController.shared.allGoals[indexPath.row]
         cell.textLabel?.text = goal.name
         if let progress = goal.currentProgress {
-            cell.detailTextLabel?.text = "\(progress)"
+            cell.detailTextLabel?.text = TestamentKeys.dictionary[goal.goalTestament]! + "  -  \(progress)% Progress"
         } else {
-            cell.detailTextLabel?.text = "0% Progress"
+            cell.detailTextLabel?.text = TestamentKeys.dictionary[goal.goalTestament]! + "  -  0% Progress"
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            
+        }
     }
 }

@@ -13,17 +13,15 @@ class Goal {
     var name: String
     var endDate: Date?
     var currentProgress: Double?
-    var dailyVerses: Int?
     var dailyChapters: Int?
-    var dailyPages: Int?
+    var goalTestament: Int
     
-    init(name: String, endDate: Date?, currentProgress: Double?, dailyVerses: Int?, dailyChapters: Int?, dailyPages: Int?) {
+    init(name: String, endDate: Date?, currentProgress: Double?, dailyChapters: Int?, goalTestament: Int) {
         
         self.name = name
         self.endDate = endDate
         self.currentProgress = currentProgress
-        self.dailyVerses = dailyVerses
         self.dailyChapters = dailyChapters
-        self.dailyPages = dailyPages
+        self.goalTestament = goalTestament
     }
 }

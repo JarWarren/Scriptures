@@ -14,9 +14,9 @@ class GoalController {
     private init() {}
     var allGoals = [Goal]()
     
-    func createGoal(name: String, endDate: Date?, verses: Int? = 0, chapters: Int? = 0, pages: Int? = 0) {
+    func createGoal(name: String, endDate: Date?, chapters: Int? = 0, testament: Int) {
         
-        let newGoal = Goal(name: name, endDate: endDate, currentProgress: nil, dailyVerses: verses, dailyChapters: chapters, dailyPages: pages)
+        let newGoal = Goal(name: name, endDate: endDate, currentProgress: nil, dailyChapters: chapters, goalTestament: testament)
         allGoals.append(newGoal)
     }
     

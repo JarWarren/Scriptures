@@ -124,7 +124,7 @@
                                         <rect key="frame" x="83" y="0.0" width="179.5" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -150,22 +150,28 @@
                                     </segmentedControl>
                                 </subviews>
                             </stackView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzM-dR-nFk">
-                                <rect key="frame" x="56.5" y="283.5" width="262.5" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="m0p-ox-qjr"/>
-                                </constraints>
-                            </pickerView>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="i1x-HW-4xJ">
-                                <rect key="frame" x="56.5" y="283.5" width="262.5" height="120"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="U9j-dd-yW7"/>
-                                </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="566772502.73772097">
-                                    <!--2018-12-17 20:48:22 +0000-->
-                                </date>
-                            </datePicker>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcM-uB-SBz">
+                                <rect key="frame" x="0.0" y="283.5" width="375" height="120"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzM-dR-nFk">
+                                        <rect key="frame" x="0.0" y="0.0" width="135" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="m0p-ox-qjr"/>
+                                        </constraints>
+                                    </pickerView>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="i1x-HW-4xJ">
+                                        <rect key="frame" x="135" y="0.0" width="240" height="120"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="Fk1-5P-4of"/>
+                                            <constraint firstAttribute="height" constant="120" id="U9j-dd-yW7"/>
+                                        </constraints>
+                                        <date key="date" timeIntervalSinceReferenceDate="566772502.73772097">
+                                            <!--2018-12-17 20:48:22 +0000-->
+                                        </date>
+                                    </datePicker>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRI-Uu-4od">
                                 <rect key="frame" x="140" y="409.5" width="95" height="30"/>
                                 <color key="backgroundColor" red="0.0967121653" green="0.49416743349999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -175,27 +181,35 @@
                                     <action selector="createNewGoalButtonTapped:" destination="oDC-39-jHL" eventType="touchUpInside" id="UZ7-po-ND7"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When do you want to finish by?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8HS-Ec-mu5">
+                                <rect key="frame" x="0.0" y="636.5" width="375" height="30.5"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jzM-dR-nFk" firstAttribute="width" secondItem="FTf-YP-XQz" secondAttribute="width" multiplier="0.7" id="AsP-mq-Gqh"/>
-                            <constraint firstItem="tRI-Uu-4od" firstAttribute="top" secondItem="i1x-HW-4xJ" secondAttribute="bottom" constant="6" id="EPw-ae-HdD"/>
-                            <constraint firstItem="i1x-HW-4xJ" firstAttribute="centerY" secondItem="xdA-lh-f9B" secondAttribute="centerY" id="Enb-7a-LvP"/>
-                            <constraint firstItem="i1x-HW-4xJ" firstAttribute="centerX" secondItem="xdA-lh-f9B" secondAttribute="centerX" id="PUw-2R-PzY"/>
-                            <constraint firstItem="i1x-HW-4xJ" firstAttribute="width" secondItem="FTf-YP-XQz" secondAttribute="width" multiplier="0.7" id="RCv-dS-jv8"/>
-                            <constraint firstItem="i1x-HW-4xJ" firstAttribute="top" secondItem="HUH-Le-4dM" secondAttribute="bottom" constant="6" id="UEW-VT-tsS"/>
-                            <constraint firstItem="jzM-dR-nFk" firstAttribute="top" secondItem="HUH-Le-4dM" secondAttribute="bottom" constant="6" id="cGD-zj-BAH"/>
+                            <constraint firstItem="xdA-lh-f9B" firstAttribute="trailing" secondItem="8HS-Ec-mu5" secondAttribute="trailing" id="IaE-f5-F5H"/>
                             <constraint firstItem="HUH-Le-4dM" firstAttribute="top" secondItem="u7S-Uh-pZV" secondAttribute="bottom" constant="12" id="dxA-Zf-PdT"/>
                             <constraint firstItem="u7S-Uh-pZV" firstAttribute="width" secondItem="FTf-YP-XQz" secondAttribute="width" multiplier="0.7" id="fZn-94-edy"/>
+                            <constraint firstItem="xdA-lh-f9B" firstAttribute="bottom" secondItem="8HS-Ec-mu5" secondAttribute="bottom" id="gOO-Ue-mdk"/>
                             <constraint firstItem="tRI-Uu-4od" firstAttribute="centerX" secondItem="xdA-lh-f9B" secondAttribute="centerX" id="gZy-C3-Xms"/>
                             <constraint firstItem="HUH-Le-4dM" firstAttribute="centerX" secondItem="xdA-lh-f9B" secondAttribute="centerX" id="iDa-1R-aud"/>
-                            <constraint firstItem="jzM-dR-nFk" firstAttribute="centerX" secondItem="xdA-lh-f9B" secondAttribute="centerX" id="r5v-3N-ord"/>
+                            <constraint firstItem="tRI-Uu-4od" firstAttribute="top" secondItem="EcM-uB-SBz" secondAttribute="bottom" constant="6" id="jsb-pR-TP8"/>
+                            <constraint firstItem="EcM-uB-SBz" firstAttribute="centerX" secondItem="xdA-lh-f9B" secondAttribute="centerX" id="kha-ot-3zm"/>
+                            <constraint firstItem="8HS-Ec-mu5" firstAttribute="leading" secondItem="xdA-lh-f9B" secondAttribute="leading" id="qh4-Jr-naT"/>
+                            <constraint firstItem="EcM-uB-SBz" firstAttribute="centerY" secondItem="xdA-lh-f9B" secondAttribute="centerY" id="v41-Pg-xXf"/>
                             <constraint firstItem="HUH-Le-4dM" firstAttribute="width" secondItem="FTf-YP-XQz" secondAttribute="width" multiplier="0.7" id="vHK-eU-Tfw"/>
                             <constraint firstItem="u7S-Uh-pZV" firstAttribute="centerX" secondItem="xdA-lh-f9B" secondAttribute="centerX" id="vNY-ux-qZD"/>
+                            <constraint firstItem="EcM-uB-SBz" firstAttribute="top" secondItem="HUH-Le-4dM" secondAttribute="bottom" constant="6" id="vQO-tq-Pux"/>
+                            <constraint firstItem="EcM-uB-SBz" firstAttribute="width" secondItem="FTf-YP-XQz" secondAttribute="width" id="vhw-Ok-9OG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xdA-lh-f9B"/>
                     </view>
                     <connections>
+                        <outlet property="instructionsLabel" destination="8HS-Ec-mu5" id="G6T-1J-UFd"/>
                         <outlet property="newGoalCreateButton" destination="tRI-Uu-4od" id="cmR-7k-fgZ"/>
                         <outlet property="newGoalDatePicker" destination="i1x-HW-4xJ" id="YwY-HX-iAU"/>
                         <outlet property="newGoalPickerView" destination="jzM-dR-nFk" id="gL8-8W-fxC"/>
