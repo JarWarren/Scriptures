@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2bd-t2-jeV">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Reading View Controller-->
+        <scene sceneID="nmO-00-Euo">
+            <objects>
+                <viewController id="2bd-t2-jeV" customClass="ReadingViewController" customModule="BookOfMormon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="center" id="RLg-TS-pHB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Re6-Ul-msQ">
+                                <rect key="frame" x="0.0" y="145" width="375" height="473"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="verseCell" textLabel="ls7-a8-sai" style="IBUITableViewCellStyleDefault" id="IFH-HC-4eI">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IFH-HC-4eI" id="rcB-R3-RDU">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ls7-a8-sai">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmw-2k-d59">
+                                <rect key="frame" x="0.0" y="116" width="375" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cmw-2k-d59" firstAttribute="top" secondItem="E1f-Ug-mDu" secondAttribute="top" id="2Xa-Zs-IOA"/>
+                            <constraint firstItem="cmw-2k-d59" firstAttribute="centerX" secondItem="E1f-Ug-mDu" secondAttribute="centerX" id="Ng1-PQ-j7a"/>
+                            <constraint firstItem="E1f-Ug-mDu" firstAttribute="bottom" secondItem="Re6-Ul-msQ" secondAttribute="bottom" id="i7Y-0O-097"/>
+                            <constraint firstItem="Re6-Ul-msQ" firstAttribute="leading" secondItem="E1f-Ug-mDu" secondAttribute="leading" id="ikK-Ht-2N5"/>
+                            <constraint firstItem="cmw-2k-d59" firstAttribute="width" secondItem="RLg-TS-pHB" secondAttribute="width" id="nkn-Uz-eDK"/>
+                            <constraint firstItem="E1f-Ug-mDu" firstAttribute="trailing" secondItem="Re6-Ul-msQ" secondAttribute="trailing" id="q3i-aa-X7L"/>
+                            <constraint firstItem="Re6-Ul-msQ" firstAttribute="top" secondItem="cmw-2k-d59" secondAttribute="bottom" id="un8-LI-XvP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="E1f-Ug-mDu"/>
+                    </view>
+                    <connections>
+                        <outlet property="chapterReferenceLabel" destination="cmw-2k-d59" id="L2g-Gl-YQx"/>
+                        <outlet property="versesTableView" destination="Re6-Ul-msQ" id="4kQ-rn-dWM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KnO-nZ-3KW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3074" y="1354"/>
+        </scene>
+    </scenes>
+</document>

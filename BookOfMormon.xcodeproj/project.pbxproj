@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7E238BD621CB215D001ADF4F /* TabOne.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E238BD521CB215D001ADF4F /* TabOne.storyboard */; };
+		7E238BD821CB21D5001ADF4F /* TabTwo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E238BD721CB21D5001ADF4F /* TabTwo.storyboard */; };
+		7E238BDD21CB21FD001ADF4F /* TabFour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E238BDC21CB21FD001ADF4F /* TabFour.storyboard */; };
+		7E43B3CB21C5DA75000845DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43B3CA21C5DA75000845DA /* AppDelegate.swift */; };
+		7E43B3CD21C5DA75000845DA /* TabOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43B3CC21C5DA75000845DA /* TabOne.swift */; };
+		7E43B3D221C5DA76000845DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E43B3D121C5DA76000845DA /* Assets.xcassets */; };
+		7E43B3EA21C5F2E2000845DA /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43B3E921C5F2E2000845DA /* Goal.swift */; };
+		7E43B3EC21C5F406000845DA /* GoalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43B3EB21C5F406000845DA /* GoalController.swift */; };
+		7E748C5F21CB41F100ED9C8F /* ReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E748C5E21CB41F100ED9C8F /* ReadingViewController.swift */; };
+		7E748C6121CB422200ED9C8F /* TabThree.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E748C6021CB422200ED9C8F /* TabThree.storyboard */; };
+		7E748C6321CB423F00ED9C8F /* Reader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E748C6221CB423F00ED9C8F /* Reader.storyboard */; };
+		7E748C6521CB424F00ED9C8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E748C6421CB424F00ED9C8F /* Main.storyboard */; };
+		7E748C6721CB425E00ED9C8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */; };
+		7ECD8A9D21C9600600AED39B /* ScriptureDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8A9C21C9600600AED39B /* ScriptureDecoding.swift */; };
+		7ECD8AA621C9657E00AED39B /* doctrine-and-covenants.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA121C9657E00AED39B /* doctrine-and-covenants.json */; };
+		7ECD8AA721C9657E00AED39B /* book-of-mormon.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA221C9657E00AED39B /* book-of-mormon.json */; };
+		7ECD8AA821C9657E00AED39B /* old-testament.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA321C9657E00AED39B /* old-testament.json */; };
+		7ECD8AA921C9657E00AED39B /* pearl-of-great-price.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA421C9657E00AED39B /* pearl-of-great-price.json */; };
+		7ECD8AAA21C9657E00AED39B /* new-testament.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA521C9657E00AED39B /* new-testament.json */; };
+		7ECD8AAF21C968C100AED39B /* ScriptureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8AAE21C968C100AED39B /* ScriptureController.swift */; };
+		7ECD8AB321C9810700AED39B /* TestamentStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8AB221C9810700AED39B /* TestamentStructures.swift */; };
+		7ECD8AB521C98FB700AED39B /* TabTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8AB421C98FB700AED39B /* TabTwo.swift */; };
+		7ECD8AB721C992F000AED39B /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8AB621C992F000AED39B /* ChapterCell.swift */; };
+		7ECD8AB921C9AA2200AED39B /* TestamentKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8AB821C9AA2200AED39B /* TestamentKeys.swift */; };
+		7ECD8ABB21C9AC0B00AED39B /* ChapterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8ABA21C9AC0B00AED39B /* ChapterHeader.swift */; };
+		7ECD8ABD21C9B5CA00AED39B /* TabThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7E238BD521CB215D001ADF4F /* TabOne.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabOne.storyboard; sourceTree = "<group>"; };
+		7E238BD721CB21D5001ADF4F /* TabTwo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabTwo.storyboard; sourceTree = "<group>"; };
+		7E238BDC21CB21FD001ADF4F /* TabFour.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabFour.storyboard; sourceTree = "<group>"; };
+		7E43B3C721C5DA75000845DA /* BookOfMormon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookOfMormon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E43B3CA21C5DA75000845DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7E43B3CC21C5DA75000845DA /* TabOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabOne.swift; sourceTree = "<group>"; };
+		7E43B3D121C5DA76000845DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7E43B3D621C5DA76000845DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E43B3E921C5F2E2000845DA /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		7E43B3EB21C5F406000845DA /* GoalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalController.swift; sourceTree = "<group>"; };
+		7E748C5E21CB41F100ED9C8F /* ReadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingViewController.swift; sourceTree = "<group>"; };
+		7E748C6021CB422200ED9C8F /* TabThree.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabThree.storyboard; sourceTree = "<group>"; };
+		7E748C6221CB423F00ED9C8F /* Reader.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Reader.storyboard; sourceTree = "<group>"; };
+		7E748C6421CB424F00ED9C8F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7ECD8A9C21C9600600AED39B /* ScriptureDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptureDecoding.swift; sourceTree = "<group>"; };
+		7ECD8AA121C9657E00AED39B /* doctrine-and-covenants.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "doctrine-and-covenants.json"; sourceTree = "<group>"; };
+		7ECD8AA221C9657E00AED39B /* book-of-mormon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "book-of-mormon.json"; sourceTree = "<group>"; };
+		7ECD8AA321C9657E00AED39B /* old-testament.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "old-testament.json"; sourceTree = "<group>"; };
+		7ECD8AA421C9657E00AED39B /* pearl-of-great-price.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pearl-of-great-price.json"; sourceTree = "<group>"; };
+		7ECD8AA521C9657E00AED39B /* new-testament.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "new-testament.json"; sourceTree = "<group>"; };
+		7ECD8AAE21C968C100AED39B /* ScriptureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptureController.swift; sourceTree = "<group>"; };
+		7ECD8AB221C9810700AED39B /* TestamentStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestamentStructures.swift; sourceTree = "<group>"; };
+		7ECD8AB421C98FB700AED39B /* TabTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTwo.swift; sourceTree = "<group>"; };
+		7ECD8AB621C992F000AED39B /* ChapterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
+		7ECD8AB821C9AA2200AED39B /* TestamentKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestamentKeys.swift; sourceTree = "<group>"; };
+		7ECD8ABA21C9AC0B00AED39B /* ChapterHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterHeader.swift; sourceTree = "<group>"; };
+		7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabThree.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7E43B3C421C5DA75000845DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7E238BE221CB34CC001ADF4F /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				7E238BD521CB215D001ADF4F /* TabOne.storyboard */,
+				7E238BD721CB21D5001ADF4F /* TabTwo.storyboard */,
+				7E748C6021CB422200ED9C8F /* TabThree.storyboard */,
+				7E238BDC21CB21FD001ADF4F /* TabFour.storyboard */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		7E238BE421CB34FC001ADF4F /* TabTwo */ = {
+			isa = PBXGroup;
+			children = (
+				7ECD8AB621C992F000AED39B /* ChapterCell.swift */,
+				7ECD8ABA21C9AC0B00AED39B /* ChapterHeader.swift */,
+			);
+			path = TabTwo;
+			sourceTree = "<group>";
+		};
+		7E43B3BE21C5DA75000845DA = {
+			isa = PBXGroup;
+			children = (
+				7E43B3C921C5DA75000845DA /* BookOfMormon */,
+				7E43B3C821C5DA75000845DA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7E43B3C821C5DA75000845DA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7E43B3C721C5DA75000845DA /* BookOfMormon.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7E43B3C921C5DA75000845DA /* BookOfMormon */ = {
+			isa = PBXGroup;
+			children = (
+				7E43B3DD21C5DAE2000845DA /* UI */,
+				7E43B3E621C5F278000845DA /* Views */,
+				7E43B3DE21C5DB01000845DA /* ViewControllers */,
+				7E43B3E521C5F265000845DA /* ModelControllers */,
+				7E43B3E121C5F0E7000845DA /* Models */,
+				7ECD8A9F21C9602000AED39B /* HelperFiles */,
+				7E43B3DC21C5DABC000845DA /* Resources */,
+				7ECD8AA021C9647300AED39B /* JSONTestaments */,
+			);
+			path = BookOfMormon;
+			sourceTree = "<group>";
+		};
+		7E43B3DC21C5DABC000845DA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7E43B3CA21C5DA75000845DA /* AppDelegate.swift */,
+				7E43B3D121C5DA76000845DA /* Assets.xcassets */,
+				7E43B3D621C5DA76000845DA /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7E43B3DD21C5DAE2000845DA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7E748C6421CB424F00ED9C8F /* Main.storyboard */,
+				7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */,
+				7E748C6221CB423F00ED9C8F /* Reader.storyboard */,
+				7E238BE221CB34CC001ADF4F /* Tabs */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		7E43B3DE21C5DB01000845DA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7E43B3CC21C5DA75000845DA /* TabOne.swift */,
+				7ECD8AB421C98FB700AED39B /* TabTwo.swift */,
+				7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */,
+				7E748C5E21CB41F100ED9C8F /* ReadingViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7E43B3E121C5F0E7000845DA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7E43B3E921C5F2E2000845DA /* Goal.swift */,
+				7ECD8A9C21C9600600AED39B /* ScriptureDecoding.swift */,
+				7ECD8AB221C9810700AED39B /* TestamentStructures.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7E43B3E521C5F265000845DA /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7E43B3EB21C5F406000845DA /* GoalController.swift */,
+				7ECD8AAE21C968C100AED39B /* ScriptureController.swift */,
+			);
+			path = ModelControllers;
+			sourceTree = "<group>";
+		};
+		7E43B3E621C5F278000845DA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E238BE421CB34FC001ADF4F /* TabTwo */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7ECD8A9F21C9602000AED39B /* HelperFiles */ = {
+			isa = PBXGroup;
+			children = (
+				7ECD8AB821C9AA2200AED39B /* TestamentKeys.swift */,
+			);
+			path = HelperFiles;
+			sourceTree = "<group>";
+		};
+		7ECD8AA021C9647300AED39B /* JSONTestaments */ = {
+			isa = PBXGroup;
+			children = (
+				7ECD8AA221C9657E00AED39B /* book-of-mormon.json */,
+				7ECD8AA121C9657E00AED39B /* doctrine-and-covenants.json */,
+				7ECD8AA521C9657E00AED39B /* new-testament.json */,
+				7ECD8AA321C9657E00AED39B /* old-testament.json */,
+				7ECD8AA421C9657E00AED39B /* pearl-of-great-price.json */,
+			);
+			path = JSONTestaments;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7E43B3C621C5DA75000845DA /* BookOfMormon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E43B3D921C5DA76000845DA /* Build configuration list for PBXNativeTarget "BookOfMormon" */;
+			buildPhases = (
+				7E43B3C321C5DA75000845DA /* Sources */,
+				7E43B3C421C5DA75000845DA /* Frameworks */,
+				7E43B3C521C5DA75000845DA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BookOfMormon;
+			productName = BookOfMormon;
+			productReference = 7E43B3C721C5DA75000845DA /* BookOfMormon.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7E43B3BF21C5DA75000845DA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = Warren;
+				TargetAttributes = {
+					7E43B3C621C5DA75000845DA = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 7E43B3C221C5DA75000845DA /* Build configuration list for PBXProject "BookOfMormon" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7E43B3BE21C5DA75000845DA;
+			productRefGroup = 7E43B3C821C5DA75000845DA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7E43B3C621C5DA75000845DA /* BookOfMormon */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7E43B3C521C5DA75000845DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E748C6321CB423F00ED9C8F /* Reader.storyboard in Resources */,
+				7ECD8AA921C9657E00AED39B /* pearl-of-great-price.json in Resources */,
+				7E238BD621CB215D001ADF4F /* TabOne.storyboard in Resources */,
+				7ECD8AA621C9657E00AED39B /* doctrine-and-covenants.json in Resources */,
+				7E238BDD21CB21FD001ADF4F /* TabFour.storyboard in Resources */,
+				7E43B3D221C5DA76000845DA /* Assets.xcassets in Resources */,
+				7E748C6521CB424F00ED9C8F /* Main.storyboard in Resources */,
+				7E748C6721CB425E00ED9C8F /* LaunchScreen.storyboard in Resources */,
+				7ECD8AA721C9657E00AED39B /* book-of-mormon.json in Resources */,
+				7E748C6121CB422200ED9C8F /* TabThree.storyboard in Resources */,
+				7ECD8AAA21C9657E00AED39B /* new-testament.json in Resources */,
+				7ECD8AA821C9657E00AED39B /* old-testament.json in Resources */,
+				7E238BD821CB21D5001ADF4F /* TabTwo.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7E43B3C321C5DA75000845DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ECD8A9D21C9600600AED39B /* ScriptureDecoding.swift in Sources */,
+				7E43B3CD21C5DA75000845DA /* TabOne.swift in Sources */,
+				7E43B3EC21C5F406000845DA /* GoalController.swift in Sources */,
+				7ECD8AB521C98FB700AED39B /* TabTwo.swift in Sources */,
+				7ECD8ABD21C9B5CA00AED39B /* TabThree.swift in Sources */,
+				7ECD8AAF21C968C100AED39B /* ScriptureController.swift in Sources */,
+				7ECD8AB721C992F000AED39B /* ChapterCell.swift in Sources */,
+				7E43B3EA21C5F2E2000845DA /* Goal.swift in Sources */,
+				7ECD8AB321C9810700AED39B /* TestamentStructures.swift in Sources */,
+				7E748C5F21CB41F100ED9C8F /* ReadingViewController.swift in Sources */,
+				7E43B3CB21C5DA75000845DA /* AppDelegate.swift in Sources */,
+				7ECD8ABB21C9AC0B00AED39B /* ChapterHeader.swift in Sources */,
+				7ECD8AB921C9AA2200AED39B /* TestamentKeys.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7E43B3D721C5DA76000845DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7E43B3D821C5DA76000845DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7E43B3DA21C5DA76000845DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HVDL2745KX;
+				INFOPLIST_FILE = "$(SRCROOT)/BookOfMormon/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.warren.BookOfMormon;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7E43B3DB21C5DA76000845DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HVDL2745KX;
+				INFOPLIST_FILE = "$(SRCROOT)/BookOfMormon/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.warren.BookOfMormon;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7E43B3C221C5DA75000845DA /* Build configuration list for PBXProject "BookOfMormon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E43B3D721C5DA76000845DA /* Debug */,
+				7E43B3D821C5DA76000845DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7E43B3D921C5DA76000845DA /* Build configuration list for PBXNativeTarget "BookOfMormon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E43B3DA21C5DA76000845DA /* Debug */,
+				7E43B3DB21C5DA76000845DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7E43B3BF21C5DA75000845DA /* Project object */;
+}

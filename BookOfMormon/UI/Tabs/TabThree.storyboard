@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ML5-Y5-Cwz">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Study-->
+        <scene sceneID="xCr-nE-Sf1">
+            <objects>
+                <viewController id="ML5-Y5-Cwz" customClass="TabThree" customModule="BookOfMormon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hjb-IG-vWa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organize" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAL-JM-5M5">
+                                <rect key="frame" x="24" y="124" width="351" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.61915053929999997" green="0.56043829219999997" blue="0.20530300949999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nAL-JM-5M5" firstAttribute="top" secondItem="aOl-Fe-oV6" secondAttribute="top" constant="8" id="cMl-Tu-lr1"/>
+                            <constraint firstItem="aOl-Fe-oV6" firstAttribute="trailing" secondItem="nAL-JM-5M5" secondAttribute="trailing" id="l1U-Ba-GHB"/>
+                            <constraint firstItem="nAL-JM-5M5" firstAttribute="leading" secondItem="aOl-Fe-oV6" secondAttribute="leading" constant="24" id="wee-ZP-DRo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aOl-Fe-oV6"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Study" id="Wf6-oU-Kkc">
+                        <barButtonItem key="rightBarButtonItem" title="≣" id="TtG-Nd-GJr">
+                            <color key="tintColor" red="0.61915053929999997" green="0.56043829219999997" blue="0.20530300949999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="sortButtonTapped:" destination="ML5-Y5-Cwz" id="4bh-x8-iTi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="studyTypeLabel" destination="nAL-JM-5M5" id="8gK-1w-Vky"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nfA-W9-caY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4164" y="517"/>
+        </scene>
+    </scenes>
+</document>
