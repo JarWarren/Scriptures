@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ML5-Y5-Cwz">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,21 +15,39 @@
             <objects>
                 <viewController id="ML5-Y5-Cwz" customClass="TabThree" customModule="BookOfMormon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hjb-IG-vWa">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organize" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAL-JM-5M5">
-                                <rect key="frame" x="24" y="124" width="351" height="24"/>
+                                <rect key="frame" x="24" y="28" width="351" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.61915053929999997" green="0.56043829219999997" blue="0.20530300949999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mqH-eN-0Jv">
+                                <rect key="frame" x="0.0" y="52" width="375" height="615"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="studyCell" id="vuS-4U-JDB">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vuS-4U-JDB" id="Uma-rB-3Mk">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="aOl-Fe-oV6" firstAttribute="bottom" secondItem="mqH-eN-0Jv" secondAttribute="bottom" id="6a5-B4-aSc"/>
+                            <constraint firstItem="mqH-eN-0Jv" firstAttribute="leading" secondItem="aOl-Fe-oV6" secondAttribute="leading" id="Bh6-Xj-zkN"/>
+                            <constraint firstItem="aOl-Fe-oV6" firstAttribute="trailing" secondItem="mqH-eN-0Jv" secondAttribute="trailing" id="Z1j-No-LIC"/>
                             <constraint firstItem="nAL-JM-5M5" firstAttribute="top" secondItem="aOl-Fe-oV6" secondAttribute="top" constant="8" id="cMl-Tu-lr1"/>
                             <constraint firstItem="aOl-Fe-oV6" firstAttribute="trailing" secondItem="nAL-JM-5M5" secondAttribute="trailing" id="l1U-Ba-GHB"/>
                             <constraint firstItem="nAL-JM-5M5" firstAttribute="leading" secondItem="aOl-Fe-oV6" secondAttribute="leading" constant="24" id="wee-ZP-DRo"/>
+                            <constraint firstItem="mqH-eN-0Jv" firstAttribute="top" secondItem="nAL-JM-5M5" secondAttribute="bottom" id="zrs-iw-YGw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aOl-Fe-oV6"/>
                     </view>

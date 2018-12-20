@@ -35,6 +35,7 @@
 		7ECD8AB921C9AA2200AED39B /* TestamentKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8AB821C9AA2200AED39B /* TestamentKeys.swift */; };
 		7ECD8ABB21C9AC0B00AED39B /* ChapterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8ABA21C9AC0B00AED39B /* ChapterHeader.swift */; };
 		7ECD8ABD21C9B5CA00AED39B /* TabThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */; };
+		7EE553AA21CBF7030062C91B /* TabFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE553A921CBF7030062C91B /* TabFour.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		7ECD8AB821C9AA2200AED39B /* TestamentKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestamentKeys.swift; sourceTree = "<group>"; };
 		7ECD8ABA21C9AC0B00AED39B /* ChapterHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterHeader.swift; sourceTree = "<group>"; };
 		7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabThree.swift; sourceTree = "<group>"; };
+		7EE553A921CBF7030062C91B /* TabFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabFour.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				7E748C6B21CB4F8800ED9C8F /* TabOne */,
 				7E748C6E21CB501F00ED9C8F /* TabTwo */,
 				7E748C6F21CB502700ED9C8F /* TabThree */,
+				7E9032E121CBDF6500E366F6 /* TabFour */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -215,6 +218,14 @@
 				7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */,
 			);
 			path = TabThree;
+			sourceTree = "<group>";
+		};
+		7E9032E121CBDF6500E366F6 /* TabFour */ = {
+			isa = PBXGroup;
+			children = (
+				7EE553A921CBF7030062C91B /* TabFour.swift */,
+			);
+			path = TabFour;
 			sourceTree = "<group>";
 		};
 		7ECD8A9F21C9602000AED39B /* HelperFiles */ = {
@@ -329,6 +340,7 @@
 				7E748C6D21CB4FA100ED9C8F /* NewGoalVC.swift in Sources */,
 				7ECD8AB321C9810700AED39B /* TestamentStructures.swift in Sources */,
 				7E748C7121CB5BC900ED9C8F /* AllGoalsVC.swift in Sources */,
+				7EE553AA21CBF7030062C91B /* TabFour.swift in Sources */,
 				7E748C5F21CB41F100ED9C8F /* ReadingViewController.swift in Sources */,
 				7E43B3CB21C5DA75000845DA /* AppDelegate.swift in Sources */,
 				7ECD8ABB21C9AC0B00AED39B /* ChapterHeader.swift in Sources */,

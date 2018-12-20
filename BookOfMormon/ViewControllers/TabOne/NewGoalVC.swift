@@ -108,3 +108,5 @@ class NewGoalViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         }
     }
 }
+
+// TODO: newGoalTextField resigns firstResponder when "return" is tapped.

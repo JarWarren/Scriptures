@@ -13,6 +13,12 @@ struct Testament: Decodable { // BoM, NewTestament, OldTestament, PoGP or D&C.
     let books: [Book]
 }
 
+struct Doctrine: Decodable {
+    
+    let title: String
+    let sections: [Section]
+}
+
 struct Book: Decodable {  // Books within the Bible, BoM, etc.
     let book: String
     let full_title: String
@@ -21,6 +27,12 @@ struct Book: Decodable {  // Books within the Bible, BoM, etc.
 
 struct Chapter: Decodable {
     let chapter: Int
+    let reference: String
+    let verses: [Verse]
+}
+
+struct Section: Decodable {
+    let section: Int
     let reference: String
     let verses: [Verse]
 }
