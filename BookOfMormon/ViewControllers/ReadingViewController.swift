@@ -33,25 +33,50 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - TableView Protocol Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].verses.count ?? 0
+        switch ScriptureController.shared.selectedTestament {
+        case TestamentKeys.DaC:
+            return ScriptureController.shared.decodedDoctrine?.sections[currentChapter].verses.count ?? 0
+        default:
+            return ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].verses.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "verseCell", for: indexPath)
         
-        if let verseText = ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].verses[indexPath.row].text,
-            let verseNumber = ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].verses[indexPath.row].verse {
-            cell.textLabel?.text = "\(verseNumber))  " + verseText
+        switch ScriptureController.shared.selectedTestament {
+        case TestamentKeys.DaC:
+            if let verseText = ScriptureController.shared.decodedDoctrine?.sections[currentChapter].verses[indexPath.row].text,
+                let verseNumber = ScriptureController.shared.decodedDoctrine?.sections[currentChapter].verses[indexPath.row].verse {
+                cell.textLabel?.text = "\(verseNumber))  " + verseText
+            }
+        default:
+            if let verseText = ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].verses[indexPath.row].text,
+                let verseNumber = ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].verses[indexPath.row].verse {
+                cell.textLabel?.text = "\(verseNumber))  " + verseText
+            }
         }
+        
         return cell
     }
     
     // MARK: - Setup View Methods
     func setupScriptures() {
+        
         ScriptureController.shared.decode(book: currentBook, inTestament: ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM)
-        title = ScriptureController.shared.decodedTestament?.books[currentBook].book
-        if let chapterNumber = ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].chapter {
-            chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
+        
+        switch ScriptureController.shared.selectedTestament {
+            
+        case TestamentKeys.DaC:
+            title = "Doctrine and Covenants"
+            if let sectionNumber = ScriptureController.shared.decodedDoctrine?.sections[currentChapter].section {
+                chapterReferenceLabel.text = "Section " + "\(sectionNumber)"
+            }
+        default:
+            title = ScriptureController.shared.decodedTestament?.books[currentBook].book
+            if let chapterNumber = ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].chapter {
+                chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
+            }
         }
     }
 }

@@ -15,4 +15,10 @@ struct TestamentKeys {
     static let OT = "old-testament"
     static let DaC = "doctrine-and-covenants"
     static let PoGP = "pearl-of-great-price"
+    
+    static let dictionary = [0 : TestamentKeys.BoM,
+                             1 : TestamentKeys.PoGP,
+                             2 : TestamentKeys.DaC,
+                             3 : TestamentKeys.NT,
+                             4 : TestamentKeys.OT]
 }
