@@ -9,14 +9,9 @@
 import UIKit
 
 class TabOne: UIViewController {
-
+    
     // MARK: - Outlets and Properties
     @IBOutlet weak var todayReadingButton: UIButton!
-    @IBOutlet weak var newGoalTextField: UITextField!
-    @IBOutlet weak var newGoalSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var newGoalPickerView: UIPickerView!
-    @IBOutlet weak var newGoalDatePicker: UIDatePicker!
-    @IBOutlet weak var newGoalCreateButton: UIButton!
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -33,8 +28,6 @@ class TabOne: UIViewController {
         super.viewWillDisappear(animated)
     }
     
-    // MARK: - Actions
-    
     // MARK: - Setup View Methods
     func setupButtons() {
         
@@ -43,12 +36,12 @@ class TabOne: UIViewController {
         todayReadingButton.layer.borderColor = UIColor.black.cgColor
     }
     
-     // MARK: - Navigation
+    // MARK: - Navigation
     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard let destinationVC = segue.destination as? ReadingViewController else { return }
         destinationVC.currentBook = ScriptureController.shared.currentBook
         destinationVC.currentChapter = ScriptureController.shared.currentChapter
-     }
+    }
 }
