@@ -13,6 +13,7 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     // MARK: - Outlets and Properties
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var booksSegmentedControl: UISegmentedControl!
+    var barButton: UIBarButtonItem?
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -101,7 +102,7 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     // MARK: Setup
     func setupMainView() {
         
-        booksSegmentedControl.isHidden = false
+        self.barButton = self.navigationItem.rightBarButtonItem
     }
     
     // MARK: - Actions
@@ -118,9 +119,8 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         self.collectionView.reloadData()
     }
     
-    @IBAction func booksBarButtonTapped(_ sender: Any) {
-        
-        booksSegmentedControl.isHidden = !booksSegmentedControl.isHidden
+    @objc func booksBarButtonTapped(_ sender: Any) {
+        // TODO: Takes user to their bookmarked place.
     }
     
     // MARK: - Navigation
