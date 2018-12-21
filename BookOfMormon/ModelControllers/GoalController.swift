@@ -13,6 +13,7 @@ class GoalController {
     static let shared = GoalController()
     private init() {}
     var allGoals = [Goal]()
+    var currentGoal: Goal?
     
     func createGoal(name: String, endDate: Date?, chapters: Int? = 0, testament: Int) {
         

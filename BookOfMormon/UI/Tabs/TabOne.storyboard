@@ -56,25 +56,41 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ach-HG-8Lt">
-                                <rect key="frame" x="150.5" y="328.5" width="74" height="30"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title=" New Goal ">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ach-HG-8Lt">
+                                <rect key="frame" x="297" y="20" width="96" height="30"/>
+                                <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="4aL-nq-6BG"/>
+                                </constraints>
+                                <state key="normal" title="  New Goal">
                                     <color key="titleColor" red="0.0967121653" green="0.49416743349999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
                                     <segue destination="oDC-39-jHL" kind="show" id="7RQ-gL-Cxu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="46z-uE-BO8">
-                                <rect key="frame" x="149.5" y="358.5" width="76" height="30"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="  All Goals  ">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="46z-uE-BO8">
+                                <rect key="frame" x="296" y="50" width="76" height="30"/>
+                                <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="JId-lR-YaT"/>
+                                </constraints>
+                                <state key="normal" title="  All Goals">
                                     <color key="titleColor" red="0.0967121653" green="0.49416743349999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
                                     <segue destination="0ge-i1-J0X" kind="show" id="Z5r-Ak-uVb"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ox6-Ro-Omv">
+                                <rect key="frame" x="295" y="80" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="VO8-69-nA6"/>
+                                </constraints>
+                                <state key="normal" title="  Recalculate">
+                                    <color key="titleColor" red="0.0967121653" green="0.49416743349999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -82,11 +98,7 @@
                             <constraint firstItem="sL2-ed-kct" firstAttribute="width" secondItem="M25-wS-3Br" secondAttribute="width" multiplier="0.6" id="Yyn-11-WaB"/>
                             <constraint firstItem="sL2-ed-kct" firstAttribute="centerX" secondItem="e3A-1i-agH" secondAttribute="centerX" id="fLG-lc-r1t"/>
                             <constraint firstItem="e3A-1i-agH" firstAttribute="bottom" secondItem="sL2-ed-kct" secondAttribute="bottom" constant="24" id="p18-Bp-XXa"/>
-                            <constraint firstItem="ach-HG-8Lt" firstAttribute="centerX" secondItem="e3A-1i-agH" secondAttribute="centerX" id="qEu-EO-pNK"/>
-                            <constraint firstItem="ach-HG-8Lt" firstAttribute="centerY" secondItem="e3A-1i-agH" secondAttribute="centerY" id="qlC-QR-K4H"/>
-                            <constraint firstItem="46z-uE-BO8" firstAttribute="centerX" secondItem="e3A-1i-agH" secondAttribute="centerX" id="tog-v0-Wkq"/>
                             <constraint firstItem="YTe-SA-pjk" firstAttribute="top" secondItem="e3A-1i-agH" secondAttribute="top" constant="24" id="y9A-mf-poY"/>
-                            <constraint firstItem="46z-uE-BO8" firstAttribute="top" secondItem="ach-HG-8Lt" secondAttribute="bottom" id="z5N-uR-Hcy"/>
                             <constraint firstItem="YTe-SA-pjk" firstAttribute="centerX" secondItem="e3A-1i-agH" secondAttribute="centerX" id="zTO-WX-L9a"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e3A-1i-agH"/>
@@ -96,6 +108,9 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="n8b-In-HLa"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="menuButton1" destination="ach-HG-8Lt" id="gFc-uF-yeh"/>
+                        <outlet property="menuButton2" destination="46z-uE-BO8" id="wXC-O9-KF2"/>
+                        <outlet property="menuButton3" destination="ox6-Ro-Omv" id="K1X-Hv-mep"/>
                         <outlet property="todayReadingButton" destination="AvI-Fq-Rh4" id="Cfy-CH-8ct"/>
                     </connections>
                 </viewController>
@@ -183,7 +198,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When do you want to finish by?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8HS-Ec-mu5">
                                 <rect key="frame" x="0.0" y="636.5" width="375" height="30.5"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
