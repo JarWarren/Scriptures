@@ -17,13 +17,23 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var rightButton: UIButton!
     var currentBook = 0
     var currentChapter = 0
+    var cellLocationInScriptures = [0, 0, 0, 0] {
+        didSet {
+            print(self.cellLocationInScriptures)
+        }
+    }
+    // TODO: Remove line from bottom of Nav Controller
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupScriptures()
         setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        setupNavBar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -43,22 +53,37 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "verseCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "verseCell", for: indexPath) as? VerseCell else { return UITableViewCell() }
         
         switch ScriptureController.shared.selectedTestament {
         case TestamentKeys.DaC:
             if let verseText = ScriptureController.shared.decodedDoctrine?.sections[currentChapter].verses[indexPath.row].text,
                 let verseNumber = ScriptureController.shared.decodedDoctrine?.sections[currentChapter].verses[indexPath.row].verse {
-                cell.textLabel?.text = "\(verseNumber))  " + verseText
+                cell.verseTextLabel?.text = "\(verseNumber))  " + verseText
             }
+            
         default:
             if let verseText = ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].verses[indexPath.row].text,
                 let verseNumber = ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].verses[indexPath.row].verse {
-                cell.textLabel?.text = "\(verseNumber))  " + verseText
+                cell.verseTextLabel?.text = "\(verseNumber))  " + verseText
+                
             }
         }
         
+        cell.noteButton.isHidden = !cell.note
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        var cellLocation = [0, 0, 0, 0]
+        
+        cellLocation[0] = TestamentKeys.reverseSelectedTestament[ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM] ?? 0
+        cellLocation[1] = currentBook
+        cellLocation[2] = currentChapter
+        cellLocation[3] = indexPath.row
+        
+        self.cellLocationInScriptures = cellLocation
     }
     
     // MARK: - Actions
@@ -70,8 +95,8 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             currentChapter -= 1
             rightButton.isHidden = false
             if currentChapter == 0 {
-         leftButton.isHidden = true
-        }
+                leftButton.isHidden = true
+            }
             
         default:
             currentChapter += 1
@@ -119,6 +144,13 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             rightButton.isHidden = true
         }
     }
+    
+    func setupNavBar() {
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+    }
 }
 
 // TODO: Tap a verse to open a menu -
@@ -126,3 +158,5 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
 // Write Impression
 // Add to Favorites
 // Save for Memorization
+// Copy
+// Share

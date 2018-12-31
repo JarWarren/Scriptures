@@ -91,6 +91,9 @@
                                 <state key="normal" title="  Recalculate">
                                     <color key="titleColor" red="0.0967121653" green="0.49416743349999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="recalculateButtonTapped:" destination="Na1-XW-csr" eventType="touchUpInside" id="rJy-J2-ji8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
