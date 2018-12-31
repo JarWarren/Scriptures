@@ -16,7 +16,9 @@ class TabOne: UIViewController {
     @IBOutlet weak var menuButton1: UIButton!
     @IBOutlet weak var menuButton2: UIButton!
     @IBOutlet weak var menuButton3: UIButton!
+    // TODO: - Add border to only one side of each button.
     var menuIsOpen = false
+    var chaptersToRead = 0
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -27,6 +29,7 @@ class TabOne: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupGoal()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,6 +64,21 @@ class TabOne: UIViewController {
             menuButton3.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
             ])
     }
+    
+    
+    // MARK: Goal Stats
+    func setupGoal() {
+        
+        if var timeLeft = GoalController.shared.currentGoal?.endDate?.timeIntervalSinceNow,
+            let goalTestament = GoalController.shared.currentGoal?.goalTestament {
+            
+            timeLeft = (timeLeft / 86400).rounded(.down)
+            print(timeLeft)
+            let testamentChapters = TestamentKeys.chapters[goalTestament]
+            print(testamentChapters! / timeLeft)
+        }
+    }
+    
     // MARK: Menu
     @objc func menuButtonTapped() {
         
@@ -83,6 +101,10 @@ class TabOne: UIViewController {
         self.menuButton2.center.y -= self.menuButton2.frame.height * 2
         self.menuButton3.center.y -= self.menuButton3.frame.height * 3
         self.menuIsOpen = false
+    }
+    
+    @IBAction func recalculateButtonTapped(_ sender: Any) {
+        
     }
     
     // MARK: - Navigation

@@ -53,7 +53,27 @@ class AllGoalsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
+            let deadGoal = GoalController.shared.allGoals[indexPath.row]
+            let alertController = UIAlertController(title: "Delete \(deadGoal.name)?", message: "This action cannot be undone.", preferredStyle: .alert)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+                    GoalController.shared.delete(goal: deadGoal)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alertController.addAction(deleteAction)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        if editingStyle == .insert {
             
         }
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
     }
 }

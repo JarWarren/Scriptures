@@ -42,13 +42,13 @@ class NewGoalViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             guard let goalName = newGoalTextField.text, goalName.isEmpty == false else { return }
             let deadline = newGoalDatePicker.date
             let testament = newGoalPickerView.selectedRow(inComponent: 0)
-                        GoalController.shared.createGoal(name: goalName, endDate: deadline, testament: testament)
+                        GoalController.shared.createGoal(name: goalName, endDate: deadline, startDate: Date(), testament: testament)
             
         default:
             guard let goalName = newGoalTextField.text, goalName.isEmpty == false else { return }
             let chapters = newGoalPickerView.selectedRow(inComponent: 1)
             let testament = newGoalPickerView.selectedRow(inComponent: 0)
-            GoalController.shared.createGoal(name: goalName, endDate: nil, chapters: chapters, testament: testament)
+            GoalController.shared.createGoal(name: goalName, endDate: nil, startDate: Date(), chapters: chapters, testament: testament)
         }
         navigationController?.popToRootViewController(animated: true)
     }
@@ -115,5 +115,3 @@ class NewGoalViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         }
     }
 }
-
-// TODO: newGoalTextField resigns firstResponder when "return" is tapped.

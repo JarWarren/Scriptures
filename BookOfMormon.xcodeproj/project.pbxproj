@@ -36,6 +36,9 @@
 		7ECD8ABB21C9AC0B00AED39B /* ChapterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8ABA21C9AC0B00AED39B /* ChapterHeader.swift */; };
 		7ECD8ABD21C9B5CA00AED39B /* TabThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */; };
 		7EE553AA21CBF7030062C91B /* TabFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE553A921CBF7030062C91B /* TabFour.swift */; };
+		7EFC384221DA801F000F0F75 /* VerseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384121DA801F000F0F75 /* VerseCell.swift */; };
+		7EFC384421DA8B79000F0F75 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384321DA8B79000F0F75 /* Note.swift */; };
+		7EFC384621DA9321000F0F75 /* NoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384521DA9321000F0F75 /* NoteController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +73,9 @@
 		7ECD8ABA21C9AC0B00AED39B /* ChapterHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterHeader.swift; sourceTree = "<group>"; };
 		7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabThree.swift; sourceTree = "<group>"; };
 		7EE553A921CBF7030062C91B /* TabFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabFour.swift; sourceTree = "<group>"; };
+		7EFC384121DA801F000F0F75 /* VerseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseCell.swift; sourceTree = "<group>"; };
+		7EFC384321DA8B79000F0F75 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		7EFC384521DA9321000F0F75 /* NoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				7E43B3E921C5F2E2000845DA /* Goal.swift */,
+				7EFC384321DA8B79000F0F75 /* Note.swift */,
 				7ECD8A9C21C9600600AED39B /* ScriptureDecoding.swift */,
 				7ECD8AB221C9810700AED39B /* TestamentStructures.swift */,
 			);
@@ -181,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				7E43B3EB21C5F406000845DA /* GoalController.swift */,
+				7EFC384521DA9321000F0F75 /* NoteController.swift */,
 				7ECD8AAE21C968C100AED39B /* ScriptureController.swift */,
 			);
 			path = ModelControllers;
@@ -189,6 +197,7 @@
 		7E43B3E621C5F278000845DA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7EFC384021DA7FDF000F0F75 /* Reading */,
 				7E238BE421CB34FC001ADF4F /* TabTwo */,
 			);
 			path = Views;
@@ -246,6 +255,14 @@
 				7ECD8AA421C9657E00AED39B /* pearl-of-great-price.json */,
 			);
 			path = JSONTestaments;
+			sourceTree = "<group>";
+		};
+		7EFC384021DA7FDF000F0F75 /* Reading */ = {
+			isa = PBXGroup;
+			children = (
+				7EFC384121DA801F000F0F75 /* VerseCell.swift */,
+			);
+			path = Reading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,11 +351,14 @@
 				7E43B3EC21C5F406000845DA /* GoalController.swift in Sources */,
 				7ECD8AB521C98FB700AED39B /* TabTwo.swift in Sources */,
 				7ECD8ABD21C9B5CA00AED39B /* TabThree.swift in Sources */,
+				7EFC384421DA8B79000F0F75 /* Note.swift in Sources */,
 				7ECD8AAF21C968C100AED39B /* ScriptureController.swift in Sources */,
 				7ECD8AB721C992F000AED39B /* ChapterCell.swift in Sources */,
 				7E43B3EA21C5F2E2000845DA /* Goal.swift in Sources */,
 				7E748C6D21CB4FA100ED9C8F /* NewGoalVC.swift in Sources */,
 				7ECD8AB321C9810700AED39B /* TestamentStructures.swift in Sources */,
+				7EFC384221DA801F000F0F75 /* VerseCell.swift in Sources */,
+				7EFC384621DA9321000F0F75 /* NoteController.swift in Sources */,
 				7E748C7121CB5BC900ED9C8F /* AllGoalsVC.swift in Sources */,
 				7EE553AA21CBF7030062C91B /* TabFour.swift in Sources */,
 				7E748C5F21CB41F100ED9C8F /* ReadingViewController.swift in Sources */,
