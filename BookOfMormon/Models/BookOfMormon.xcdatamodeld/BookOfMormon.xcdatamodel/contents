@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BooksCD" representedClassName="BooksCD" syncable="YES">
+        <attribute name="book" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="chapters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChapterCD" inverseName="book" inverseEntity="ChapterCD" syncable="YES"/>
+        <relationship name="testament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TestamentCD" inverseName="books" inverseEntity="TestamentCD" syncable="YES"/>
+    </entity>
+    <entity name="ChapterCD" representedClassName="ChapterCD" syncable="YES">
+        <attribute name="chapter" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BooksCD" inverseName="chapters" inverseEntity="BooksCD" syncable="YES"/>
+        <relationship name="verses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VerseCD" inverseName="chapter" inverseEntity="VerseCD" syncable="YES"/>
+    </entity>
+    <entity name="TestamentCD" representedClassName="TestamentCD" syncable="YES" codeGenerationType="class">
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BooksCD" inverseName="testament" inverseEntity="BooksCD" syncable="YES"/>
+    </entity>
+    <entity name="VerseCD" representedClassName="VerseCD" syncable="YES">
+        <attribute name="isHighlighted" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="verse" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="chapter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChapterCD" inverseName="verses" inverseEntity="ChapterCD" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TestamentCD" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="BooksCD" positionX="-55.62890625" positionY="203.87890625" width="128" height="103"/>
+        <element name="ChapterCD" positionX="-359.47265625" positionY="90.16015625" width="128" height="103"/>
+        <element name="VerseCD" positionX="140.6796875" positionY="-121.98046875" width="128" height="133"/>
+    </elements>
+</model>

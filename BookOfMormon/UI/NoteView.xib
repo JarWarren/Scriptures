@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NoteView" customModule="BookOfMormon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEf-YE-JRh">
+                    <rect key="frame" x="337" y="28" width="30" height="30"/>
+                    <state key="normal" title="Edit"/>
+                    <connections>
+                        <action selector="editButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="YZa-E9-jro"/>
+                    </connections>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="p8m-Mj-gal">
+                    <rect key="frame" x="8" y="66" width="359" height="593"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aVq-2d-9Gc">
+                            <rect key="frame" x="0.0" y="0.0" width="359" height="593"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxd-fI-eG8">
+                    <rect key="frame" x="283" y="28" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="p8m-Mj-gal" secondAttribute="bottom" constant="8" id="2cz-vt-y05"/>
+                <constraint firstItem="hEf-YE-JRh" firstAttribute="leading" secondItem="gxd-fI-eG8" secondAttribute="trailing" constant="8" id="4N9-ug-oEY"/>
+                <constraint firstItem="gxd-fI-eG8" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="HZI-Mw-Y2c"/>
+                <constraint firstItem="p8m-Mj-gal" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="L1V-L3-Ca2"/>
+                <constraint firstItem="p8m-Mj-gal" firstAttribute="top" secondItem="hEf-YE-JRh" secondAttribute="bottom" constant="8" id="QYR-gU-oU3"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hEf-YE-JRh" secondAttribute="trailing" constant="8" id="SG6-aA-QAL"/>
+                <constraint firstItem="hEf-YE-JRh" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="SKP-aZ-oex"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="p8m-Mj-gal" secondAttribute="trailing" constant="8" id="eV9-be-Yuj"/>
+                <constraint firstItem="p8m-Mj-gal" firstAttribute="top" secondItem="gxd-fI-eG8" secondAttribute="bottom" constant="8" id="o2S-cR-IQf"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="bodyTextView" destination="aVq-2d-9Gc" id="Kbq-M0-EiW"/>
+            </connections>
+        </view>
+    </objects>
+</document>

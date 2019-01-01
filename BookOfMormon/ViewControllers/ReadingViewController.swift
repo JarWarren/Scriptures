@@ -17,6 +17,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var rightButton: UIButton!
     var currentBook = 0
     var currentChapter = 0
+    var currentNoteText = ""
     var cellLocationInScriptures = [0, 0, 0, 0] {
         didSet {
             print(self.cellLocationInScriptures)
@@ -70,20 +71,14 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
         
-        cell.noteButton.isHidden = !cell.note
+        setupCellAtLocation(indexPathRow: indexPath.row, cell: cell)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "verseCell", for: indexPath) as? VerseCell else { return }
         
-        var cellLocation = [0, 0, 0, 0]
-        
-        cellLocation[0] = TestamentKeys.reverseSelectedTestament[ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM] ?? 0
-        cellLocation[1] = currentBook
-        cellLocation[2] = currentChapter
-        cellLocation[3] = indexPath.row
-        
-        self.cellLocationInScriptures = cellLocation
+        setupCellAtLocation(indexPathRow: indexPath.row, cell: cell)
     }
     
     // MARK: - Actions
@@ -111,6 +106,12 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let chapterNumber = ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].chapter {
             chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
         }
+    }
+    
+    @IBAction func noteButtonTapped(_ sender: Any) {
+        
+        let noteView = Bundle.main.loadNibNamed("NoteView", owner: nil, options: nil)?.first! as! NoteView
+        //lazy load
     }
     
     // MARK: - Setup View Methods
@@ -150,6 +151,29 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.navigationBar.tintColor = UIColor.black
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
+    }
+    
+    func setupCellAtLocation(indexPathRow: Int, cell: VerseCell) {
+        
+        var cellLocation = [0, 0, 0, 0]
+        cellLocation[0] = TestamentKeys.reverseSelectedTestament[ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM] ?? 0
+        cellLocation[1] = currentBook
+        cellLocation[2] = currentChapter
+        cellLocation[3] = indexPathRow
+        self.cellLocationInScriptures = cellLocation
+        
+        var hasNote = false
+        for verse in VerseDetailsController.shared.allVerseDetails {
+            if verse.isHighlighted == true {
+                cell.backgroundColor = UIColor.yellow
+            }
+            if verse.verseNote?.noteLocation == cellLocationInScriptures {
+                hasNote = true
+                guard let verseNoteText = verse.verseNote?.noteText else { return }
+                cell.verseTextLabel.text = verseNoteText
+            }
+        }
+        cell.noteButton.isHidden = !hasNote
     }
 }
 

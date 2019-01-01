@@ -13,5 +13,5 @@ class VerseCell: UITableViewCell {
     //MARK: Outlets
     @IBOutlet weak var verseTextLabel: UILabel!
     @IBOutlet weak var noteButton: UIButton!
-    var note = false
+    var wasHighlighted = false
 }
