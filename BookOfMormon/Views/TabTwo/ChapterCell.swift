@@ -18,6 +18,7 @@ class ChapterCell: UICollectionViewCell {
         }
     }
     var isCompleted = false
+    var isToday = false
     
     func updateLabel() {
         

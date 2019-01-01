@@ -17,6 +17,27 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="∞" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJ6-Zp-9WQ">
+                                <rect key="frame" x="54.5" y="164.5" width="266.5" height="358.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="300"/>
+                                <color key="textColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SCRIPTURES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECZ-VY-B6q">
+                                <rect key="frame" x="132.5" y="143.5" width="110" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                <color key="textColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0967121653" green="0.49416743349999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="FJ6-Zp-9WQ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3DA-gW-dgf"/>
+                            <constraint firstItem="ECZ-VY-B6q" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3zv-jp-Dy0"/>
+                            <constraint firstItem="FJ6-Zp-9WQ" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="SAr-Fy-Po7"/>
+                            <constraint firstItem="FJ6-Zp-9WQ" firstAttribute="top" secondItem="ECZ-VY-B6q" secondAttribute="bottom" id="qZf-hJ-IpX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
