@@ -47,7 +47,8 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         switch ScriptureController.shared.selectedTestament {
         case TestamentKeys.DaC:
-            return ScriptureController.shared.decodedDoctrine?.sections[currentChapter].verses.count ?? 0
+            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as! [SectionCD]
+            return sections[currentChapter].verses?.count ?? 0
         default:
             let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
             let chapters = books[currentBook].chapters?.allObjects as! [ChapterCD]
@@ -60,8 +61,10 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         switch ScriptureController.shared.selectedTestament {
         case TestamentKeys.DaC:
-            if let verseText = ScriptureController.shared.decodedDoctrine?.sections[currentChapter].verses[indexPath.row].text,
-                let verseNumber = ScriptureController.shared.decodedDoctrine?.sections[currentChapter].verses[indexPath.row].verse {
+            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as! [SectionCD]
+            let verses = sections[currentChapter].verses?.array as! [VerseCD]
+            let verseNumber = Int(verses[indexPath.row].verse)
+            if let verseText = verses[indexPath.row].text {
                 cell.verseTextLabel?.text = "\(verseNumber))  " + verseText
             }
             
@@ -71,7 +74,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             let verses = chapters[currentChapter].verses?.allObjects as! [VerseCD]
             let verseNumber = verses[indexPath.row].verse
             if let verseText = verses[indexPath.row].text {
-            cell.verseTextLabel?.text = "\(verseNumber))  " + verseText
+                cell.verseTextLabel?.text = "\(verseNumber))  " + verseText
             }
         }
         setupCellAtLocation(indexPathRow: indexPath.row, cell: cell)
@@ -129,26 +132,28 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func setupScriptures() {
         
-//        ScriptureController.shared.decode(book: currentBook, inTestament: ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM)
-//        
-//        switch ScriptureController.shared.selectedTestament {
-//            
-//        case TestamentKeys.DaC:
-//            title = "Doctrine and Covenants"
-//            if let sectionNumber = ScriptureController.shared.decodedDoctrine?.sections[currentChapter].section {
-//                chapterReferenceLabel.text = "Section " + "\(sectionNumber)"
-//            }
-//        default:
-//            title = ScriptureController.shared.decodedTestament?.books[currentBook].book
-//            if let chapterNumber = ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].chapter {
-//                chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
-//            }
-//        }
-//        if currentChapter == 0 {
-//            leftButton.isHidden = true
-//        } else if currentChapter == (ScriptureController.shared.decodedTestament?.books[currentBook].chapters.count ?? 1) - 1 {
-//            rightButton.isHidden = true
-//        }
+        let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
+        
+        switch ScriptureController.shared.selectedTestament {
+            
+        case TestamentKeys.DaC:
+            title = "Doctrine and Covenants"
+            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as! [SectionCD]
+            let sectionNumber = sections[currentChapter].section
+            chapterReferenceLabel.text = "Section " + "\(sectionNumber)"
+            
+        default:
+            let chapters = books[currentBook].chapters?.allObjects as! [ChapterCD]
+            title = books[currentBook].book
+            let chapterNumber = chapters[currentChapter].chapter
+            chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
+            
+        }
+        if currentChapter == 0 {
+            leftButton.isHidden = true
+        } else if currentChapter == (books[currentBook].chapters?.count ?? 1) - 1 {
+            rightButton.isHidden = true
+        }
     }
     
     func setupNavBar() {
