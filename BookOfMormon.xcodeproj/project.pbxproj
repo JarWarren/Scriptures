@@ -38,7 +38,19 @@
 		7EE553AA21CBF7030062C91B /* TabFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE553A921CBF7030062C91B /* TabFour.swift */; };
 		7EFC384221DA801F000F0F75 /* VerseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384121DA801F000F0F75 /* VerseCell.swift */; };
 		7EFC384421DA8B79000F0F75 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384321DA8B79000F0F75 /* Note.swift */; };
-		7EFC384621DA9321000F0F75 /* NoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384521DA9321000F0F75 /* NoteController.swift */; };
+		7EFC384621DA9321000F0F75 /* VerseDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384521DA9321000F0F75 /* VerseDetailsController.swift */; };
+		7EFC384821DA9981000F0F75 /* NoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EFC384721DA9981000F0F75 /* NoteView.xib */; };
+		7EFC384C21DA9DD3000F0F75 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384B21DA9DD3000F0F75 /* NoteView.swift */; };
+		7EFC384E21DAB2CC000F0F75 /* VerseDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384D21DAB2CC000F0F75 /* VerseDetails.swift */; };
+		7EFC385121DAC271000F0F75 /* BookOfMormon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384F21DAC271000F0F75 /* BookOfMormon.xcdatamodeld */; };
+		7EFC385321DACC8E000F0F75 /* TestamentCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC385221DACC8E000F0F75 /* TestamentCD.swift */; };
+		7EFC385521DACCA8000F0F75 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC385421DACCA8000F0F75 /* CoreDataStack.swift */; };
+		7EFC386A21DAD5B1000F0F75 /* BooksCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC386821DAD5B1000F0F75 /* BooksCD+CoreDataClass.swift */; };
+		7EFC386B21DAD5B1000F0F75 /* BooksCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC386921DAD5B1000F0F75 /* BooksCD+CoreDataProperties.swift */; };
+		7EFC386E21DAD647000F0F75 /* ChapterCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC386C21DAD647000F0F75 /* ChapterCD+CoreDataClass.swift */; };
+		7EFC386F21DAD647000F0F75 /* ChapterCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC386D21DAD647000F0F75 /* ChapterCD+CoreDataProperties.swift */; };
+		7EFC387221DAD8F7000F0F75 /* VerseCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC387021DAD8F7000F0F75 /* VerseCD+CoreDataClass.swift */; };
+		7EFC387321DAD8F7000F0F75 /* VerseCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC387121DAD8F7000F0F75 /* VerseCD+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,7 +87,19 @@
 		7EE553A921CBF7030062C91B /* TabFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabFour.swift; sourceTree = "<group>"; };
 		7EFC384121DA801F000F0F75 /* VerseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseCell.swift; sourceTree = "<group>"; };
 		7EFC384321DA8B79000F0F75 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		7EFC384521DA9321000F0F75 /* NoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteController.swift; sourceTree = "<group>"; };
+		7EFC384521DA9321000F0F75 /* VerseDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseDetailsController.swift; sourceTree = "<group>"; };
+		7EFC384721DA9981000F0F75 /* NoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteView.xib; sourceTree = "<group>"; };
+		7EFC384B21DA9DD3000F0F75 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		7EFC384D21DAB2CC000F0F75 /* VerseDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseDetails.swift; sourceTree = "<group>"; };
+		7EFC385021DAC271000F0F75 /* BookOfMormon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookOfMormon.xcdatamodel; sourceTree = "<group>"; };
+		7EFC385221DACC8E000F0F75 /* TestamentCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestamentCD.swift; sourceTree = "<group>"; };
+		7EFC385421DACCA8000F0F75 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		7EFC386821DAD5B1000F0F75 /* BooksCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BooksCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7EFC386921DAD5B1000F0F75 /* BooksCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BooksCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7EFC386C21DAD647000F0F75 /* ChapterCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChapterCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7EFC386D21DAD647000F0F75 /* ChapterCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChapterCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7EFC387021DAD8F7000F0F75 /* VerseCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerseCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7EFC387121DAD8F7000F0F75 /* VerseCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerseCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +180,7 @@
 				7E748C6421CB424F00ED9C8F /* Main.storyboard */,
 				7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */,
 				7E748C6221CB423F00ED9C8F /* Reader.storyboard */,
+				7EFC384721DA9981000F0F75 /* NoteView.xib */,
 				7E238BE221CB34CC001ADF4F /* Tabs */,
 			);
 			path = UI;
@@ -176,10 +201,20 @@
 		7E43B3E121C5F0E7000845DA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7EFC386821DAD5B1000F0F75 /* BooksCD+CoreDataClass.swift */,
+				7EFC386921DAD5B1000F0F75 /* BooksCD+CoreDataProperties.swift */,
+				7EFC386C21DAD647000F0F75 /* ChapterCD+CoreDataClass.swift */,
+				7EFC386D21DAD647000F0F75 /* ChapterCD+CoreDataProperties.swift */,
+				7EFC387021DAD8F7000F0F75 /* VerseCD+CoreDataClass.swift */,
+				7EFC387121DAD8F7000F0F75 /* VerseCD+CoreDataProperties.swift */,
 				7E43B3E921C5F2E2000845DA /* Goal.swift */,
 				7EFC384321DA8B79000F0F75 /* Note.swift */,
 				7ECD8A9C21C9600600AED39B /* ScriptureDecoding.swift */,
 				7ECD8AB221C9810700AED39B /* TestamentStructures.swift */,
+				7EFC384D21DAB2CC000F0F75 /* VerseDetails.swift */,
+				7EFC384F21DAC271000F0F75 /* BookOfMormon.xcdatamodeld */,
+				7EFC385221DACC8E000F0F75 /* TestamentCD.swift */,
+				7EFC385421DACCA8000F0F75 /* CoreDataStack.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -187,9 +222,9 @@
 		7E43B3E521C5F265000845DA /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7E43B3EB21C5F406000845DA /* GoalController.swift */,
-				7EFC384521DA9321000F0F75 /* NoteController.swift */,
 				7ECD8AAE21C968C100AED39B /* ScriptureController.swift */,
+				7EFC384521DA9321000F0F75 /* VerseDetailsController.swift */,
+				7E43B3EB21C5F406000845DA /* GoalController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -260,6 +295,7 @@
 		7EFC384021DA7FDF000F0F75 /* Reading */ = {
 			isa = PBXGroup;
 			children = (
+				7EFC384B21DA9DD3000F0F75 /* NoteView.swift */,
 				7EFC384121DA801F000F0F75 /* VerseCell.swift */,
 			);
 			path = Reading;
@@ -324,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E748C6321CB423F00ED9C8F /* Reader.storyboard in Resources */,
+				7EFC384821DA9981000F0F75 /* NoteView.xib in Resources */,
 				7ECD8AA921C9657E00AED39B /* pearl-of-great-price.json in Resources */,
 				7E238BD621CB215D001ADF4F /* TabOne.storyboard in Resources */,
 				7ECD8AA621C9657E00AED39B /* doctrine-and-covenants.json in Resources */,
@@ -346,20 +383,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EFC384E21DAB2CC000F0F75 /* VerseDetails.swift in Sources */,
+				7EFC385121DAC271000F0F75 /* BookOfMormon.xcdatamodeld in Sources */,
 				7ECD8A9D21C9600600AED39B /* ScriptureDecoding.swift in Sources */,
+				7EFC386A21DAD5B1000F0F75 /* BooksCD+CoreDataClass.swift in Sources */,
 				7E43B3CD21C5DA75000845DA /* TabOne.swift in Sources */,
 				7E43B3EC21C5F406000845DA /* GoalController.swift in Sources */,
+				7EFC386B21DAD5B1000F0F75 /* BooksCD+CoreDataProperties.swift in Sources */,
 				7ECD8AB521C98FB700AED39B /* TabTwo.swift in Sources */,
 				7ECD8ABD21C9B5CA00AED39B /* TabThree.swift in Sources */,
 				7EFC384421DA8B79000F0F75 /* Note.swift in Sources */,
+				7EFC384C21DA9DD3000F0F75 /* NoteView.swift in Sources */,
 				7ECD8AAF21C968C100AED39B /* ScriptureController.swift in Sources */,
 				7ECD8AB721C992F000AED39B /* ChapterCell.swift in Sources */,
 				7E43B3EA21C5F2E2000845DA /* Goal.swift in Sources */,
 				7E748C6D21CB4FA100ED9C8F /* NewGoalVC.swift in Sources */,
 				7ECD8AB321C9810700AED39B /* TestamentStructures.swift in Sources */,
 				7EFC384221DA801F000F0F75 /* VerseCell.swift in Sources */,
-				7EFC384621DA9321000F0F75 /* NoteController.swift in Sources */,
+				7EFC387221DAD8F7000F0F75 /* VerseCD+CoreDataClass.swift in Sources */,
+				7EFC385521DACCA8000F0F75 /* CoreDataStack.swift in Sources */,
+				7EFC384621DA9321000F0F75 /* VerseDetailsController.swift in Sources */,
+				7EFC385321DACC8E000F0F75 /* TestamentCD.swift in Sources */,
 				7E748C7121CB5BC900ED9C8F /* AllGoalsVC.swift in Sources */,
+				7EFC386E21DAD647000F0F75 /* ChapterCD+CoreDataClass.swift in Sources */,
+				7EFC386F21DAD647000F0F75 /* ChapterCD+CoreDataProperties.swift in Sources */,
+				7EFC387321DAD8F7000F0F75 /* VerseCD+CoreDataProperties.swift in Sources */,
 				7EE553AA21CBF7030062C91B /* TabFour.swift in Sources */,
 				7E748C5F21CB41F100ED9C8F /* ReadingViewController.swift in Sources */,
 				7E43B3CB21C5DA75000845DA /* AppDelegate.swift in Sources */,
@@ -545,6 +593,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7EFC384F21DAC271000F0F75 /* BookOfMormon.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7EFC385021DAC271000F0F75 /* BookOfMormon.xcdatamodel */,
+			);
+			currentVersion = 7EFC385021DAC271000F0F75 /* BookOfMormon.xcdatamodel */;
+			path = BookOfMormon.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7E43B3BF21C5DA75000845DA /* Project object */;
 }

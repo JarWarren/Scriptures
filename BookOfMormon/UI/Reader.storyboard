@@ -44,9 +44,6 @@
                                                                 <constraint firstAttribute="width" constant="30" id="rUZ-xn-gwl"/>
                                                             </constraints>
                                                             <state key="normal" title="🗒"/>
-                                                            <connections>
-                                                                <segue destination="3OS-rG-bSM" kind="show" identifier="existingNote" id="qUT-OE-1Lc"/>
-                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -109,7 +106,7 @@
                                         <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Note"/>
                                         <connections>
-                                            <segue destination="3OS-rG-bSM" kind="show" identifier="newNote" id="b2G-7P-u8B"/>
+                                            <action selector="noteButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="Lg9-xI-vpe"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYI-py-BCy">
@@ -150,23 +147,5 @@
             </objects>
             <point key="canvasLocation" x="3072.8000000000002" y="1353.3733133433284"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="IxS-dE-iOa">
-            <objects>
-                <viewController id="3OS-rG-bSM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nq9-Kr-7Fo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="ixE-ju-K5f"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YON-R4-AFt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3878" y="1352"/>
-        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="b2G-7P-u8B"/>
-    </inferredMetricsTieBreakers>
 </document>
