@@ -34,7 +34,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        setupNavBar()
+        //        setupNavBar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -49,7 +49,9 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case TestamentKeys.DaC:
             return ScriptureController.shared.decodedDoctrine?.sections[currentChapter].verses.count ?? 0
         default:
-            return ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].verses.count ?? 0
+            let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
+            let chapters = books[currentBook].chapters?.allObjects as! [ChapterCD]
+            return chapters[currentChapter].verses?.count ?? 0
         }
     }
     
@@ -64,13 +66,14 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             
         default:
-            if let verseText = ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].verses[indexPath.row].text,
-                let verseNumber = ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].verses[indexPath.row].verse {
-                cell.verseTextLabel?.text = "\(verseNumber))  " + verseText
-                
+            let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
+            let chapters = books[currentBook].chapters?.allObjects as! [ChapterCD]
+            let verses = chapters[currentChapter].verses?.allObjects as! [VerseCD]
+            let verseNumber = verses[indexPath.row].verse
+            if let verseText = verses[indexPath.row].text {
+            cell.verseTextLabel?.text = "\(verseNumber))  " + verseText
             }
         }
-        
         setupCellAtLocation(indexPathRow: indexPath.row, cell: cell)
         return cell
     }
@@ -84,6 +87,9 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Actions
     @IBAction func navigationButtonTapped(_ sender: UIButton) {
         
+        let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
+        let chapters = books[currentBook].chapters?.allObjects as! [ChapterCD]
+        
         switch sender.tag {
             
         case 0:
@@ -96,16 +102,15 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         default:
             currentChapter += 1
             leftButton.isHidden = false
-            if currentChapter == (ScriptureController.shared.decodedTestament?.books[currentBook].chapters.count ?? 1) - 1 {
+            if currentChapter == (books[currentBook].chapters?.count ?? 1) - 1 {
                 rightButton.isHidden = true
             }
             
         }
         
         self.versesTableView.reloadData()
-        if let chapterNumber = ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].chapter {
-            chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
-        }
+        let chapterNumber = chapters[currentChapter].chapter
+        chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
     }
     
     @IBAction func noteButtonTapped(_ sender: Any) {
@@ -124,26 +129,26 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func setupScriptures() {
         
-        ScriptureController.shared.decode(book: currentBook, inTestament: ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM)
-        
-        switch ScriptureController.shared.selectedTestament {
-            
-        case TestamentKeys.DaC:
-            title = "Doctrine and Covenants"
-            if let sectionNumber = ScriptureController.shared.decodedDoctrine?.sections[currentChapter].section {
-                chapterReferenceLabel.text = "Section " + "\(sectionNumber)"
-            }
-        default:
-            title = ScriptureController.shared.decodedTestament?.books[currentBook].book
-            if let chapterNumber = ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].chapter {
-                chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
-            }
-        }
-        if currentChapter == 0 {
-            leftButton.isHidden = true
-        } else if currentChapter == (ScriptureController.shared.decodedTestament?.books[currentBook].chapters.count ?? 1) - 1 {
-            rightButton.isHidden = true
-        }
+//        ScriptureController.shared.decode(book: currentBook, inTestament: ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM)
+//        
+//        switch ScriptureController.shared.selectedTestament {
+//            
+//        case TestamentKeys.DaC:
+//            title = "Doctrine and Covenants"
+//            if let sectionNumber = ScriptureController.shared.decodedDoctrine?.sections[currentChapter].section {
+//                chapterReferenceLabel.text = "Section " + "\(sectionNumber)"
+//            }
+//        default:
+//            title = ScriptureController.shared.decodedTestament?.books[currentBook].book
+//            if let chapterNumber = ScriptureController.shared.decodedTestament?.books[currentBook].chapters[currentChapter].chapter {
+//                chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
+//            }
+//        }
+//        if currentChapter == 0 {
+//            leftButton.isHidden = true
+//        } else if currentChapter == (ScriptureController.shared.decodedTestament?.books[currentBook].chapters.count ?? 1) - 1 {
+//            rightButton.isHidden = true
+//        }
     }
     
     func setupNavBar() {

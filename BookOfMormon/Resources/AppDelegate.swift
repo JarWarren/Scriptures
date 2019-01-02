@@ -15,11 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        ScriptureController.shared.decode(testament: TestamentKeys.BoM)
-        ScriptureController.shared.decode(testament: TestamentKeys.OT)
-        ScriptureController.shared.decode(testament: TestamentKeys.PoGP)
-        ScriptureController.shared.decode(testament: TestamentKeys.NT)
+        
+            ScriptureController.shared.decode(testament: TestamentKeys.BoM)
+//        ScriptureController.shared.decode(testament: TestamentKeys.OT)
+//        ScriptureController.shared.decode(testament: TestamentKeys.PoGP)
+//        ScriptureController.shared.decode(testament: TestamentKeys.NT)
+        
         return true
     }
 
