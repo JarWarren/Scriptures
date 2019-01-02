@@ -30,16 +30,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3Oq-lt-YUN">
-                                                    <rect key="frame" x="8" y="0.0" width="359" height="35.5"/>
+                                                    <rect key="frame" x="12" y="8" width="351" height="27.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2O-ga-ygi">
-                                                            <rect key="frame" x="0.0" y="0.0" width="321" height="35.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="27.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bP-K1-Cuq">
-                                                            <rect key="frame" x="329" y="0.0" width="30" height="35.5"/>
+                                                            <rect key="frame" x="321" y="0.0" width="30" height="27.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="rUZ-xn-gwl"/>
                                                             </constraints>
@@ -53,9 +53,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="3Oq-lt-YUN" secondAttribute="bottom" constant="8" id="Hm0-e8-4Na"/>
-                                                <constraint firstItem="3Oq-lt-YUN" firstAttribute="top" secondItem="rcB-R3-RDU" secondAttribute="top" id="ZlA-Nu-Vvl"/>
-                                                <constraint firstItem="3Oq-lt-YUN" firstAttribute="leading" secondItem="rcB-R3-RDU" secondAttribute="leading" constant="8" id="bNd-Sa-NpN"/>
-                                                <constraint firstAttribute="trailing" secondItem="3Oq-lt-YUN" secondAttribute="trailing" constant="8" id="sT7-hL-poo"/>
+                                                <constraint firstItem="3Oq-lt-YUN" firstAttribute="top" secondItem="rcB-R3-RDU" secondAttribute="top" constant="8" id="ZlA-Nu-Vvl"/>
+                                                <constraint firstItem="3Oq-lt-YUN" firstAttribute="leading" secondItem="rcB-R3-RDU" secondAttribute="leading" constant="12" id="bNd-Sa-NpN"/>
+                                                <constraint firstAttribute="trailing" secondItem="3Oq-lt-YUN" secondAttribute="trailing" constant="12" id="sT7-hL-poo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
