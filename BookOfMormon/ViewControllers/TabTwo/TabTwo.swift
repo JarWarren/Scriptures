@@ -36,7 +36,8 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        ScriptureController.shared.decode(testament: ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM)
+        ScriptureController.shared.change(testament: TestamentKeys.BoM) { (_) in
+        }
     }
     
     // MARK: - CollectionView Data Source Methods
@@ -54,7 +55,7 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         switch ScriptureController.shared.selectedTestament {
         case TestamentKeys.DaC:
-            return ScriptureController.shared.decodedDoctrine?.sections.count ?? 0
+            return ScriptureController.shared.fetchedDoctrine?.sections?.count ?? 0
         default:
             let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
             return books[section].chapters?.count ?? 0
@@ -83,9 +84,9 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         switch ScriptureController.shared.selectedTestament {
         case TestamentKeys.DaC:
-            if let section = ScriptureController.shared.decodedDoctrine?.sections[indexPath.row].section {
-                cell.chapterNumber = section
-            }
+            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as! [SectionCD]
+            let section = sections[indexPath.row].section
+            cell.chapterNumber = Int(section)
         default:
             let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
             if books[indexPath.section].chapters?.count ?? 0 > indexPath.row {
@@ -117,7 +118,8 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         case 3: ScriptureController.shared.selectedTestament = TestamentKeys.NT
         default: ScriptureController.shared.selectedTestament = TestamentKeys.OT
         }
-        ScriptureController.shared.decode(testament: ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM)
+        ScriptureController.shared.change(testament: ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM) { (_) in
+            }
         self.collectionView.reloadData()
     }
     

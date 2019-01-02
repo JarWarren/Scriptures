@@ -18,7 +18,7 @@ public class VerseCD: NSManagedObject {
 
 extension VerseCD {
     
-    convenience init(dictionary: [String : Any], chapter: ChapterCD) {
+    convenience init(dictionary: [String : Any], chapter: ChapterCD?, section: SectionCD?) {
         self.init(context: CoreDataStack.managedObjectContext)
         guard let verse = dictionary["verse"] as? Int,
         let reference = dictionary["reference"] as? String,
@@ -29,5 +29,6 @@ extension VerseCD {
         self.reference = reference
         self.text = text
         self.chapter = chapter
+        self.section = section
     }
 }

@@ -23,5 +23,6 @@ extension VerseCD {
     @NSManaged public var isHighlighted: Bool
     @NSManaged public var note: String?
     @NSManaged public var chapter: ChapterCD?
+    @NSManaged public var section: SectionCD?
 
 }

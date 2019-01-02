@@ -10,6 +10,9 @@
 		7E238BD621CB215D001ADF4F /* TabOne.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E238BD521CB215D001ADF4F /* TabOne.storyboard */; };
 		7E238BD821CB21D5001ADF4F /* TabTwo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E238BD721CB21D5001ADF4F /* TabTwo.storyboard */; };
 		7E238BDD21CB21FD001ADF4F /* TabFour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E238BDC21CB21FD001ADF4F /* TabFour.storyboard */; };
+		7E2CFC6921DD652A000F330B /* DoctrineCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CFC6821DD652A000F330B /* DoctrineCD.swift */; };
+		7E2CFC6C21DD663B000F330B /* SectionCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CFC6A21DD663B000F330B /* SectionCD+CoreDataClass.swift */; };
+		7E2CFC6D21DD663B000F330B /* SectionCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CFC6B21DD663B000F330B /* SectionCD+CoreDataProperties.swift */; };
 		7E43B3CB21C5DA75000845DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43B3CA21C5DA75000845DA /* AppDelegate.swift */; };
 		7E43B3CD21C5DA75000845DA /* TabOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43B3CC21C5DA75000845DA /* TabOne.swift */; };
 		7E43B3D221C5DA76000845DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E43B3D121C5DA76000845DA /* Assets.xcassets */; };
@@ -57,6 +60,9 @@
 		7E238BD521CB215D001ADF4F /* TabOne.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabOne.storyboard; sourceTree = "<group>"; };
 		7E238BD721CB21D5001ADF4F /* TabTwo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabTwo.storyboard; sourceTree = "<group>"; };
 		7E238BDC21CB21FD001ADF4F /* TabFour.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabFour.storyboard; sourceTree = "<group>"; };
+		7E2CFC6821DD652A000F330B /* DoctrineCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctrineCD.swift; sourceTree = "<group>"; };
+		7E2CFC6A21DD663B000F330B /* SectionCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SectionCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7E2CFC6B21DD663B000F330B /* SectionCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SectionCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7E43B3C721C5DA75000845DA /* BookOfMormon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookOfMormon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E43B3CA21C5DA75000845DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E43B3CC21C5DA75000845DA /* TabOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabOne.swift; sourceTree = "<group>"; };
@@ -201,6 +207,8 @@
 		7E43B3E121C5F0E7000845DA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7E2CFC6A21DD663B000F330B /* SectionCD+CoreDataClass.swift */,
+				7E2CFC6B21DD663B000F330B /* SectionCD+CoreDataProperties.swift */,
 				7EFC386821DAD5B1000F0F75 /* BooksCD+CoreDataClass.swift */,
 				7EFC386921DAD5B1000F0F75 /* BooksCD+CoreDataProperties.swift */,
 				7EFC386C21DAD647000F0F75 /* ChapterCD+CoreDataClass.swift */,
@@ -214,6 +222,7 @@
 				7EFC384D21DAB2CC000F0F75 /* VerseDetails.swift */,
 				7EFC384F21DAC271000F0F75 /* BookOfMormon.xcdatamodeld */,
 				7EFC385221DACC8E000F0F75 /* TestamentCD.swift */,
+				7E2CFC6821DD652A000F330B /* DoctrineCD.swift */,
 				7EFC385421DACCA8000F0F75 /* CoreDataStack.swift */,
 			);
 			path = Models;
@@ -386,6 +395,7 @@
 				7EFC384E21DAB2CC000F0F75 /* VerseDetails.swift in Sources */,
 				7EFC385121DAC271000F0F75 /* BookOfMormon.xcdatamodeld in Sources */,
 				7ECD8A9D21C9600600AED39B /* ScriptureDecoding.swift in Sources */,
+				7E2CFC6D21DD663B000F330B /* SectionCD+CoreDataProperties.swift in Sources */,
 				7EFC386A21DAD5B1000F0F75 /* BooksCD+CoreDataClass.swift in Sources */,
 				7E43B3CD21C5DA75000845DA /* TabOne.swift in Sources */,
 				7E43B3EC21C5F406000845DA /* GoalController.swift in Sources */,
@@ -407,8 +417,10 @@
 				7E748C7121CB5BC900ED9C8F /* AllGoalsVC.swift in Sources */,
 				7EFC386E21DAD647000F0F75 /* ChapterCD+CoreDataClass.swift in Sources */,
 				7EFC386F21DAD647000F0F75 /* ChapterCD+CoreDataProperties.swift in Sources */,
+				7E2CFC6C21DD663B000F330B /* SectionCD+CoreDataClass.swift in Sources */,
 				7EFC387321DAD8F7000F0F75 /* VerseCD+CoreDataProperties.swift in Sources */,
 				7EE553AA21CBF7030062C91B /* TabFour.swift in Sources */,
+				7E2CFC6921DD652A000F330B /* DoctrineCD.swift in Sources */,
 				7E748C5F21CB41F100ED9C8F /* ReadingViewController.swift in Sources */,
 				7E43B3CB21C5DA75000845DA /* AppDelegate.swift in Sources */,
 				7ECD8ABB21C9AC0B00AED39B /* ChapterHeader.swift in Sources */,
