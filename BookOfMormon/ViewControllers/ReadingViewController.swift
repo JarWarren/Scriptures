@@ -17,12 +17,13 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var rightButton: UIButton!
     var currentBook = 0
     var currentChapter = 0
-    var currentNoteText = ""
-    var cellLocationInScriptures = [0, 0, 0, 0] {
+    var selectedVerse: VerseCD? {
         didSet {
-            print(self.cellLocationInScriptures)
+            print(self.selectedVerse?.verse as Any)
         }
     }
+    var selectedIndexPath: IndexPath?
+    var cellLocationInScriptures = [0, 0, 0, 0]
     // TODO: Remove line from bottom of Nav Controller
     
     // MARK: - Lifecycle Methods
@@ -63,35 +64,40 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case TestamentKeys.DaC:
             let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as! [SectionCD]
             let verses = sections[currentChapter].verses?.array as! [VerseCD]
-            let verseNumber = Int(verses[indexPath.row].verse)
-            if let verseText = verses[indexPath.row].text {
-                cell.verseTextLabel?.text = "\(verseNumber))  " + verseText
-            }
+            cell.verseCoreData = verses[indexPath.row]
             
         default:
             let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
             let chapters = books[currentBook].chapters?.allObjects as! [ChapterCD]
             let verses = chapters[currentChapter].verses?.allObjects as! [VerseCD]
-            let verseNumber = verses[indexPath.row].verse
-            if let verseText = verses[indexPath.row].text {
-                cell.verseTextLabel?.text = "\(verseNumber))  " + verseText
-            }
+            cell.verseCoreData = verses[indexPath.row]
         }
-        setupCellAtLocation(indexPathRow: indexPath.row, cell: cell)
+        if cell.verseCoreData?.isHighlighted == true {
+            cell.backgroundColor = #colorLiteral(red: 1, green: 0.8192489743, blue: 0.8509001136, alpha: 1)
+        } else {
+            cell.backgroundColor = UIColor.white
+        }
+        if cell.verseCoreData?.note == nil {
+            cell.noteButton.isHidden = true
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "verseCell", for: indexPath) as? VerseCell else { return }
+
+        let cell = tableView.cellForRow(at: indexPath) as! VerseCell
         
-        setupCellAtLocation(indexPathRow: indexPath.row, cell: cell)
+        findCellLocation(indexPathRow: indexPath.row, cell: cell)
+        self.selectedVerse = cell.verseCoreData
+        self.selectedIndexPath = indexPath
     }
     
     // MARK: - Actions
     @IBAction func navigationButtonTapped(_ sender: UIButton) {
         
+        self.selectedVerse = nil
         let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
-        let chapters = books[currentBook].chapters?.allObjects as! [ChapterCD]
+        let chapters = books[currentBook].chapters?.allObjects as? [ChapterCD]
         
         switch sender.tag {
             
@@ -112,14 +118,41 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         self.versesTableView.reloadData()
-        let chapterNumber = chapters[currentChapter].chapter
+        if let chapterNumber = chapters?[currentChapter].chapter {
         chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
+        }
     }
     
-    @IBAction func noteButtonTapped(_ sender: Any) {
+    @IBAction func cellMenuButtonTapped(_ sender: UIButton) {
         
-        let noteView = Bundle.main.loadNibNamed("NoteView", owner: nil, options: nil)?.first! as! NoteView
-        //lazy load
+        if selectedVerse == nil {
+            
+            let alertController = UIAlertController(title: "Tap a verse in order to use the menu", message: nil, preferredStyle: .actionSheet)
+            let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alertController.addAction(ok)
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            
+            switch sender.tag {
+            case 0:
+                if selectedVerse?.isHighlighted == nil || selectedVerse?.isHighlighted == false {
+                    selectedVerse?.isHighlighted = true
+                } else {
+                    selectedVerse?.isHighlighted = false
+                }
+            case 1:
+                print("let them write a note")
+            case 2:
+                BookmarkController.shared.bookmarkAt(location: cellLocationInScriptures)
+            case 3:
+                UIPasteboard.general.string = selectedVerse?.text
+            default: return
+            }
+            try? CoreDataStack.managedObjectContext.save()
+            
+            versesTableView.deselectRow(at: selectedIndexPath!, animated: true)
+            versesTableView.reloadRows(at: [selectedIndexPath!], with: .automatic)
+        }
     }
     
     // MARK: - Setup View Methods
@@ -158,12 +191,10 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func setupNavBar() {
         
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        // Remove shadow from Navigation Bar.
     }
     
-    func setupCellAtLocation(indexPathRow: Int, cell: VerseCell) {
+    func findCellLocation(indexPathRow: Int, cell: VerseCell) {
         
         var cellLocation = [0, 0, 0, 0]
         cellLocation[0] = TestamentKeys.reverseSelectedTestament[ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM] ?? 0
@@ -172,23 +203,12 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         cellLocation[3] = indexPathRow
         self.cellLocationInScriptures = cellLocation
         
-        var hasNote = false
-        for verse in VerseDetailsController.shared.allVerseDetails {
-            if verse.isHighlighted == true {
-                cell.backgroundColor = UIColor.yellow
-            }
-            if verse.verseNote?.noteLocation == cellLocationInScriptures {
-                hasNote = true
-                guard let verseNoteText = verse.verseNote?.noteText else { return }
-                cell.verseTextLabel.text = verseNoteText
-            }
-        }
-        cell.noteButton.isHidden = !hasNote
+        cell.noteButton.isHidden = true
     }
 }
 
 // TODO: Tap a verse to open a menu -
-// Highlight Verse
+// Highlight Verse (different colors)
 // Write Impression
 // Add to Favorites
 // Save for Memorization

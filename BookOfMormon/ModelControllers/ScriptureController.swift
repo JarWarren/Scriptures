@@ -27,7 +27,7 @@ class ScriptureController {
         
         change(testament: testament) { (alreadyDecoded) in
             if alreadyDecoded == true {
-//                keepDecoding = false
+                keepDecoding = false
             }
         }
         
@@ -154,7 +154,11 @@ class ScriptureController {
         do {
             let fetchedTestaments = try CoreDataStack.managedObjectContext.fetch(fetchRequest)
             self.fetchedTestament = fetchedTestaments.first
-            completion(true)
+            if self.fetchedTestament?.books != nil {
+                completion(true)
+            } else {
+                completion(false)
+            }
         } catch {
             print("Beginning decode for \(testament.capitalized)")
             completion(false)
