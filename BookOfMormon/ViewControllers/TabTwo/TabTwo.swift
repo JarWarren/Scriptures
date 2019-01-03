@@ -55,7 +55,8 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         switch ScriptureController.shared.selectedTestament {
         case TestamentKeys.DaC:
-            return ScriptureController.shared.fetchedDoctrine?.sections?.count ?? 0
+            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as! [SectionCD]
+            return sections.count
         default:
             let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
             return books[section].chapters?.count ?? 0

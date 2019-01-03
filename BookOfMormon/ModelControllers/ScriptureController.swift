@@ -27,7 +27,7 @@ class ScriptureController {
         
         change(testament: testament) { (alreadyDecoded) in
             if alreadyDecoded == true {
-                keepDecoding = false
+//                keepDecoding = false
             }
         }
         
@@ -43,7 +43,7 @@ class ScriptureController {
                     let doctrineData = try Data(contentsOf: URL(fileURLWithPath: testamentPath))
                     let doctrineDictionary = try JSONSerialization.jsonObject(with: doctrineData, options: .allowFragments) as! [String : Any]
                     let doctrineCoreData = DoctrineCD(dictionary: doctrineDictionary)
-                    guard let allSections = doctrineCoreData.sections?.array as? [[String : Any]] else { return }
+                    guard let allSections = doctrineDictionary["sections"] as? [[String : Any]] else { return }
                     for sectionDictionary in allSections {
                         let section = SectionCD(dictionary: sectionDictionary, doctrine: doctrineCoreData)
                         section.doctrine = doctrineCoreData
