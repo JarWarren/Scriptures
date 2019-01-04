@@ -13,5 +13,16 @@ class VerseCell: UITableViewCell {
     //MARK: Outlets
     @IBOutlet weak var verseTextLabel: UILabel!
     @IBOutlet weak var noteButton: UIButton!
-    var wasHighlighted = false
+    var verseCoreData: VerseCD? {
+        didSet {
+            updateCell()
+        }
+    }
+    
+    func updateCell() {
+        if let verseText = self.verseCoreData?.text,
+            let verseNumber = self.verseCoreData?.verse {
+     self.verseTextLabel.text = "\(verseNumber))  " + verseText
+        }
+    }
 }

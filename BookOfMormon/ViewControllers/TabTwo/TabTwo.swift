@@ -25,6 +25,7 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupTestament()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -55,7 +56,8 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         switch ScriptureController.shared.selectedTestament {
         case TestamentKeys.DaC:
-            return ScriptureController.shared.fetchedDoctrine?.sections?.count ?? 0
+            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as! [SectionCD]
+            return sections.count
         default:
             let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
             return books[section].chapters?.count ?? 0
@@ -106,10 +108,12 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     func setupMainView() {
         
         self.barButton = self.navigationItem.rightBarButtonItem
+        guard let bookmarkButton = self.navigationItem.rightBarButtonItem else { return }
+        bookmarkButton.target = self
+        bookmarkButton.action = #selector(bookmarkBarButtonTapped)
     }
     
-    // MARK: - Actions
-    @IBAction func booksSegmentedControlValueChanged(_ sender: Any) {
+    func setupTestament() {
         
         switch booksSegmentedControl.selectedSegmentIndex {
         case 0: ScriptureController.shared.selectedTestament = TestamentKeys.BoM
@@ -119,12 +123,36 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         default: ScriptureController.shared.selectedTestament = TestamentKeys.OT
         }
         ScriptureController.shared.change(testament: ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM) { (_) in
-            }
+        }
         self.collectionView.reloadData()
     }
     
-    @objc func booksBarButtonTapped(_ sender: Any) {
-        // TODO: Takes user to their bookmarked place.
+    // MARK: - Actions
+    @IBAction func booksSegmentedControlValueChanged(_ sender: Any) {
+        
+        setupTestament()
+    }
+    
+    @objc func bookmarkBarButtonTapped(_ sender: Any) {
+        
+        if let destinationTestament = BookmarkController.shared.bookmark?.testament,
+        let destinationBook = BookmarkController.shared.bookmark?.book,
+            let destinationChapter = BookmarkController.shared.bookmark?.chapter {
+        ScriptureController.shared.selectedTestament = TestamentKeys.selectedTestament[Int(destinationTestament)]
+        ScriptureController.shared.change(testament: ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM) { (_) in
+            }
+        
+        let readingViewController = UIStoryboard(name: "Reader", bundle: nil).instantiateViewController(withIdentifier: "ReadingViewController") as! ReadingViewController
+        readingViewController.currentBook = Int(destinationBook)
+        readingViewController.currentChapter = Int(destinationChapter)
+        
+        navigationController?.pushViewController(readingViewController, animated: true)
+        } else {
+            let alertController = UIAlertController(title: "You haven't set a bookmark", message: nil, preferredStyle: .actionSheet)
+            let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alertController.addAction(ok)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     // MARK: - Navigation

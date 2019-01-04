@@ -13,16 +13,14 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Outlets and Properties
     @IBOutlet weak var versesTableView: UITableView!
     @IBOutlet weak var chapterReferenceLabel: UILabel!
+    @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     var currentBook = 0
     var currentChapter = 0
-    var currentNoteText = ""
-    var cellLocationInScriptures = [0, 0, 0, 0] {
-        didSet {
-            print(self.cellLocationInScriptures)
-        }
-    }
+    var selectedVerse: VerseCD?
+    var selectedIndexPath: IndexPath?
+    var bookmarkLocation = [0, 0, 0]
     // TODO: Remove line from bottom of Nav Controller
     
     // MARK: - Lifecycle Methods
@@ -30,6 +28,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         setupScriptures()
         setupTableView()
+        setupBookmarkButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,12 +46,12 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         switch ScriptureController.shared.selectedTestament {
         case TestamentKeys.DaC:
-            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as! [SectionCD]
-            return sections[currentChapter].verses?.count ?? 0
+            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as? [SectionCD]
+            return sections?[currentChapter].verses?.count ?? 0
         default:
-            let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
-            let chapters = books[currentBook].chapters?.allObjects as! [ChapterCD]
-            return chapters[currentChapter].verses?.count ?? 0
+            let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
+            let chapters = books?[currentBook].chapters?.allObjects as? [ChapterCD]
+            return chapters?[currentChapter].verses?.count ?? 0
         }
     }
     
@@ -61,38 +60,41 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         switch ScriptureController.shared.selectedTestament {
         case TestamentKeys.DaC:
-            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as! [SectionCD]
-            let verses = sections[currentChapter].verses?.array as! [VerseCD]
-            let verseNumber = Int(verses[indexPath.row].verse)
-            if let verseText = verses[indexPath.row].text {
-                cell.verseTextLabel?.text = "\(verseNumber))  " + verseText
-            }
+            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as? [SectionCD]
+            let verses = sections?[currentChapter].verses?.array as? [VerseCD]
+            cell.verseCoreData = verses?[indexPath.row]
             
         default:
-            let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
-            let chapters = books[currentBook].chapters?.allObjects as! [ChapterCD]
-            let verses = chapters[currentChapter].verses?.allObjects as! [VerseCD]
-            let verseNumber = verses[indexPath.row].verse
-            if let verseText = verses[indexPath.row].text {
-                cell.verseTextLabel?.text = "\(verseNumber))  " + verseText
-            }
+            let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
+            let chapters = books?[currentBook].chapters?.allObjects as? [ChapterCD]
+            let verses = chapters?[currentChapter].verses?.allObjects as? [VerseCD]
+            cell.verseCoreData = verses?[indexPath.row]
         }
-        setupCellAtLocation(indexPathRow: indexPath.row, cell: cell)
+        if cell.verseCoreData?.isHighlighted == true {
+            cell.backgroundColor = #colorLiteral(red: 1, green: 0.8192489743, blue: 0.8509001136, alpha: 1)
+        } else {
+            cell.backgroundColor = UIColor.white
+        }
+        if cell.verseCoreData?.note == nil {
+            cell.noteButton.isHidden = true
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "verseCell", for: indexPath) as? VerseCell else { return }
         
-        setupCellAtLocation(indexPathRow: indexPath.row, cell: cell)
+        guard let cell = tableView.cellForRow(at: indexPath) as? VerseCell else { return }
+        
+        self.selectedVerse = cell.verseCoreData
+        self.selectedIndexPath = indexPath
     }
     
     // MARK: - Actions
     @IBAction func navigationButtonTapped(_ sender: UIButton) {
         
-        let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
-        let chapters = books[currentBook].chapters?.allObjects as! [ChapterCD]
-        
+        self.selectedVerse = nil
+        let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
+        let chapters = books?[currentBook].chapters?.allObjects as? [ChapterCD]
         switch sender.tag {
             
         case 0:
@@ -105,21 +107,53 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         default:
             currentChapter += 1
             leftButton.isHidden = false
-            if currentChapter == (books[currentBook].chapters?.count ?? 1) - 1 {
+            if currentChapter == (books?[currentBook].chapters?.count ?? 1) - 1 {
                 rightButton.isHidden = true
             }
             
         }
         
         self.versesTableView.reloadData()
-        let chapterNumber = chapters[currentChapter].chapter
-        chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
+        setupBookmarkButton()
+        if let chapterNumber = chapters?[currentChapter].chapter {
+            chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
+        }
     }
     
-    @IBAction func noteButtonTapped(_ sender: Any) {
+    @IBAction func cellMenuButtonTapped(_ sender: UIButton) {
         
-        let noteView = Bundle.main.loadNibNamed("NoteView", owner: nil, options: nil)?.first! as! NoteView
-        //lazy load
+        if selectedVerse == nil && sender.tag != 2 {
+            
+            let alertController = UIAlertController(title: "Tap a verse in order to use this option", message: nil, preferredStyle: .actionSheet)
+            let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alertController.addAction(ok)
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            
+            switch sender.tag {
+            case 0:
+                if selectedVerse?.isHighlighted == nil || selectedVerse?.isHighlighted == false {
+                    selectedVerse?.isHighlighted = true
+                } else {
+                    selectedVerse?.isHighlighted = false
+                }
+            case 1:
+                print("let them write a note")
+            case 2:
+                findBookmarkLocation()
+                BookmarkController.shared.bookmarkAt(location: bookmarkLocation)
+                setupBookmarkButton()
+            case 3:
+                UIPasteboard.general.string = selectedVerse?.text
+            default: return
+            }
+            try? CoreDataStack.managedObjectContext.save()
+            
+            if let indexPath = selectedIndexPath {
+                versesTableView.deselectRow(at: indexPath, animated: true)
+                versesTableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+        }
     }
     
     // MARK: - Setup View Methods
@@ -138,57 +172,64 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         case TestamentKeys.DaC:
             title = "Doctrine and Covenants"
-            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as! [SectionCD]
-            let sectionNumber = sections[currentChapter].section
-            chapterReferenceLabel.text = "Section " + "\(sectionNumber)"
+            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as? [SectionCD]
+            if let sectionNumber = sections?[currentChapter].section {
+                chapterReferenceLabel.text = "Section " + "\(sectionNumber)"
+            }
             
         default:
-            let chapters = books[currentBook].chapters?.allObjects as! [ChapterCD]
+            let chapters = books[currentBook].chapters?.allObjects as? [ChapterCD]
             title = books[currentBook].book
-            let chapterNumber = chapters[currentChapter].chapter
-            chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
-            
+            if let chapterNumber = chapters?[currentChapter].chapter {
+                chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
+            }
         }
         if currentChapter == 0 {
             leftButton.isHidden = true
-        } else if currentChapter == (books[currentBook].chapters?.count ?? 1) - 1 {
+        }
+        if currentChapter == (books[currentBook].chapters?.count ?? 1) - 1 {
             rightButton.isHidden = true
+        }
+        if leftButton.isHidden == true && rightButton.isHidden == true {
+            chapterReferenceLabel.isHidden = true
         }
     }
     
     func setupNavBar() {
         
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        // Remove shadow from Navigation Bar.
     }
     
-    func setupCellAtLocation(indexPathRow: Int, cell: VerseCell) {
-        
-        var cellLocation = [0, 0, 0, 0]
-        cellLocation[0] = TestamentKeys.reverseSelectedTestament[ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM] ?? 0
-        cellLocation[1] = currentBook
-        cellLocation[2] = currentChapter
-        cellLocation[3] = indexPathRow
-        self.cellLocationInScriptures = cellLocation
-        
-        var hasNote = false
-        for verse in VerseDetailsController.shared.allVerseDetails {
-            if verse.isHighlighted == true {
-                cell.backgroundColor = UIColor.yellow
-            }
-            if verse.verseNote?.noteLocation == cellLocationInScriptures {
-                hasNote = true
-                guard let verseNoteText = verse.verseNote?.noteText else { return }
-                cell.verseTextLabel.text = verseNoteText
-            }
+    func setupBookmarkButton() {
+        guard let currentTestament = ScriptureController.shared.selectedTestament,
+            let bookmark = BookmarkController.shared.bookmark else {
+                bookmarkButton.setTitle("Bookmark", for: .normal)
+                bookmarkButton.setTitleColor(#colorLiteral(red: 0.006345573347, green: 0.478813827, blue: 0.9984634519, alpha: 1), for: .normal)
+                return
         }
-        cell.noteButton.isHidden = !hasNote
+        if TestamentKeys.reverseSelectedTestament[currentTestament] == Int(bookmark.testament) &&
+            self.currentBook == Int(bookmark.book) &&
+            self.currentChapter == Int(bookmark.chapter) {
+            bookmarkButton.setTitle("Bookmarked", for: .normal)
+            bookmarkButton.setTitleColor(#colorLiteral(red: 0.7324364781, green: 0.111247398, blue: 0.3787733316, alpha: 1), for: .normal)
+        } else {
+            bookmarkButton.setTitle("Bookmark", for: .normal)
+            bookmarkButton.setTitleColor(#colorLiteral(red: 0.006345573347, green: 0.478813827, blue: 0.9984634519, alpha: 1), for: .normal)
+        }
+    }
+    
+    func findBookmarkLocation() {
+        
+        var currentLocation = [0, 0, 0]
+        currentLocation[0] = TestamentKeys.reverseSelectedTestament[ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM] ?? 0
+        currentLocation[1] = currentBook
+        currentLocation[2] = currentChapter
+        self.bookmarkLocation = currentLocation
     }
 }
 
 // TODO: Tap a verse to open a menu -
-// Highlight Verse
+// Highlight Verse (different colors)
 // Write Impression
 // Add to Favorites
 // Save for Memorization

@@ -29,7 +29,5 @@ extension BooksCD {
         self.title = title
         self.book = book
         self.chaptersTemp = chapters
-        
-        
     }
 }

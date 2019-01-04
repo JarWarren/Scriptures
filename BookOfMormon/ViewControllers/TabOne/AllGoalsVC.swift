@@ -54,7 +54,7 @@ class AllGoalsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         if editingStyle == .delete {
             
             let deadGoal = GoalController.shared.allGoals[indexPath.row]
-            let alertController = UIAlertController(title: "Delete \(deadGoal.name)?", message: "This action cannot be undone.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Delete \(deadGoal.name)?", message: "This action cannot be undone", preferredStyle: .alert)
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
                     GoalController.shared.delete(goal: deadGoal)
                     tableView.deleteRows(at: [indexPath], with: .fade)

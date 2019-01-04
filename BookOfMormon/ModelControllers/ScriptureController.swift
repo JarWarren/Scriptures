@@ -43,7 +43,7 @@ class ScriptureController {
                     let doctrineData = try Data(contentsOf: URL(fileURLWithPath: testamentPath))
                     let doctrineDictionary = try JSONSerialization.jsonObject(with: doctrineData, options: .allowFragments) as! [String : Any]
                     let doctrineCoreData = DoctrineCD(dictionary: doctrineDictionary)
-                    guard let allSections = doctrineCoreData.sections?.array as? [[String : Any]] else { return }
+                    guard let allSections = doctrineDictionary["sections"] as? [[String : Any]] else { return }
                     for sectionDictionary in allSections {
                         let section = SectionCD(dictionary: sectionDictionary, doctrine: doctrineCoreData)
                         section.doctrine = doctrineCoreData
@@ -90,16 +90,6 @@ class ScriptureController {
                 } catch {
                     print("Error decoding \(testament.capitalized)")
                 }
-                
-                //
-                //                switch testament {
-                //                case TestamentKeys.DaC:
-                //                    let decodedDoctrine = try JSONDecoder().decode(Doctrine.self, from: testamentData)
-                //                    self.decodedDoctrine = decodedDoctrine
-                //                default:
-                //                    let decodedTestament = try JSONDecoder().decode(Testament.self, from: testamentData)
-                //                    self.decodedTestament = decodedTestament
-                //                }
             }
         }
     }
@@ -154,7 +144,11 @@ class ScriptureController {
         do {
             let fetchedTestaments = try CoreDataStack.managedObjectContext.fetch(fetchRequest)
             self.fetchedTestament = fetchedTestaments.first
-            completion(true)
+            if self.fetchedTestament?.books != nil {
+                completion(true)
+            } else {
+                completion(false)
+            }
         } catch {
             print("Beginning decode for \(testament.capitalized)")
             completion(false)
