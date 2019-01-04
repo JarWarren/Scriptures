@@ -18,14 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organize" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAL-JM-5M5">
-                                <rect key="frame" x="24" y="28" width="351" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.61915053929999997" green="0.56043829219999997" blue="0.20530300949999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mqH-eN-0Jv">
-                                <rect key="frame" x="0.0" y="52" width="375" height="615"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="611"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="studyCell" id="vuS-4U-JDB">
@@ -38,16 +32,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Skv-RD-HNF">
+                                <rect key="frame" x="8" y="20" width="359" height="29"/>
+                                <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <segments>
+                                    <segment title="Notes"/>
+                                    <segment title="Memorize"/>
+                                    <segment title="Mastery"/>
+                                </segments>
+                                <color key="tintColor" red="0.61915053929999997" green="0.56043829219999997" blue="0.20530300949999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Skv-RD-HNF" firstAttribute="top" secondItem="aOl-Fe-oV6" secondAttribute="top" id="3Pg-WL-YNJ"/>
                             <constraint firstItem="aOl-Fe-oV6" firstAttribute="bottom" secondItem="mqH-eN-0Jv" secondAttribute="bottom" id="6a5-B4-aSc"/>
                             <constraint firstItem="mqH-eN-0Jv" firstAttribute="leading" secondItem="aOl-Fe-oV6" secondAttribute="leading" id="Bh6-Xj-zkN"/>
+                            <constraint firstItem="Skv-RD-HNF" firstAttribute="leading" secondItem="aOl-Fe-oV6" secondAttribute="leading" constant="8" id="QGL-Ui-ecS"/>
                             <constraint firstItem="aOl-Fe-oV6" firstAttribute="trailing" secondItem="mqH-eN-0Jv" secondAttribute="trailing" id="Z1j-No-LIC"/>
-                            <constraint firstItem="nAL-JM-5M5" firstAttribute="top" secondItem="aOl-Fe-oV6" secondAttribute="top" constant="8" id="cMl-Tu-lr1"/>
-                            <constraint firstItem="aOl-Fe-oV6" firstAttribute="trailing" secondItem="nAL-JM-5M5" secondAttribute="trailing" id="l1U-Ba-GHB"/>
-                            <constraint firstItem="nAL-JM-5M5" firstAttribute="leading" secondItem="aOl-Fe-oV6" secondAttribute="leading" constant="24" id="wee-ZP-DRo"/>
-                            <constraint firstItem="mqH-eN-0Jv" firstAttribute="top" secondItem="nAL-JM-5M5" secondAttribute="bottom" id="zrs-iw-YGw"/>
+                            <constraint firstItem="aOl-Fe-oV6" firstAttribute="trailing" secondItem="Skv-RD-HNF" secondAttribute="trailing" constant="8" id="dSB-kM-HH7"/>
+                            <constraint firstItem="mqH-eN-0Jv" firstAttribute="top" secondItem="Skv-RD-HNF" secondAttribute="bottom" constant="8" id="wfo-0S-eok"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aOl-Fe-oV6"/>
                     </view>
@@ -59,9 +63,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="studyTypeLabel" destination="nAL-JM-5M5" id="8gK-1w-Vky"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfA-W9-caY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E129C1821E01E54001F4A48 /* Note.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E129C1721E01E54001F4A48 /* Note.xib */; };
+		7E129C1A21E01F58001F4A48 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E129C1921E01F58001F4A48 /* NoteView.swift */; };
 		7E238BD621CB215D001ADF4F /* TabOne.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E238BD521CB215D001ADF4F /* TabOne.storyboard */; };
 		7E238BD821CB21D5001ADF4F /* TabTwo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E238BD721CB21D5001ADF4F /* TabTwo.storyboard */; };
-		7E238BDD21CB21FD001ADF4F /* TabFour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E238BDC21CB21FD001ADF4F /* TabFour.storyboard */; };
 		7E2CFC6921DD652A000F330B /* DoctrineCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CFC6821DD652A000F330B /* DoctrineCD.swift */; };
 		7E2CFC6C21DD663B000F330B /* SectionCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CFC6A21DD663B000F330B /* SectionCD+CoreDataClass.swift */; };
 		7E2CFC6D21DD663B000F330B /* SectionCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CFC6B21DD663B000F330B /* SectionCD+CoreDataProperties.swift */; };
@@ -39,11 +40,7 @@
 		7ECD8ABD21C9B5CA00AED39B /* TabThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */; };
 		7EDD2B6821DEB4C0009A834B /* BookmarkCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDD2B6721DEB4C0009A834B /* BookmarkCD.swift */; };
 		7EDD2B6A21DEB543009A834B /* BookmarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDD2B6921DEB543009A834B /* BookmarkController.swift */; };
-		7EE553AA21CBF7030062C91B /* TabFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE553A921CBF7030062C91B /* TabFour.swift */; };
 		7EFC384221DA801F000F0F75 /* VerseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384121DA801F000F0F75 /* VerseCell.swift */; };
-		7EFC384421DA8B79000F0F75 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384321DA8B79000F0F75 /* Note.swift */; };
-		7EFC384821DA9981000F0F75 /* NoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EFC384721DA9981000F0F75 /* NoteView.xib */; };
-		7EFC384C21DA9DD3000F0F75 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384B21DA9DD3000F0F75 /* NoteView.swift */; };
 		7EFC385121DAC271000F0F75 /* BookOfMormon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384F21DAC271000F0F75 /* BookOfMormon.xcdatamodeld */; };
 		7EFC385321DACC8E000F0F75 /* TestamentCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC385221DACC8E000F0F75 /* TestamentCD.swift */; };
 		7EFC385521DACCA8000F0F75 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC385421DACCA8000F0F75 /* CoreDataStack.swift */; };
@@ -56,9 +53,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E129C1721E01E54001F4A48 /* Note.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Note.xib; sourceTree = "<group>"; };
+		7E129C1921E01F58001F4A48 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		7E238BD521CB215D001ADF4F /* TabOne.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabOne.storyboard; sourceTree = "<group>"; };
 		7E238BD721CB21D5001ADF4F /* TabTwo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabTwo.storyboard; sourceTree = "<group>"; };
-		7E238BDC21CB21FD001ADF4F /* TabFour.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabFour.storyboard; sourceTree = "<group>"; };
 		7E2CFC6821DD652A000F330B /* DoctrineCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctrineCD.swift; sourceTree = "<group>"; };
 		7E2CFC6A21DD663B000F330B /* SectionCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SectionCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7E2CFC6B21DD663B000F330B /* SectionCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SectionCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -90,11 +88,7 @@
 		7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabThree.swift; sourceTree = "<group>"; };
 		7EDD2B6721DEB4C0009A834B /* BookmarkCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCD.swift; sourceTree = "<group>"; };
 		7EDD2B6921DEB543009A834B /* BookmarkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
-		7EE553A921CBF7030062C91B /* TabFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabFour.swift; sourceTree = "<group>"; };
 		7EFC384121DA801F000F0F75 /* VerseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseCell.swift; sourceTree = "<group>"; };
-		7EFC384321DA8B79000F0F75 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		7EFC384721DA9981000F0F75 /* NoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteView.xib; sourceTree = "<group>"; };
-		7EFC384B21DA9DD3000F0F75 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		7EFC385021DAC271000F0F75 /* BookOfMormon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookOfMormon.xcdatamodel; sourceTree = "<group>"; };
 		7EFC385221DACC8E000F0F75 /* TestamentCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestamentCD.swift; sourceTree = "<group>"; };
 		7EFC385421DACCA8000F0F75 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -123,7 +117,6 @@
 				7E238BD521CB215D001ADF4F /* TabOne.storyboard */,
 				7E238BD721CB21D5001ADF4F /* TabTwo.storyboard */,
 				7E748C6021CB422200ED9C8F /* TabThree.storyboard */,
-				7E238BDC21CB21FD001ADF4F /* TabFour.storyboard */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -184,7 +177,7 @@
 				7E748C6421CB424F00ED9C8F /* Main.storyboard */,
 				7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */,
 				7E748C6221CB423F00ED9C8F /* Reader.storyboard */,
-				7EFC384721DA9981000F0F75 /* NoteView.xib */,
+				7E129C1721E01E54001F4A48 /* Note.xib */,
 				7E238BE221CB34CC001ADF4F /* Tabs */,
 			);
 			path = UI;
@@ -197,7 +190,6 @@
 				7E748C6B21CB4F8800ED9C8F /* TabOne */,
 				7E748C6E21CB501F00ED9C8F /* TabTwo */,
 				7E748C6F21CB502700ED9C8F /* TabThree */,
-				7E9032E121CBDF6500E366F6 /* TabFour */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -208,7 +200,6 @@
 				7EFC384F21DAC271000F0F75 /* BookOfMormon.xcdatamodeld */,
 				7EDD2B6621DEAD1B009A834B /* Testaments */,
 				7E43B3E921C5F2E2000845DA /* Goal.swift */,
-				7EFC384321DA8B79000F0F75 /* Note.swift */,
 				7EDD2B6721DEB4C0009A834B /* BookmarkCD.swift */,
 			);
 			path = Models;
@@ -229,6 +220,7 @@
 			children = (
 				7EFC384021DA7FDF000F0F75 /* Reading */,
 				7E238BE421CB34FC001ADF4F /* TabTwo */,
+				7E129C1921E01F58001F4A48 /* NoteView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -257,14 +249,6 @@
 				7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */,
 			);
 			path = TabThree;
-			sourceTree = "<group>";
-		};
-		7E9032E121CBDF6500E366F6 /* TabFour */ = {
-			isa = PBXGroup;
-			children = (
-				7EE553A921CBF7030062C91B /* TabFour.swift */,
-			);
-			path = TabFour;
 			sourceTree = "<group>";
 		};
 		7ECD8A9F21C9602000AED39B /* HelperFiles */ = {
@@ -309,7 +293,6 @@
 		7EFC384021DA7FDF000F0F75 /* Reading */ = {
 			isa = PBXGroup;
 			children = (
-				7EFC384B21DA9DD3000F0F75 /* NoteView.swift */,
 				7EFC384121DA801F000F0F75 /* VerseCell.swift */,
 			);
 			path = Reading;
@@ -373,12 +356,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E129C1821E01E54001F4A48 /* Note.xib in Resources */,
 				7E748C6321CB423F00ED9C8F /* Reader.storyboard in Resources */,
-				7EFC384821DA9981000F0F75 /* NoteView.xib in Resources */,
 				7ECD8AA921C9657E00AED39B /* pearl-of-great-price.json in Resources */,
 				7E238BD621CB215D001ADF4F /* TabOne.storyboard in Resources */,
 				7ECD8AA621C9657E00AED39B /* doctrine-and-covenants.json in Resources */,
-				7E238BDD21CB21FD001ADF4F /* TabFour.storyboard in Resources */,
 				7E43B3D221C5DA76000845DA /* Assets.xcassets in Resources */,
 				7E748C6521CB424F00ED9C8F /* Main.storyboard in Resources */,
 				7E748C6721CB425E00ED9C8F /* LaunchScreen.storyboard in Resources */,
@@ -405,8 +387,6 @@
 				7EFC386B21DAD5B1000F0F75 /* BooksCD+CoreDataProperties.swift in Sources */,
 				7ECD8AB521C98FB700AED39B /* TabTwo.swift in Sources */,
 				7ECD8ABD21C9B5CA00AED39B /* TabThree.swift in Sources */,
-				7EFC384421DA8B79000F0F75 /* Note.swift in Sources */,
-				7EFC384C21DA9DD3000F0F75 /* NoteView.swift in Sources */,
 				7ECD8AAF21C968C100AED39B /* ScriptureController.swift in Sources */,
 				7ECD8AB721C992F000AED39B /* ChapterCell.swift in Sources */,
 				7E43B3EA21C5F2E2000845DA /* Goal.swift in Sources */,
@@ -423,9 +403,9 @@
 				7EFC386F21DAD647000F0F75 /* ChapterCD+CoreDataProperties.swift in Sources */,
 				7E2CFC6C21DD663B000F330B /* SectionCD+CoreDataClass.swift in Sources */,
 				7EFC387321DAD8F7000F0F75 /* VerseCD+CoreDataProperties.swift in Sources */,
-				7EE553AA21CBF7030062C91B /* TabFour.swift in Sources */,
 				7E2CFC6921DD652A000F330B /* DoctrineCD.swift in Sources */,
 				7E748C5F21CB41F100ED9C8F /* ReadingViewController.swift in Sources */,
+				7E129C1A21E01F58001F4A48 /* NoteView.swift in Sources */,
 				7E43B3CB21C5DA75000845DA /* AppDelegate.swift in Sources */,
 				7ECD8ABB21C9AC0B00AED39B /* ChapterHeader.swift in Sources */,
 				7ECD8AB921C9AA2200AED39B /* TestamentKeys.swift in Sources */,

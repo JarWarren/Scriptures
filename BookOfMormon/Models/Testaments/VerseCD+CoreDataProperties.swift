@@ -21,7 +21,9 @@ extension VerseCD {
     @NSManaged public var text: String?
     @NSManaged public var reference: String?
     @NSManaged public var isHighlighted: Bool
-    @NSManaged public var note: String?
+    @NSManaged public var noteTitle: String?
+    @NSManaged public var noteText: String?
+    @NSManaged public var noteDate: Date?
     @NSManaged public var chapter: ChapterCD?
     @NSManaged public var section: SectionCD?
 

@@ -75,7 +75,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else {
             cell.backgroundColor = UIColor.white
         }
-        if cell.verseCoreData?.note == nil {
+        if cell.verseCoreData?.noteTitle == nil {
             cell.noteButton.isHidden = true
         }
         return cell
@@ -122,7 +122,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func cellMenuButtonTapped(_ sender: UIButton) {
         
-        if selectedVerse == nil && sender.tag != 2 {
+        if selectedVerse == nil && sender.tag != 4 {
             
             let alertController = UIAlertController(title: "Tap a verse in order to use this option", message: nil, preferredStyle: .actionSheet)
             let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -131,20 +131,22 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else {
             
             switch sender.tag {
-            case 0:
+            case 0: // Highlight
                 if selectedVerse?.isHighlighted == nil || selectedVerse?.isHighlighted == false {
                     selectedVerse?.isHighlighted = true
                 } else {
                     selectedVerse?.isHighlighted = false
                 }
-            case 1:
-                print("let them write a note")
-            case 2:
+            case 1: // Note
+                print("note")
+            case 2: // Memorize
+                print("memorize")
+            case 3: // Copy
+                UIPasteboard.general.string = selectedVerse?.text
+            case 4: // Bookmark
                 findBookmarkLocation()
                 BookmarkController.shared.bookmarkAt(location: bookmarkLocation)
                 setupBookmarkButton()
-            case 3:
-                UIPasteboard.general.string = selectedVerse?.text
             default: return
             }
             try? CoreDataStack.managedObjectContext.save()
