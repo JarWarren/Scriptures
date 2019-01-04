@@ -9,30 +9,10 @@
 import UIKit
 
 class TabThree: UIViewController {
-
-    @IBOutlet weak var studyTypeLabel: UILabel!
-    let studyTypes = ["Favorites:",
-                      "Memorize:",
-                      "Impressions:"]
-    var currentType = 0 {
-        didSet {
-            studyTypeLabel.text = studyTypes[self.currentType]
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        studyTypeLabel.text = studyTypes[currentType]
-    }
-    
-    @IBAction func sortButtonTapped(_ sender: Any) {
-        
-        if currentType < 2 {
-            currentType += 1
-        } else {
-            currentType = 0
-        }
     }
     
     /*

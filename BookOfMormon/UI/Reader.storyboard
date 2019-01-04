@@ -94,32 +94,33 @@
                                 <rect key="frame" x="8" y="58" width="359" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fib-qn-wER">
-                                        <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                         <state key="normal" title="Highlight"/>
                                         <connections>
                                             <action selector="cellMenuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="THU-jO-Lhq"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6HT-Jz-4eX">
-                                        <rect key="frame" x="90" y="0.0" width="89.5" height="30"/>
+                                        <rect key="frame" x="72" y="0.0" width="71.5" height="30"/>
                                         <state key="normal" title="Note"/>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdG-dx-Nvg">
+                                        <rect key="frame" x="143.5" y="0.0" width="72" height="30"/>
+                                        <state key="normal" title="Memorize"/>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYI-py-BCy">
+                                        <rect key="frame" x="215.5" y="0.0" width="71.5" height="30"/>
+                                        <state key="normal" title="Copy"/>
                                         <connections>
-                                            <action selector="cellMenuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="chF-SN-dld"/>
+                                            <action selector="cellMenuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="APv-SO-FaR"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldv-4d-cJW">
-                                        <rect key="frame" x="179.5" y="0.0" width="90" height="30"/>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldv-4d-cJW">
+                                        <rect key="frame" x="287" y="0.0" width="72" height="30"/>
                                         <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Bookmark"/>
                                         <connections>
                                             <action selector="cellMenuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="N3p-sY-cTQ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYI-py-BCy">
-                                        <rect key="frame" x="269.5" y="0.0" width="89.5" height="30"/>
-                                        <state key="normal" title="Copy"/>
-                                        <connections>
-                                            <action selector="cellMenuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="APv-SO-FaR"/>
                                         </connections>
                                     </button>
                                 </subviews>

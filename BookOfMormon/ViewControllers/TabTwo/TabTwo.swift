@@ -56,11 +56,11 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         switch ScriptureController.shared.selectedTestament {
         case TestamentKeys.DaC:
-            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as! [SectionCD]
-            return sections.count
+            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as? [SectionCD]
+            return sections?.count ?? 0
         default:
-            let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
-            return books[section].chapters?.count ?? 0
+            let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
+            return books?[section].chapters?.count ?? 0
         }
     }
     
@@ -71,8 +71,8 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         case TestamentKeys.DaC:
             header.chapterHeaderLabel.text = "The Doctrine and Covenants"
         default:
-            let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
-            if let title = books[indexPath.section].book {
+            let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
+            if let title = books?[indexPath.section].book {
                 header.chapterHeaderLabel.text = String(title)
             }
         }
@@ -86,15 +86,17 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         switch ScriptureController.shared.selectedTestament {
         case TestamentKeys.DaC:
-            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as! [SectionCD]
-            let section = sections[indexPath.row].section
-            cell.chapterNumber = Int(section)
+            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as? [SectionCD]
+            if let section = sections?[indexPath.row].section {
+                cell.chapterNumber = Int(section)
+            }
         default:
-            let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
-            if books[indexPath.section].chapters?.count ?? 0 > indexPath.row {
-                let chapters = books[indexPath.section].chapters?.allObjects as! [ChapterCD]
-                let chapterNumber =  chapters[indexPath.row].chapter
+            let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
+            if books?[indexPath.section].chapters?.count ?? 0 > indexPath.row {
+                let chapters = books?[indexPath.section].chapters?.allObjects as? [ChapterCD]
+                if let chapterNumber =  chapters?[indexPath.row].chapter {
                 cell.chapterNumber = Int(chapterNumber)
+                }
             }
         }
         

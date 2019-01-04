@@ -18,7 +18,6 @@ class ScriptureController {
     var selectedTestament: String?
     var currentBook = 0
     var currentChapter = 0
-    var bookmark: Double?
     
     func decode(testament: String) {
         
