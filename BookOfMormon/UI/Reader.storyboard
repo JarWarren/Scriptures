@@ -13,7 +13,7 @@
         <!--Reading View Controller-->
         <scene sceneID="nmO-00-Euo">
             <objects>
-                <viewController id="2bd-t2-jeV" customClass="ReadingViewController" customModule="BookOfMormon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReadingViewController" id="2bd-t2-jeV" customClass="ReadingViewController" customModule="BookOfMormon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="center" id="RLg-TS-pHB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,6 +146,7 @@
                         <viewLayoutGuide key="safeArea" id="E1f-Ug-mDu"/>
                     </view>
                     <connections>
+                        <outlet property="bookmarkButton" destination="ldv-4d-cJW" id="GTF-PJ-cC5"/>
                         <outlet property="chapterReferenceLabel" destination="cmw-2k-d59" id="L2g-Gl-YQx"/>
                         <outlet property="leftButton" destination="BQa-oZ-Hy7" id="qbp-DP-dRh"/>
                         <outlet property="rightButton" destination="Cps-h7-8cv" id="eQq-3O-SP1"/>

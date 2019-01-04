@@ -90,16 +90,6 @@ class ScriptureController {
                 } catch {
                     print("Error decoding \(testament.capitalized)")
                 }
-                
-                //
-                //                switch testament {
-                //                case TestamentKeys.DaC:
-                //                    let decodedDoctrine = try JSONDecoder().decode(Doctrine.self, from: testamentData)
-                //                    self.decodedDoctrine = decodedDoctrine
-                //                default:
-                //                    let decodedTestament = try JSONDecoder().decode(Testament.self, from: testamentData)
-                //                    self.decodedTestament = decodedTestament
-                //                }
             }
         }
     }

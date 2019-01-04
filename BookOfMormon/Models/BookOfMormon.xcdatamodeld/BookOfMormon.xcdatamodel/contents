@@ -4,7 +4,6 @@
         <attribute name="book" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="chapter" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="testament" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="verse" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="BooksCD" representedClassName="BooksCD" syncable="YES">
         <attribute name="book" optional="YES" attributeType="String" syncable="YES"/>
@@ -42,12 +41,12 @@
         <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SectionCD" inverseName="verses" inverseEntity="SectionCD" syncable="YES"/>
     </entity>
     <elements>
+        <element name="BookmarkCD" positionX="-153" positionY="27" width="128" height="90"/>
         <element name="BooksCD" positionX="-55.62890625" positionY="203.87890625" width="128" height="105"/>
         <element name="ChapterCD" positionX="-359.47265625" positionY="90.16015625" width="128" height="105"/>
         <element name="DoctrineCD" positionX="-153" positionY="27" width="128" height="75"/>
         <element name="SectionCD" positionX="-144" positionY="36" width="128" height="105"/>
         <element name="TestamentCD" positionX="-63" positionY="-18" width="128" height="75"/>
         <element name="VerseCD" positionX="140.6796875" positionY="-121.98046875" width="128" height="150"/>
-        <element name="BookmarkCD" positionX="-153" positionY="27" width="128" height="105"/>
     </elements>
 </model>

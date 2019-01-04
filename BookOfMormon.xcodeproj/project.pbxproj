@@ -205,6 +205,7 @@
 		7E43B3E121C5F0E7000845DA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7EFC384F21DAC271000F0F75 /* BookOfMormon.xcdatamodeld */,
 				7EDD2B6621DEAD1B009A834B /* Testaments */,
 				7E43B3E921C5F2E2000845DA /* Goal.swift */,
 				7EFC384321DA8B79000F0F75 /* Note.swift */,
@@ -291,7 +292,6 @@
 		7EDD2B6621DEAD1B009A834B /* Testaments */ = {
 			isa = PBXGroup;
 			children = (
-				7EFC384F21DAC271000F0F75 /* BookOfMormon.xcdatamodeld */,
 				7E2CFC6A21DD663B000F330B /* SectionCD+CoreDataClass.swift */,
 				7E2CFC6B21DD663B000F330B /* SectionCD+CoreDataProperties.swift */,
 				7EFC386821DAD5B1000F0F75 /* BooksCD+CoreDataClass.swift */,
