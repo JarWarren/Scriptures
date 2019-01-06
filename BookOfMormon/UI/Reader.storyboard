@@ -103,10 +103,16 @@
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6HT-Jz-4eX">
                                         <rect key="frame" x="72" y="0.0" width="71.5" height="30"/>
                                         <state key="normal" title="Note"/>
+                                        <connections>
+                                            <action selector="cellMenuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="Jl0-J0-Z4B"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdG-dx-Nvg">
                                         <rect key="frame" x="143.5" y="0.0" width="72" height="30"/>
                                         <state key="normal" title="Memorize"/>
+                                        <connections>
+                                            <action selector="cellMenuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="64a-o4-xIf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYI-py-BCy">
                                         <rect key="frame" x="215.5" y="0.0" width="71.5" height="30"/>

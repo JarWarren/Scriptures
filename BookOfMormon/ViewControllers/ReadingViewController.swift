@@ -21,6 +21,14 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     var selectedVerse: VerseCD?
     var selectedIndexPath: IndexPath?
     var bookmarkLocation = [0, 0, 0]
+    var noteViewIsVisible = false {
+        didSet {
+            switch noteViewIsVisible {
+            case true: return
+            case false: versesTableView.reloadData()
+            }
+        }
+    }
     // TODO: Remove line from bottom of Nav Controller
     
     // MARK: - Lifecycle Methods
@@ -77,6 +85,8 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         if cell.verseCoreData?.noteTitle == nil {
             cell.noteButton.isHidden = true
+        } else {
+            cell.noteButton.isHidden = false
         }
         return cell
     }
@@ -131,22 +141,45 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else {
             
             switch sender.tag {
+                
             case 0: // Highlight
                 if selectedVerse?.isHighlighted == nil || selectedVerse?.isHighlighted == false {
                     selectedVerse?.isHighlighted = true
                 } else {
                     selectedVerse?.isHighlighted = false
                 }
+                
             case 1: // Note
-                print("note")
+                guard let noteView = Bundle.main.loadNibNamed("Note", owner: nil, options: nil)![0] as? NoteView else { return }
+                noteView.translatesAutoresizingMaskIntoConstraints = false
+                self.view.addSubview(noteView)
+                noteView.verse = selectedVerse
+                self.noteViewIsVisible = true
+                noteView.layer.cornerRadius = 15
+                noteView.layer.borderColor = UIColor.lightGray.cgColor
+                noteView.layer.borderWidth = 1
+                NSLayoutConstraint.activate([
+                    noteView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                    noteView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+                    noteView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.5),
+                    noteView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.9)])
+                if selectedVerse?.noteText == nil {
+                    noteView.isEditing = true
+                } else {
+                    noteView.isEditing = false
+                }
+                
             case 2: // Memorize
                 print("memorize")
+                
             case 3: // Copy
                 UIPasteboard.general.string = selectedVerse?.text
+                
             case 4: // Bookmark
                 findBookmarkLocation()
                 BookmarkController.shared.bookmarkAt(location: bookmarkLocation)
                 setupBookmarkButton()
+                
             default: return
             }
             try? CoreDataStack.managedObjectContext.save()

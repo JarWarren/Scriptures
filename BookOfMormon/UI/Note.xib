@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSR-CX-Bhx">
-                    <rect key="frame" x="316" y="28" width="51" height="30"/>
+                    <rect key="frame" x="312" y="32" width="51" height="30"/>
                     <color key="backgroundColor" red="0.2060527503" green="0.47132122520000003" blue="0.96475929019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <state key="normal" title="   Edit   ">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -27,34 +27,74 @@
                     </connections>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Note title..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sje-x7-mfa">
-                    <rect key="frame" x="8" y="66" width="359" height="24"/>
+                    <rect key="frame" x="12" y="74" width="297" height="24"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Body text..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zHr-IQ-9U2">
-                    <rect key="frame" x="8" y="98" width="359" height="561"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zHr-IQ-9U2">
+                    <rect key="frame" x="12" y="110" width="351" height="545"/>
                     <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kku-Pi-BNt">
+                    <rect key="frame" x="12" y="32" width="71" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.36397328751486191" blue="0.2752664809562303" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="    Close    ">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="exitButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="ScI-cz-fmE"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEN-6N-Ic6">
+                    <rect key="frame" x="231" y="32" width="69" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="   Delete   ">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="deleteButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="cHJ-bR-3LE"/>
+                        <action selector="editButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Y5L-Mv-Dtq"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69p-zD-wVa">
+                    <rect key="frame" x="321" y="74" width="42" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstItem="zHr-IQ-9U2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="5rc-1j-2c9"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zHr-IQ-9U2" secondAttribute="bottom" constant="8" id="QFS-D1-UCa"/>
-                <constraint firstItem="kSR-CX-Bhx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="VbD-9O-mMZ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="sje-x7-mfa" secondAttribute="trailing" constant="8" id="XNH-WB-ESh"/>
-                <constraint firstItem="zHr-IQ-9U2" firstAttribute="top" secondItem="sje-x7-mfa" secondAttribute="bottom" constant="8" id="Xbr-PX-OWA"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zHr-IQ-9U2" secondAttribute="trailing" constant="8" id="aUh-e1-VhW"/>
-                <constraint firstItem="sje-x7-mfa" firstAttribute="top" secondItem="kSR-CX-Bhx" secondAttribute="bottom" constant="8" id="giY-Yn-vYW"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kSR-CX-Bhx" secondAttribute="trailing" constant="8" id="nEl-IV-w2T"/>
-                <constraint firstItem="sje-x7-mfa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="nnb-Nl-pSh"/>
+                <constraint firstItem="zHr-IQ-9U2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="5rc-1j-2c9"/>
+                <constraint firstItem="69p-zD-wVa" firstAttribute="top" secondItem="kSR-CX-Bhx" secondAttribute="bottom" constant="12" id="6Mf-W2-c1f"/>
+                <constraint firstItem="zHr-IQ-9U2" firstAttribute="top" secondItem="69p-zD-wVa" secondAttribute="bottom" constant="12" id="E0L-Xh-woF"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zHr-IQ-9U2" secondAttribute="bottom" constant="12" id="QFS-D1-UCa"/>
+                <constraint firstItem="Kku-Pi-BNt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="TuT-xS-eFg"/>
+                <constraint firstItem="kSR-CX-Bhx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="VbD-9O-mMZ"/>
+                <constraint firstItem="zHr-IQ-9U2" firstAttribute="top" secondItem="sje-x7-mfa" secondAttribute="bottom" constant="12" id="Xbr-PX-OWA"/>
+                <constraint firstItem="sje-x7-mfa" firstAttribute="top" secondItem="dEN-6N-Ic6" secondAttribute="bottom" constant="12" id="Yk2-5b-Php"/>
+                <constraint firstItem="Kku-Pi-BNt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="a2E-Di-VX8"/>
+                <constraint firstItem="dEN-6N-Ic6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="a7F-RF-M1s"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zHr-IQ-9U2" secondAttribute="trailing" constant="12" id="aUh-e1-VhW"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="69p-zD-wVa" secondAttribute="trailing" constant="12" id="cpM-fD-Qai"/>
+                <constraint firstItem="sje-x7-mfa" firstAttribute="top" secondItem="kSR-CX-Bhx" secondAttribute="bottom" constant="12" id="giY-Yn-vYW"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kSR-CX-Bhx" secondAttribute="trailing" constant="12" id="nEl-IV-w2T"/>
+                <constraint firstItem="kSR-CX-Bhx" firstAttribute="leading" secondItem="dEN-6N-Ic6" secondAttribute="trailing" constant="12" id="nh4-eR-6MK"/>
+                <constraint firstItem="sje-x7-mfa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="nnb-Nl-pSh"/>
+                <constraint firstItem="69p-zD-wVa" firstAttribute="leading" secondItem="sje-x7-mfa" secondAttribute="trailing" constant="12" id="vBJ-gW-OIm"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="bodyTextView" destination="zHr-IQ-9U2" id="K8j-dI-cv4"/>
+                <outlet property="deleteButton" destination="dEN-6N-Ic6" id="1gE-Uu-2gI"/>
                 <outlet property="editButton" destination="kSR-CX-Bhx" id="12c-VO-t2J"/>
+                <outlet property="exitButton" destination="Kku-Pi-BNt" id="DD7-RJ-W5f"/>
+                <outlet property="noteDateLabel" destination="69p-zD-wVa" id="1IU-CO-SI0"/>
                 <outlet property="noteTextField" destination="sje-x7-mfa" id="gwl-kn-4PM"/>
             </connections>
         </view>

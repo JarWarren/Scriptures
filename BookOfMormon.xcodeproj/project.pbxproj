@@ -26,6 +26,7 @@
 		7E748C6721CB425E00ED9C8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */; };
 		7E748C6D21CB4FA100ED9C8F /* NewGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E748C6C21CB4FA100ED9C8F /* NewGoalVC.swift */; };
 		7E748C7121CB5BC900ED9C8F /* AllGoalsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E748C7021CB5BC900ED9C8F /* AllGoalsVC.swift */; };
+		7EC306DF21E161E000CC6103 /* NoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306DE21E161E000CC6103 /* NoteController.swift */; };
 		7ECD8AA621C9657E00AED39B /* doctrine-and-covenants.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA121C9657E00AED39B /* doctrine-and-covenants.json */; };
 		7ECD8AA721C9657E00AED39B /* book-of-mormon.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA221C9657E00AED39B /* book-of-mormon.json */; };
 		7ECD8AA821C9657E00AED39B /* old-testament.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA321C9657E00AED39B /* old-testament.json */; };
@@ -74,6 +75,7 @@
 		7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E748C6C21CB4FA100ED9C8F /* NewGoalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalVC.swift; sourceTree = "<group>"; };
 		7E748C7021CB5BC900ED9C8F /* AllGoalsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGoalsVC.swift; sourceTree = "<group>"; };
+		7EC306DE21E161E000CC6103 /* NoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteController.swift; sourceTree = "<group>"; };
 		7ECD8AA121C9657E00AED39B /* doctrine-and-covenants.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "doctrine-and-covenants.json"; sourceTree = "<group>"; };
 		7ECD8AA221C9657E00AED39B /* book-of-mormon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "book-of-mormon.json"; sourceTree = "<group>"; };
 		7ECD8AA321C9657E00AED39B /* old-testament.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "old-testament.json"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				7ECD8AAE21C968C100AED39B /* ScriptureController.swift */,
 				7E43B3EB21C5F406000845DA /* GoalController.swift */,
 				7EDD2B6921DEB543009A834B /* BookmarkController.swift */,
+				7EC306DE21E161E000CC6103 /* NoteController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				7EDD2B6A21DEB543009A834B /* BookmarkController.swift in Sources */,
 				7E748C6D21CB4FA100ED9C8F /* NewGoalVC.swift in Sources */,
 				7ECD8AB321C9810700AED39B /* TestamentStructures.swift in Sources */,
+				7EC306DF21E161E000CC6103 /* NoteController.swift in Sources */,
 				7EFC384221DA801F000F0F75 /* VerseCell.swift in Sources */,
 				7EFC387221DAD8F7000F0F75 /* VerseCD+CoreDataClass.swift in Sources */,
 				7EFC385521DACCA8000F0F75 /* CoreDataStack.swift in Sources */,
