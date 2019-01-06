@@ -24,6 +24,8 @@ extension VerseCD {
     @NSManaged public var noteTitle: String?
     @NSManaged public var noteText: String?
     @NSManaged public var noteDate: Date?
+    @NSManaged public var memorized: Bool
+    @NSManaged public var color: Int64
     @NSManaged public var chapter: ChapterCD?
     @NSManaged public var section: SectionCD?
 
