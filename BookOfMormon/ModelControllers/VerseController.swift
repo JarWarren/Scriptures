@@ -1,5 +1,6 @@
 //
-//  NoteController.swift
+//  VerseController.swift
+
 //  BookOfMormon
 //
 //  Created by Jared Warren on 1/5/19.
@@ -9,7 +10,16 @@
 import Foundation
 import CoreData
 
-class NoteController {
+class VerseController {
+    
+    static let shared = VerseController()
+    private init() {}
+    var memorizingVerses = [VerseCD]()
+    
+    func memorize(verse: VerseCD) {
+        
+        memorizingVerses.append(verse)
+    }
     
     static func addNoteTo(verse: VerseCD, title: String, body: String) {
         

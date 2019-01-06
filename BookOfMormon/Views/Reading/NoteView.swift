@@ -28,12 +28,14 @@ class NoteView: UIView, UITextFieldDelegate, UITextViewDelegate {
         
         updateView()
         exitButton.layer.cornerRadius = exitButton.frame.height / 2
-        exitButton.layer.shadowColor = UIColor.black.cgColor
-        exitButton.layer.shadowRadius = 2
+        exitButton.layer.borderWidth = 1
+        exitButton.layer.borderColor = UIColor.lightGray.cgColor
         editButton.layer.cornerRadius = editButton.frame.height / 2
-        editButton.layer.shadowColor = UIColor.black.cgColor
-        editButton.layer.shadowRadius = 2
+        editButton.layer.borderWidth = 1
+        editButton.layer.borderColor = UIColor.lightGray.cgColor
         deleteButton.layer.cornerRadius = deleteButton.frame.height / 2
+        deleteButton.layer.borderWidth = 1
+        deleteButton.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
@@ -55,9 +57,15 @@ class NoteView: UIView, UITextFieldDelegate, UITextViewDelegate {
             editButton.backgroundColor = #colorLiteral(red: 0.006345573347, green: 0.478813827, blue: 0.9984634519, alpha: 1)
             noteTextField.backgroundColor = #colorLiteral(red: 0.9646112323, green: 0.964772284, blue: 0.9645897746, alpha: 1)
             bodyTextView.backgroundColor = #colorLiteral(red: 0.9646112323, green: 0.964772284, blue: 0.9645897746, alpha: 1)
+            let DF = DateFormatter()
+            DF.dateStyle = .medium
+            DF.timeStyle = .none
+            DF.locale = Locale(identifier: "en_US")
+            let time = DF.string(from: Date())
+            noteDateLabel.text = time
             noteTextField.isUserInteractionEnabled = false
             bodyTextView.isUserInteractionEnabled = false
-            NoteController.addNoteTo(verse: verse, title: noteTitle, body: noteBody)
+            VerseController.addNoteTo(verse: verse, title: noteTitle, body: noteBody)
             self.isEditing = !self.isEditing
         }
     }
@@ -69,7 +77,7 @@ class NoteView: UIView, UITextFieldDelegate, UITextViewDelegate {
     
     @IBAction func deleteButtonTapped(_ sender: Any) {
         if let verse = self.verse {
-        NoteController.deleteNoteFrom(verse: verse)
+        VerseController.deleteNoteFrom(verse: verse)
             exitButtonTapped(sender)
         }
     }
@@ -77,7 +85,9 @@ class NoteView: UIView, UITextFieldDelegate, UITextViewDelegate {
     func updateView() {
         if let title = verse?.noteTitle, let text = verse?.noteText, let date = verse?.noteDate {
             let DF = DateFormatter()
-            DF.dateFormat = "MM-DD-YY"
+            DF.dateStyle = .medium
+            DF.timeStyle = .none
+            DF.locale = Locale(identifier: "en_US")
             let time = DF.string(from: date)
             noteDateLabel.text = time
             noteTextField.text = title

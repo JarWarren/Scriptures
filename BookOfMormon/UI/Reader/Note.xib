@@ -27,7 +27,7 @@
                     </connections>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Note title..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sje-x7-mfa">
-                    <rect key="frame" x="12" y="74" width="297" height="24"/>
+                    <rect key="frame" x="12" y="74" width="339" height="24"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <textInputTraits key="textInputTraits"/>
@@ -61,8 +61,8 @@
                         <action selector="editButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Y5L-Mv-Dtq"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69p-zD-wVa">
-                    <rect key="frame" x="321" y="74" width="42" height="24"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69p-zD-wVa">
+                    <rect key="frame" x="363" y="74" width="0.0" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>

@@ -29,9 +29,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvI-Fq-Rh4">
-                                        <rect key="frame" x="40.5" y="40.5" width="144" height="30"/>
-                                        <color key="tintColor" red="0.485867804346097" green="0.6175921783025381" blue="0.48307702339592823" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <state key="normal" title="  1 Ne: 24 - 1 Ne: 25  "/>
+                                        <rect key="frame" x="63.5" y="40.5" width="98" height="30"/>
+                                        <color key="backgroundColor" red="0.2154795229" green="0.49386578799999997" blue="0.1332186759" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="    1 Nephi: 1    ">
+                                            <color key="titleColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
                                         <connections>
                                             <segue destination="jIr-G6-Iaj" kind="show" id="PiV-Hr-g1a"/>
                                         </connections>

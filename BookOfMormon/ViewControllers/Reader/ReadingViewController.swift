@@ -16,11 +16,14 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet var highlighterButtonView: UIView!
     var currentBook = 0
     var currentChapter = 0
     var selectedVerse: VerseCD?
     var selectedIndexPath: IndexPath?
     var bookmarkLocation = [0, 0, 0]
+    var highlightColorButton: UIBarButtonItem?
+    var colorViewIsVisible = false
     var noteViewIsVisible = false {
         didSet {
             switch noteViewIsVisible {
@@ -37,6 +40,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         setupScriptures()
         setupTableView()
         setupBookmarkButton()
+        setupHighlighterButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -169,8 +173,12 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
                     noteView.isEditing = false
                 }
                 
+                // TODO: Tell the noteView to dismiss itself somehow. Protocol/delegate something.
+                
             case 2: // Memorize
-                print("memorize")
+                if let verse = selectedVerse {
+                VerseController.shared.memorize(verse: verse)
+                }
                 
             case 3: // Copy
                 UIPasteboard.general.string = selectedVerse?.text
@@ -191,12 +199,45 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    @objc @IBAction func highlighterButtonTapped(_ sender: Any) {
+        
+        switch colorViewIsVisible {
+        case false :
+            guard let colorView = Bundle.main.loadNibNamed("HighlighterColors", owner: nil, options: nil)![0] as? HighlighterColors else { return }
+            colorView.translatesAutoresizingMaskIntoConstraints = false
+            self.view.addSubview(colorView)
+            colorView.layer.cornerRadius = 15
+            colorView.layer.borderColor = UIColor.lightGray.cgColor
+            colorView.layer.borderWidth = 1
+            NSLayoutConstraint.activate([
+                colorView.widthAnchor.constraint(equalToConstant: 200),
+                colorView.heightAnchor.constraint(equalToConstant: 200),
+                colorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                colorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)])
+            colorViewIsVisible = true
+        case true :
+            colorViewIsVisible = false
+            // TODO: Dismiss colorView. (delegate method? protocol)
+        }
+    }
+    
     // MARK: - Setup View Methods
     func setupTableView() {
         
         versesTableView.delegate = self
         versesTableView.dataSource = self
         versesTableView.separatorStyle = .none
+    }
+    
+    func setupHighlighterButton() {
+        
+        self.highlightColorButton = UIBarButtonItem(customView: highlighterButtonView)
+        highlighterButtonView.layer.cornerRadius = 5
+        highlighterButtonView.layer.borderColor = UIColor.lightGray.cgColor
+        highlighterButtonView.layer.borderWidth = 1
+        highlightColorButton?.target = self
+        highlightColorButton?.action = #selector(highlighterButtonTapped)
+        self.navigationItem.rightBarButtonItem = self.highlightColorButton
     }
     
     func setupScriptures() {
@@ -263,7 +304,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 }
 
-// TODO: Tap a verse to open a menu -
+// TODO:
 // Highlight Verse (different colors)
 // Write Impression
 // Add to Favorites

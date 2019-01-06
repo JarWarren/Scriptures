@@ -26,7 +26,12 @@
 		7E748C6721CB425E00ED9C8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */; };
 		7E748C6D21CB4FA100ED9C8F /* NewGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E748C6C21CB4FA100ED9C8F /* NewGoalVC.swift */; };
 		7E748C7121CB5BC900ED9C8F /* AllGoalsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E748C7021CB5BC900ED9C8F /* AllGoalsVC.swift */; };
-		7EC306DF21E161E000CC6103 /* NoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306DE21E161E000CC6103 /* NoteController.swift */; };
+		7EC306DF21E161E000CC6103 /* VerseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306DE21E161E000CC6103 /* VerseController.swift */; };
+		7EC306E221E18CB000CC6103 /* EntryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306E121E18CB000CC6103 /* EntryDetailView.swift */; };
+		7EC306E421E18EAD00CC6103 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306E321E18EAD00CC6103 /* EntryController.swift */; };
+		7EC306E621E18F8100CC6103 /* EntryCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306E521E18F8100CC6103 /* EntryCD.swift */; };
+		7EC306E921E19F2700CC6103 /* HighlighterColors.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EC306E821E19F2700CC6103 /* HighlighterColors.xib */; };
+		7EC306EB21E19F3D00CC6103 /* HighlighterColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306EA21E19F3D00CC6103 /* HighlighterColors.swift */; };
 		7ECD8AA621C9657E00AED39B /* doctrine-and-covenants.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA121C9657E00AED39B /* doctrine-and-covenants.json */; };
 		7ECD8AA721C9657E00AED39B /* book-of-mormon.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA221C9657E00AED39B /* book-of-mormon.json */; };
 		7ECD8AA821C9657E00AED39B /* old-testament.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA321C9657E00AED39B /* old-testament.json */; };
@@ -75,7 +80,12 @@
 		7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E748C6C21CB4FA100ED9C8F /* NewGoalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalVC.swift; sourceTree = "<group>"; };
 		7E748C7021CB5BC900ED9C8F /* AllGoalsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGoalsVC.swift; sourceTree = "<group>"; };
-		7EC306DE21E161E000CC6103 /* NoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteController.swift; sourceTree = "<group>"; };
+		7EC306DE21E161E000CC6103 /* VerseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseController.swift; sourceTree = "<group>"; };
+		7EC306E121E18CB000CC6103 /* EntryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailView.swift; sourceTree = "<group>"; };
+		7EC306E321E18EAD00CC6103 /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
+		7EC306E521E18F8100CC6103 /* EntryCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCD.swift; sourceTree = "<group>"; };
+		7EC306E821E19F2700CC6103 /* HighlighterColors.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighlighterColors.xib; sourceTree = "<group>"; };
+		7EC306EA21E19F3D00CC6103 /* HighlighterColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlighterColors.swift; sourceTree = "<group>"; };
 		7ECD8AA121C9657E00AED39B /* doctrine-and-covenants.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "doctrine-and-covenants.json"; sourceTree = "<group>"; };
 		7ECD8AA221C9657E00AED39B /* book-of-mormon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "book-of-mormon.json"; sourceTree = "<group>"; };
 		7ECD8AA321C9657E00AED39B /* old-testament.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "old-testament.json"; sourceTree = "<group>"; };
@@ -176,10 +186,8 @@
 		7E43B3DD21C5DAE2000845DA /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				7E748C6421CB424F00ED9C8F /* Main.storyboard */,
-				7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */,
-				7E748C6221CB423F00ED9C8F /* Reader.storyboard */,
-				7E129C1721E01E54001F4A48 /* Note.xib */,
+				7EC306ED21E1D70E00CC6103 /* Main */,
+				7EC306E721E1981200CC6103 /* Reader */,
 				7E238BE221CB34CC001ADF4F /* Tabs */,
 			);
 			path = UI;
@@ -188,7 +196,7 @@
 		7E43B3DE21C5DB01000845DA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7E748C5E21CB41F100ED9C8F /* ReadingViewController.swift */,
+				7EC306EC21E1D70300CC6103 /* Reader */,
 				7E748C6B21CB4F8800ED9C8F /* TabOne */,
 				7E748C6E21CB501F00ED9C8F /* TabTwo */,
 				7E748C6F21CB502700ED9C8F /* TabThree */,
@@ -203,6 +211,7 @@
 				7EDD2B6621DEAD1B009A834B /* Testaments */,
 				7E43B3E921C5F2E2000845DA /* Goal.swift */,
 				7EDD2B6721DEB4C0009A834B /* BookmarkCD.swift */,
+				7EC306E521E18F8100CC6103 /* EntryCD.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,7 +222,8 @@
 				7ECD8AAE21C968C100AED39B /* ScriptureController.swift */,
 				7E43B3EB21C5F406000845DA /* GoalController.swift */,
 				7EDD2B6921DEB543009A834B /* BookmarkController.swift */,
-				7EC306DE21E161E000CC6103 /* NoteController.swift */,
+				7EC306DE21E161E000CC6103 /* VerseController.swift */,
+				7EC306E321E18EAD00CC6103 /* EntryController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -223,7 +233,7 @@
 			children = (
 				7EFC384021DA7FDF000F0F75 /* Reading */,
 				7E238BE421CB34FC001ADF4F /* TabTwo */,
-				7E129C1921E01F58001F4A48 /* NoteView.swift */,
+				7EC306E021E18C6400CC6103 /* TabThree */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -252,6 +262,41 @@
 				7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */,
 			);
 			path = TabThree;
+			sourceTree = "<group>";
+		};
+		7EC306E021E18C6400CC6103 /* TabThree */ = {
+			isa = PBXGroup;
+			children = (
+				7EC306E121E18CB000CC6103 /* EntryDetailView.swift */,
+			);
+			path = TabThree;
+			sourceTree = "<group>";
+		};
+		7EC306E721E1981200CC6103 /* Reader */ = {
+			isa = PBXGroup;
+			children = (
+				7E748C6221CB423F00ED9C8F /* Reader.storyboard */,
+				7E129C1721E01E54001F4A48 /* Note.xib */,
+				7EC306E821E19F2700CC6103 /* HighlighterColors.xib */,
+			);
+			path = Reader;
+			sourceTree = "<group>";
+		};
+		7EC306EC21E1D70300CC6103 /* Reader */ = {
+			isa = PBXGroup;
+			children = (
+				7E748C5E21CB41F100ED9C8F /* ReadingViewController.swift */,
+			);
+			path = Reader;
+			sourceTree = "<group>";
+		};
+		7EC306ED21E1D70E00CC6103 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7E748C6421CB424F00ED9C8F /* Main.storyboard */,
+				7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		7ECD8A9F21C9602000AED39B /* HelperFiles */ = {
@@ -296,7 +341,9 @@
 		7EFC384021DA7FDF000F0F75 /* Reading */ = {
 			isa = PBXGroup;
 			children = (
+				7E129C1921E01F58001F4A48 /* NoteView.swift */,
 				7EFC384121DA801F000F0F75 /* VerseCell.swift */,
+				7EC306EA21E19F3D00CC6103 /* HighlighterColors.swift */,
 			);
 			path = Reading;
 			sourceTree = "<group>";
@@ -366,6 +413,7 @@
 				7ECD8AA621C9657E00AED39B /* doctrine-and-covenants.json in Resources */,
 				7E43B3D221C5DA76000845DA /* Assets.xcassets in Resources */,
 				7E748C6521CB424F00ED9C8F /* Main.storyboard in Resources */,
+				7EC306E921E19F2700CC6103 /* HighlighterColors.xib in Resources */,
 				7E748C6721CB425E00ED9C8F /* LaunchScreen.storyboard in Resources */,
 				7ECD8AA721C9657E00AED39B /* book-of-mormon.json in Resources */,
 				7E748C6121CB422200ED9C8F /* TabThree.storyboard in Resources */,
@@ -392,12 +440,15 @@
 				7ECD8ABD21C9B5CA00AED39B /* TabThree.swift in Sources */,
 				7ECD8AAF21C968C100AED39B /* ScriptureController.swift in Sources */,
 				7ECD8AB721C992F000AED39B /* ChapterCell.swift in Sources */,
+				7EC306E621E18F8100CC6103 /* EntryCD.swift in Sources */,
 				7E43B3EA21C5F2E2000845DA /* Goal.swift in Sources */,
 				7EDD2B6A21DEB543009A834B /* BookmarkController.swift in Sources */,
+				7EC306E421E18EAD00CC6103 /* EntryController.swift in Sources */,
 				7E748C6D21CB4FA100ED9C8F /* NewGoalVC.swift in Sources */,
 				7ECD8AB321C9810700AED39B /* TestamentStructures.swift in Sources */,
-				7EC306DF21E161E000CC6103 /* NoteController.swift in Sources */,
+				7EC306DF21E161E000CC6103 /* VerseController.swift in Sources */,
 				7EFC384221DA801F000F0F75 /* VerseCell.swift in Sources */,
+				7EC306E221E18CB000CC6103 /* EntryDetailView.swift in Sources */,
 				7EFC387221DAD8F7000F0F75 /* VerseCD+CoreDataClass.swift in Sources */,
 				7EFC385521DACCA8000F0F75 /* CoreDataStack.swift in Sources */,
 				7EFC385321DACC8E000F0F75 /* TestamentCD.swift in Sources */,
@@ -405,6 +456,7 @@
 				7EDD2B6821DEB4C0009A834B /* BookmarkCD.swift in Sources */,
 				7EFC386E21DAD647000F0F75 /* ChapterCD+CoreDataClass.swift in Sources */,
 				7EFC386F21DAD647000F0F75 /* ChapterCD+CoreDataProperties.swift in Sources */,
+				7EC306EB21E19F3D00CC6103 /* HighlighterColors.swift in Sources */,
 				7E2CFC6C21DD663B000F330B /* SectionCD+CoreDataClass.swift in Sources */,
 				7EFC387321DAD8F7000F0F75 /* VerseCD+CoreDataProperties.swift in Sources */,
 				7E2CFC6921DD652A000F330B /* DoctrineCD.swift in Sources */,

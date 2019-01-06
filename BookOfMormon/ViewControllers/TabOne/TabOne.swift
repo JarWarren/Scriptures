@@ -39,7 +39,7 @@ class TabOne: UIViewController {
         
         todayReadingButton.layer.cornerRadius = todayReadingButton.frame.height/2
         todayReadingButton.layer.borderWidth = 1
-        todayReadingButton.layer.borderColor = UIColor.black.cgColor
+        todayReadingButton.layer.borderColor = UIColor.lightGray.cgColor
         barButton = navigationItem.rightBarButtonItem
         
         guard let barButton = barButton

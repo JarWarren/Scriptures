@@ -155,12 +155,33 @@
                     <connections>
                         <outlet property="bookmarkButton" destination="ldv-4d-cJW" id="GTF-PJ-cC5"/>
                         <outlet property="chapterReferenceLabel" destination="cmw-2k-d59" id="L2g-Gl-YQx"/>
+                        <outlet property="highlighterButtonView" destination="KRG-xE-bKD" id="8FI-y3-nXQ"/>
                         <outlet property="leftButton" destination="BQa-oZ-Hy7" id="qbp-DP-dRh"/>
                         <outlet property="rightButton" destination="Cps-h7-8cv" id="eQq-3O-SP1"/>
                         <outlet property="versesTableView" destination="Re6-Ul-msQ" id="4kQ-rn-dWM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KnO-nZ-3KW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="KRG-xE-bKD">
+                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEC-FK-oJ0">
+                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                            <connections>
+                                <action selector="highlighterButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="7eD-7N-L9s"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="gEC-FK-oJ0" firstAttribute="top" secondItem="KRG-xE-bKD" secondAttribute="top" id="0DM-8R-xOH"/>
+                        <constraint firstAttribute="bottom" secondItem="gEC-FK-oJ0" secondAttribute="bottom" id="C9p-bb-4P3"/>
+                        <constraint firstItem="gEC-FK-oJ0" firstAttribute="leading" secondItem="KRG-xE-bKD" secondAttribute="leading" id="Xfr-3I-MiX"/>
+                        <constraint firstAttribute="trailing" secondItem="gEC-FK-oJ0" secondAttribute="trailing" id="mwE-Lx-Oi6"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="Aze-qj-a8D"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="3072.8000000000002" y="1353.3733133433284"/>
         </scene>
