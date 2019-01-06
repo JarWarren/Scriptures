@@ -27,6 +27,8 @@ class NoteView: UIView, UITextFieldDelegate, UITextViewDelegate {
         super.awakeFromNib()
         
         updateView()
+        noteTextField.layer.cornerRadius = 5
+        bodyTextView.layer.cornerRadius = 5
         exitButton.layer.cornerRadius = exitButton.frame.height / 2
         exitButton.layer.borderWidth = 1
         exitButton.layer.borderColor = UIColor.lightGray.cgColor
@@ -57,12 +59,7 @@ class NoteView: UIView, UITextFieldDelegate, UITextViewDelegate {
             editButton.backgroundColor = #colorLiteral(red: 0.006345573347, green: 0.478813827, blue: 0.9984634519, alpha: 1)
             noteTextField.backgroundColor = #colorLiteral(red: 0.9646112323, green: 0.964772284, blue: 0.9645897746, alpha: 1)
             bodyTextView.backgroundColor = #colorLiteral(red: 0.9646112323, green: 0.964772284, blue: 0.9645897746, alpha: 1)
-            let DF = DateFormatter()
-            DF.dateStyle = .medium
-            DF.timeStyle = .none
-            DF.locale = Locale(identifier: "en_US")
-            let time = DF.string(from: Date())
-            noteDateLabel.text = time
+            noteDateLabel.text = Date().mMdDyY
             noteTextField.isUserInteractionEnabled = false
             bodyTextView.isUserInteractionEnabled = false
             VerseController.addNoteTo(verse: verse, title: noteTitle, body: noteBody)
@@ -84,12 +81,7 @@ class NoteView: UIView, UITextFieldDelegate, UITextViewDelegate {
     
     func updateView() {
         if let title = verse?.noteTitle, let text = verse?.noteText, let date = verse?.noteDate {
-            let DF = DateFormatter()
-            DF.dateStyle = .medium
-            DF.timeStyle = .none
-            DF.locale = Locale(identifier: "en_US")
-            let time = DF.string(from: date)
-            noteDateLabel.text = time
+            noteDateLabel.text = date.mMdDyY
             noteTextField.text = title
             bodyTextView.text = text
             editButton.setTitle("   Edit   ", for: .normal)

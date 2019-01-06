@@ -20,20 +20,7 @@ class EntryDetailView: UIViewController {
     var date: Date?
     var isMemorized: Bool?
     var masteryTestament: Int?
-    var parentSelectedIndex: Int? {
-        didSet {
-            if parentSelectedIndex == 0 {
-                switch self.titleText == nil {
-                case true:
-                    let barItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(barButtonTapped))
-                    self.barButton = barItem
-                case false:
-                    let barItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(barButtonTapped))
-                    self.barButton = barItem
-                }
-            }
-        }
-    }
+    var parentSelectedIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +35,37 @@ class EntryDetailView: UIViewController {
     
     func setupView() {
         
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.6313489079, green: 0.557828486, blue: 0.09932992607, alpha: 1)
         completeButton.layer.cornerRadius = completeButton.frame.height / 2
         completeButton.layer.borderColor = UIColor.lightGray.cgColor
         completeButton.layer.borderWidth = 1
-        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.6313489079, green: 0.557828486, blue: 0.09932992607, alpha: 1)
+        entryButton.isUserInteractionEnabled = false
+        titleTextField.layer.cornerRadius = 5
+        bodyTextView.layer.cornerRadius = 5
+        
+        switch parentSelectedIndex {
+        case 0:
+            if let text = self.titleText, let body = bodyText, let date = date {
+                titleTextField.text = text; bodyTextView.text = body; entryButton.setTitle(date.mMdDyY, for: .normal)
+                titleTextField.isUserInteractionEnabled = false
+                bodyTextView.isUserInteractionEnabled = false
+                self.barButton = navigationItem.rightBarButtonItem
+                barButton?.title = "Edit"
+                barButton?.target = self
+                barButton?.action = #selector(barButtonTapped)
+            } else {
+                titleTextField.backgroundColor = UIColor.white
+                bodyTextView.backgroundColor = UIColor.white
+                entryButton.isHidden = true
+                self.barButton = navigationItem.rightBarButtonItem
+                barButton?.title = "Save"
+                barButton?.target = self
+                barButton?.action = #selector(barButtonTapped)
+            }
+        case 1: return
+        case 2: return
+        default: return
+        }
     }
     
     @objc func barButtonTapped(_ sender: Any) {
