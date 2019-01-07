@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, VerseCellDelegate, NoteViewDelegate {
     
     // MARK: - Outlets and Properties
     @IBOutlet weak var versesTableView: UITableView!
@@ -17,6 +17,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet var highlighterButtonView: UIView!
+    var subviews = [UIView]()
     var currentBook = 0
     var currentChapter = 0
     var selectedVerse: VerseCD?
@@ -53,7 +54,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         navigationController?.popToRootViewController(animated: animated)
     }
     
-    // MARK: - TableView Protocol Methods
+    // MARK: - TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch ScriptureController.shared.selectedTestament {
@@ -70,6 +71,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "verseCell", for: indexPath) as? VerseCell else { return UITableViewCell() }
         
+        cell.delegate = self
         switch ScriptureController.shared.selectedTestament {
         case TestamentKeys.DaC:
             let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as? [SectionCD]
@@ -103,9 +105,14 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.selectedIndexPath = indexPath
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        hideSubviews()
+    }
+
     // MARK: - Actions
     @IBAction func navigationButtonTapped(_ sender: UIButton) {
         
+        hideSubviews()
         self.selectedVerse = nil
         let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
         let chapters = books?[currentBook].chapters?.allObjects as? [ChapterCD]
@@ -136,12 +143,10 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func cellMenuButtonTapped(_ sender: UIButton) {
         
-        if selectedVerse == nil && sender.tag != 4 {
+        hideSubviews()
+        if selectedVerse == nil && sender.tag != 4 && sender.tag != 1 {
             
-            let alertController = UIAlertController(title: "Tap a verse in order to use this option", message: nil, preferredStyle: .actionSheet)
-            let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
-            alertController.addAction(ok)
-            self.present(alertController, animated: true, completion: nil)
+            tapAVerseAlert()
         } else {
             
             switch sender.tag {
@@ -154,30 +159,40 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 
             case 1: // Note
-                guard let noteView = Bundle.main.loadNibNamed("Note", owner: nil, options: nil)![0] as? NoteView else { return }
-                noteView.translatesAutoresizingMaskIntoConstraints = false
-                self.view.addSubview(noteView)
-                noteView.verse = selectedVerse
-                self.noteViewIsVisible = true
-                noteView.layer.cornerRadius = 15
-                noteView.layer.borderColor = UIColor.lightGray.cgColor
-                noteView.layer.borderWidth = 1
-                NSLayoutConstraint.activate([
-                    noteView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                    noteView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-                    noteView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.5),
-                    noteView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.9)])
-                if selectedVerse?.noteText == nil {
-                    noteView.isEditing = true
-                } else {
-                    noteView.isEditing = false
+                switch selectedVerse == nil {
+                    
+                case true:
+                    tapAVerseAlert()
+                    
+                case false:
+                    guard let noteView = Bundle.main.loadNibNamed("Note", owner: nil, options: nil)![0] as? NoteView else { return }
+                    noteView.translatesAutoresizingMaskIntoConstraints = false
+                    self.view.addSubview(noteView)
+                    noteView.delegate = self
+                    self.subviews.append(noteView)
+                    self.noteViewIsVisible = true
+                    noteView.layer.cornerRadius = 15
+                    noteView.layer.borderColor = UIColor.lightGray.cgColor
+                    noteView.layer.borderWidth = 1
+                    NSLayoutConstraint.activate([
+                        noteView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                        noteView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+                        noteView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.5),
+                        noteView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.9)])
+                    noteView.verse = selectedVerse
+                    if selectedVerse?.noteText == nil {
+                        noteView.isEditing = true
+                    } else {
+                        noteView.isEditing = false
+                    }
                 }
+                
                 
                 // TODO: Tell the noteView to dismiss itself somehow. Protocol/delegate something.
                 
             case 2: // Memorize
                 if let verse = selectedVerse {
-                VerseController.shared.memorize(verse: verse)
+                    VerseController.shared.memorize(verse: verse)
                 }
                 
             case 3: // Copy
@@ -201,11 +216,13 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @objc @IBAction func highlighterButtonTapped(_ sender: Any) {
         
+        hideSubviews()
         switch colorViewIsVisible {
         case false :
             guard let colorView = Bundle.main.loadNibNamed("HighlighterColors", owner: nil, options: nil)![0] as? HighlighterColors else { return }
             colorView.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview(colorView)
+            self.subviews.append(colorView)
             colorView.layer.cornerRadius = 15
             colorView.layer.borderColor = UIColor.lightGray.cgColor
             colorView.layer.borderWidth = 1
@@ -276,6 +293,22 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Remove shadow from Navigation Bar.
     }
     
+    
+    func hideSubviews() {
+        
+        for view in subviews {
+            view.isHidden = true
+        }
+    }
+    
+    func tapAVerseAlert() {
+        
+        let alertController = UIAlertController(title: "Tap a verse in order to use this option", message: nil, preferredStyle: .actionSheet)
+        let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(ok)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     func setupBookmarkButton() {
         guard let currentTestament = ScriptureController.shared.selectedTestament,
             let bookmark = BookmarkController.shared.bookmark else {
@@ -303,7 +336,6 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.bookmarkLocation = currentLocation
     }
 }
-
 // TODO:
 // Highlight Verse (different colors)
 // Write Impression
@@ -311,3 +343,5 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
 // Save for Memorization
 // Copy
 // Share
+
+//TODO: Add a memorize view that lets me add a start verse and end verse and save all of them together as a single memorize unit.

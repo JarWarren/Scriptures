@@ -8,23 +8,21 @@
 
 import UIKit
 
-class EntryDetailView: UIViewController {
-
+class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+    
     @IBOutlet weak var entryButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
     @IBOutlet weak var completeButton: UIButton!
-    var barButton: UIBarButtonItem?
-    var titleText: String?
-    var bodyText: String?
-    var date: Date?
-    var isMemorized: Bool?
+    var entry: EntryCD?
+    var verse: VerseCD?
+    var shouldClose = true
     var masteryTestament: Int?
     var parentSelectedIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupView()
     }
     
@@ -41,51 +39,100 @@ class EntryDetailView: UIViewController {
         completeButton.layer.borderWidth = 1
         entryButton.isUserInteractionEnabled = false
         titleTextField.layer.cornerRadius = 5
+        titleTextField.delegate = self
         bodyTextView.layer.cornerRadius = 5
+        bodyTextView.delegate = self
         
         switch parentSelectedIndex {
         case 0:
-            if let text = self.titleText, let body = bodyText, let date = date {
-                titleTextField.text = text; bodyTextView.text = body; entryButton.setTitle(date.mMdDyY, for: .normal)
+            if let entry = entry {
+                titleTextField.text = entry.entryTitle; bodyTextView.text = entry.entryText; entryButton.setTitle(entry.entryDate?.mMdDyY, for: .normal)
                 titleTextField.isUserInteractionEnabled = false
                 bodyTextView.isUserInteractionEnabled = false
-                self.barButton = navigationItem.rightBarButtonItem
-                barButton?.title = "Edit"
-                barButton?.target = self
-                barButton?.action = #selector(barButtonTapped)
+                completeButton.setTitle("    Edit    ", for: .normal)
             } else {
-                titleTextField.backgroundColor = UIColor.white
-                bodyTextView.backgroundColor = UIColor.white
-                entryButton.isHidden = true
-                self.barButton = navigationItem.rightBarButtonItem
-                barButton?.title = "Save"
-                barButton?.target = self
-                barButton?.action = #selector(barButtonTapped)
+                prepareToEdit()
             }
-        case 1: return
+        case 1:
+            guard let verse = verse else { return }
+            titleTextField.text = verse.reference
+            bodyTextView.text = verse.text
+            NSLayoutConstraint.activate([entryButton.heightAnchor.constraint(equalToConstant: 50),
+                                         entryButton.widthAnchor.constraint(equalToConstant: 50)])
+            entryButton.setTitle("", for: .normal)
+            entryButton.layer.cornerRadius = 5
+            updateMemorizeButton(verse: verse)
         case 2: return
         default: return
         }
-    }
-    
-    @objc func barButtonTapped(_ sender: Any) {
-        
-        
     }
     
     @IBAction func completeButtonTapped(_ sender: Any) {
         
         switch parentSelectedIndex {
         case 0:
-            guard let entryTitle = titleTextField.text, titleTextField.text?.isEmpty == false,
-                let entryBody = bodyTextView.text, bodyTextView.text.isEmpty == false else { return }
-            EntryController.shared.createNewEntry(title: entryTitle, text: entryBody)
-            navigationController?.popToRootViewController(animated: true)
+            if let entryTitle = titleTextField.text, titleTextField.text?.isEmpty == false,
+                let entryBody = bodyTextView.text, bodyTextView.text.isEmpty == false, shouldClose == true {
+                if let entry = entry {
+                    EntryController.shared.updateEntry(entry: entry, title: entryTitle, text: entryBody)
+                } else {
+                    EntryController.shared.createNewEntry(title: entryTitle, text: entryBody)
+                }
+                navigationController?.popToRootViewController(animated: true)
+            } else {
+                prepareToEdit()
+            }
         case 1:
-            print("mark memorizable scripture as memorized/not")
+            guard let verse = verse else { return }
+            VerseController.shared.toggleMemorized(verse: verse)
+            updateMemorizeButton(verse: verse)
         case 2:
             print("mark memorizable mastery as memorized/not")
         default: return
         }
+    }
+    
+    func prepareToEdit() {
+        titleTextField.backgroundColor = UIColor.white
+        titleTextField.layer.borderWidth = 1
+        titleTextField.layer.borderColor = UIColor.lightGray.cgColor
+        titleTextField.isUserInteractionEnabled = true
+        bodyTextView.backgroundColor = UIColor.white
+        bodyTextView.layer.borderColor = UIColor.lightGray.cgColor
+        bodyTextView.layer.borderWidth = 1
+        bodyTextView.isUserInteractionEnabled = true
+        entryButton.isHidden = true
+        completeButton.setTitle("    Save    ", for: .normal)
+        self.shouldClose = true
+    }
+    
+    func updateMemorizeButton(verse: VerseCD) {
+        
+        if verse.memorized == true {
+            entryButton.setBackgroundImage(UIImage(named: "5"), for: .normal)
+            completeButton.setTitle("    Not Memorized    ", for: .normal)
+            entryButton.layer.borderWidth = 2
+            entryButton.layer.borderColor = #colorLiteral(red: 0.6313489079, green: 0.557828486, blue: 0.09932992607, alpha: 1)
+        } else {
+            entryButton.setBackgroundImage(UIImage(named: "1"), for: .normal)
+            completeButton.setTitle("    Memorized    ", for: .normal)
+            entryButton.layer.borderWidth = 1
+            entryButton.layer.borderColor = UIColor.lightGray.cgColor
+        }
+    }
+    
+    // MARK: Delegate Methods
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        bodyTextView.becomeFirstResponder()
+        return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            
+            // TODO: Find a way to allow linebreaks and resigning first responder both. Not just one or the other.
+        }
+        return true
     }
 }

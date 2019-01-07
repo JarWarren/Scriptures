@@ -9,7 +9,7 @@
 import UIKit
 
 class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
- 
+    
     @IBOutlet weak var tabThreeTableView: UITableView!
     @IBOutlet weak var tabThreeSegmentedControl: UISegmentedControl!
     var addEntryButton: UIBarButtonItem? {
@@ -40,37 +40,42 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tabThreeSegmentedControl.selectedSegmentIndex {
         case 2: return 25
-        case 1: return VerseController.shared.memorizingVerses.count
+        case 1: return VerseController.shared.memorizingVerses?.verses?.count ?? 0
         case 0: return EntryController.shared.allEntries.count
         default: return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "studyCell", for: indexPath)
         
         switch tabThreeSegmentedControl.selectedSegmentIndex {
         // TODO: case 2 : Put the specific mastery verses into their own array.
         case 1:
-            let cellVerse = VerseController.shared.memorizingVerses[indexPath.row]
-            cell.textLabel?.text = cellVerse.reference
-            cell.detailTextLabel?.text = nil
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "memoryCell", for: indexPath) as? MemorizeCell else { return UITableViewCell() }
+            if let verses = VerseController.shared.memorizingVerses?.verses?.allObjects as? [VerseCD] {
+                cell.verse = verses[indexPath.row]
+            }
+            return cell
         // TODO: Custom cell that remembers if the verse was memorized. Allows for deletion. ☑️
         case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath)
             let cellEntry = EntryController.shared.allEntries[indexPath.row]
             cell.textLabel?.text = cellEntry.entryTitle
             if let date = cellEntry.entryDate {
-            cell.detailTextLabel?.text = date.mMdDyY
+                cell.detailTextLabel?.text = date.mMdDyY
             }
-        default: return cell
+            return cell
+        default: return UITableViewCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        return cell
     }
     
     func setupMainView() {
         
-        addEntryButton?.title = "New"
+        addEntryButton?.title = "New Entry"
         addEntryButton?.target = self
         addEntryButton?.action = #selector(addEntryButtonTapped)
     }
@@ -90,21 +95,20 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destinationVC = segue.destination as? EntryDetailView,
-        let indexPath = tabThreeTableView.indexPathForSelectedRow else { return }
+            let indexPath = tabThreeTableView.indexPathForSelectedRow else { return }
         
         switch tabThreeSegmentedControl.selectedSegmentIndex {
         case 2:
             destinationVC.parentSelectedIndex = 2
         case 1:
             destinationVC.parentSelectedIndex = 1
-            destinationVC.titleText = VerseController.shared.memorizingVerses[indexPath.row].reference
-            destinationVC.bodyText = VerseController.shared.memorizingVerses[indexPath.row].text
-            destinationVC.isMemorized = VerseController.shared.memorizingVerses[indexPath.row].memorized
+            if let verses = VerseController.shared.memorizingVerses?.verses?.allObjects as? [VerseCD] {
+                destinationVC.verse = verses[indexPath.row]
+            }
         case 0:
             destinationVC.parentSelectedIndex = 0
-            destinationVC.titleText = EntryController.shared.allEntries[indexPath.row].entryTitle
-            destinationVC.bodyText = EntryController.shared.allEntries[indexPath.row].entryText
-            destinationVC.date = EntryController.shared.allEntries[indexPath.row].entryDate
+            destinationVC.entry = EntryController.shared.allEntries[indexPath.row]
+            destinationVC.shouldClose = false
         default: return
         }
         

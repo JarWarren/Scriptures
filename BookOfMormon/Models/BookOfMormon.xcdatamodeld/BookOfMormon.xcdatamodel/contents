@@ -26,6 +26,9 @@
         <attribute name="entryText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="entryTitle" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="MemorizedVersesCD" representedClassName="MemorizedVersesCD" syncable="YES" codeGenerationType="class">
+        <relationship name="verses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VerseCD" inverseName="allMemorized" inverseEntity="VerseCD" syncable="YES"/>
+    </entity>
     <entity name="SectionCD" representedClassName="SectionCD" syncable="YES">
         <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="section" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -46,6 +49,7 @@
         <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" attributeType="String" syncable="YES"/>
         <attribute name="verse" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="allMemorized" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MemorizedVersesCD" inverseName="verses" inverseEntity="MemorizedVersesCD" syncable="YES"/>
         <relationship name="chapter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChapterCD" inverseName="verses" inverseEntity="ChapterCD" syncable="YES"/>
         <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SectionCD" inverseName="verses" inverseEntity="SectionCD" syncable="YES"/>
     </entity>
@@ -54,9 +58,10 @@
         <element name="BooksCD" positionX="-55.62890625" positionY="203.87890625" width="128" height="105"/>
         <element name="ChapterCD" positionX="-359.47265625" positionY="90.16015625" width="128" height="105"/>
         <element name="DoctrineCD" positionX="-153" positionY="27" width="128" height="75"/>
+        <element name="EntryCD" positionX="-153" positionY="27" width="128" height="90"/>
         <element name="SectionCD" positionX="-144" positionY="36" width="128" height="105"/>
         <element name="TestamentCD" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="VerseCD" positionX="140.6796875" positionY="-121.98046875" width="128" height="210"/>
-        <element name="EntryCD" positionX="-153" positionY="27" width="128" height="90"/>
+        <element name="VerseCD" positionX="140.6796875" positionY="-121.98046875" width="128" height="225"/>
+        <element name="MemorizedVersesCD" positionX="-153" positionY="27" width="128" height="60"/>
     </elements>
 </model>

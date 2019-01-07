@@ -33,17 +33,20 @@
                                                     <rect key="frame" x="12" y="8" width="351" height="27.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2O-ga-ygi">
-                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="27.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="283" height="27.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bP-K1-Cuq">
-                                                            <rect key="frame" x="321" y="0.0" width="30" height="27.5"/>
+                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bP-K1-Cuq">
+                                                            <rect key="frame" x="291" y="0.0" width="60" height="27.5"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="30" id="rUZ-xn-gwl"/>
+                                                                <constraint firstAttribute="width" constant="60" id="rUZ-xn-gwl"/>
                                                             </constraints>
                                                             <state key="normal" title="🗒"/>
+                                                            <connections>
+                                                                <action selector="noteButtonTapped:" destination="IFH-HC-4eI" eventType="touchUpInside" id="j7u-Rf-yjA"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>

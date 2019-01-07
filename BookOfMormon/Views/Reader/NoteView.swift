@@ -16,12 +16,25 @@ class NoteView: UIView, UITextFieldDelegate, UITextViewDelegate {
     @IBOutlet weak var noteDateLabel: UILabel!
     @IBOutlet weak var exitButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
+    weak var delegate: NoteViewDelegate?
     var verse: VerseCD? {
         didSet {
             updateView()
         }
     }
-    var isEditing = true
+    var isEditing = true {
+        didSet {
+            switch isEditing {
+            case true:
+                noteTextField.layer.borderWidth = 1
+                noteTextField.layer.borderColor = UIColor.lightGray.cgColor
+                bodyTextView.layer.borderWidth = 1
+                bodyTextView.layer.borderColor = UIColor.lightGray.cgColor
+            case false:
+                return
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,7 +54,7 @@ class NoteView: UIView, UITextFieldDelegate, UITextViewDelegate {
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
-    
+        
         switch self.isEditing {
         case false:
             editButton.setTitle("   Save   ", for: .normal)
@@ -52,29 +65,26 @@ class NoteView: UIView, UITextFieldDelegate, UITextViewDelegate {
             bodyTextView.isUserInteractionEnabled = true
             self.isEditing = !self.isEditing
         case true:
-            guard let noteTitle = noteTextField.text, noteTextField.text?.isEmpty == false,
-                let noteBody = bodyTextView.text, bodyTextView.text.isEmpty == false,
-            let verse = self.verse else { return }
-            editButton.setTitle("   Edit   ", for: .normal)
-            editButton.backgroundColor = #colorLiteral(red: 0.006345573347, green: 0.478813827, blue: 0.9984634519, alpha: 1)
-            noteTextField.backgroundColor = #colorLiteral(red: 0.9646112323, green: 0.964772284, blue: 0.9645897746, alpha: 1)
-            bodyTextView.backgroundColor = #colorLiteral(red: 0.9646112323, green: 0.964772284, blue: 0.9645897746, alpha: 1)
-            noteDateLabel.text = Date().mMdDyY
+            exitButtonTapped(sender)
+            guard let noteTitle = noteTextField.text,
+                let noteBody = bodyTextView.text,
+                noteTextField.text != nil || bodyTextView.text != nil,
+                let verse = self.verse else { return }
             noteTextField.isUserInteractionEnabled = false
             bodyTextView.isUserInteractionEnabled = false
             VerseController.addNoteTo(verse: verse, title: noteTitle, body: noteBody)
-            self.isEditing = !self.isEditing
         }
     }
     
     @IBAction func exitButtonTapped(_ sender: Any) {
         
         self.isHidden = true
+        delegate?.noteViewIsVisible = false
     }
     
     @IBAction func deleteButtonTapped(_ sender: Any) {
         if let verse = self.verse {
-        VerseController.deleteNoteFrom(verse: verse)
+            VerseController.deleteNoteFrom(verse: verse)
             exitButtonTapped(sender)
         }
     }
@@ -98,4 +108,8 @@ class NoteView: UIView, UITextFieldDelegate, UITextViewDelegate {
             bodyTextView.backgroundColor = UIColor.white
         }
     }
+}
+
+protocol NoteViewDelegate: class {
+    var noteViewIsVisible: Bool { get set }
 }
