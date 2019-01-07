@@ -211,9 +211,9 @@
 			children = (
 				7EFC384F21DAC271000F0F75 /* BookOfMormon.xcdatamodeld */,
 				7EDD2B6621DEAD1B009A834B /* Testaments */,
-				7E43B3E921C5F2E2000845DA /* Goal.swift */,
-				7EDD2B6721DEB4C0009A834B /* BookmarkCD.swift */,
-				7EC306E521E18F8100CC6103 /* EntryCD.swift */,
+				7ECE659021E3CB6600460CEF /* TabOne */,
+				7ECE658F21E3CB5E00460CEF /* TabTwo */,
+				7ECE658E21E3CB5000460CEF /* TabThree */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,7 +233,7 @@
 		7E43B3E621C5F278000845DA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7EFC384021DA7FDF000F0F75 /* Reading */,
+				7EFC384021DA7FDF000F0F75 /* Reader */,
 				7E238BE421CB34FC001ADF4F /* TabTwo */,
 				7EC306E021E18C6400CC6103 /* TabThree */,
 			);
@@ -324,6 +324,30 @@
 			path = JSONTestaments;
 			sourceTree = "<group>";
 		};
+		7ECE658E21E3CB5000460CEF /* TabThree */ = {
+			isa = PBXGroup;
+			children = (
+				7EC306E521E18F8100CC6103 /* EntryCD.swift */,
+			);
+			path = TabThree;
+			sourceTree = "<group>";
+		};
+		7ECE658F21E3CB5E00460CEF /* TabTwo */ = {
+			isa = PBXGroup;
+			children = (
+				7EDD2B6721DEB4C0009A834B /* BookmarkCD.swift */,
+			);
+			path = TabTwo;
+			sourceTree = "<group>";
+		};
+		7ECE659021E3CB6600460CEF /* TabOne */ = {
+			isa = PBXGroup;
+			children = (
+				7E43B3E921C5F2E2000845DA /* Goal.swift */,
+			);
+			path = TabOne;
+			sourceTree = "<group>";
+		};
 		7EDD2B6621DEAD1B009A834B /* Testaments */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,14 +365,14 @@
 			path = Testaments;
 			sourceTree = "<group>";
 		};
-		7EFC384021DA7FDF000F0F75 /* Reading */ = {
+		7EFC384021DA7FDF000F0F75 /* Reader */ = {
 			isa = PBXGroup;
 			children = (
 				7E129C1921E01F58001F4A48 /* NoteView.swift */,
 				7EFC384121DA801F000F0F75 /* VerseCell.swift */,
 				7EC306EA21E19F3D00CC6103 /* HighlighterColors.swift */,
 			);
-			path = Reading;
+			path = Reader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

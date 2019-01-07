@@ -102,9 +102,8 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
             destinationVC.isMemorized = VerseController.shared.memorizingVerses[indexPath.row].memorized
         case 0:
             destinationVC.parentSelectedIndex = 0
-            destinationVC.titleText = EntryController.shared.allEntries[indexPath.row].entryTitle
-            destinationVC.bodyText = EntryController.shared.allEntries[indexPath.row].entryText
-            destinationVC.date = EntryController.shared.allEntries[indexPath.row].entryDate
+            destinationVC.entry = EntryController.shared.allEntries[indexPath.row]
+            destinationVC.shouldClose = false
         default: return
         }
         

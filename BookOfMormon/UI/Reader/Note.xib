@@ -26,14 +26,8 @@
                         <action selector="editButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="xct-qK-s1q"/>
                     </connections>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Note title..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sje-x7-mfa">
-                    <rect key="frame" x="12" y="74" width="339" height="24"/>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zHr-IQ-9U2">
-                    <rect key="frame" x="12" y="110" width="351" height="545"/>
+                    <rect key="frame" x="12" y="122" width="351" height="533"/>
                     <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -61,32 +55,37 @@
                         <action selector="editButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Y5L-Mv-Dtq"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69p-zD-wVa">
-                    <rect key="frame" x="363" y="74" width="0.0" height="24"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69p-zD-wVa">
+                    <rect key="frame" x="12" y="74" width="351" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sje-x7-mfa">
+                    <rect key="frame" x="12" y="86" width="351" height="24"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
+                <constraint firstItem="zHr-IQ-9U2" firstAttribute="top" secondItem="sje-x7-mfa" secondAttribute="bottom" constant="12" id="1lS-nD-qXw"/>
                 <constraint firstItem="zHr-IQ-9U2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="5rc-1j-2c9"/>
                 <constraint firstItem="69p-zD-wVa" firstAttribute="top" secondItem="kSR-CX-Bhx" secondAttribute="bottom" constant="12" id="6Mf-W2-c1f"/>
-                <constraint firstItem="zHr-IQ-9U2" firstAttribute="top" secondItem="69p-zD-wVa" secondAttribute="bottom" constant="12" id="E0L-Xh-woF"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zHr-IQ-9U2" secondAttribute="bottom" constant="12" id="QFS-D1-UCa"/>
                 <constraint firstItem="Kku-Pi-BNt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="TuT-xS-eFg"/>
                 <constraint firstItem="kSR-CX-Bhx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="VbD-9O-mMZ"/>
-                <constraint firstItem="zHr-IQ-9U2" firstAttribute="top" secondItem="sje-x7-mfa" secondAttribute="bottom" constant="12" id="Xbr-PX-OWA"/>
-                <constraint firstItem="sje-x7-mfa" firstAttribute="top" secondItem="dEN-6N-Ic6" secondAttribute="bottom" constant="12" id="Yk2-5b-Php"/>
                 <constraint firstItem="Kku-Pi-BNt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="a2E-Di-VX8"/>
                 <constraint firstItem="dEN-6N-Ic6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="a7F-RF-M1s"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zHr-IQ-9U2" secondAttribute="trailing" constant="12" id="aUh-e1-VhW"/>
+                <constraint firstItem="69p-zD-wVa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="bNF-48-DuU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="sje-x7-mfa" secondAttribute="trailing" constant="12" id="cg1-Uq-BYe"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="69p-zD-wVa" secondAttribute="trailing" constant="12" id="cpM-fD-Qai"/>
-                <constraint firstItem="sje-x7-mfa" firstAttribute="top" secondItem="kSR-CX-Bhx" secondAttribute="bottom" constant="12" id="giY-Yn-vYW"/>
+                <constraint firstItem="sje-x7-mfa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="lDn-LZ-nLC"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kSR-CX-Bhx" secondAttribute="trailing" constant="12" id="nEl-IV-w2T"/>
                 <constraint firstItem="kSR-CX-Bhx" firstAttribute="leading" secondItem="dEN-6N-Ic6" secondAttribute="trailing" constant="12" id="nh4-eR-6MK"/>
-                <constraint firstItem="sje-x7-mfa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="nnb-Nl-pSh"/>
-                <constraint firstItem="69p-zD-wVa" firstAttribute="leading" secondItem="sje-x7-mfa" secondAttribute="trailing" constant="12" id="vBJ-gW-OIm"/>
+                <constraint firstItem="sje-x7-mfa" firstAttribute="top" secondItem="69p-zD-wVa" secondAttribute="bottom" constant="12" id="ple-y7-Ale"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
@@ -97,6 +96,7 @@
                 <outlet property="noteDateLabel" destination="69p-zD-wVa" id="1IU-CO-SI0"/>
                 <outlet property="noteTextField" destination="sje-x7-mfa" id="gwl-kn-4PM"/>
             </connections>
+            <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>
     </objects>
 </document>
