@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="56" width="375" height="611"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="studyCell" textLabel="R1D-OX-VGB" detailTextLabel="JJt-NK-zaG" style="IBUITableViewCellStyleValue1" id="vuS-4U-JDB">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="entryCell" textLabel="R1D-OX-VGB" detailTextLabel="JJt-NK-zaG" style="IBUITableViewCellStyleValue1" id="vuS-4U-JDB">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vuS-4U-JDB" id="Uma-rB-3Mk">
@@ -46,7 +46,41 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="9iY-5u-Tza" kind="show" id="XGJ-Ol-obt"/>
+                                            <segue destination="9iY-5u-Tza" kind="show" identifier="entrySegue" id="XGJ-Ol-obt"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memoryCell" id="1ZF-HE-Z5h" customClass="MemorizeCell" customModule="BookOfMormon" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1ZF-HE-Z5h" id="pU0-dk-khh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDa-x5-a3G">
+                                                    <rect key="frame" x="12" y="11.5" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jGa-AZ-i9P">
+                                                    <rect key="frame" x="333" y="7" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="jGa-AZ-i9P" secondAttribute="height" multiplier="1:1" id="1bp-J3-gkd"/>
+                                                        <constraint firstAttribute="height" constant="30" id="mNn-3M-fpG"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rDa-x5-a3G" firstAttribute="centerY" secondItem="pU0-dk-khh" secondAttribute="centerY" id="3Kl-fY-ekP"/>
+                                                <constraint firstItem="jGa-AZ-i9P" firstAttribute="centerY" secondItem="pU0-dk-khh" secondAttribute="centerY" id="d7a-2w-pGx"/>
+                                                <constraint firstAttribute="trailing" secondItem="jGa-AZ-i9P" secondAttribute="trailing" constant="12" id="uVG-HU-4Yk"/>
+                                                <constraint firstItem="rDa-x5-a3G" firstAttribute="leading" secondItem="pU0-dk-khh" secondAttribute="leading" constant="12" id="zoT-6q-dfk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="memorizedImage" destination="jGa-AZ-i9P" id="5wm-BS-E3y"/>
+                                            <outlet property="referenceLabel" destination="rDa-x5-a3G" id="TBj-go-TJA"/>
+                                            <segue destination="9iY-5u-Tza" kind="show" identifier="memorySegue" id="ssI-5h-WXj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -55,8 +89,8 @@
                                 <rect key="frame" x="8" y="20" width="359" height="29"/>
                                 <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <segments>
-                                    <segment title="Notes"/>
-                                    <segment title="Memorize"/>
+                                    <segment title="Entries"/>
+                                    <segment title="Memorization"/>
                                     <segment title="Mastery"/>
                                 </segments>
                                 <color key="tintColor" red="0.61915053929999997" green="0.56043829219999997" blue="0.20530300949999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -89,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfA-W9-caY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4164" y="517"/>
+            <point key="canvasLocation" x="4164" y="516.79160419790105"/>
         </scene>
         <!--Entry Detail View-->
         <scene sceneID="Gze-Od-gcM">
@@ -123,7 +157,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ske-Nb-3DU">
-                                <rect key="frame" x="317" y="43" width="46" height="30"/>
+                                <rect key="frame" x="317" y="32" width="46" height="41"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -131,6 +165,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="Ske-Nb-3DU" firstAttribute="top" secondItem="Vob-SO-cn7" secondAttribute="top" constant="12" id="9MB-Tb-x6f"/>
                             <constraint firstItem="yqH-7u-9Iw" firstAttribute="top" secondItem="0me-ZU-vrE" secondAttribute="bottom" constant="12" id="GeT-pk-IJm"/>
                             <constraint firstItem="Ske-Nb-3DU" firstAttribute="leading" secondItem="0me-ZU-vrE" secondAttribute="trailing" constant="12" id="IG8-8T-fig"/>
                             <constraint firstItem="yqH-7u-9Iw" firstAttribute="top" secondItem="Ske-Nb-3DU" secondAttribute="bottom" constant="12" id="LWb-mX-FyK"/>
@@ -158,4 +193,7 @@
             <point key="canvasLocation" x="4164" y="1265"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="XGJ-Ol-obt"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -15,10 +15,8 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
     @IBOutlet weak var bodyTextView: UITextView!
     @IBOutlet weak var completeButton: UIButton!
     var entry: EntryCD?
+    var verse: VerseCD?
     var shouldClose = true
-    var isMemorized: Bool?
-    var titleText: String?
-    var bodyText: String?
     var masteryTestament: Int?
     var parentSelectedIndex: Int?
     
@@ -55,7 +53,15 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
             } else {
                 prepareToEdit()
             }
-        case 1: return
+        case 1:
+            guard let verse = verse else { return }
+            titleTextField.text = verse.reference
+            bodyTextView.text = verse.text
+            NSLayoutConstraint.activate([entryButton.heightAnchor.constraint(equalToConstant: 50),
+                                         entryButton.widthAnchor.constraint(equalToConstant: 50)])
+            entryButton.setTitle("", for: .normal)
+            entryButton.layer.cornerRadius = 5
+            updateMemorizeButton(verse: verse)
         case 2: return
         default: return
         }
@@ -77,7 +83,9 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 prepareToEdit()
             }
         case 1:
-            print("mark memorizable scripture as memorized/not")
+            guard let verse = verse else { return }
+            VerseController.shared.toggleMemorized(verse: verse)
+            updateMemorizeButton(verse: verse)
         case 2:
             print("mark memorizable mastery as memorized/not")
         default: return
@@ -96,6 +104,21 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
         entryButton.isHidden = true
         completeButton.setTitle("    Save    ", for: .normal)
         self.shouldClose = true
+    }
+    
+    func updateMemorizeButton(verse: VerseCD) {
+        
+        if verse.memorized == true {
+            entryButton.setBackgroundImage(UIImage(named: "5"), for: .normal)
+            completeButton.setTitle("    Not Memorized    ", for: .normal)
+            entryButton.layer.borderWidth = 2
+            entryButton.layer.borderColor = #colorLiteral(red: 0.6313489079, green: 0.557828486, blue: 0.09932992607, alpha: 1)
+        } else {
+            entryButton.setBackgroundImage(UIImage(named: "1"), for: .normal)
+            completeButton.setTitle("    Memorized    ", for: .normal)
+            entryButton.layer.borderWidth = 1
+            entryButton.layer.borderColor = UIColor.lightGray.cgColor
+        }
     }
     
     // MARK: Delegate Methods

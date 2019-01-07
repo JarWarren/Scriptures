@@ -343,3 +343,5 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
 // Save for Memorization
 // Copy
 // Share
+
+//TODO: Add a memorize view that lets me add a start verse and end verse and save all of them together as a single memorize unit.
