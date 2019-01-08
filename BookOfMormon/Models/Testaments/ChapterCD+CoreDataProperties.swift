@@ -20,7 +20,7 @@ extension ChapterCD {
     @NSManaged public var chapter: Int64
     @NSManaged public var reference: String?
     @NSManaged public var book: BooksCD?
-    @NSManaged public var verses: NSSet?
+    @NSManaged public var verses: NSOrderedSet?
 
 }
 

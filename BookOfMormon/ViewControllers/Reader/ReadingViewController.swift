@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, VerseCellDelegate, NoteViewDelegate {
+class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, VerseCellDelegate, NoteViewDelegate, ColorViewDelegate, MemorizeViewDelegate {
     
     // MARK: - Outlets and Properties
     @IBOutlet weak var versesTableView: UITableView!
@@ -17,7 +17,12 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet var highlighterButtonView: UIView!
-    var subviews = [UIView]()
+    @IBOutlet weak var darkView: UIView!
+    var subviews = [UIView]() {
+        didSet {
+            print("\(subviews.count) subviews.")
+        }
+    }
     var currentBook = 0
     var currentChapter = 0
     var selectedVerse: VerseCD?
@@ -81,7 +86,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         default:
             let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
             let chapters = books?[currentBook].chapters?.allObjects as? [ChapterCD]
-            let verses = chapters?[currentChapter].verses?.allObjects as? [VerseCD]
+            let verses = chapters?[currentChapter].verses?.array as? [VerseCD]
             cell.verseCoreData = verses?[indexPath.row]
         }
         if cell.verseCoreData?.isHighlighted == true {
@@ -141,7 +146,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    @IBAction func cellMenuButtonTapped(_ sender: UIButton) {
+    @IBAction func menuButtonTapped(_ sender: UIButton) {
         
         hideSubviews()
         if selectedVerse == nil && sender.tag != 4 && sender.tag != 1 {
@@ -167,6 +172,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 case false:
                     guard let noteView = Bundle.main.loadNibNamed("Note", owner: nil, options: nil)![0] as? NoteView else { return }
                     noteView.translatesAutoresizingMaskIntoConstraints = false
+                    darkenBackground()
                     self.view.addSubview(noteView)
                     noteView.delegate = self
                     self.subviews.append(noteView)
@@ -187,13 +193,23 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                 }
                 
-                
-                // TODO: Tell the noteView to dismiss itself somehow. Protocol/delegate something.
-                
             case 2: // Memorize
-                if let verse = selectedVerse {
-                    VerseController.shared.memorize(verse: verse)
-                }
+                guard let memorizeView = Bundle.main.loadNibNamed("Memorize", owner: nil, options: nil)![0] as? MemorizeView else { return }
+                memorizeView.translatesAutoresizingMaskIntoConstraints = false
+                darkenBackground()
+                self.view.addSubview(memorizeView)
+                memorizeView.delegate = self
+                self.subviews.append(memorizeView)
+                //memorize view delegate self?
+                memorizeView.layer.cornerRadius = 15
+                memorizeView.layer.borderWidth = 1
+                memorizeView.layer.borderColor = UIColor.lightGray.cgColor
+                NSLayoutConstraint.activate([
+                    memorizeView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                    memorizeView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+                    memorizeView.heightAnchor.constraint(equalToConstant: 150),
+                    memorizeView.widthAnchor.constraint(equalToConstant: 200)])
+                memorizeView.verse = selectedVerse
                 
             case 3: // Copy
                 UIPasteboard.general.string = selectedVerse?.text
@@ -221,7 +237,9 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case false :
             guard let colorView = Bundle.main.loadNibNamed("HighlighterColors", owner: nil, options: nil)![0] as? HighlighterColors else { return }
             colorView.translatesAutoresizingMaskIntoConstraints = false
+            darkenBackground()
             self.view.addSubview(colorView)
+            colorView.delegate = self
             self.subviews.append(colorView)
             colorView.layer.cornerRadius = 15
             colorView.layer.borderColor = UIColor.lightGray.cgColor
@@ -234,7 +252,6 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             colorViewIsVisible = true
         case true :
             colorViewIsVisible = false
-            // TODO: Dismiss colorView. (delegate method? protocol)
         }
     }
     
@@ -259,6 +276,14 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func setupScriptures() {
         
+        self.view.addSubview(darkView)
+        darkView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            darkView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
+            darkView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            darkView.topAnchor.constraint(equalTo: bookmarkButton.bottomAnchor)
+            ])
+        darkView.isHidden = true
         let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
         
         switch ScriptureController.shared.selectedTestament {
@@ -295,10 +320,11 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func hideSubviews() {
-        
+        darkView.isHidden = true
         for view in subviews {
             view.isHidden = true
         }
+        subviews.removeAll()
     }
     
     func tapAVerseAlert() {
@@ -325,6 +351,10 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             bookmarkButton.setTitle("Bookmark", for: .normal)
             bookmarkButton.setTitleColor(#colorLiteral(red: 0.006345573347, green: 0.478813827, blue: 0.9984634519, alpha: 1), for: .normal)
         }
+    }
+    
+    func darkenBackground() {
+        darkView.isHidden = false
     }
     
     func findBookmarkLocation() {

@@ -100,28 +100,28 @@
                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                         <state key="normal" title="Highlight"/>
                                         <connections>
-                                            <action selector="cellMenuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="THU-jO-Lhq"/>
+                                            <action selector="menuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="Vs0-jg-WMS"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6HT-Jz-4eX">
                                         <rect key="frame" x="72" y="0.0" width="71.5" height="30"/>
                                         <state key="normal" title="Note"/>
                                         <connections>
-                                            <action selector="cellMenuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="Jl0-J0-Z4B"/>
+                                            <action selector="menuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="fqS-VQ-iyd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdG-dx-Nvg">
                                         <rect key="frame" x="143.5" y="0.0" width="72" height="30"/>
                                         <state key="normal" title="Memorize"/>
                                         <connections>
-                                            <action selector="cellMenuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="64a-o4-xIf"/>
+                                            <action selector="menuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="DV6-JC-6ss"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYI-py-BCy">
                                         <rect key="frame" x="215.5" y="0.0" width="71.5" height="30"/>
                                         <state key="normal" title="Copy"/>
                                         <connections>
-                                            <action selector="cellMenuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="APv-SO-FaR"/>
+                                            <action selector="menuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="Nwc-zT-x4Z"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldv-4d-cJW">
@@ -129,7 +129,7 @@
                                         <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Bookmark"/>
                                         <connections>
-                                            <action selector="cellMenuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="N3p-sY-cTQ"/>
+                                            <action selector="menuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="JPe-qU-cg8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -158,6 +158,7 @@
                     <connections>
                         <outlet property="bookmarkButton" destination="ldv-4d-cJW" id="GTF-PJ-cC5"/>
                         <outlet property="chapterReferenceLabel" destination="cmw-2k-d59" id="L2g-Gl-YQx"/>
+                        <outlet property="darkView" destination="4jO-2P-eiN" id="3LN-Nv-Ah3"/>
                         <outlet property="highlighterButtonView" destination="KRG-xE-bKD" id="8FI-y3-nXQ"/>
                         <outlet property="leftButton" destination="BQa-oZ-Hy7" id="qbp-DP-dRh"/>
                         <outlet property="rightButton" destination="Cps-h7-8cv" id="eQq-3O-SP1"/>
@@ -184,6 +185,12 @@
                         <constraint firstAttribute="trailing" secondItem="gEC-FK-oJ0" secondAttribute="trailing" id="mwE-Lx-Oi6"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="Aze-qj-a8D"/>
+                </view>
+                <view alpha="0.40000000000000002" contentMode="scaleToFill" id="4jO-2P-eiN">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="1uh-q1-gM6"/>
                 </view>
             </objects>
             <point key="canvasLocation" x="3072.8000000000002" y="1353.3733133433284"/>

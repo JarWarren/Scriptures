@@ -15,7 +15,7 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
     @IBOutlet weak var bodyTextView: UITextView!
     @IBOutlet weak var completeButton: UIButton!
     var entry: EntryCD?
-    var verse: VerseCD?
+    var verses: MemorizedVersesCD?
     var shouldClose = true
     var masteryTestament: Int?
     var parentSelectedIndex: Int?
@@ -54,14 +54,29 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 prepareToEdit()
             }
         case 1:
-            guard let verse = verse else { return }
-            titleTextField.text = verse.reference
-            bodyTextView.text = verse.text
+            guard let verseHolder = verses else { return }
+            guard let unwrappedVerses = verseHolder.verses?.array as? [VerseCD] else { return }
+            switch verseHolder.verses?.count {
+            case 1:
+                titleTextField.text = unwrappedVerses.first?.reference
+                bodyTextView.text = unwrappedVerses.first?.text
+            default:
+                guard let first = unwrappedVerses.first?.reference, let last = unwrappedVerses.last?.reference else { return }
+                titleTextField.text = first + " - " + last
+                var bodyText = ""
+                for verse in unwrappedVerses {
+                    if let verseText = verse.text {
+                        bodyText.append(verseText)
+                        bodyText.append("\n")
+                    }
+                }
+                bodyTextView.text = bodyText
+            }
             NSLayoutConstraint.activate([entryButton.heightAnchor.constraint(equalToConstant: 50),
                                          entryButton.widthAnchor.constraint(equalToConstant: 50)])
             entryButton.setTitle("", for: .normal)
             entryButton.layer.cornerRadius = 5
-            updateMemorizeButton(verse: verse)
+            updateMemorizeButton(verses: verseHolder)
         case 2: return
         default: return
         }
@@ -83,9 +98,9 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 prepareToEdit()
             }
         case 1:
-            guard let verse = verse else { return }
-            VerseController.shared.toggleMemorized(verse: verse)
-            updateMemorizeButton(verse: verse)
+            guard let verses = verses else { return }
+            VerseController.shared.toggleMemorized(verses: verses)
+            updateMemorizeButton(verses: verses)
         case 2:
             print("mark memorizable mastery as memorized/not")
         default: return
@@ -106,9 +121,9 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
         self.shouldClose = true
     }
     
-    func updateMemorizeButton(verse: VerseCD) {
+    func updateMemorizeButton(verses: MemorizedVersesCD) {
         
-        if verse.memorized == true {
+        if verses.memorized == true {
             entryButton.setBackgroundImage(UIImage(named: "5"), for: .normal)
             completeButton.setTitle("    Not Memorized    ", for: .normal)
             entryButton.layer.borderWidth = 2

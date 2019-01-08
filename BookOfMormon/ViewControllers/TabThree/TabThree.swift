@@ -40,7 +40,7 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tabThreeSegmentedControl.selectedSegmentIndex {
         case 2: return 25
-        case 1: return VerseController.shared.memorizingVerses?.verses?.count ?? 0
+        case 1: return VerseController.shared.memorizingVerses?.count ?? 0
         case 0: return EntryController.shared.allEntries.count
         default: return 0
         }
@@ -52,9 +52,8 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // TODO: case 2 : Put the specific mastery verses into their own array.
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "memoryCell", for: indexPath) as? MemorizeCell else { return UITableViewCell() }
-            if let verses = VerseController.shared.memorizingVerses?.verses?.allObjects as? [VerseCD] {
-                cell.verse = verses[indexPath.row]
-            }
+            let verseSet = VerseController.shared.memorizingVerses?[indexPath.row]
+            cell.memorizedVerseSet = verseSet
             return cell
         // TODO: Custom cell that remembers if the verse was memorized. Allows for deletion. ☑️
         case 0:
@@ -102,9 +101,7 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
             destinationVC.parentSelectedIndex = 2
         case 1:
             destinationVC.parentSelectedIndex = 1
-            if let verses = VerseController.shared.memorizingVerses?.verses?.allObjects as? [VerseCD] {
-                destinationVC.verse = verses[indexPath.row]
-            }
+            destinationVC.verses = VerseController.shared.memorizingVerses?[indexPath.row]
         case 0:
             destinationVC.parentSelectedIndex = 0
             destinationVC.entry = EntryController.shared.allEntries[indexPath.row]
