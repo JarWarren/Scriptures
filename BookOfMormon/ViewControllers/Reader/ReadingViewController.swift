@@ -17,6 +17,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet var highlighterButtonView: UIView!
+    @IBOutlet weak var highlighterButtonViewButton: UIButton!
     @IBOutlet weak var darkView: UIView!
     var subviews = [UIView]() {
         didSet {
@@ -90,7 +91,9 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.verseCoreData = verses?[indexPath.row]
         }
         if cell.verseCoreData?.isHighlighted == true {
-            cell.backgroundColor = #colorLiteral(red: 1, green: 0.8192489743, blue: 0.8509001136, alpha: 1)
+            if let color = cell.verseCoreData?.color {
+                cell.backgroundColor = HighlighterColorKey.colorDictionary[color]
+            }
         } else {
             cell.backgroundColor = UIColor.white
         }
@@ -113,7 +116,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         hideSubviews()
     }
-
+    
     // MARK: - Actions
     @IBAction func navigationButtonTapped(_ sender: UIButton) {
         
@@ -159,6 +162,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             case 0: // Highlight
                 if selectedVerse?.isHighlighted == nil || selectedVerse?.isHighlighted == false {
                     selectedVerse?.isHighlighted = true
+                    selectedVerse?.color = Int64(HighlighterColorController.shared.currentColorAsInt)
                 } else {
                     selectedVerse?.isHighlighted = false
                 }
@@ -211,6 +215,11 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
                     memorizeView.widthAnchor.constraint(equalToConstant: 200)])
                 memorizeView.verse = selectedVerse
                 
+                guard let verseInt = selectedVerse?.verse else { return }
+                if Int(verseInt) == selectedVerse?.chapter?.verses?.count || Int(verseInt) == selectedVerse?.section?.verses?.count {
+                    memorizeView.isFinalVerse = true
+                }
+                
             case 3: // Copy
                 UIPasteboard.general.string = selectedVerse?.text
                 
@@ -235,7 +244,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         hideSubviews()
         switch colorViewIsVisible {
         case false :
-            guard let colorView = Bundle.main.loadNibNamed("HighlighterColors", owner: nil, options: nil)![0] as? HighlighterColors else { return }
+            guard let colorView = Bundle.main.loadNibNamed("HighlighterColors", owner: nil, options: nil)![0] as? HighlighterColorsView else { return }
             colorView.translatesAutoresizingMaskIntoConstraints = false
             darkenBackground()
             self.view.addSubview(colorView)
@@ -266,6 +275,8 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func setupHighlighterButton() {
         
         self.highlightColorButton = UIBarButtonItem(customView: highlighterButtonView)
+        self.highlighterButtonViewButton.backgroundColor = HighlighterColorController.shared.currentColor
+        self.highlighterButtonViewButton.layer.cornerRadius = 5
         highlighterButtonView.layer.cornerRadius = 5
         highlighterButtonView.layer.borderColor = UIColor.lightGray.cgColor
         highlighterButtonView.layer.borderWidth = 1
@@ -355,6 +366,11 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func darkenBackground() {
         darkView.isHidden = false
+    }
+    
+    func updateColorButton () {
+        
+        self.highlighterButtonViewButton.backgroundColor = HighlighterColorController.shared.currentColor
     }
     
     func findBookmarkLocation() {

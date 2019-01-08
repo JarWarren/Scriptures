@@ -25,6 +25,11 @@ class MemorizeView: UIView {
     var minIndex = 0
     var maxIndex = 0
     var currentIndex = 0
+    var isFinalVerse = false {
+        didSet {
+            addButton.isHidden = true
+        }
+    }
     var verse: VerseCD? {
         didSet {
             updateView()
@@ -42,9 +47,17 @@ class MemorizeView: UIView {
     }
     
     @IBAction func memorizeButtonTapped(_ sender: Any) {
-        let indexSet = IndexSet(integersIn: minIndex...currentIndex)
-        if let versesToBeMemorized = chapter?.verses?.objects(at: indexSet) as? [VerseCD] {
-            VerseController.shared.memorize(verses: versesToBeMemorized)
+        let indexSet = IndexSet(integersIn: minIndex...(currentIndex + minIndex))
+        switch isDoctrine {
+        case true:
+            if let versesToBeMemorized = section?.verses?.objects(at: indexSet) as? [VerseCD] {
+                VerseController.shared.memorize(verses: versesToBeMemorized)
+            }
+        case false:
+            if let versesToBeMemorized = chapter?.verses?.objects(at: indexSet) as? [VerseCD] {
+                VerseController.shared.memorize(verses: versesToBeMemorized)
+                
+            }
         }
         delegate?.hideSubviews()
     }
@@ -52,6 +65,7 @@ class MemorizeView: UIView {
     @IBAction func addButtonTapped(_ sender: Any) {
         
         rightButton.isHidden = false
+        leftButton.isHidden = false
         addButton.isHidden = true
         endLabel.isHidden = false
         
@@ -66,16 +80,19 @@ class MemorizeView: UIView {
             printVerses(verses: verses)
             allVerses = verses
             maxIndex = verses.count - 1
-            currentIndex += 1
-            endLabel.text = verses[currentIndex].reference
+            endLabel.text = verses[1].reference
         case false:
             let indexSet = IndexSet(integersIn: currentIndex...(chapter?.verses?.count)! - 1)
             guard let verses = chapter?.verses?.objects(at: indexSet) as? [VerseCD] else { return }
             printVerses(verses: verses)
             allVerses = verses
-            currentIndex += 1
             maxIndex = verses.count - 1
-            endLabel.text = verses[currentIndex].reference
+            endLabel.text = verses[1].reference
+        }
+        currentIndex = 1
+        if maxIndex == 1 {
+            leftButton.isHidden = false
+            rightButton.isHidden = true
         }
     }
     
@@ -85,7 +102,7 @@ class MemorizeView: UIView {
         case 0:
             currentIndex -= 1
             rightButton.isHidden = false
-            if currentIndex == minIndex {
+            if currentIndex == 0 {
                 leftButton.isHidden = true
                 rightButton.isHidden = true
                 addButton.isHidden = false

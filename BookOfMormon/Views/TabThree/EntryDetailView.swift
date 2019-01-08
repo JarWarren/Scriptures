@@ -58,16 +58,18 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
             guard let unwrappedVerses = verseHolder.verses?.array as? [VerseCD] else { return }
             switch verseHolder.verses?.count {
             case 1:
-                titleTextField.text = unwrappedVerses.first?.reference
-                bodyTextView.text = unwrappedVerses.first?.text
+                guard let verse = unwrappedVerses.first, let text = unwrappedVerses.first?.text else { return }
+                titleTextField.text = verse.reference
+                bodyTextView.text = "\(verse.verse))  " + text
             default:
                 guard let first = unwrappedVerses.first?.reference, let last = unwrappedVerses.last?.reference else { return }
                 titleTextField.text = first + " - " + last
                 var bodyText = ""
                 for verse in unwrappedVerses {
                     if let verseText = verse.text {
+                        bodyText.append("\(verse.verse))  ")
                         bodyText.append(verseText)
-                        bodyText.append("\n")
+                        bodyText.append("\n\n")
                     }
                 }
                 bodyTextView.text = bodyText

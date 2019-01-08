@@ -57,7 +57,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDa-x5-a3G">
-                                                    <rect key="frame" x="12" y="11.5" width="42" height="20.5"/>
+                                                    <rect key="frame" x="12" y="12" width="42" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -73,7 +73,9 @@
                                             <constraints>
                                                 <constraint firstItem="rDa-x5-a3G" firstAttribute="centerY" secondItem="pU0-dk-khh" secondAttribute="centerY" id="3Kl-fY-ekP"/>
                                                 <constraint firstItem="jGa-AZ-i9P" firstAttribute="centerY" secondItem="pU0-dk-khh" secondAttribute="centerY" id="d7a-2w-pGx"/>
+                                                <constraint firstAttribute="bottom" secondItem="rDa-x5-a3G" secondAttribute="bottom" constant="12" id="rzF-Xv-gxp"/>
                                                 <constraint firstAttribute="trailing" secondItem="jGa-AZ-i9P" secondAttribute="trailing" constant="12" id="uVG-HU-4Yk"/>
+                                                <constraint firstItem="rDa-x5-a3G" firstAttribute="top" secondItem="pU0-dk-khh" secondAttribute="top" constant="12" id="y5h-Gp-rfZ"/>
                                                 <constraint firstItem="rDa-x5-a3G" firstAttribute="leading" secondItem="pU0-dk-khh" secondAttribute="leading" constant="12" id="zoT-6q-dfk"/>
                                             </constraints>
                                         </tableViewCellContentView>

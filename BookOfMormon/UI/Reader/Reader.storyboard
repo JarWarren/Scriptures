@@ -160,6 +160,7 @@
                         <outlet property="chapterReferenceLabel" destination="cmw-2k-d59" id="L2g-Gl-YQx"/>
                         <outlet property="darkView" destination="4jO-2P-eiN" id="3LN-Nv-Ah3"/>
                         <outlet property="highlighterButtonView" destination="KRG-xE-bKD" id="8FI-y3-nXQ"/>
+                        <outlet property="highlighterButtonViewButton" destination="gEC-FK-oJ0" id="Qsf-k4-4ti"/>
                         <outlet property="leftButton" destination="BQa-oZ-Hy7" id="qbp-DP-dRh"/>
                         <outlet property="rightButton" destination="Cps-h7-8cv" id="eQq-3O-SP1"/>
                         <outlet property="versesTableView" destination="Re6-Ul-msQ" id="4kQ-rn-dWM"/>
