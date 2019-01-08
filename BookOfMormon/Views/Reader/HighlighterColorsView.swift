@@ -20,6 +20,7 @@ class HighlighterColors: UIView {
     @IBOutlet weak var colorSeven: UIButton!
     @IBOutlet weak var colorEight: UIButton!
     @IBOutlet weak var colorNine: UIButton!
+    var delegate: ColorViewDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,8 +29,7 @@ class HighlighterColors: UIView {
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
-        
-        self.isHidden = true
+        delegate?.hideSubviews()
     }
     
     func setupButtons() {
@@ -74,4 +74,8 @@ class HighlighterColors: UIView {
         colorNine.layer.borderWidth = 1
         colorNine.layer.borderColor = UIColor.lightGray.cgColor
     }
+}
+
+protocol ColorViewDelegate: class {
+    func hideSubviews()
 }

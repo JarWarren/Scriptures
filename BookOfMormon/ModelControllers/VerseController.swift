@@ -14,24 +14,26 @@ class VerseController {
     
     static let shared = VerseController()
     private init() {}
-    var memorizingVerses: MemorizedVersesCD? {
+    var memorizingVerses: [MemorizedVersesCD]? {
         
         let fetchRequest: NSFetchRequest <MemorizedVersesCD> = MemorizedVersesCD.fetchRequest()
         let memorized = try? CoreDataStack.managedObjectContext.fetch(fetchRequest)
-        return memorized?.first ?? MemorizedVersesCD(context: CoreDataStack.managedObjectContext)
+        return memorized ?? []
     }
     //TODO: save memorizingVerses and fetch it.
     
-    func memorize(verse: VerseCD) {
+    func memorize(verses: [VerseCD]) {
         
-        verse.memorized = false
-        memorizingVerses?.addToVerses(verse)
+        let newMemorized = MemorizedVersesCD(memorized: false)
+        for verse in verses {
+            newMemorized.addToVerses(verse)
+        }
         try? CoreDataStack.managedObjectContext.save()
     }
     
-    func toggleMemorized(verse: VerseCD) {
+    func toggleMemorized(verses: MemorizedVersesCD) {
         
-        verse.memorized.toggle()
+        verses.memorized.toggle()
         try? CoreDataStack.managedObjectContext.save()
     }
     

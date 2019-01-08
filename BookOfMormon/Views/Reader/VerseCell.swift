@@ -29,13 +29,13 @@ class VerseCell: UITableViewCell {
     
     @IBAction func noteButtonTapped(_ sender: UIButton) {
         delegate?.selectedVerse = verseCoreData
-        delegate?.cellMenuButtonTapped(sender)
+        delegate?.menuButtonTapped(sender)
     }
 }
 
 protocol VerseCellDelegate: class {
     
-    func cellMenuButtonTapped(_ sender: UIButton)
+    func menuButtonTapped(_ sender: UIButton)
     var selectedVerse: VerseCD? { get set }
     //TODO: Verify that the note displayed is from the correct verse.
 }

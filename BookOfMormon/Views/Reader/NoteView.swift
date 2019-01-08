@@ -77,9 +77,8 @@ class NoteView: UIView, UITextFieldDelegate, UITextViewDelegate {
     }
     
     @IBAction func exitButtonTapped(_ sender: Any) {
-        
-        self.isHidden = true
         delegate?.noteViewIsVisible = false
+        delegate?.hideSubviews()
     }
     
     @IBAction func deleteButtonTapped(_ sender: Any) {
@@ -112,4 +111,5 @@ class NoteView: UIView, UITextFieldDelegate, UITextViewDelegate {
 
 protocol NoteViewDelegate: class {
     var noteViewIsVisible: Bool { get set }
+    func hideSubviews()
 }

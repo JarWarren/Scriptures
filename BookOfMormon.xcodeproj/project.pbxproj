@@ -36,6 +36,7 @@
 		7EC306EF21E1D8BD00CC6103 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306EE21E1D8BD00CC6103 /* DateHelper.swift */; };
 		7EC5852F21E4038000116A5C /* Memorize.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EC5852E21E4038000116A5C /* Memorize.xib */; };
 		7EC5853121E403AC00116A5C /* MemorizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC5853021E403AC00116A5C /* MemorizeView.swift */; };
+		7EC5853721E42DC300116A5C /* MemorizedVerse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC5853621E42DC300116A5C /* MemorizedVerse.swift */; };
 		7ECD8AA621C9657E00AED39B /* doctrine-and-covenants.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA121C9657E00AED39B /* doctrine-and-covenants.json */; };
 		7ECD8AA721C9657E00AED39B /* book-of-mormon.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA221C9657E00AED39B /* book-of-mormon.json */; };
 		7ECD8AA821C9657E00AED39B /* old-testament.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA321C9657E00AED39B /* old-testament.json */; };
@@ -94,6 +95,7 @@
 		7EC306EE21E1D8BD00CC6103 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		7EC5852E21E4038000116A5C /* Memorize.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Memorize.xib; sourceTree = "<group>"; };
 		7EC5853021E403AC00116A5C /* MemorizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeView.swift; sourceTree = "<group>"; };
+		7EC5853621E42DC300116A5C /* MemorizedVerse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizedVerse.swift; sourceTree = "<group>"; };
 		7ECD8AA121C9657E00AED39B /* doctrine-and-covenants.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "doctrine-and-covenants.json"; sourceTree = "<group>"; };
 		7ECD8AA221C9657E00AED39B /* book-of-mormon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "book-of-mormon.json"; sourceTree = "<group>"; };
 		7ECD8AA321C9657E00AED39B /* old-testament.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "old-testament.json"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				7EFC384F21DAC271000F0F75 /* BookOfMormon.xcdatamodeld */,
+				7EC5853521E42DA200116A5C /* Reader */,
 				7EDD2B6621DEAD1B009A834B /* Testaments */,
 				7ECE659021E3CB6600460CEF /* TabOne */,
 				7ECE658F21E3CB5E00460CEF /* TabTwo */,
@@ -307,6 +310,14 @@
 				7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		7EC5853521E42DA200116A5C /* Reader */ = {
+			isa = PBXGroup;
+			children = (
+				7EC5853621E42DC300116A5C /* MemorizedVerse.swift */,
+			);
+			path = Reader;
 			sourceTree = "<group>";
 		};
 		7ECD8A9F21C9602000AED39B /* HelperFiles */ = {
@@ -498,6 +509,7 @@
 				7EFC386F21DAD647000F0F75 /* ChapterCD+CoreDataProperties.swift in Sources */,
 				7EC306EB21E19F3D00CC6103 /* HighlighterColorsView.swift in Sources */,
 				7E2CFC6C21DD663B000F330B /* SectionCD+CoreDataClass.swift in Sources */,
+				7EC5853721E42DC300116A5C /* MemorizedVerse.swift in Sources */,
 				7EFC387321DAD8F7000F0F75 /* VerseCD+CoreDataProperties.swift in Sources */,
 				7E2CFC6921DD652A000F330B /* DoctrineCD.swift in Sources */,
 				7E748C5F21CB41F100ED9C8F /* ReadingViewController.swift in Sources */,
