@@ -21,6 +21,8 @@ class MemorizeCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        referenceLabel.text = "No saved passages."
+        referenceLabel.numberOfLines = 0
     }
     
     func updateCell() {

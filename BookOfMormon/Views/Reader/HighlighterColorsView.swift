@@ -1,5 +1,5 @@
 //
-//  HighlighterColors.swift
+//  HighlighterColorsView.swift
 //  BookOfMormon
 //
 //  Created by Jared Warren on 1/5/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HighlighterColors: UIView {
+class HighlighterColorsView: UIView {
     
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var colorOne: UIButton!
@@ -29,6 +29,13 @@ class HighlighterColors: UIView {
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
+        delegate?.hideSubviews()
+    }
+    
+    @IBAction func colorButtonTapped(_ sender: UIButton) {
+        
+        HighlighterColorController.shared.changeColor(to: sender.tag)
+        delegate?.updateColorButton()
         delegate?.hideSubviews()
     }
     
@@ -78,4 +85,5 @@ class HighlighterColors: UIView {
 
 protocol ColorViewDelegate: class {
     func hideSubviews()
+    func updateColorButton()
 }
