@@ -19,7 +19,6 @@
 		7E43B3CB21C5DA75000845DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43B3CA21C5DA75000845DA /* AppDelegate.swift */; };
 		7E43B3CD21C5DA75000845DA /* TabOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43B3CC21C5DA75000845DA /* TabOne.swift */; };
 		7E43B3D221C5DA76000845DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E43B3D121C5DA76000845DA /* Assets.xcassets */; };
-		7E43B3EA21C5F2E2000845DA /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43B3E921C5F2E2000845DA /* Goal.swift */; };
 		7E43B3EC21C5F406000845DA /* GoalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43B3EB21C5F406000845DA /* GoalController.swift */; };
 		7E748C5F21CB41F100ED9C8F /* ReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E748C5E21CB41F100ED9C8F /* ReadingViewController.swift */; };
 		7E748C6121CB422200ED9C8F /* TabThree.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E748C6021CB422200ED9C8F /* TabThree.storyboard */; };
@@ -51,6 +50,13 @@
 		7ECD8AB921C9AA2200AED39B /* TestamentKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8AB821C9AA2200AED39B /* TestamentKeys.swift */; };
 		7ECD8ABB21C9AC0B00AED39B /* ChapterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8ABA21C9AC0B00AED39B /* ChapterHeader.swift */; };
 		7ECD8ABD21C9B5CA00AED39B /* TabThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */; };
+		7ECD944D21E52697004327B1 /* CurrentGoal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD944C21E52697004327B1 /* CurrentGoal.xib */; };
+		7ECD944F21E526AC004327B1 /* NewGoal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD944E21E526AC004327B1 /* NewGoal.xib */; };
+		7ECD945221E52726004327B1 /* CurrentGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945121E52726004327B1 /* CurrentGoalView.swift */; };
+		7ECD945421E5273A004327B1 /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945321E5273A004327B1 /* NewGoalView.swift */; };
+		7ECD945621E52750004327B1 /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945521E52750004327B1 /* GoalCell.swift */; };
+		7ECD945821E52D46004327B1 /* GoalInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD945721E52D46004327B1 /* GoalInfo.xib */; };
+		7ECD945A21E538E1004327B1 /* GoalCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945921E538E1004327B1 /* GoalCD.swift */; };
 		7EDD2B6821DEB4C0009A834B /* BookmarkCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDD2B6721DEB4C0009A834B /* BookmarkCD.swift */; };
 		7EDD2B6A21DEB543009A834B /* BookmarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDD2B6921DEB543009A834B /* BookmarkController.swift */; };
 		7EFC384221DA801F000F0F75 /* VerseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384121DA801F000F0F75 /* VerseCell.swift */; };
@@ -80,7 +86,6 @@
 		7E43B3CC21C5DA75000845DA /* TabOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabOne.swift; sourceTree = "<group>"; };
 		7E43B3D121C5DA76000845DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E43B3D621C5DA76000845DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7E43B3E921C5F2E2000845DA /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		7E43B3EB21C5F406000845DA /* GoalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalController.swift; sourceTree = "<group>"; };
 		7E748C5E21CB41F100ED9C8F /* ReadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingViewController.swift; sourceTree = "<group>"; };
 		7E748C6021CB422200ED9C8F /* TabThree.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabThree.storyboard; sourceTree = "<group>"; };
@@ -112,6 +117,13 @@
 		7ECD8AB821C9AA2200AED39B /* TestamentKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestamentKeys.swift; sourceTree = "<group>"; };
 		7ECD8ABA21C9AC0B00AED39B /* ChapterHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterHeader.swift; sourceTree = "<group>"; };
 		7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabThree.swift; sourceTree = "<group>"; };
+		7ECD944C21E52697004327B1 /* CurrentGoal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentGoal.xib; sourceTree = "<group>"; };
+		7ECD944E21E526AC004327B1 /* NewGoal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewGoal.xib; sourceTree = "<group>"; };
+		7ECD945121E52726004327B1 /* CurrentGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGoalView.swift; sourceTree = "<group>"; };
+		7ECD945321E5273A004327B1 /* NewGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalView.swift; sourceTree = "<group>"; };
+		7ECD945521E52750004327B1 /* GoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
+		7ECD945721E52D46004327B1 /* GoalInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalInfo.xib; sourceTree = "<group>"; };
+		7ECD945921E538E1004327B1 /* GoalCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCD.swift; sourceTree = "<group>"; };
 		7EDD2B6721DEB4C0009A834B /* BookmarkCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCD.swift; sourceTree = "<group>"; };
 		7EDD2B6921DEB543009A834B /* BookmarkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
 		7EFC384121DA801F000F0F75 /* VerseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseCell.swift; sourceTree = "<group>"; };
@@ -137,14 +149,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7E238BE221CB34CC001ADF4F /* Tabs */ = {
+		7E238BE221CB34CC001ADF4F /* Tab2and3 */ = {
 			isa = PBXGroup;
 			children = (
-				7E238BD521CB215D001ADF4F /* TabOne.storyboard */,
 				7E238BD721CB21D5001ADF4F /* TabTwo.storyboard */,
 				7E748C6021CB422200ED9C8F /* TabThree.storyboard */,
 			);
-			path = Tabs;
+			path = Tab2and3;
 			sourceTree = "<group>";
 		};
 		7E238BE421CB34FC001ADF4F /* TabTwo */ = {
@@ -202,7 +213,8 @@
 			children = (
 				7EC306ED21E1D70E00CC6103 /* Main */,
 				7EC306E721E1981200CC6103 /* Reader */,
-				7E238BE221CB34CC001ADF4F /* Tabs */,
+				7ECD944321E52046004327B1 /* TabOne */,
+				7E238BE221CB34CC001ADF4F /* Tab2and3 */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -248,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				7EFC384021DA7FDF000F0F75 /* Reader */,
+				7ECD945021E5270D004327B1 /* TabOne */,
 				7E238BE421CB34FC001ADF4F /* TabTwo */,
 				7EC306E021E18C6400CC6103 /* TabThree */,
 			);
@@ -349,6 +362,27 @@
 			path = JSONTestaments;
 			sourceTree = "<group>";
 		};
+		7ECD944321E52046004327B1 /* TabOne */ = {
+			isa = PBXGroup;
+			children = (
+				7E238BD521CB215D001ADF4F /* TabOne.storyboard */,
+				7ECD944C21E52697004327B1 /* CurrentGoal.xib */,
+				7ECD945721E52D46004327B1 /* GoalInfo.xib */,
+				7ECD944E21E526AC004327B1 /* NewGoal.xib */,
+			);
+			path = TabOne;
+			sourceTree = "<group>";
+		};
+		7ECD945021E5270D004327B1 /* TabOne */ = {
+			isa = PBXGroup;
+			children = (
+				7ECD945121E52726004327B1 /* CurrentGoalView.swift */,
+				7ECD945321E5273A004327B1 /* NewGoalView.swift */,
+				7ECD945521E52750004327B1 /* GoalCell.swift */,
+			);
+			path = TabOne;
+			sourceTree = "<group>";
+		};
 		7ECE658E21E3CB5000460CEF /* TabThree */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,7 +402,7 @@
 		7ECE659021E3CB6600460CEF /* TabOne */ = {
 			isa = PBXGroup;
 			children = (
-				7E43B3E921C5F2E2000845DA /* Goal.swift */,
+				7ECD945921E538E1004327B1 /* GoalCD.swift */,
 			);
 			path = TabOne;
 			sourceTree = "<group>";
@@ -465,7 +499,9 @@
 				7E238BD621CB215D001ADF4F /* TabOne.storyboard in Resources */,
 				7ECD8AA621C9657E00AED39B /* doctrine-and-covenants.json in Resources */,
 				7E43B3D221C5DA76000845DA /* Assets.xcassets in Resources */,
+				7ECD944D21E52697004327B1 /* CurrentGoal.xib in Resources */,
 				7E748C6521CB424F00ED9C8F /* Main.storyboard in Resources */,
+				7ECD945821E52D46004327B1 /* GoalInfo.xib in Resources */,
 				7EC306E921E19F2700CC6103 /* HighlighterColors.xib in Resources */,
 				7E748C6721CB425E00ED9C8F /* LaunchScreen.storyboard in Resources */,
 				7EC5852F21E4038000116A5C /* Memorize.xib in Resources */,
@@ -474,6 +510,7 @@
 				7ECD8AAA21C9657E00AED39B /* new-testament.json in Resources */,
 				7ECD8AA821C9657E00AED39B /* old-testament.json in Resources */,
 				7E238BD821CB21D5001ADF4F /* TabTwo.storyboard in Resources */,
+				7ECD944F21E526AC004327B1 /* NewGoal.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,14 +527,17 @@
 				7EFC386A21DAD5B1000F0F75 /* BooksCD+CoreDataClass.swift in Sources */,
 				7E43B3CD21C5DA75000845DA /* TabOne.swift in Sources */,
 				7E43B3EC21C5F406000845DA /* GoalController.swift in Sources */,
+				7ECD945A21E538E1004327B1 /* GoalCD.swift in Sources */,
 				7EFC386B21DAD5B1000F0F75 /* BooksCD+CoreDataProperties.swift in Sources */,
 				7ECD8AB521C98FB700AED39B /* TabTwo.swift in Sources */,
 				7ECD8ABD21C9B5CA00AED39B /* TabThree.swift in Sources */,
+				7ECD945221E52726004327B1 /* CurrentGoalView.swift in Sources */,
 				7ECD8AAF21C968C100AED39B /* ScriptureController.swift in Sources */,
 				7ECD8AB721C992F000AED39B /* ChapterCell.swift in Sources */,
+				7ECD945621E52750004327B1 /* GoalCell.swift in Sources */,
+				7ECD945421E5273A004327B1 /* NewGoalView.swift in Sources */,
 				7E2B63F821E4614F00A01D82 /* HighlighterColorController.swift in Sources */,
 				7EC306E621E18F8100CC6103 /* EntryCD.swift in Sources */,
-				7E43B3EA21C5F2E2000845DA /* Goal.swift in Sources */,
 				7EAE98DB21E3DCF700255166 /* MemorizeCell.swift in Sources */,
 				7EDD2B6A21DEB543009A834B /* BookmarkController.swift in Sources */,
 				7EC306E421E18EAD00CC6103 /* EntryController.swift in Sources */,

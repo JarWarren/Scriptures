@@ -54,11 +54,11 @@
             </objects>
             <point key="canvasLocation" x="2700" y="-261"/>
         </scene>
-        <!--Chapters-->
+        <!--Books-->
         <scene sceneID="VJv-bd-HCZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="48z-gE-7xG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chapters" id="6w7-xj-QZv"/>
+                    <tabBarItem key="tabBarItem" title="Books" id="6w7-xj-QZv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="wf9-t7-eLs">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>

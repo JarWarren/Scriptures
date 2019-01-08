@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Chapters-->
+        <!--Books-->
         <scene sceneID="ree-Pa-zdP">
             <objects>
                 <viewController id="BUy-Yb-SMv" customClass="TabTwo" customModule="BookOfMormon" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TeF-Sk-wGb">
-                                <rect key="frame" x="8" y="56" width="359" height="611"/>
+                                <rect key="frame" x="8" y="49" width="359" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="upn-b5-4Jx">
                                     <size key="itemSize" width="39" height="41"/>
@@ -29,15 +29,19 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="chapterCell" id="EPn-Bh-MF6" customClass="ChapterCell" customModule="BookOfMormon" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="70" width="39" height="41"/>
+                                        <rect key="frame" x="0.0" y="70" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="39" height="41"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⊛" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r96-go-FGd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="39" height="41"/>
+                                                    <rect key="frame" x="0.5" y="0.0" width="40" height="40"/>
                                                     <color key="backgroundColor" red="1" green="0.82751153641765585" blue="0.85232698315906685" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="V4X-mY-Eyy"/>
+                                                        <constraint firstAttribute="width" secondItem="r96-go-FGd" secondAttribute="height" multiplier="1:1" id="bZY-ii-6Nk"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -45,13 +49,10 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="r96-go-FGd" secondAttribute="trailing" id="3Ym-sj-bKO"/>
-                                            <constraint firstItem="r96-go-FGd" firstAttribute="width" secondItem="EPn-Bh-MF6" secondAttribute="width" id="EmJ-Wr-u1C"/>
-                                            <constraint firstItem="r96-go-FGd" firstAttribute="height" secondItem="EPn-Bh-MF6" secondAttribute="height" id="OGi-mD-3qH"/>
-                                            <constraint firstItem="r96-go-FGd" firstAttribute="leading" secondItem="EPn-Bh-MF6" secondAttribute="leading" id="QEs-Zd-pIm"/>
-                                            <constraint firstAttribute="bottom" secondItem="r96-go-FGd" secondAttribute="bottom" id="pKw-Gj-ESD"/>
+                                            <constraint firstItem="r96-go-FGd" firstAttribute="centerX" secondItem="EPn-Bh-MF6" secondAttribute="centerX" id="m0Q-gd-kgQ"/>
                                             <constraint firstItem="r96-go-FGd" firstAttribute="top" secondItem="EPn-Bh-MF6" secondAttribute="top" id="wET-5l-62y"/>
                                         </constraints>
+                                        <size key="customSize" width="40" height="40"/>
                                         <connections>
                                             <outlet property="chapterLabel" destination="r96-go-FGd" id="qhL-ZA-xn6"/>
                                             <segue destination="jIr-G6-Iaj" kind="show" id="jiX-ZR-iJy"/>
@@ -98,7 +99,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fQd-6P-NcT" firstAttribute="trailing" secondItem="tBv-2G-U1T" secondAttribute="trailing" constant="8" id="Dhs-Ua-tog"/>
-                            <constraint firstItem="TeF-Sk-wGb" firstAttribute="top" secondItem="tBv-2G-U1T" secondAttribute="bottom" constant="8" id="JAG-C1-huh"/>
+                            <constraint firstItem="TeF-Sk-wGb" firstAttribute="top" secondItem="tBv-2G-U1T" secondAttribute="bottom" constant="1" id="JAG-C1-huh"/>
                             <constraint firstItem="fQd-6P-NcT" firstAttribute="trailing" secondItem="TeF-Sk-wGb" secondAttribute="trailing" constant="8" id="NMY-r9-42t"/>
                             <constraint firstItem="tBv-2G-U1T" firstAttribute="leading" secondItem="fQd-6P-NcT" secondAttribute="leading" constant="8" id="Tr4-SY-VcC"/>
                             <constraint firstItem="TeF-Sk-wGb" firstAttribute="leading" secondItem="fQd-6P-NcT" secondAttribute="leading" constant="8" id="Xdt-yd-8ok"/>
@@ -107,7 +108,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fQd-6P-NcT"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Chapters" id="2ca-h7-tVP">
+                    <navigationItem key="navigationItem" title="Books" id="2ca-h7-tVP">
                         <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="rOR-NW-d6x"/>
                     </navigationItem>
                     <connections>

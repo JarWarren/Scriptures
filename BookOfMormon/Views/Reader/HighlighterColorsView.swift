@@ -87,3 +87,8 @@ protocol ColorViewDelegate: class {
     func hideSubviews()
     func updateColorButton()
 }
+
+class Arkin {
+    
+
+}

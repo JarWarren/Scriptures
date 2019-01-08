@@ -65,7 +65,6 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let verseSet = VerseController.shared.memorizingVerses?[indexPath.row]
             cell.memorizedVerseSet = verseSet
             return cell
-        // TODO: Custom cell that remembers if the verse was memorized. Allows for deletion. ☑️
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath)
             let cellEntry = EntryController.shared.allEntries[indexPath.row]
@@ -79,7 +78,22 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
+        switch tabThreeSegmentedControl.selectedSegmentIndex {
+            
+        case 1:
+            if editingStyle == .delete {
+                guard let deletedMemorization = VerseController.shared.memorizingVerses?[indexPath.row] else { return }
+                VerseController.shared.deleteMemorizedVerses(verses: deletedMemorization)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        case 0:
+            if editingStyle == .delete {
+                let deletedEntry = EntryController.shared.allEntries[indexPath.row]
+                EntryController.shared.deleteEntry(entry: deletedEntry)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        default: return
+        }
     }
     
     func setupMainView() {
