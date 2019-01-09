@@ -8,10 +8,11 @@
 
 import UIKit
 
-class TabOne: UIViewController, CurrentGoalViewDelegate {
+class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, CurrentGoalViewDelegate, NewGoalViewDelegate {
     
     // MARK: - Outlets and Properties
     @IBOutlet weak var tabOneSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var allGoalsTableView: UITableView!
     var barButton: UIBarButtonItem?
     var chaptersToRead = 0
     var subviews = [UIView]()
@@ -21,12 +22,15 @@ class TabOne: UIViewController, CurrentGoalViewDelegate {
         super.viewDidLoad()
         
         setupButtons()
+        allGoalsTableView.dataSource = self
+        allGoalsTableView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupGoal()
         currentGoalView()
+        tabBarController?.tabBar.tintColor = #colorLiteral(red: 0, green: 0.5016700625, blue: 0.005194439087, alpha: 1)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -84,6 +88,7 @@ class TabOne: UIViewController, CurrentGoalViewDelegate {
         
         guard let newGoalView = Bundle.main.loadNibNamed("NewGoal", owner: nil, options: nil)![0] as? NewGoalView else { return }
         self.view.addSubview(newGoalView)
+        newGoalView.delegate = self
         subviews.append(newGoalView)
         newGoalView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -91,6 +96,52 @@ class TabOne: UIViewController, CurrentGoalViewDelegate {
             newGoalView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             newGoalView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             newGoalView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)])
+    }
+    
+    func allGoalsView() {
+        
+        tabOneSegmentedControl.selectedSegmentIndex = 2
+        tabOneSegmentedControl.sendActions(for: .valueChanged)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return GoalController.shared.allGoals?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell", for: indexPath) as? GoalCell else { return UITableViewCell() }
+        let goal = GoalController.shared.allGoals?[indexPath.row]
+        cell.goal = goal
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            guard let deadGoal = GoalController.shared.allGoals?[indexPath.row],
+                let goalName = GoalController.shared.allGoals?[indexPath.row].name else { return }
+            let alertController = UIAlertController(title: "Delete \(goalName)?", message: "This action cannot be undone", preferredStyle: .alert)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+                GoalController.shared.delete(goal: deadGoal)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alertController.addAction(deleteAction)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        if editingStyle == .insert {
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
     }
     
     // MARK: Actions

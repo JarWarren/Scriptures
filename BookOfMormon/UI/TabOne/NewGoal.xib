@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,7 +30,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q34-ur-GMZ">
-                    <rect key="frame" x="163" y="169" width="49" height="30"/>
+                    <rect key="frame" x="163" y="427" width="49" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="LrP-yJ-EOD"/>
                     </constraints>
@@ -66,21 +67,20 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6C-Wj-Bzs" userLabel="Pickers">
+                <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="k6C-Wj-Bzs" userLabel="Pickers">
                     <rect key="frame" x="0.0" y="469" width="375" height="120"/>
                     <subviews>
                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbh-oS-mhz">
-                            <rect key="frame" x="0.0" y="0.0" width="135" height="120"/>
+                            <rect key="frame" x="0.0" y="0.0" width="97" height="120"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="120" id="cHH-7M-d0X"/>
                             </constraints>
                         </pickerView>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rkB-uk-5zc">
-                            <rect key="frame" x="135" y="0.0" width="240" height="120"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="frame" x="105" y="0.0" width="270" height="120"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="240" id="Fd7-rg-yN7"/>
                                 <constraint firstAttribute="height" constant="120" id="NgU-4b-WUN"/>
+                                <constraint firstAttribute="width" constant="270" id="gaq-US-1vc"/>
                             </constraints>
                             <date key="date" timeIntervalSinceReferenceDate="566772502.73772097">
                                 <!--2018-12-17 20:48:22 +0000-->
@@ -89,7 +89,7 @@
                     </subviews>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Chapters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r4i-Gq-zf5">
-                    <rect key="frame" x="39" y="173.5" width="112" height="20.5"/>
+                    <rect key="frame" x="39" y="432" width="112" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -99,6 +99,7 @@
             <constraints>
                 <constraint firstItem="Hfs-E9-NUh" firstAttribute="centerX" secondItem="fDG-1y-gFH" secondAttribute="centerX" id="3im-Hy-Iog"/>
                 <constraint firstItem="AvC-wS-6Ju" firstAttribute="width" secondItem="oZG-Ck-Wgt" secondAttribute="width" multiplier="0.8" id="49C-Rm-hlL"/>
+                <constraint firstItem="k6C-Wj-Bzs" firstAttribute="top" secondItem="q34-ur-GMZ" secondAttribute="bottom" constant="12" id="4jr-yB-JEK"/>
                 <constraint firstItem="ERy-1j-wg5" firstAttribute="centerX" secondItem="fDG-1y-gFH" secondAttribute="centerX" id="80c-di-cWZ"/>
                 <constraint firstItem="r4i-Gq-zf5" firstAttribute="centerY" secondItem="q34-ur-GMZ" secondAttribute="centerY" id="CnS-Ek-nNj"/>
                 <constraint firstItem="q34-ur-GMZ" firstAttribute="centerX" secondItem="fDG-1y-gFH" secondAttribute="centerX" id="Lyb-P4-ERq"/>
@@ -116,12 +117,12 @@
                 <constraint firstItem="YCg-Tg-AHN" firstAttribute="centerY" secondItem="ERy-1j-wg5" secondAttribute="centerY" id="kaz-Nz-gZi"/>
                 <constraint firstItem="q34-ur-GMZ" firstAttribute="leading" secondItem="r4i-Gq-zf5" secondAttribute="trailing" constant="12" id="nyr-Zb-fFC"/>
                 <constraint firstItem="Rgd-J3-XUr" firstAttribute="leading" secondItem="WdQ-TH-y8E" secondAttribute="trailing" constant="12" id="rVK-Gh-TqI"/>
-                <constraint firstItem="q34-ur-GMZ" firstAttribute="top" secondItem="ERy-1j-wg5" secondAttribute="bottom" constant="8" id="vdo-19-AF2"/>
                 <constraint firstItem="Rgd-J3-XUr" firstAttribute="centerX" secondItem="fDG-1y-gFH" secondAttribute="centerX" id="xD3-WB-Y9G"/>
                 <constraint firstItem="k6C-Wj-Bzs" firstAttribute="centerX" secondItem="fDG-1y-gFH" secondAttribute="centerX" id="ztZ-sd-ql1"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fDG-1y-gFH"/>
             <connections>
+                <outlet property="chaptersLabel" destination="r4i-Gq-zf5" id="0tR-Z3-ON8"/>
                 <outlet property="chaptersTextField" destination="q34-ur-GMZ" id="3c2-i8-DCm"/>
                 <outlet property="datePicker" destination="rkB-uk-5zc" id="9Rn-Rq-PNx"/>
                 <outlet property="goalTypeLabel" destination="WdQ-TH-y8E" id="aNc-CG-cpZ"/>

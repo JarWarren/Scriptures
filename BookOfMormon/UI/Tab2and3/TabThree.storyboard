@@ -93,7 +93,6 @@
                                 <segments>
                                     <segment title="Entries"/>
                                     <segment title="Memorization"/>
-                                    <segment title="Mastery"/>
                                 </segments>
                                 <color key="tintColor" red="0.61915053929999997" green="0.56043829219999997" blue="0.20530300949999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
