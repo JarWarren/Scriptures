@@ -32,7 +32,7 @@
         <scene sceneID="jWs-kZ-Rlt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MTJ-kD-PaF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Goal" id="crU-Xs-wOq"/>
+                    <tabBarItem key="tabBarItem" title="Goal" image="goalTab" id="crU-Xs-wOq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="tCy-WE-ANt">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
@@ -54,11 +54,11 @@
             </objects>
             <point key="canvasLocation" x="2700" y="-261"/>
         </scene>
-        <!--Chapters-->
+        <!--Books-->
         <scene sceneID="VJv-bd-HCZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="48z-gE-7xG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chapters" id="6w7-xj-QZv"/>
+                    <tabBarItem key="tabBarItem" title="Books" image="books" id="6w7-xj-QZv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="wf9-t7-eLs">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
@@ -84,7 +84,7 @@
         <scene sceneID="lcx-ad-BDr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="INC-ZL-ZCr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Study" id="4qL-Jr-wXl"/>
+                    <tabBarItem key="tabBarItem" title="Study" image="study" id="4qL-Jr-wXl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="hEf-z5-bbE">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
@@ -136,4 +136,9 @@
             <point key="canvasLocation" x="4164" y="517"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="books" width="24" height="23"/>
+        <image name="goalTab" width="25.5" height="23"/>
+        <image name="study" width="24.5" height="23"/>
+    </resources>
 </document>

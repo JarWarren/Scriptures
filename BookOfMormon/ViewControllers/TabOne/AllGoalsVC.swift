@@ -35,26 +35,28 @@ class AllGoalsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - TableView DataSource Methods
     // TODO: Goals can be deleted.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return GoalController.shared.allGoals.count
+        return GoalController.shared.allGoals?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell") else { return UITableViewCell() }
-        let goal = GoalController.shared.allGoals[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell") as? GoalCell else { return UITableViewCell() }
+        
+        guard let goal = GoalController.shared.allGoals?[indexPath.row] else { return cell }
         cell.textLabel?.text = goal.name
-        if let progress = goal.currentProgress {
-            cell.detailTextLabel?.text = TestamentKeys.dictionary[goal.goalTestament]! + "  -  \(progress)% Progress"
-        } else {
-            cell.detailTextLabel?.text = TestamentKeys.dictionary[goal.goalTestament]! + "  -  0% Progress"
-        }
+//        if let progress = goal.currentProgress {
+//            cell.detailTextLabel?.text = TestamentKeys.dictionary[goal.goalTestament]! + "  -  \(progress)% Progress"
+//        } else {
+//            cell.detailTextLabel?.text = TestamentKeys.dictionary[goal.goalTestament]! + "  -  0% Progress"
+//        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            let deadGoal = GoalController.shared.allGoals[indexPath.row]
-            let alertController = UIAlertController(title: "Delete \(deadGoal.name)?", message: "This action cannot be undone", preferredStyle: .alert)
+            guard let deadGoal = GoalController.shared.allGoals?[indexPath.row],
+            let goalName = GoalController.shared.allGoals?[indexPath.row].name else { return }
+            let alertController = UIAlertController(title: "Delete \(goalName)?", message: "This action cannot be undone", preferredStyle: .alert)
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
                     GoalController.shared.delete(goal: deadGoal)
                     tableView.deleteRows(at: [indexPath], with: .fade)

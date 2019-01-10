@@ -19,6 +19,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet var highlighterButtonView: UIView!
     @IBOutlet weak var highlighterButtonViewButton: UIButton!
     @IBOutlet weak var darkView: UIView!
+    @IBOutlet weak var highlighterMenuButton: UIButton!
     var subviews = [UIView]() {
         didSet {
             print("\(subviews.count) subviews.")
@@ -349,18 +350,18 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func setupBookmarkButton() {
         guard let currentTestament = ScriptureController.shared.selectedTestament,
             let bookmark = BookmarkController.shared.bookmark else {
-                bookmarkButton.setTitle("Bookmark", for: .normal)
-                bookmarkButton.setTitleColor(#colorLiteral(red: 0.006345573347, green: 0.478813827, blue: 0.9984634519, alpha: 1), for: .normal)
+                bookmarkButton.tintColor = UIColor.black
+                bookmarkButton.setImage(UIImage(named: "bookmark"), for: .normal)
                 return
         }
         if TestamentKeys.reverseSelectedTestament[currentTestament] == Int(bookmark.testament) &&
             self.currentBook == Int(bookmark.book) &&
             self.currentChapter == Int(bookmark.chapter) {
-            bookmarkButton.setTitle("Bookmarked", for: .normal)
-            bookmarkButton.setTitleColor(#colorLiteral(red: 0.7324364781, green: 0.111247398, blue: 0.3787733316, alpha: 1), for: .normal)
+            bookmarkButton.tintColor = #colorLiteral(red: 0.7338222861, green: 0.1125283316, blue: 0.3782619834, alpha: 1)
+            bookmarkButton.setImage(UIImage(named: "bookmarked"), for: .normal)
         } else {
-            bookmarkButton.setTitle("Bookmark", for: .normal)
-            bookmarkButton.setTitleColor(#colorLiteral(red: 0.006345573347, green: 0.478813827, blue: 0.9984634519, alpha: 1), for: .normal)
+            bookmarkButton.tintColor = UIColor.black
+            bookmarkButton.setImage(UIImage(named: "bookmark"), for: .normal)
         }
     }
     
@@ -371,6 +372,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func updateColorButton () {
         
         self.highlighterButtonViewButton.backgroundColor = HighlighterColorController.shared.currentColor
+        self.highlighterMenuButton.tintColor = HighlighterColorController.shared.currentColor
     }
     
     func findBookmarkLocation() {
@@ -381,13 +383,9 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         currentLocation[2] = currentChapter
         self.bookmarkLocation = currentLocation
     }
+    
+    func newMasteryBadge() {
+        
+          tabBarController?.viewControllers?[2].tabBarItem.badgeValue = "New"
+    }
 }
-// TODO:
-// Highlight Verse (different colors)
-// Write Impression
-// Add to Favorites
-// Save for Memorization
-// Copy
-// Share
-
-//TODO: Add a memorize view that lets me add a start verse and end verse and save all of them together as a single memorize unit.

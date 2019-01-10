@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CurrentGoalView" customModule="BookOfMormon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZJ-Tp-Uo2">
+                    <rect key="frame" x="136" y="613" width="103" height="30"/>
+                    <color key="backgroundColor" red="0.2154795229" green="0.49386578799999997" blue="0.1332186759" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="    Set a Goal    ">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="todayButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="n4M-rE-3kQ"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nil" translatesAutoresizingMaskIntoConstraints="NO" id="YoA-4v-pxF">
+                    <rect key="frame" x="0.0" y="214" width="375" height="375"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="YoA-4v-pxF" secondAttribute="height" multiplier="1:1" id="axo-eP-EAz"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="YoA-4v-pxF" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="7sq-t9-G3p"/>
+                <constraint firstItem="YoA-4v-pxF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="D8w-It-h4U"/>
+                <constraint firstItem="YoA-4v-pxF" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="UDW-p7-HpO"/>
+                <constraint firstItem="QZJ-Tp-Uo2" firstAttribute="top" secondItem="YoA-4v-pxF" secondAttribute="bottom" constant="24" id="bmj-Cb-vbU"/>
+                <constraint firstItem="QZJ-Tp-Uo2" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="c9B-VG-dyW"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="QZJ-Tp-Uo2" secondAttribute="bottom" constant="24" id="zvC-5i-hJe"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="todayButton" destination="QZJ-Tp-Uo2" id="QHJ-CF-Zs1"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="nil" width="900" height="900"/>
+    </resources>
+</document>

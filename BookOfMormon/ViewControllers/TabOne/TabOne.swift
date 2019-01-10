@@ -8,88 +8,179 @@
 
 import UIKit
 
-class TabOne: UIViewController {
+class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, CurrentGoalViewDelegate, NewGoalViewDelegate {
     
     // MARK: - Outlets and Properties
-    @IBOutlet weak var todayReadingButton: UIButton!
+    @IBOutlet weak var tabOneSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var allGoalsTableView: UITableView!
     var barButton: UIBarButtonItem?
-    // TODO: - Add border to only one side of each button.
-    var menuIsOpen = false
     var chaptersToRead = 0
+    var subviews = [UIView]()
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupButtons()
+        allGoalsTableView.dataSource = self
+        allGoalsTableView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupGoal()
+        currentGoalView()
+        tabBarController?.tabBar.tintColor = #colorLiteral(red: 0, green: 0.5016700625, blue: 0.005194439087, alpha: 1)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        dismissMenu()
+        tabOneSegmentedControl.selectedSegmentIndex = 0
     }
     
     // MARK: - Setup Methods
     func setupButtons() {
         
-        todayReadingButton.layer.cornerRadius = todayReadingButton.frame.height/2
-        todayReadingButton.layer.borderWidth = 1
-        todayReadingButton.layer.borderColor = UIColor.lightGray.cgColor
         barButton = navigationItem.rightBarButtonItem
-        
-        guard let barButton = barButton
-            else { return }
+        guard let barButton = barButton else { return }
         barButton.target = self
-        barButton.action = #selector(menuButtonTapped)
+        barButton.action = #selector(recalculateButtonTapped)
     }
     
     
     // MARK: Goal Stats
     func setupGoal() {
         
-        if var timeLeft = GoalController.shared.currentGoal?.endDate?.timeIntervalSinceNow,
-            let goalTestament = GoalController.shared.currentGoal?.goalTestament {
-            
-            timeLeft = (timeLeft / 86400).rounded(.down)
-            print(timeLeft)
-            let testamentChapters = TestamentKeys.chapters[goalTestament]
-            print(testamentChapters! / timeLeft)
-        }
+        //        if var timeLeft = GoalController.shared.currentGoal?.endDate?.timeIntervalSinceNow,
+        //            let goalTestament = GoalController.shared.currentGoal?.goalTestament {
+        //
+        //            timeLeft = (timeLeft / 86400).rounded(.down)
+        //            print(timeLeft)
+        //            let testamentChapters = TestamentKeys.chapters[goalTestament]
+        //            print(testamentChapters! / timeLeft)
+        //        }
     }
     
-    // MARK: Menu
-    @objc func menuButtonTapped() {
+    func hideSubviews() {
         
-        switch menuIsOpen {
-        case false:
-            UIView.animate(withDuration: 0.2, delay: 0, options: [.curveLinear], animations: {
-                
-            }, completion: nil)
-            self.menuIsOpen = true
-        case true:
-            dismissMenu()
+        for view in subviews {
+            view.isHidden = true
+        }
+        subviews.removeAll()
+    }
+    
+    func currentGoalView() {
+        
+        guard let currentGoalView = Bundle.main.loadNibNamed("CurrentGoal", owner: nil, options: nil)![0] as? CurrentGoalView else { return }
+        tabOneSegmentedControl.selectedSegmentIndex = 0
+        currentGoalView.delegate = self
+        self.view.addSubview(currentGoalView)
+        subviews.append(currentGoalView)
+        currentGoalView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            currentGoalView.topAnchor.constraint(equalTo: tabOneSegmentedControl.bottomAnchor, constant: 1),
+            currentGoalView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            currentGoalView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            currentGoalView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)])
+    }
+    
+    func newGoalView() {
+        
+        guard let newGoalView = Bundle.main.loadNibNamed("NewGoal", owner: nil, options: nil)![0] as? NewGoalView else { return }
+        self.view.addSubview(newGoalView)
+        newGoalView.delegate = self
+        subviews.append(newGoalView)
+        newGoalView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            newGoalView.topAnchor.constraint(equalTo: tabOneSegmentedControl.bottomAnchor, constant: 1),
+            newGoalView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            newGoalView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            newGoalView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)])
+    }
+    
+    func allGoalsView() {
+        
+        tabOneSegmentedControl.selectedSegmentIndex = 2
+        tabOneSegmentedControl.sendActions(for: .valueChanged)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return GoalController.shared.allGoals?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell", for: indexPath) as? GoalCell else { return UITableViewCell() }
+        let goal = GoalController.shared.allGoals?[indexPath.row]
+        cell.goal = goal
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            guard let deadGoal = GoalController.shared.allGoals?[indexPath.row],
+                let goalName = GoalController.shared.allGoals?[indexPath.row].name else { return }
+            let alertController = UIAlertController(title: "Delete \(goalName)?", message: "This action cannot be undone", preferredStyle: .alert)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+                GoalController.shared.delete(goal: deadGoal)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alertController.addAction(deleteAction)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        if editingStyle == .insert {
+            
         }
     }
     
-    func dismissMenu() {
-        guard menuIsOpen == true else { return }
-        self.menuIsOpen = false
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+    }
+    
+    // MARK: Actions
+    @IBAction func tabOneSegmentedControlValueChanged(_ sender: Any) {
+        
+        hideSubviews()
+        switch tabOneSegmentedControl.selectedSegmentIndex {
+        case 0:
+            currentGoalView()
+        case 1:
+            newGoalView()
+        case 2: return
+        default: tabOneSegmentedControl.selectedSegmentIndex = 0
+        }
+    }
+    
     
     @IBAction func recalculateButtonTapped(_ sender: Any) {
         
     }
     
     // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func segueToReader() {
         
-        guard let destinationVC = segue.destination as? ReadingViewController else { return }
-        destinationVC.currentBook = ScriptureController.shared.currentBook
-        destinationVC.currentChapter = ScriptureController.shared.currentChapter
+        guard let destinationTestament = GoalController.shared.currentGoal?.testament,
+            let destinationBook = GoalController.shared.currentGoal?.currentBook,
+            let destinationChapter = GoalController.shared.currentGoal?.currentChapter else {
+                tabOneSegmentedControl.selectedSegmentIndex = 1
+                tabOneSegmentedControl.sendActions(for: .valueChanged)
+                return
+        }
+        ScriptureController.shared.selectedTestament = TestamentKeys.selectedTestament[Int(destinationTestament)]
+        ScriptureController.shared.change(testament: ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM) { (_) in
+            
+            let readingViewController = UIStoryboard(name: "Reader", bundle: nil).instantiateViewController(withIdentifier: "ReadingViewController") as! ReadingViewController
+            readingViewController.currentBook = Int(destinationBook)
+            readingViewController.currentChapter = Int(destinationChapter)
+            
+            self.navigationController?.pushViewController(readingViewController, animated: true)
+        }
     }
 }

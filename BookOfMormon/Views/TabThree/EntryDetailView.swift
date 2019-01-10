@@ -84,6 +84,12 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
         }
     }
     
+    @IBAction func entryButtonTapped(_ sender: Any) {
+        
+        titleTextField.resignFirstResponder()
+        bodyTextView.resignFirstResponder()
+    }
+    
     @IBAction func completeButtonTapped(_ sender: Any) {
         
         switch parentSelectedIndex {
@@ -118,7 +124,13 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
         bodyTextView.layer.borderColor = UIColor.lightGray.cgColor
         bodyTextView.layer.borderWidth = 1
         bodyTextView.isUserInteractionEnabled = true
-        entryButton.isHidden = true
+        entryButton.setTitle("    Return    ", for: .normal)
+        entryButton.isUserInteractionEnabled = true
+        entryButton.backgroundColor = #colorLiteral(red: 0.6313489079, green: 0.557828486, blue: 0.09932992607, alpha: 1)
+        entryButton.layer.borderWidth = 1
+        entryButton.layer.borderColor = UIColor.lightGray.cgColor
+        entryButton.layer.cornerRadius = entryButton.frame.height / 2
+        entryButton.setTitleColor(UIColor.white, for: .normal)
         completeButton.setTitle("    Save    ", for: .normal)
         self.shouldClose = true
     }
@@ -126,30 +138,25 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
     func updateMemorizeButton(verses: MemorizedVersesCD) {
         
         if verses.memorized == true {
-            entryButton.setBackgroundImage(UIImage(named: "5"), for: .normal)
+            entryButton.setBackgroundImage(UIImage(named: "memorized"), for: .normal)
+            entryButton.tintColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            entryButton.backgroundColor = UIColor.white
             completeButton.setTitle("    Not Memorized    ", for: .normal)
             entryButton.layer.borderWidth = 2
             entryButton.layer.borderColor = #colorLiteral(red: 0.6313489079, green: 0.557828486, blue: 0.09932992607, alpha: 1)
         } else {
-            entryButton.setBackgroundImage(UIImage(named: "1"), for: .normal)
+            entryButton.setBackgroundImage(UIImage(named: "notMemorized"), for: .normal)
+            entryButton.tintColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
             completeButton.setTitle("    Memorized    ", for: .normal)
             entryButton.layer.borderWidth = 1
             entryButton.layer.borderColor = UIColor.lightGray.cgColor
+            entryButton.backgroundColor = UIColor.white
         }
     }
     
     // MARK: Delegate Methods
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         bodyTextView.becomeFirstResponder()
-        return true
-    }
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            textView.resignFirstResponder()
-            
-            // TODO: Find a way to allow linebreaks and resigning first responder both. Not just one or the other.
-        }
         return true
     }
 }

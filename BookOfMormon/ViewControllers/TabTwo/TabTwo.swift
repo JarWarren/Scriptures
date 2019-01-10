@@ -26,6 +26,7 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupTestament()
+        tabBarController?.tabBar.tintColor = #colorLiteral(red: 0.7338222861, green: 0.1125283316, blue: 0.3782619834, alpha: 1)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -167,5 +168,3 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         destinationVC.currentChapter = chapter
     }
 }
-
-// TODO: Potentially add official declarations after section 138 of D&C.

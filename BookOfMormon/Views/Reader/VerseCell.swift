@@ -37,5 +37,4 @@ protocol VerseCellDelegate: class {
     
     func menuButtonTapped(_ sender: UIButton)
     var selectedVerse: VerseCD? { get set }
-    //TODO: Verify that the note displayed is from the correct verse.
 }

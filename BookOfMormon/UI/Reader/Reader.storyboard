@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,33 +30,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3Oq-lt-YUN">
-                                                    <rect key="frame" x="12" y="8" width="351" height="27.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2O-ga-ygi">
-                                                            <rect key="frame" x="0.0" y="0.0" width="283" height="27.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bP-K1-Cuq">
-                                                            <rect key="frame" x="291" y="0.0" width="60" height="27.5"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="60" id="rUZ-xn-gwl"/>
-                                                            </constraints>
-                                                            <state key="normal" title="🗒"/>
-                                                            <connections>
-                                                                <action selector="noteButtonTapped:" destination="IFH-HC-4eI" eventType="touchUpInside" id="j7u-Rf-yjA"/>
-                                                            </connections>
-                                                        </button>
-                                                    </subviews>
-                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2O-ga-ygi">
+                                                    <rect key="frame" x="8" y="11.5" width="317" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bP-K1-Cuq">
+                                                    <rect key="frame" x="337" y="7" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="RBV-A3-3jp"/>
+                                                        <constraint firstAttribute="width" secondItem="8bP-K1-Cuq" secondAttribute="height" multiplier="1:1" id="aZ7-5T-Eqf"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" image="hasNote"/>
+                                                    <connections>
+                                                        <action selector="noteButtonTapped:" destination="IFH-HC-4eI" eventType="touchUpInside" id="j7u-Rf-yjA"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="3Oq-lt-YUN" secondAttribute="bottom" constant="8" id="Hm0-e8-4Na"/>
-                                                <constraint firstItem="3Oq-lt-YUN" firstAttribute="top" secondItem="rcB-R3-RDU" secondAttribute="top" constant="8" id="ZlA-Nu-Vvl"/>
-                                                <constraint firstItem="3Oq-lt-YUN" firstAttribute="leading" secondItem="rcB-R3-RDU" secondAttribute="leading" constant="12" id="bNd-Sa-NpN"/>
-                                                <constraint firstAttribute="trailing" secondItem="3Oq-lt-YUN" secondAttribute="trailing" constant="12" id="sT7-hL-poo"/>
+                                                <constraint firstItem="8bP-K1-Cuq" firstAttribute="leading" secondItem="U2O-ga-ygi" secondAttribute="trailing" constant="12" id="8uT-Ub-fLH"/>
+                                                <constraint firstItem="U2O-ga-ygi" firstAttribute="centerY" secondItem="rcB-R3-RDU" secondAttribute="centerY" id="9TY-0n-aQd"/>
+                                                <constraint firstItem="U2O-ga-ygi" firstAttribute="leading" secondItem="rcB-R3-RDU" secondAttribute="leading" constant="8" id="QuE-wC-0Bp"/>
+                                                <constraint firstAttribute="bottom" secondItem="U2O-ga-ygi" secondAttribute="bottom" constant="11.5" id="UUH-Dd-7cC"/>
+                                                <constraint firstItem="8bP-K1-Cuq" firstAttribute="centerY" secondItem="rcB-R3-RDU" secondAttribute="centerY" id="h5H-vm-aJ5"/>
+                                                <constraint firstItem="U2O-ga-ygi" firstAttribute="top" secondItem="rcB-R3-RDU" secondAttribute="top" constant="11.5" id="mCs-3L-5p5"/>
+                                                <constraint firstAttribute="trailing" secondItem="8bP-K1-Cuq" secondAttribute="trailing" constant="8" id="mFr-eE-s7M"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -93,41 +94,66 @@
                                     <action selector="navigationButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="nAJ-vJ-bTi"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NWt-e8-sWF">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NWt-e8-sWF">
                                 <rect key="frame" x="8" y="58" width="359" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fib-qn-wER">
-                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                        <state key="normal" title="Highlight"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fib-qn-wER">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="T7Y-9M-XP3"/>
+                                            <constraint firstAttribute="width" secondItem="Fib-qn-wER" secondAttribute="height" multiplier="1:1" id="cm9-qI-o2a"/>
+                                        </constraints>
+                                        <color key="tintColor" red="1" green="0.82751153639999997" blue="0.8523269832" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" image="highlight" backgroundImage="underscore"/>
                                         <connections>
                                             <action selector="menuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="Vs0-jg-WMS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6HT-Jz-4eX">
-                                        <rect key="frame" x="72" y="0.0" width="71.5" height="30"/>
-                                        <state key="normal" title="Note"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6HT-Jz-4eX">
+                                        <rect key="frame" x="82.5" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="6HT-Jz-4eX" secondAttribute="height" multiplier="1:1" id="SkJ-SC-FeB"/>
+                                            <constraint firstAttribute="height" constant="30" id="sB3-ga-Jft"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="note"/>
                                         <connections>
                                             <action selector="menuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="fqS-VQ-iyd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdG-dx-Nvg">
-                                        <rect key="frame" x="143.5" y="0.0" width="72" height="30"/>
-                                        <state key="normal" title="Memorize"/>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdG-dx-Nvg">
+                                        <rect key="frame" x="164.5" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="KZw-YZ-7hG"/>
+                                            <constraint firstAttribute="width" secondItem="AdG-dx-Nvg" secondAttribute="height" multiplier="1:1" id="cph-Sv-7bG"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="memorize"/>
                                         <connections>
                                             <action selector="menuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="DV6-JC-6ss"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYI-py-BCy">
-                                        <rect key="frame" x="215.5" y="0.0" width="71.5" height="30"/>
-                                        <state key="normal" title="Copy"/>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYI-py-BCy">
+                                        <rect key="frame" x="247" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="wYI-py-BCy" secondAttribute="height" multiplier="1:1" id="lVN-tW-Ttw"/>
+                                            <constraint firstAttribute="height" constant="30" id="sWJ-It-iJU"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="copy"/>
                                         <connections>
                                             <action selector="menuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="Nwc-zT-x4Z"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldv-4d-cJW">
-                                        <rect key="frame" x="287" y="0.0" width="72" height="30"/>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldv-4d-cJW">
+                                        <rect key="frame" x="329" y="0.0" width="30" height="30"/>
                                         <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <state key="normal" title="Bookmark"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ldv-4d-cJW" secondAttribute="height" multiplier="1:1" id="3Sv-f8-zpw"/>
+                                            <constraint firstAttribute="height" constant="30" id="c4v-9B-1Sx"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="bookmark"/>
                                         <connections>
                                             <action selector="menuButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="JPe-qU-cg8"/>
                                         </connections>
@@ -161,6 +187,7 @@
                         <outlet property="darkView" destination="4jO-2P-eiN" id="3LN-Nv-Ah3"/>
                         <outlet property="highlighterButtonView" destination="KRG-xE-bKD" id="8FI-y3-nXQ"/>
                         <outlet property="highlighterButtonViewButton" destination="gEC-FK-oJ0" id="Qsf-k4-4ti"/>
+                        <outlet property="highlighterMenuButton" destination="Fib-qn-wER" id="Uje-gP-8XE"/>
                         <outlet property="leftButton" destination="BQa-oZ-Hy7" id="qbp-DP-dRh"/>
                         <outlet property="rightButton" destination="Cps-h7-8cv" id="eQq-3O-SP1"/>
                         <outlet property="versesTableView" destination="Re6-Ul-msQ" id="4kQ-rn-dWM"/>
@@ -197,4 +224,13 @@
             <point key="canvasLocation" x="3072.8000000000002" y="1353.3733133433284"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bookmark" width="1200" height="1200"/>
+        <image name="copy" width="1200" height="1200"/>
+        <image name="hasNote" width="1200" height="1200"/>
+        <image name="highlight" width="1200" height="1200"/>
+        <image name="memorize" width="1200" height="1200"/>
+        <image name="note" width="1200" height="1200"/>
+        <image name="underscore" width="1200" height="1200"/>
+    </resources>
 </document>

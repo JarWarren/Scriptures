@@ -52,13 +52,15 @@ class MemorizeView: UIView {
         case true:
             if let versesToBeMemorized = section?.verses?.objects(at: indexSet) as? [VerseCD] {
                 VerseController.shared.memorize(verses: versesToBeMemorized)
+                delegate?.newMasteryBadge()
             }
         case false:
             if let versesToBeMemorized = chapter?.verses?.objects(at: indexSet) as? [VerseCD] {
                 VerseController.shared.memorize(verses: versesToBeMemorized)
-                
+                delegate?.newMasteryBadge()
             }
         }
+        
         delegate?.hideSubviews()
     }
     
@@ -166,4 +168,5 @@ class MemorizeView: UIView {
 protocol MemorizeViewDelegate: class {
     
     func hideSubviews()
+    func newMasteryBadge()
 }

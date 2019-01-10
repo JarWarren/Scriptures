@@ -20,7 +20,6 @@ class VerseController {
         let memorized = try? CoreDataStack.managedObjectContext.fetch(fetchRequest)
         return memorized ?? []
     }
-    //TODO: save memorizingVerses and fetch it.
     
     func memorize(verses: [VerseCD]) {
         
@@ -34,6 +33,12 @@ class VerseController {
     func toggleMemorized(verses: MemorizedVersesCD) {
         
         verses.memorized.toggle()
+        try? CoreDataStack.managedObjectContext.save()
+    }
+    
+    func deleteMemorizedVerses(verses: MemorizedVersesCD) {
+        
+        CoreDataStack.managedObjectContext.delete(verses)
         try? CoreDataStack.managedObjectContext.save()
     }
     

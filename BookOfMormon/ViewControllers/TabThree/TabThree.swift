@@ -22,11 +22,13 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
         setupMainView()
         tabThreeTableView.dataSource = self
         tabThreeTableView.delegate = self
+        //TODO: datasource needs to be unique for segmentedControlIndex 2
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tabThreeTableView.reloadData()
+        tabThreeSegmentedControl.sendActions(for: .valueChanged)
+        tabBarController?.tabBar.tintColor = #colorLiteral(red: 0.6307423711, green: 0.558336854, blue: 0.09566646069, alpha: 1)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,13 +42,7 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tabThreeSegmentedControl.selectedSegmentIndex {
         case 2: return 25
-        case 1:
-            guard let verseCount = VerseController.shared.memorizingVerses?.count else { return 1 }
-            if verseCount > 0 {
-                return verseCount
-            } else {
-                return 1
-            }
+        case 1: return VerseController.shared.memorizingVerses?.count ?? 0
         case 0: return EntryController.shared.allEntries.count
         default: return 0
         }
@@ -58,14 +54,9 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // TODO: case 2 : Put the specific mastery verses into their own array.
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "memoryCell", for: indexPath) as? MemorizeCell else { return UITableViewCell() }
-            guard VerseController.shared.memorizingVerses?.count != 0 else {
-                cell.isUserInteractionEnabled = false
-                return cell
-            }
             let verseSet = VerseController.shared.memorizingVerses?[indexPath.row]
             cell.memorizedVerseSet = verseSet
             return cell
-        // TODO: Custom cell that remembers if the verse was memorized. Allows for deletion. ☑️
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath)
             let cellEntry = EntryController.shared.allEntries[indexPath.row]
@@ -79,7 +70,22 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
+        switch tabThreeSegmentedControl.selectedSegmentIndex {
+            
+        case 1:
+            if editingStyle == .delete {
+                guard let deletedMemorization = VerseController.shared.memorizingVerses?[indexPath.row] else { return }
+                VerseController.shared.deleteMemorizedVerses(verses: deletedMemorization)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        case 0:
+            if editingStyle == .delete {
+                let deletedEntry = EntryController.shared.allEntries[indexPath.row]
+                EntryController.shared.deleteEntry(entry: deletedEntry)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        default: return
+        }
     }
     
     func setupMainView() {
@@ -99,6 +105,9 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBAction func tabThreeSegmentedControlValueChanged(_ sender: Any) {
         tabThreeTableView.reloadData()
+        if tabThreeSegmentedControl.selectedSegmentIndex == 1 {
+            tabBarController?.viewControllers?[2].tabBarItem.badgeValue = nil
+        }
     }
     
     // MARK: - Navigation
