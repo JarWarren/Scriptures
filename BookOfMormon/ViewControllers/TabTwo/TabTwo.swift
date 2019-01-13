@@ -9,11 +9,10 @@
 import UIKit
 
 class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+    
     // MARK: - Outlets and Properties
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var booksSegmentedControl: UISegmentedControl!
-    var barButton: UIBarButtonItem?
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -25,6 +24,8 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupTestament()
+        tabBarController?.tabBar.tintColor = #colorLiteral(red: 0.7338222861, green: 0.1125283316, blue: 0.3782619834, alpha: 1)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -36,17 +37,18 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        ScriptureController.shared.decode(testament: ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM)
+        ScriptureController.shared.change(testament: TestamentKeys.BoM) { (_) in
+        }
     }
     
     // MARK: - CollectionView Data Source Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-    
+        
         switch ScriptureController.shared.selectedTestament {
         case TestamentKeys.DaC:
             return 1
         default:
-            return ScriptureController.shared.decodedTestament?.books.count ?? 0
+            return ScriptureController.shared.fetchedTestament?.books?.count ?? 0
         }
     }
     
@@ -54,9 +56,11 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         switch ScriptureController.shared.selectedTestament {
         case TestamentKeys.DaC:
-            return ScriptureController.shared.decodedDoctrine?.sections.count ?? 0
+            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as? [SectionCD]
+            return sections?.count ?? 0
         default:
-            return ScriptureController.shared.decodedTestament?.books[section].chapters.count ?? 0
+            let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
+            return books?[section].chapters?.count ?? 0
         }
     }
     
@@ -67,7 +71,8 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         case TestamentKeys.DaC:
             header.chapterHeaderLabel.text = "The Doctrine and Covenants"
         default:
-            if let title = ScriptureController.shared.decodedTestament?.books[indexPath.section].book {
+            let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
+            if let title = books?[indexPath.section].book {
                 header.chapterHeaderLabel.text = String(title)
             }
         }
@@ -81,14 +86,16 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         switch ScriptureController.shared.selectedTestament {
         case TestamentKeys.DaC:
-            if let section = ScriptureController.shared.decodedDoctrine?.sections[indexPath.row].section {
-                cell.chapterNumber = section
+            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as? [SectionCD]
+            if let section = sections?[indexPath.row].section {
+                cell.chapterNumber = Int(section)
             }
         default:
-            
-            if ScriptureController.shared.decodedTestament?.books[indexPath.section].chapters.count ?? 0 > indexPath.row {
-                if let chapter = ScriptureController.shared.decodedTestament?.books[indexPath.section].chapters[indexPath.row].chapter {
-                    cell.chapterNumber = chapter
+            let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
+            if books?[indexPath.section].chapters?.count ?? 0 > indexPath.row {
+                let chapters = books?[indexPath.section].chapters?.allObjects as? [ChapterCD]
+                if let chapterNumber =  chapters?[indexPath.row].chapter {
+                cell.chapterNumber = Int(chapterNumber)
                 }
             }
         }
@@ -102,11 +109,12 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     // MARK: Setup
     func setupMainView() {
         
-        self.barButton = self.navigationItem.rightBarButtonItem
+        let bookmarkButton = UIBarButtonItem(image: UIImage(named: "bookmarkBarButton"), style: .plain, target: self, action: #selector(bookmarkBarButtonTapped))
+        bookmarkButton.tintColor = #colorLiteral(red: 0.7338222861, green: 0.1125283316, blue: 0.3782619834, alpha: 1)
+        self.navigationItem.rightBarButtonItem = bookmarkButton
     }
     
-    // MARK: - Actions
-    @IBAction func booksSegmentedControlValueChanged(_ sender: Any) {
+    func setupTestament() {
         
         switch booksSegmentedControl.selectedSegmentIndex {
         case 0: ScriptureController.shared.selectedTestament = TestamentKeys.BoM
@@ -115,12 +123,37 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         case 3: ScriptureController.shared.selectedTestament = TestamentKeys.NT
         default: ScriptureController.shared.selectedTestament = TestamentKeys.OT
         }
-        ScriptureController.shared.decode(testament: ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM)
+        ScriptureController.shared.change(testament: ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM) { (_) in
+        }
         self.collectionView.reloadData()
     }
     
-    @objc func booksBarButtonTapped(_ sender: Any) {
-        // TODO: Takes user to their bookmarked place.
+    // MARK: - Actions
+    @IBAction func booksSegmentedControlValueChanged(_ sender: Any) {
+        
+        setupTestament()
+    }
+    
+    @objc func bookmarkBarButtonTapped(_ sender: Any) {
+        
+        if let destinationTestament = BookmarkController.shared.bookmark?.testament,
+        let destinationBook = BookmarkController.shared.bookmark?.book,
+            let destinationChapter = BookmarkController.shared.bookmark?.chapter {
+        ScriptureController.shared.selectedTestament = TestamentKeys.selectedTestament[Int(destinationTestament)]
+        ScriptureController.shared.change(testament: ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM) { (_) in
+            }
+        
+        let readingViewController = UIStoryboard(name: "Reader", bundle: nil).instantiateViewController(withIdentifier: "ReadingViewController") as! ReadingViewController
+        readingViewController.currentBook = Int(destinationBook)
+        readingViewController.currentChapter = Int(destinationChapter)
+        
+        navigationController?.pushViewController(readingViewController, animated: true)
+        } else {
+            let alertController = UIAlertController(title: "You haven't set a bookmark", message: nil, preferredStyle: .actionSheet)
+            let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alertController.addAction(ok)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     // MARK: - Navigation
@@ -133,5 +166,3 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         destinationVC.currentChapter = chapter
     }
 }
-
-// TODO: Potentially add official declarations after section 138 of D&C.

@@ -7,25 +7,38 @@
 //
 
 import Foundation
+import CoreData
 
 class GoalController {
     
     static let shared = GoalController()
     private init() {}
-    var allGoals = [Goal]()
-    var currentGoal: Goal? {
-        return self.allGoals.first
+    var allGoals: [GoalCD]? {
+        let fetchRequest: NSFetchRequest <GoalCD> = GoalCD.fetchRequest()
+        return (try? CoreDataStack.managedObjectContext.fetch(fetchRequest)) ?? []
+    }
+    var currentGoal: GoalCD?
+    
+    func createDeadlineGoal(name: String, endDate: Date, startingPoint: [Int]) {
+        
+        _ = GoalCD(name: name, endDate: endDate, startingPoint: startingPoint)
+        try? CoreDataStack.managedObjectContext.save()
     }
     
-    func createGoal(name: String, endDate: Date?, startDate: Date, chapters: Int? = 0, testament: Int) {
+    func createIncrementalGoal(name: String, startPosition: [Int], dailyChapters: Int) {
         
-        let newGoal = Goal(name: name, endDate: endDate, startDate: startDate, currentProgress: nil, dailyChapters: chapters, goalTestament: testament)
-        allGoals.append(newGoal)
+        _ = GoalCD (name: name, dailyChapters: dailyChapters, startingPoint: startPosition)
+        try? CoreDataStack.managedObjectContext.save()
     }
     
-    func delete(goal: Goal) {
+    func updateCurrentGoal(goal: GoalCD) {
+        self.currentGoal = goal
+        try? CoreDataStack.managedObjectContext.save()
+    }
+    
+    func delete(goal: GoalCD) {
         
-        guard let deadGoal = allGoals.firstIndex(of: goal) else { return }
-        allGoals.remove(at: deadGoal)
+        CoreDataStack.managedObjectContext.delete(goal)
+        try? CoreDataStack.managedObjectContext.save()
     }
 }

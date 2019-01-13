@@ -7,22 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E129C1821E01E54001F4A48 /* Note.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E129C1721E01E54001F4A48 /* Note.xib */; };
+		7E129C1A21E01F58001F4A48 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E129C1921E01F58001F4A48 /* NoteView.swift */; };
 		7E238BD621CB215D001ADF4F /* TabOne.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E238BD521CB215D001ADF4F /* TabOne.storyboard */; };
 		7E238BD821CB21D5001ADF4F /* TabTwo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E238BD721CB21D5001ADF4F /* TabTwo.storyboard */; };
-		7E238BDD21CB21FD001ADF4F /* TabFour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E238BDC21CB21FD001ADF4F /* TabFour.storyboard */; };
+		7E2B63F621E460CE00A01D82 /* HighlighterColorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B63F521E460CE00A01D82 /* HighlighterColorKey.swift */; };
+		7E2B63F821E4614F00A01D82 /* HighlighterColorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B63F721E4614F00A01D82 /* HighlighterColorController.swift */; };
+		7E2CFC6921DD652A000F330B /* DoctrineCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CFC6821DD652A000F330B /* DoctrineCD.swift */; };
+		7E2CFC6C21DD663B000F330B /* SectionCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CFC6A21DD663B000F330B /* SectionCD+CoreDataClass.swift */; };
+		7E2CFC6D21DD663B000F330B /* SectionCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CFC6B21DD663B000F330B /* SectionCD+CoreDataProperties.swift */; };
+		7E36F51921EACADA000D82DC /* NewGoal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E36F51821EACADA000D82DC /* NewGoal.storyboard */; };
+		7E36F51C21EAE115000D82DC /* TabThreeDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E36F51B21EAE115000D82DC /* TabThreeDetail.storyboard */; };
 		7E43B3CB21C5DA75000845DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43B3CA21C5DA75000845DA /* AppDelegate.swift */; };
 		7E43B3CD21C5DA75000845DA /* TabOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43B3CC21C5DA75000845DA /* TabOne.swift */; };
 		7E43B3D221C5DA76000845DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E43B3D121C5DA76000845DA /* Assets.xcassets */; };
-		7E43B3EA21C5F2E2000845DA /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43B3E921C5F2E2000845DA /* Goal.swift */; };
 		7E43B3EC21C5F406000845DA /* GoalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43B3EB21C5F406000845DA /* GoalController.swift */; };
 		7E748C5F21CB41F100ED9C8F /* ReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E748C5E21CB41F100ED9C8F /* ReadingViewController.swift */; };
 		7E748C6121CB422200ED9C8F /* TabThree.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E748C6021CB422200ED9C8F /* TabThree.storyboard */; };
 		7E748C6321CB423F00ED9C8F /* Reader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E748C6221CB423F00ED9C8F /* Reader.storyboard */; };
 		7E748C6521CB424F00ED9C8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E748C6421CB424F00ED9C8F /* Main.storyboard */; };
 		7E748C6721CB425E00ED9C8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */; };
-		7E748C6D21CB4FA100ED9C8F /* NewGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E748C6C21CB4FA100ED9C8F /* NewGoalVC.swift */; };
-		7E748C7121CB5BC900ED9C8F /* AllGoalsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E748C7021CB5BC900ED9C8F /* AllGoalsVC.swift */; };
-		7ECD8A9D21C9600600AED39B /* ScriptureDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8A9C21C9600600AED39B /* ScriptureDecoding.swift */; };
+		7EAE98DB21E3DCF700255166 /* MemorizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAE98DA21E3DCF700255166 /* MemorizeCell.swift */; };
+		7EC306DF21E161E000CC6103 /* VerseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306DE21E161E000CC6103 /* VerseController.swift */; };
+		7EC306E221E18CB000CC6103 /* EntryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306E121E18CB000CC6103 /* EntryDetailView.swift */; };
+		7EC306E421E18EAD00CC6103 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306E321E18EAD00CC6103 /* EntryController.swift */; };
+		7EC306E621E18F8100CC6103 /* EntryCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306E521E18F8100CC6103 /* EntryCD.swift */; };
+		7EC306E921E19F2700CC6103 /* HighlighterColors.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EC306E821E19F2700CC6103 /* HighlighterColors.xib */; };
+		7EC306EB21E19F3D00CC6103 /* HighlighterColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306EA21E19F3D00CC6103 /* HighlighterColorsView.swift */; };
+		7EC306EF21E1D8BD00CC6103 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306EE21E1D8BD00CC6103 /* DateHelper.swift */; };
+		7EC5852F21E4038000116A5C /* Memorize.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EC5852E21E4038000116A5C /* Memorize.xib */; };
+		7EC5853121E403AC00116A5C /* MemorizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC5853021E403AC00116A5C /* MemorizeView.swift */; };
+		7EC5853721E42DC300116A5C /* MemorizedVerse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC5853621E42DC300116A5C /* MemorizedVerse.swift */; };
 		7ECD8AA621C9657E00AED39B /* doctrine-and-covenants.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA121C9657E00AED39B /* doctrine-and-covenants.json */; };
 		7ECD8AA721C9657E00AED39B /* book-of-mormon.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA221C9657E00AED39B /* book-of-mormon.json */; };
 		7ECD8AA821C9657E00AED39B /* old-testament.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD8AA321C9657E00AED39B /* old-testament.json */; };
@@ -35,31 +50,59 @@
 		7ECD8AB921C9AA2200AED39B /* TestamentKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8AB821C9AA2200AED39B /* TestamentKeys.swift */; };
 		7ECD8ABB21C9AC0B00AED39B /* ChapterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8ABA21C9AC0B00AED39B /* ChapterHeader.swift */; };
 		7ECD8ABD21C9B5CA00AED39B /* TabThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */; };
-		7EE553AA21CBF7030062C91B /* TabFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE553A921CBF7030062C91B /* TabFour.swift */; };
+		7ECD944D21E52697004327B1 /* CurrentGoal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD944C21E52697004327B1 /* CurrentGoal.xib */; };
+		7ECD945221E52726004327B1 /* CurrentGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945121E52726004327B1 /* CurrentGoalView.swift */; };
+		7ECD945421E5273A004327B1 /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945321E5273A004327B1 /* NewGoalView.swift */; };
+		7ECD945621E52750004327B1 /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945521E52750004327B1 /* GoalCell.swift */; };
+		7ECD945A21E538E1004327B1 /* GoalCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945921E538E1004327B1 /* GoalCD.swift */; };
+		7EDD2B6821DEB4C0009A834B /* BookmarkCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDD2B6721DEB4C0009A834B /* BookmarkCD.swift */; };
+		7EDD2B6A21DEB543009A834B /* BookmarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDD2B6921DEB543009A834B /* BookmarkController.swift */; };
 		7EFC384221DA801F000F0F75 /* VerseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384121DA801F000F0F75 /* VerseCell.swift */; };
-		7EFC384421DA8B79000F0F75 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384321DA8B79000F0F75 /* Note.swift */; };
-		7EFC384621DA9321000F0F75 /* NoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384521DA9321000F0F75 /* NoteController.swift */; };
+		7EFC385121DAC271000F0F75 /* BookOfMormon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384F21DAC271000F0F75 /* BookOfMormon.xcdatamodeld */; };
+		7EFC385321DACC8E000F0F75 /* TestamentCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC385221DACC8E000F0F75 /* TestamentCD.swift */; };
+		7EFC385521DACCA8000F0F75 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC385421DACCA8000F0F75 /* CoreDataStack.swift */; };
+		7EFC386A21DAD5B1000F0F75 /* BooksCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC386821DAD5B1000F0F75 /* BooksCD+CoreDataClass.swift */; };
+		7EFC386B21DAD5B1000F0F75 /* BooksCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC386921DAD5B1000F0F75 /* BooksCD+CoreDataProperties.swift */; };
+		7EFC386E21DAD647000F0F75 /* ChapterCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC386C21DAD647000F0F75 /* ChapterCD+CoreDataClass.swift */; };
+		7EFC386F21DAD647000F0F75 /* ChapterCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC386D21DAD647000F0F75 /* ChapterCD+CoreDataProperties.swift */; };
+		7EFC387221DAD8F7000F0F75 /* VerseCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC387021DAD8F7000F0F75 /* VerseCD+CoreDataClass.swift */; };
+		7EFC387321DAD8F7000F0F75 /* VerseCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC387121DAD8F7000F0F75 /* VerseCD+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E129C1721E01E54001F4A48 /* Note.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Note.xib; sourceTree = "<group>"; };
+		7E129C1921E01F58001F4A48 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		7E238BD521CB215D001ADF4F /* TabOne.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabOne.storyboard; sourceTree = "<group>"; };
 		7E238BD721CB21D5001ADF4F /* TabTwo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabTwo.storyboard; sourceTree = "<group>"; };
-		7E238BDC21CB21FD001ADF4F /* TabFour.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabFour.storyboard; sourceTree = "<group>"; };
+		7E2B63F521E460CE00A01D82 /* HighlighterColorKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlighterColorKey.swift; sourceTree = "<group>"; };
+		7E2B63F721E4614F00A01D82 /* HighlighterColorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlighterColorController.swift; sourceTree = "<group>"; };
+		7E2CFC6821DD652A000F330B /* DoctrineCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctrineCD.swift; sourceTree = "<group>"; };
+		7E2CFC6A21DD663B000F330B /* SectionCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SectionCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7E2CFC6B21DD663B000F330B /* SectionCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SectionCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7E36F51821EACADA000D82DC /* NewGoal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewGoal.storyboard; sourceTree = "<group>"; };
+		7E36F51B21EAE115000D82DC /* TabThreeDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabThreeDetail.storyboard; sourceTree = "<group>"; };
 		7E43B3C721C5DA75000845DA /* BookOfMormon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookOfMormon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E43B3CA21C5DA75000845DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E43B3CC21C5DA75000845DA /* TabOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabOne.swift; sourceTree = "<group>"; };
 		7E43B3D121C5DA76000845DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E43B3D621C5DA76000845DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7E43B3E921C5F2E2000845DA /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		7E43B3EB21C5F406000845DA /* GoalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalController.swift; sourceTree = "<group>"; };
 		7E748C5E21CB41F100ED9C8F /* ReadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingViewController.swift; sourceTree = "<group>"; };
 		7E748C6021CB422200ED9C8F /* TabThree.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabThree.storyboard; sourceTree = "<group>"; };
 		7E748C6221CB423F00ED9C8F /* Reader.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Reader.storyboard; sourceTree = "<group>"; };
 		7E748C6421CB424F00ED9C8F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7E748C6C21CB4FA100ED9C8F /* NewGoalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalVC.swift; sourceTree = "<group>"; };
-		7E748C7021CB5BC900ED9C8F /* AllGoalsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGoalsVC.swift; sourceTree = "<group>"; };
-		7ECD8A9C21C9600600AED39B /* ScriptureDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptureDecoding.swift; sourceTree = "<group>"; };
+		7EAE98DA21E3DCF700255166 /* MemorizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeCell.swift; sourceTree = "<group>"; };
+		7EC306DE21E161E000CC6103 /* VerseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseController.swift; sourceTree = "<group>"; };
+		7EC306E121E18CB000CC6103 /* EntryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailView.swift; sourceTree = "<group>"; };
+		7EC306E321E18EAD00CC6103 /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
+		7EC306E521E18F8100CC6103 /* EntryCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCD.swift; sourceTree = "<group>"; };
+		7EC306E821E19F2700CC6103 /* HighlighterColors.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighlighterColors.xib; sourceTree = "<group>"; };
+		7EC306EA21E19F3D00CC6103 /* HighlighterColorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlighterColorsView.swift; sourceTree = "<group>"; };
+		7EC306EE21E1D8BD00CC6103 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		7EC5852E21E4038000116A5C /* Memorize.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Memorize.xib; sourceTree = "<group>"; };
+		7EC5853021E403AC00116A5C /* MemorizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeView.swift; sourceTree = "<group>"; };
+		7EC5853621E42DC300116A5C /* MemorizedVerse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizedVerse.swift; sourceTree = "<group>"; };
 		7ECD8AA121C9657E00AED39B /* doctrine-and-covenants.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "doctrine-and-covenants.json"; sourceTree = "<group>"; };
 		7ECD8AA221C9657E00AED39B /* book-of-mormon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "book-of-mormon.json"; sourceTree = "<group>"; };
 		7ECD8AA321C9657E00AED39B /* old-testament.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "old-testament.json"; sourceTree = "<group>"; };
@@ -72,10 +115,23 @@
 		7ECD8AB821C9AA2200AED39B /* TestamentKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestamentKeys.swift; sourceTree = "<group>"; };
 		7ECD8ABA21C9AC0B00AED39B /* ChapterHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterHeader.swift; sourceTree = "<group>"; };
 		7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabThree.swift; sourceTree = "<group>"; };
-		7EE553A921CBF7030062C91B /* TabFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabFour.swift; sourceTree = "<group>"; };
+		7ECD944C21E52697004327B1 /* CurrentGoal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentGoal.xib; sourceTree = "<group>"; };
+		7ECD945121E52726004327B1 /* CurrentGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGoalView.swift; sourceTree = "<group>"; };
+		7ECD945321E5273A004327B1 /* NewGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalView.swift; sourceTree = "<group>"; };
+		7ECD945521E52750004327B1 /* GoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
+		7ECD945921E538E1004327B1 /* GoalCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCD.swift; sourceTree = "<group>"; };
+		7EDD2B6721DEB4C0009A834B /* BookmarkCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCD.swift; sourceTree = "<group>"; };
+		7EDD2B6921DEB543009A834B /* BookmarkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
 		7EFC384121DA801F000F0F75 /* VerseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseCell.swift; sourceTree = "<group>"; };
-		7EFC384321DA8B79000F0F75 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		7EFC384521DA9321000F0F75 /* NoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteController.swift; sourceTree = "<group>"; };
+		7EFC385021DAC271000F0F75 /* BookOfMormon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookOfMormon.xcdatamodel; sourceTree = "<group>"; };
+		7EFC385221DACC8E000F0F75 /* TestamentCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestamentCD.swift; sourceTree = "<group>"; };
+		7EFC385421DACCA8000F0F75 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		7EFC386821DAD5B1000F0F75 /* BooksCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BooksCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7EFC386921DAD5B1000F0F75 /* BooksCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BooksCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7EFC386C21DAD647000F0F75 /* ChapterCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChapterCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7EFC386D21DAD647000F0F75 /* ChapterCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChapterCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7EFC387021DAD8F7000F0F75 /* VerseCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerseCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7EFC387121DAD8F7000F0F75 /* VerseCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerseCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,15 +145,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7E238BE221CB34CC001ADF4F /* Tabs */ = {
+		7E238BE221CB34CC001ADF4F /* TabThree */ = {
 			isa = PBXGroup;
 			children = (
-				7E238BD521CB215D001ADF4F /* TabOne.storyboard */,
-				7E238BD721CB21D5001ADF4F /* TabTwo.storyboard */,
 				7E748C6021CB422200ED9C8F /* TabThree.storyboard */,
-				7E238BDC21CB21FD001ADF4F /* TabFour.storyboard */,
+				7E36F51B21EAE115000D82DC /* TabThreeDetail.storyboard */,
 			);
-			path = Tabs;
+			path = TabThree;
 			sourceTree = "<group>";
 		};
 		7E238BE421CB34FC001ADF4F /* TabTwo */ = {
@@ -105,6 +159,14 @@
 			children = (
 				7ECD8AB621C992F000AED39B /* ChapterCell.swift */,
 				7ECD8ABA21C9AC0B00AED39B /* ChapterHeader.swift */,
+			);
+			path = TabTwo;
+			sourceTree = "<group>";
+		};
+		7E36F51A21EAE0D9000D82DC /* TabTwo */ = {
+			isa = PBXGroup;
+			children = (
+				7E238BD721CB21D5001ADF4F /* TabTwo.storyboard */,
 			);
 			path = TabTwo;
 			sourceTree = "<group>";
@@ -153,10 +215,11 @@
 		7E43B3DD21C5DAE2000845DA /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				7E748C6421CB424F00ED9C8F /* Main.storyboard */,
-				7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */,
-				7E748C6221CB423F00ED9C8F /* Reader.storyboard */,
-				7E238BE221CB34CC001ADF4F /* Tabs */,
+				7EC306ED21E1D70E00CC6103 /* Main */,
+				7EC306E721E1981200CC6103 /* Reader */,
+				7ECD944321E52046004327B1 /* TabOne */,
+				7E36F51A21EAE0D9000D82DC /* TabTwo */,
+				7E238BE221CB34CC001ADF4F /* TabThree */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -164,11 +227,10 @@
 		7E43B3DE21C5DB01000845DA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7E748C5E21CB41F100ED9C8F /* ReadingViewController.swift */,
+				7EC306EC21E1D70300CC6103 /* Reader */,
 				7E748C6B21CB4F8800ED9C8F /* TabOne */,
 				7E748C6E21CB501F00ED9C8F /* TabTwo */,
 				7E748C6F21CB502700ED9C8F /* TabThree */,
-				7E9032E121CBDF6500E366F6 /* TabFour */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -176,10 +238,12 @@
 		7E43B3E121C5F0E7000845DA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7E43B3E921C5F2E2000845DA /* Goal.swift */,
-				7EFC384321DA8B79000F0F75 /* Note.swift */,
-				7ECD8A9C21C9600600AED39B /* ScriptureDecoding.swift */,
-				7ECD8AB221C9810700AED39B /* TestamentStructures.swift */,
+				7EFC384F21DAC271000F0F75 /* BookOfMormon.xcdatamodeld */,
+				7EC5853521E42DA200116A5C /* Reader */,
+				7EDD2B6621DEAD1B009A834B /* Testaments */,
+				7ECE659021E3CB6600460CEF /* TabOne */,
+				7ECE658F21E3CB5E00460CEF /* TabTwo */,
+				7ECE658E21E3CB5000460CEF /* TabThree */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -187,9 +251,12 @@
 		7E43B3E521C5F265000845DA /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7EDD2B6921DEB543009A834B /* BookmarkController.swift */,
+				7EC306E321E18EAD00CC6103 /* EntryController.swift */,
 				7E43B3EB21C5F406000845DA /* GoalController.swift */,
-				7EFC384521DA9321000F0F75 /* NoteController.swift */,
+				7E2B63F721E4614F00A01D82 /* HighlighterColorController.swift */,
 				7ECD8AAE21C968C100AED39B /* ScriptureController.swift */,
+				7EC306DE21E161E000CC6103 /* VerseController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -197,8 +264,10 @@
 		7E43B3E621C5F278000845DA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7EFC384021DA7FDF000F0F75 /* Reading */,
+				7EFC384021DA7FDF000F0F75 /* Reader */,
+				7ECD945021E5270D004327B1 /* TabOne */,
 				7E238BE421CB34FC001ADF4F /* TabTwo */,
+				7EC306E021E18C6400CC6103 /* TabThree */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,8 +276,6 @@
 			isa = PBXGroup;
 			children = (
 				7E43B3CC21C5DA75000845DA /* TabOne.swift */,
-				7E748C6C21CB4FA100ED9C8F /* NewGoalVC.swift */,
-				7E748C7021CB5BC900ED9C8F /* AllGoalsVC.swift */,
 			);
 			path = TabOne;
 			sourceTree = "<group>";
@@ -229,18 +296,59 @@
 			path = TabThree;
 			sourceTree = "<group>";
 		};
-		7E9032E121CBDF6500E366F6 /* TabFour */ = {
+		7EC306E021E18C6400CC6103 /* TabThree */ = {
 			isa = PBXGroup;
 			children = (
-				7EE553A921CBF7030062C91B /* TabFour.swift */,
+				7EC306E121E18CB000CC6103 /* EntryDetailView.swift */,
+				7EAE98DA21E3DCF700255166 /* MemorizeCell.swift */,
 			);
-			path = TabFour;
+			path = TabThree;
+			sourceTree = "<group>";
+		};
+		7EC306E721E1981200CC6103 /* Reader */ = {
+			isa = PBXGroup;
+			children = (
+				7E748C6221CB423F00ED9C8F /* Reader.storyboard */,
+				7EC306E821E19F2700CC6103 /* HighlighterColors.xib */,
+				7EC5852E21E4038000116A5C /* Memorize.xib */,
+				7E129C1721E01E54001F4A48 /* Note.xib */,
+			);
+			path = Reader;
+			sourceTree = "<group>";
+		};
+		7EC306EC21E1D70300CC6103 /* Reader */ = {
+			isa = PBXGroup;
+			children = (
+				7E748C5E21CB41F100ED9C8F /* ReadingViewController.swift */,
+			);
+			path = Reader;
+			sourceTree = "<group>";
+		};
+		7EC306ED21E1D70E00CC6103 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7E748C6421CB424F00ED9C8F /* Main.storyboard */,
+				7E748C6621CB425E00ED9C8F /* LaunchScreen.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		7EC5853521E42DA200116A5C /* Reader */ = {
+			isa = PBXGroup;
+			children = (
+				7EC5853621E42DC300116A5C /* MemorizedVerse.swift */,
+			);
+			path = Reader;
 			sourceTree = "<group>";
 		};
 		7ECD8A9F21C9602000AED39B /* HelperFiles */ = {
 			isa = PBXGroup;
 			children = (
+				7EFC385421DACCA8000F0F75 /* CoreDataStack.swift */,
+				7EC306EE21E1D8BD00CC6103 /* DateHelper.swift */,
+				7E2B63F521E460CE00A01D82 /* HighlighterColorKey.swift */,
 				7ECD8AB821C9AA2200AED39B /* TestamentKeys.swift */,
+				7ECD8AB221C9810700AED39B /* TestamentStructures.swift */,
 			);
 			path = HelperFiles;
 			sourceTree = "<group>";
@@ -257,12 +365,76 @@
 			path = JSONTestaments;
 			sourceTree = "<group>";
 		};
-		7EFC384021DA7FDF000F0F75 /* Reading */ = {
+		7ECD944321E52046004327B1 /* TabOne */ = {
 			isa = PBXGroup;
 			children = (
+				7E238BD521CB215D001ADF4F /* TabOne.storyboard */,
+				7ECD944C21E52697004327B1 /* CurrentGoal.xib */,
+				7E36F51821EACADA000D82DC /* NewGoal.storyboard */,
+			);
+			path = TabOne;
+			sourceTree = "<group>";
+		};
+		7ECD945021E5270D004327B1 /* TabOne */ = {
+			isa = PBXGroup;
+			children = (
+				7ECD945121E52726004327B1 /* CurrentGoalView.swift */,
+				7ECD945321E5273A004327B1 /* NewGoalView.swift */,
+				7ECD945521E52750004327B1 /* GoalCell.swift */,
+			);
+			path = TabOne;
+			sourceTree = "<group>";
+		};
+		7ECE658E21E3CB5000460CEF /* TabThree */ = {
+			isa = PBXGroup;
+			children = (
+				7EC306E521E18F8100CC6103 /* EntryCD.swift */,
+			);
+			path = TabThree;
+			sourceTree = "<group>";
+		};
+		7ECE658F21E3CB5E00460CEF /* TabTwo */ = {
+			isa = PBXGroup;
+			children = (
+				7EDD2B6721DEB4C0009A834B /* BookmarkCD.swift */,
+			);
+			path = TabTwo;
+			sourceTree = "<group>";
+		};
+		7ECE659021E3CB6600460CEF /* TabOne */ = {
+			isa = PBXGroup;
+			children = (
+				7ECD945921E538E1004327B1 /* GoalCD.swift */,
+			);
+			path = TabOne;
+			sourceTree = "<group>";
+		};
+		7EDD2B6621DEAD1B009A834B /* Testaments */ = {
+			isa = PBXGroup;
+			children = (
+				7E2CFC6A21DD663B000F330B /* SectionCD+CoreDataClass.swift */,
+				7E2CFC6B21DD663B000F330B /* SectionCD+CoreDataProperties.swift */,
+				7EFC386821DAD5B1000F0F75 /* BooksCD+CoreDataClass.swift */,
+				7EFC386921DAD5B1000F0F75 /* BooksCD+CoreDataProperties.swift */,
+				7EFC386C21DAD647000F0F75 /* ChapterCD+CoreDataClass.swift */,
+				7EFC386D21DAD647000F0F75 /* ChapterCD+CoreDataProperties.swift */,
+				7EFC387021DAD8F7000F0F75 /* VerseCD+CoreDataClass.swift */,
+				7EFC387121DAD8F7000F0F75 /* VerseCD+CoreDataProperties.swift */,
+				7EFC385221DACC8E000F0F75 /* TestamentCD.swift */,
+				7E2CFC6821DD652A000F330B /* DoctrineCD.swift */,
+			);
+			path = Testaments;
+			sourceTree = "<group>";
+		};
+		7EFC384021DA7FDF000F0F75 /* Reader */ = {
+			isa = PBXGroup;
+			children = (
+				7EC306EA21E19F3D00CC6103 /* HighlighterColorsView.swift */,
+				7EC5853021E403AC00116A5C /* MemorizeView.swift */,
+				7E129C1921E01F58001F4A48 /* NoteView.swift */,
 				7EFC384121DA801F000F0F75 /* VerseCell.swift */,
 			);
-			path = Reading;
+			path = Reader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,14 +495,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E129C1821E01E54001F4A48 /* Note.xib in Resources */,
 				7E748C6321CB423F00ED9C8F /* Reader.storyboard in Resources */,
 				7ECD8AA921C9657E00AED39B /* pearl-of-great-price.json in Resources */,
 				7E238BD621CB215D001ADF4F /* TabOne.storyboard in Resources */,
 				7ECD8AA621C9657E00AED39B /* doctrine-and-covenants.json in Resources */,
-				7E238BDD21CB21FD001ADF4F /* TabFour.storyboard in Resources */,
+				7E36F51921EACADA000D82DC /* NewGoal.storyboard in Resources */,
 				7E43B3D221C5DA76000845DA /* Assets.xcassets in Resources */,
+				7ECD944D21E52697004327B1 /* CurrentGoal.xib in Resources */,
 				7E748C6521CB424F00ED9C8F /* Main.storyboard in Resources */,
+				7EC306E921E19F2700CC6103 /* HighlighterColors.xib in Resources */,
+				7E36F51C21EAE115000D82DC /* TabThreeDetail.storyboard in Resources */,
 				7E748C6721CB425E00ED9C8F /* LaunchScreen.storyboard in Resources */,
+				7EC5852F21E4038000116A5C /* Memorize.xib in Resources */,
 				7ECD8AA721C9657E00AED39B /* book-of-mormon.json in Resources */,
 				7E748C6121CB422200ED9C8F /* TabThree.storyboard in Resources */,
 				7ECD8AAA21C9657E00AED39B /* new-testament.json in Resources */,
@@ -346,22 +523,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ECD8A9D21C9600600AED39B /* ScriptureDecoding.swift in Sources */,
+				7EC306EF21E1D8BD00CC6103 /* DateHelper.swift in Sources */,
+				7EFC385121DAC271000F0F75 /* BookOfMormon.xcdatamodeld in Sources */,
+				7E2CFC6D21DD663B000F330B /* SectionCD+CoreDataProperties.swift in Sources */,
+				7EFC386A21DAD5B1000F0F75 /* BooksCD+CoreDataClass.swift in Sources */,
 				7E43B3CD21C5DA75000845DA /* TabOne.swift in Sources */,
 				7E43B3EC21C5F406000845DA /* GoalController.swift in Sources */,
+				7ECD945A21E538E1004327B1 /* GoalCD.swift in Sources */,
+				7EFC386B21DAD5B1000F0F75 /* BooksCD+CoreDataProperties.swift in Sources */,
 				7ECD8AB521C98FB700AED39B /* TabTwo.swift in Sources */,
 				7ECD8ABD21C9B5CA00AED39B /* TabThree.swift in Sources */,
-				7EFC384421DA8B79000F0F75 /* Note.swift in Sources */,
+				7ECD945221E52726004327B1 /* CurrentGoalView.swift in Sources */,
 				7ECD8AAF21C968C100AED39B /* ScriptureController.swift in Sources */,
 				7ECD8AB721C992F000AED39B /* ChapterCell.swift in Sources */,
-				7E43B3EA21C5F2E2000845DA /* Goal.swift in Sources */,
-				7E748C6D21CB4FA100ED9C8F /* NewGoalVC.swift in Sources */,
+				7ECD945621E52750004327B1 /* GoalCell.swift in Sources */,
+				7ECD945421E5273A004327B1 /* NewGoalView.swift in Sources */,
+				7E2B63F821E4614F00A01D82 /* HighlighterColorController.swift in Sources */,
+				7EC306E621E18F8100CC6103 /* EntryCD.swift in Sources */,
+				7EAE98DB21E3DCF700255166 /* MemorizeCell.swift in Sources */,
+				7EDD2B6A21DEB543009A834B /* BookmarkController.swift in Sources */,
+				7EC306E421E18EAD00CC6103 /* EntryController.swift in Sources */,
 				7ECD8AB321C9810700AED39B /* TestamentStructures.swift in Sources */,
+				7EC306DF21E161E000CC6103 /* VerseController.swift in Sources */,
+				7E2B63F621E460CE00A01D82 /* HighlighterColorKey.swift in Sources */,
 				7EFC384221DA801F000F0F75 /* VerseCell.swift in Sources */,
-				7EFC384621DA9321000F0F75 /* NoteController.swift in Sources */,
-				7E748C7121CB5BC900ED9C8F /* AllGoalsVC.swift in Sources */,
-				7EE553AA21CBF7030062C91B /* TabFour.swift in Sources */,
+				7EC306E221E18CB000CC6103 /* EntryDetailView.swift in Sources */,
+				7EFC387221DAD8F7000F0F75 /* VerseCD+CoreDataClass.swift in Sources */,
+				7EFC385521DACCA8000F0F75 /* CoreDataStack.swift in Sources */,
+				7EFC385321DACC8E000F0F75 /* TestamentCD.swift in Sources */,
+				7EC5853121E403AC00116A5C /* MemorizeView.swift in Sources */,
+				7EDD2B6821DEB4C0009A834B /* BookmarkCD.swift in Sources */,
+				7EFC386E21DAD647000F0F75 /* ChapterCD+CoreDataClass.swift in Sources */,
+				7EFC386F21DAD647000F0F75 /* ChapterCD+CoreDataProperties.swift in Sources */,
+				7EC306EB21E19F3D00CC6103 /* HighlighterColorsView.swift in Sources */,
+				7E2CFC6C21DD663B000F330B /* SectionCD+CoreDataClass.swift in Sources */,
+				7EC5853721E42DC300116A5C /* MemorizedVerse.swift in Sources */,
+				7EFC387321DAD8F7000F0F75 /* VerseCD+CoreDataProperties.swift in Sources */,
+				7E2CFC6921DD652A000F330B /* DoctrineCD.swift in Sources */,
 				7E748C5F21CB41F100ED9C8F /* ReadingViewController.swift in Sources */,
+				7E129C1A21E01F58001F4A48 /* NoteView.swift in Sources */,
 				7E43B3CB21C5DA75000845DA /* AppDelegate.swift in Sources */,
 				7ECD8ABB21C9AC0B00AED39B /* ChapterHeader.swift in Sources */,
 				7ECD8AB921C9AA2200AED39B /* TestamentKeys.swift in Sources */,
@@ -545,6 +745,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7EFC384F21DAC271000F0F75 /* BookOfMormon.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7EFC385021DAC271000F0F75 /* BookOfMormon.xcdatamodel */,
+			);
+			currentVersion = 7EFC385021DAC271000F0F75 /* BookOfMormon.xcdatamodel */;
+			path = BookOfMormon.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7E43B3BF21C5DA75000845DA /* Project object */;
 }

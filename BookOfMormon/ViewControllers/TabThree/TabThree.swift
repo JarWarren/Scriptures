@@ -8,41 +8,122 @@
 
 import UIKit
 
-class TabThree: UIViewController {
-
-    @IBOutlet weak var studyTypeLabel: UILabel!
-    let studyTypes = ["Favorites:",
-                      "Memorize:",
-                      "Impressions:"]
-    var currentType = 0 {
-        didSet {
-            studyTypeLabel.text = studyTypes[self.currentType]
-        }
-    }
+class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tabThreeTableView: UITableView!
+    @IBOutlet weak var tabThreeSegmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        studyTypeLabel.text = studyTypes[currentType]
+        
+        setupMainView()
+        tabThreeTableView.dataSource = self
+        tabThreeTableView.delegate = self
+        //TODO: datasource needs to be unique for segmentedControlIndex 2
     }
     
-    @IBAction func sortButtonTapped(_ sender: Any) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabThreeSegmentedControl.sendActions(for: .valueChanged)
+        tabBarController?.tabBar.tintColor = #colorLiteral(red: 0.6307423711, green: 0.558336854, blue: 0.09566646069, alpha: 1)
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         
-        if currentType < 2 {
-            currentType += 1
-        } else {
-            currentType = 0
+        switch tabThreeSegmentedControl.selectedSegmentIndex {
+        case 2: return 4
+        default: return 1
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch tabThreeSegmentedControl.selectedSegmentIndex {
+        case 2: return 25
+        case 1: return VerseController.shared.memorizingVerses?.count ?? 0
+        case 0: return EntryController.shared.allEntries.count
+        default: return 0
+        }
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        switch tabThreeSegmentedControl.selectedSegmentIndex {
+        // TODO: case 2 : Put the specific mastery verses into their own array.
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "memoryCell", for: indexPath) as? MemorizeCell else { return UITableViewCell() }
+            let verseSet = VerseController.shared.memorizingVerses?[indexPath.row]
+            cell.memorizedVerseSet = verseSet
+            return cell
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath)
+            let cellEntry = EntryController.shared.allEntries[indexPath.row]
+            cell.textLabel?.text = cellEntry.entryTitle
+            if let date = cellEntry.entryDate {
+                cell.detailTextLabel?.text = date.mMdDyY
+            }
+            return cell
+        default: return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch tabThreeSegmentedControl.selectedSegmentIndex {
+            
+        case 1:
+            if editingStyle == .delete {
+                guard let deletedMemorization = VerseController.shared.memorizingVerses?[indexPath.row] else { return }
+                VerseController.shared.deleteMemorizedVerses(verses: deletedMemorization)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        case 0:
+            if editingStyle == .delete {
+                let deletedEntry = EntryController.shared.allEntries[indexPath.row]
+                EntryController.shared.deleteEntry(entry: deletedEntry)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        default: return
+        }
+    }
+    
+    func setupMainView() {
+        
+        let barButton = UIBarButtonItem(image: UIImage(named: "newEntryBarButton"), style: .plain, target: self, action: #selector(addEntryButtonTapped))
+        barButton.tintColor = #colorLiteral(red: 0.6307423711, green: 0.558336854, blue: 0.09566646069, alpha: 1)
+        self.navigationItem.rightBarButtonItem = barButton
+    }
+    
+    @objc func addEntryButtonTapped(_ sender: UIBarButtonItem) {
+        
+        let newEntryView = UIStoryboard(name: "TabThree", bundle: nil).instantiateViewController(withIdentifier: "EntryDetailView") as! EntryDetailView
+        newEntryView.parentSelectedIndex = 0
+        tabThreeSegmentedControl.selectedSegmentIndex = 0
+        
+        navigationController?.pushViewController(newEntryView, animated: true)
+    }
+    
+    @IBAction func tabThreeSegmentedControlValueChanged(_ sender: Any) {
+        tabThreeTableView.reloadData()
+        if tabThreeSegmentedControl.selectedSegmentIndex == 1 {
+            tabBarController?.viewControllers?[2].tabBarItem.badgeValue = nil
+        }
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationVC = segue.destination as? EntryDetailView,
+            let indexPath = tabThreeTableView.indexPathForSelectedRow else { return }
+        
+        switch tabThreeSegmentedControl.selectedSegmentIndex {
+        case 2:
+            destinationVC.parentSelectedIndex = 2
+        case 1:
+            destinationVC.parentSelectedIndex = 1
+            destinationVC.verses = VerseController.shared.memorizingVerses?[indexPath.row]
+        case 0:
+            destinationVC.parentSelectedIndex = 0
+            destinationVC.entry = EntryController.shared.allEntries[indexPath.row]
+            destinationVC.shouldClose = false
+        default: return
+        }
+    }
 }

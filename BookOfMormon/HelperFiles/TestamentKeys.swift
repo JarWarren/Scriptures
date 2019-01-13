@@ -22,6 +22,12 @@ struct TestamentKeys {
                                            "new-testament" : 3,
                                            "old-testament" : 4]
     
+    static let selectedTestament = [0 : "book-of-mormon",
+                                    1 : "pearl-of-great-price",
+                                    2 : "doctrine-and-covenants",
+                                    3 : "new-testament",
+                                    4 : "old-testament"]
+    
     static let dictionary = [0 : "Book of Mormon",
                              1 : "Pearl of Great Price",
                              2 : "Doctrine and Covenants",
