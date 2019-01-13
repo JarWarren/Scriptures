@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Entry Detail View-->
+        <scene sceneID="Gze-Od-gcM">
+            <objects>
+                <viewController storyboardIdentifier="EntryDetailView" id="9iY-5u-Tza" customClass="EntryDetailView" customModule="BookOfMormon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LLr-B8-sEL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yqH-7u-9Iw">
+                                <rect key="frame" x="12" y="85" width="351" height="516"/>
+                                <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yv-mp-br1">
+                                <rect key="frame" x="119" y="613" width="137" height="30"/>
+                                <color key="backgroundColor" red="0.61915053929999997" green="0.56043829219999997" blue="0.20530300949999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="    Mark Complete    ">
+                                    <color key="titleColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="completeButtonTapped:" destination="9iY-5u-Tza" eventType="touchUpInside" id="kZO-FI-49d"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Entry title..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0me-ZU-vrE">
+                                <rect key="frame" x="12" y="44" width="284" height="29"/>
+                                <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ske-Nb-3DU">
+                                <rect key="frame" x="308" y="32" width="55" height="41"/>
+                                <state key="normal" title="[empty]">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="entryButtonTapped:" destination="9iY-5u-Tza" eventType="touchUpInside" id="EVi-br-yRU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Ske-Nb-3DU" firstAttribute="top" secondItem="Vob-SO-cn7" secondAttribute="top" constant="12" id="9MB-Tb-x6f"/>
+                            <constraint firstItem="yqH-7u-9Iw" firstAttribute="top" secondItem="0me-ZU-vrE" secondAttribute="bottom" constant="12" id="GeT-pk-IJm"/>
+                            <constraint firstItem="Ske-Nb-3DU" firstAttribute="leading" secondItem="0me-ZU-vrE" secondAttribute="trailing" constant="12" id="IG8-8T-fig"/>
+                            <constraint firstItem="yqH-7u-9Iw" firstAttribute="top" secondItem="Ske-Nb-3DU" secondAttribute="bottom" constant="12" id="LWb-mX-FyK"/>
+                            <constraint firstItem="yqH-7u-9Iw" firstAttribute="top" secondItem="0me-ZU-vrE" secondAttribute="bottom" constant="12" id="QlU-D6-pzg"/>
+                            <constraint firstItem="0me-ZU-vrE" firstAttribute="top" secondItem="Vob-SO-cn7" secondAttribute="top" constant="24" id="SWp-Ja-LAe"/>
+                            <constraint firstItem="4yv-mp-br1" firstAttribute="centerX" secondItem="Vob-SO-cn7" secondAttribute="centerX" id="WlI-Uf-DGf"/>
+                            <constraint firstItem="0me-ZU-vrE" firstAttribute="leading" secondItem="Vob-SO-cn7" secondAttribute="leading" constant="12" id="Zlo-gc-KiQ"/>
+                            <constraint firstItem="4yv-mp-br1" firstAttribute="top" secondItem="yqH-7u-9Iw" secondAttribute="bottom" constant="12" id="bMf-eG-hgx"/>
+                            <constraint firstItem="yqH-7u-9Iw" firstAttribute="leading" secondItem="Vob-SO-cn7" secondAttribute="leading" constant="12" id="cHF-ae-PUh"/>
+                            <constraint firstItem="Vob-SO-cn7" firstAttribute="bottom" secondItem="4yv-mp-br1" secondAttribute="bottom" constant="24" id="ffy-8a-AG6"/>
+                            <constraint firstItem="Vob-SO-cn7" firstAttribute="trailing" secondItem="yqH-7u-9Iw" secondAttribute="trailing" constant="12" id="hod-1q-0dn"/>
+                            <constraint firstItem="Vob-SO-cn7" firstAttribute="trailing" secondItem="Ske-Nb-3DU" secondAttribute="trailing" constant="12" id="me2-BO-3gL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Vob-SO-cn7"/>
+                    </view>
+                    <connections>
+                        <outlet property="bodyTextView" destination="yqH-7u-9Iw" id="jHc-XU-AMy"/>
+                        <outlet property="completeButton" destination="4yv-mp-br1" id="s8f-re-bAX"/>
+                        <outlet property="entryButton" destination="Ske-Nb-3DU" id="bEW-V4-q1o"/>
+                        <outlet property="titleTextField" destination="0me-ZU-vrE" id="Dyo-uh-KaZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xu8-ij-gsV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4164" y="1265"/>
+        </scene>
+    </scenes>
+</document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, CurrentGoalViewDelegate, NewGoalViewDelegate {
+class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, CurrentGoalViewDelegate {
     
     // MARK: - Outlets and Properties
     @IBOutlet weak var tabOneSegmentedControl: UISegmentedControl!
@@ -27,6 +27,8 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        allGoalsTableView.reloadData()
+        tabOneSegmentedControl.sendActions(for: .valueChanged)
         setupGoal()
         currentGoalView()
         tabBarController?.tabBar.tintColor = #colorLiteral(red: 0, green: 0.5016700625, blue: 0.005194439087, alpha: 1)
@@ -84,6 +86,7 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
     
     func newGoalView() {
         
+        /*
         guard let newGoalView = Bundle.main.loadNibNamed("NewGoal", owner: nil, options: nil)![0] as? NewGoalView else { return }
         self.view.addSubview(newGoalView)
         newGoalView.delegate = self
@@ -94,12 +97,7 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
             newGoalView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             newGoalView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             newGoalView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)])
-    }
-    
-    func allGoalsView() {
-        
-        tabOneSegmentedControl.selectedSegmentIndex = 2
-        tabOneSegmentedControl.sendActions(for: .valueChanged)
+         */
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -129,19 +127,8 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
             alertController.addAction(cancelAction)
             self.present(alertController, animated: true, completion: nil)
         }
-        if editingStyle == .insert {
-            
-        }
     }
-    
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
-    }
-    
+
     // MARK: Actions
     @IBAction func tabOneSegmentedControlValueChanged(_ sender: Any) {
         
@@ -149,16 +136,16 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
         switch tabOneSegmentedControl.selectedSegmentIndex {
         case 0:
             currentGoalView()
-        case 1:
-            newGoalView()
-        case 2: return
-        default: tabOneSegmentedControl.selectedSegmentIndex = 0
+        default: return
         }
     }
     
     
     @IBAction func newGoalButtonTapped(_ sender: Any) {
         
+        guard let newGoalView = UIStoryboard(name: "NewGoal", bundle: nil).instantiateViewController(withIdentifier: "NewGoal") as? NewGoalViewController else { return }
+        newGoalView.hasDeadline = false
+        self.navigationController?.pushViewController(newGoalView, animated: true)
     }
     
     // MARK: - Navigation
@@ -167,8 +154,7 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
         guard let destinationTestament = GoalController.shared.currentGoal?.testament,
             let destinationBook = GoalController.shared.currentGoal?.currentBook,
             let destinationChapter = GoalController.shared.currentGoal?.currentChapter else {
-                tabOneSegmentedControl.selectedSegmentIndex = 1
-                tabOneSegmentedControl.sendActions(for: .valueChanged)
+                newGoalButtonTapped(self)
                 return
         }
         ScriptureController.shared.selectedTestament = TestamentKeys.selectedTestament[Int(destinationTestament)]

@@ -8,24 +8,23 @@
 
 import UIKit
 
-class NewGoalView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-   
+class NewGoalViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var goalTypeLabel: UILabel!
     @IBOutlet weak var goalTypeSwitch: UISwitch!
-    @IBOutlet weak var partialProgressButton: UIButton!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var partialProgressButton: UIButton!
     @IBOutlet weak var chaptersTextField: UITextField!
     @IBOutlet weak var chaptersLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
     var startPosition = [0, 0, 0]
     //TODO: Hide the pickerView as soon as they set a custom start position.
     var hasDeadline = true
-    var delegate: NewGoalViewDelegate?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         setupView()
         pickerView.delegate = self
@@ -33,6 +32,7 @@ class NewGoalView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPickerVi
         chaptersTextField.delegate = self
         nameTextField.delegate = self
         datePicker.locale = Locale(identifier: "en_US")
+        self.title = "New Goal"
     }
     
     func setupView() {
@@ -53,7 +53,7 @@ class NewGoalView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPickerVi
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let options = ["BoM", "PoGP", "D&C", "NT", "OT"]
+        let options = ["Book of Mormon", "Pearl of Great Price", "Doctrine & Covenants", "New Testament", "Old Testament"]
         return options[row]
     }
     
@@ -73,13 +73,12 @@ class NewGoalView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPickerVi
         case true:
             let endDate = datePicker.date
             GoalController.shared.createDeadlineGoal(name: goalName, endDate: endDate, startingPoint: startPosition)
-            delegate?.allGoalsView()
         case false:
             guard let dailyChapters = chaptersTextField.text else { return }
             guard let chapters = Int(dailyChapters) else { return }
             GoalController.shared.createIncrementalGoal(name: goalName, startPosition: startPosition, dailyChapters: chapters)
-            delegate?.allGoalsView()
         }
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func goalTypeSwitchValueChanged(_ sender: Any) {
@@ -98,9 +97,4 @@ class NewGoalView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPickerVi
         }
         hasDeadline.toggle()
     }
-}
-
-protocol NewGoalViewDelegate: class {
-    
-    func allGoalsView()
 }

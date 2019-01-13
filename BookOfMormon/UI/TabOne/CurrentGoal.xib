@@ -26,7 +26,7 @@
                         <action selector="todayButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="n4M-rE-3kQ"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="YoA-4v-pxF">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6" translatesAutoresizingMaskIntoConstraints="NO" id="YoA-4v-pxF">
                     <rect key="frame" x="0.0" y="214" width="375" height="375"/>
                     <color key="tintColor" red="0.2154795229" green="0.49386578799999997" blue="0.1332186759" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
@@ -50,6 +50,6 @@
         </view>
     </objects>
     <resources>
-        <image name="0" width="1200" height="1200"/>
+        <image name="6" width="3600" height="3600"/>
     </resources>
 </document>
