@@ -22,8 +22,6 @@ class CurrentGoalView: UIView {
     func setupView() {
         
         todayButton.layer.cornerRadius = todayButton.frame.height / 2
-        todayButton.layer.borderColor = UIColor.lightGray.cgColor
-        todayButton.layer.borderWidth = 1
         guard let currentReference = GoalController.shared.currentGoal?.currentReference else { return }
         todayButton.setTitle("    \(currentReference)    ", for: .normal)
     }

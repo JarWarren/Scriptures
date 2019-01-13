@@ -43,14 +43,8 @@ class NoteView: UIView, UITextFieldDelegate, UITextViewDelegate {
         noteTextField.layer.cornerRadius = 5
         bodyTextView.layer.cornerRadius = 5
         exitButton.layer.cornerRadius = exitButton.frame.height / 2
-        exitButton.layer.borderWidth = 1
-        exitButton.layer.borderColor = UIColor.lightGray.cgColor
         editButton.layer.cornerRadius = editButton.frame.height / 2
-        editButton.layer.borderWidth = 1
-        editButton.layer.borderColor = UIColor.lightGray.cgColor
         deleteButton.layer.cornerRadius = deleteButton.frame.height / 2
-        deleteButton.layer.borderWidth = 1
-        deleteButton.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {

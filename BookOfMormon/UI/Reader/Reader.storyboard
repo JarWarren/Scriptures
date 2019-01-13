@@ -30,33 +30,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2O-ga-ygi">
-                                                    <rect key="frame" x="8" y="11.5" width="317" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bP-K1-Cuq">
-                                                    <rect key="frame" x="337" y="7" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="RBV-A3-3jp"/>
-                                                        <constraint firstAttribute="width" secondItem="8bP-K1-Cuq" secondAttribute="height" multiplier="1:1" id="aZ7-5T-Eqf"/>
-                                                    </constraints>
-                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" image="hasNote"/>
-                                                    <connections>
-                                                        <action selector="noteButtonTapped:" destination="IFH-HC-4eI" eventType="touchUpInside" id="j7u-Rf-yjA"/>
-                                                    </connections>
-                                                </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qCL-Jt-I6D">
+                                                    <rect key="frame" x="9.5" y="4" width="356" height="35.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2O-ga-ygi">
+                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bP-K1-Cuq">
+                                                            <rect key="frame" x="321" y="0.0" width="35" height="35"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="35" id="0AM-0t-hVt"/>
+                                                                <constraint firstAttribute="width" secondItem="8bP-K1-Cuq" secondAttribute="height" multiplier="1:1" id="aZ7-5T-Eqf"/>
+                                                            </constraints>
+                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal" image="hasNote"/>
+                                                            <connections>
+                                                                <action selector="noteButtonTapped:" destination="IFH-HC-4eI" eventType="touchUpInside" id="j7u-Rf-yjA"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="8bP-K1-Cuq" firstAttribute="leading" secondItem="U2O-ga-ygi" secondAttribute="trailing" constant="12" id="8uT-Ub-fLH"/>
-                                                <constraint firstItem="U2O-ga-ygi" firstAttribute="centerY" secondItem="rcB-R3-RDU" secondAttribute="centerY" id="9TY-0n-aQd"/>
-                                                <constraint firstItem="U2O-ga-ygi" firstAttribute="leading" secondItem="rcB-R3-RDU" secondAttribute="leading" constant="8" id="QuE-wC-0Bp"/>
-                                                <constraint firstAttribute="bottom" secondItem="U2O-ga-ygi" secondAttribute="bottom" constant="11.5" id="UUH-Dd-7cC"/>
-                                                <constraint firstItem="8bP-K1-Cuq" firstAttribute="centerY" secondItem="rcB-R3-RDU" secondAttribute="centerY" id="h5H-vm-aJ5"/>
-                                                <constraint firstItem="U2O-ga-ygi" firstAttribute="top" secondItem="rcB-R3-RDU" secondAttribute="top" constant="11.5" id="mCs-3L-5p5"/>
-                                                <constraint firstAttribute="trailing" secondItem="8bP-K1-Cuq" secondAttribute="trailing" constant="8" id="mFr-eE-s7M"/>
+                                                <constraint firstItem="qCL-Jt-I6D" firstAttribute="centerY" secondItem="rcB-R3-RDU" secondAttribute="centerY" id="9sT-8F-WTU"/>
+                                                <constraint firstItem="qCL-Jt-I6D" firstAttribute="centerX" secondItem="rcB-R3-RDU" secondAttribute="centerX" id="H4l-hE-S6s"/>
+                                                <constraint firstItem="qCL-Jt-I6D" firstAttribute="width" secondItem="rcB-R3-RDU" secondAttribute="width" multiplier="0.95" id="dDe-ZU-NZj"/>
+                                                <constraint firstItem="qCL-Jt-I6D" firstAttribute="height" secondItem="rcB-R3-RDU" secondAttribute="height" constant="-8" id="pl6-41-vnQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -185,8 +187,6 @@
                         <outlet property="bookmarkButton" destination="ldv-4d-cJW" id="GTF-PJ-cC5"/>
                         <outlet property="chapterReferenceLabel" destination="cmw-2k-d59" id="L2g-Gl-YQx"/>
                         <outlet property="darkView" destination="4jO-2P-eiN" id="3LN-Nv-Ah3"/>
-                        <outlet property="highlighterButtonView" destination="KRG-xE-bKD" id="8FI-y3-nXQ"/>
-                        <outlet property="highlighterButtonViewButton" destination="gEC-FK-oJ0" id="Qsf-k4-4ti"/>
                         <outlet property="highlighterMenuButton" destination="Fib-qn-wER" id="Uje-gP-8XE"/>
                         <outlet property="leftButton" destination="BQa-oZ-Hy7" id="qbp-DP-dRh"/>
                         <outlet property="rightButton" destination="Cps-h7-8cv" id="eQq-3O-SP1"/>
@@ -194,26 +194,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KnO-nZ-3KW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="KRG-xE-bKD">
-                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEC-FK-oJ0">
-                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
-                            <connections>
-                                <action selector="highlighterButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="7eD-7N-L9s"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="gEC-FK-oJ0" firstAttribute="top" secondItem="KRG-xE-bKD" secondAttribute="top" id="0DM-8R-xOH"/>
-                        <constraint firstAttribute="bottom" secondItem="gEC-FK-oJ0" secondAttribute="bottom" id="C9p-bb-4P3"/>
-                        <constraint firstItem="gEC-FK-oJ0" firstAttribute="leading" secondItem="KRG-xE-bKD" secondAttribute="leading" id="Xfr-3I-MiX"/>
-                        <constraint firstAttribute="trailing" secondItem="gEC-FK-oJ0" secondAttribute="trailing" id="mwE-Lx-Oi6"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="Aze-qj-a8D"/>
-                </view>
                 <view alpha="0.40000000000000002" contentMode="scaleToFill" id="4jO-2P-eiN">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -225,12 +205,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bookmark" width="1200" height="1200"/>
-        <image name="copy" width="1200" height="1200"/>
-        <image name="hasNote" width="1200" height="1200"/>
-        <image name="highlight" width="1200" height="1200"/>
-        <image name="memorize" width="1200" height="1200"/>
-        <image name="note" width="1200" height="1200"/>
-        <image name="underscore" width="1200" height="1200"/>
+        <image name="bookmark" width="15" height="24"/>
+        <image name="copy" width="20" height="24"/>
+        <image name="hasNote" width="28" height="28"/>
+        <image name="highlight" width="23" height="24"/>
+        <image name="memorize" width="25.5" height="24"/>
+        <image name="note" width="24" height="24"/>
+        <image name="underscore" width="24" height="24"/>
     </resources>
 </document>

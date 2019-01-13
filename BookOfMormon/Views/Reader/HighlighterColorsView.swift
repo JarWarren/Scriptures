@@ -30,62 +30,44 @@ class HighlighterColorsView: UIView {
     
     @IBAction func closeButtonTapped(_ sender: Any) {
         delegate?.hideSubviews()
+        delegate?.colorViewClosed()
     }
     
     @IBAction func colorButtonTapped(_ sender: UIButton) {
         
         HighlighterColorController.shared.changeColor(to: sender.tag)
         delegate?.updateColorButton()
-        delegate?.hideSubviews()
+        closeButtonTapped(sender)
     }
     
     func setupButtons() {
         
         closeButton.layer.cornerRadius = closeButton.frame.height / 2
-        closeButton.layer.borderWidth = 1
-        closeButton.layer.borderColor = UIColor.lightGray.cgColor
         
         colorOne.layer.cornerRadius = 5
-        colorOne.layer.borderWidth = 1
-        colorOne.layer.borderColor = UIColor.lightGray.cgColor
         
         colorTwo.layer.cornerRadius = 5
-        colorTwo.layer.borderWidth = 1
-        colorTwo.layer.borderColor = UIColor.lightGray.cgColor
         
         colorThree.layer.cornerRadius = 5
-        colorThree.layer.borderWidth = 1
-        colorThree.layer.borderColor = UIColor.lightGray.cgColor
         
         colorFour.layer.cornerRadius = 5
-        colorFour.layer.borderWidth = 1
-        colorFour.layer.borderColor = UIColor.lightGray.cgColor
         
         colorFive.layer.cornerRadius = 5
-        colorFive.layer.borderWidth = 1
-        colorFive.layer.borderColor = UIColor.lightGray.cgColor
         
         colorSix.layer.cornerRadius = 5
-        colorSix.layer.borderWidth = 1
-        colorSix.layer.borderColor = UIColor.lightGray.cgColor
         
         colorSeven.layer.cornerRadius = 5
-        colorSeven.layer.borderWidth = 1
-        colorSeven.layer.borderColor = UIColor.lightGray.cgColor
         
         colorEight.layer.cornerRadius = 5
-        colorEight.layer.borderWidth = 1
-        colorEight.layer.borderColor = UIColor.lightGray.cgColor
         
         colorNine.layer.cornerRadius = 5
-        colorNine.layer.borderWidth = 1
-        colorNine.layer.borderColor = UIColor.lightGray.cgColor
     }
 }
 
 protocol ColorViewDelegate: class {
     func hideSubviews()
     func updateColorButton()
+    func colorViewClosed()
 }
 
 class Arkin {

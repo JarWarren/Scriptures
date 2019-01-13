@@ -13,7 +13,6 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
     // MARK: - Outlets and Properties
     @IBOutlet weak var tabOneSegmentedControl: UISegmentedControl!
     @IBOutlet weak var allGoalsTableView: UITableView!
-    var barButton: UIBarButtonItem?
     var chaptersToRead = 0
     var subviews = [UIView]()
     
@@ -41,10 +40,9 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
     // MARK: - Setup Methods
     func setupButtons() {
         
-        barButton = navigationItem.rightBarButtonItem
-        guard let barButton = barButton else { return }
-        barButton.target = self
-        barButton.action = #selector(recalculateButtonTapped)
+        let barButton = UIBarButtonItem(image: UIImage(named: "newGoalBarButton"), style: .plain, target: self, action: #selector(newGoalButtonTapped))
+        barButton.tintColor = #colorLiteral(red: 0, green: 0.5016700625, blue: 0.005194439087, alpha: 1)
+        self.navigationItem.rightBarButtonItem = barButton
     }
     
     
@@ -159,7 +157,7 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
     }
     
     
-    @IBAction func recalculateButtonTapped(_ sender: Any) {
+    @IBAction func newGoalButtonTapped(_ sender: Any) {
         
     }
     

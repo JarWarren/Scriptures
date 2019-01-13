@@ -47,7 +47,7 @@ class MemorizeCell: UITableViewCell {
             memorizedImage.tintColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         case false:
             self.memorizedImage.image = UIImage(named: "notMemorized")
-            memorizedImage.layer.borderColor = UIColor.lightGray.cgColor
+            memorizedImage.layer.borderColor = UIColor.black.cgColor
             memorizedImage.layer.borderWidth = 1
             memorizedImage.tintColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
         default: return

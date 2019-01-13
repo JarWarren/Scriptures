@@ -35,8 +35,6 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
         
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.6313489079, green: 0.557828486, blue: 0.09932992607, alpha: 1)
         completeButton.layer.cornerRadius = completeButton.frame.height / 2
-        completeButton.layer.borderColor = UIColor.lightGray.cgColor
-        completeButton.layer.borderWidth = 1
         entryButton.isUserInteractionEnabled = false
         titleTextField.layer.cornerRadius = 5
         titleTextField.delegate = self
@@ -54,15 +52,15 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 prepareToEdit()
             }
         case 1:
-            guard let verseHolder = verses else { return }
-            guard let unwrappedVerses = verseHolder.verses?.array as? [VerseCD] else { return }
+            guard let verseHolder = verses else { abortView(); return }
+            guard let unwrappedVerses = verseHolder.verses?.array as? [VerseCD] else {abortView(); return }
             switch verseHolder.verses?.count {
             case 1:
-                guard let verse = unwrappedVerses.first, let text = unwrappedVerses.first?.text else { return }
+                guard let verse = unwrappedVerses.first, let text = unwrappedVerses.first?.text else { abortView(); return }
                 titleTextField.text = verse.reference
                 bodyTextView.text = "\(verse.verse))  " + text
             default:
-                guard let first = unwrappedVerses.first?.reference, let last = unwrappedVerses.last?.reference else { return }
+                guard let first = unwrappedVerses.first?.reference, let last = unwrappedVerses.last?.reference else { abortView(); return }
                 titleTextField.text = first + " - " + last
                 var bodyText = ""
                 for verse in unwrappedVerses {
@@ -106,7 +104,7 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 prepareToEdit()
             }
         case 1:
-            guard let verses = verses else { return }
+            guard let verses = verses else { abortView(); return }
             VerseController.shared.toggleMemorized(verses: verses)
             updateMemorizeButton(verses: verses)
         case 2:
@@ -127,8 +125,6 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
         entryButton.setTitle("    Return    ", for: .normal)
         entryButton.isUserInteractionEnabled = true
         entryButton.backgroundColor = #colorLiteral(red: 0.6313489079, green: 0.557828486, blue: 0.09932992607, alpha: 1)
-        entryButton.layer.borderWidth = 1
-        entryButton.layer.borderColor = UIColor.lightGray.cgColor
         entryButton.layer.cornerRadius = entryButton.frame.height / 2
         entryButton.setTitleColor(UIColor.white, for: .normal)
         completeButton.setTitle("    Save    ", for: .normal)
@@ -142,14 +138,14 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
             entryButton.tintColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
             entryButton.backgroundColor = UIColor.white
             completeButton.setTitle("    Not Memorized    ", for: .normal)
-            entryButton.layer.borderWidth = 2
+            entryButton.layer.borderWidth = 3
             entryButton.layer.borderColor = #colorLiteral(red: 0.6313489079, green: 0.557828486, blue: 0.09932992607, alpha: 1)
         } else {
             entryButton.setBackgroundImage(UIImage(named: "notMemorized"), for: .normal)
             entryButton.tintColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
             completeButton.setTitle("    Memorized    ", for: .normal)
             entryButton.layer.borderWidth = 1
-            entryButton.layer.borderColor = UIColor.lightGray.cgColor
+            entryButton.layer.borderColor = UIColor.black.cgColor
             entryButton.backgroundColor = UIColor.white
         }
     }
@@ -158,5 +154,10 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         bodyTextView.becomeFirstResponder()
         return true
+    }
+    
+    func abortView() {
+        
+//        self.navigationController?.popToRootViewController(animated: true)
     }
 }

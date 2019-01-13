@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "mastered.png",
+      "filename" : "highlighterBarButton.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "highlighterBarButton@2x.png",
       "scale" : "2x"
     },
     {
