@@ -16,8 +16,6 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
-    @IBOutlet var highlighterButtonView: UIView!
-    @IBOutlet weak var highlighterButtonViewButton: UIButton!
     @IBOutlet weak var darkView: UIView!
     @IBOutlet weak var highlighterMenuButton: UIButton!
     var subviews = [UIView]() {
@@ -183,8 +181,6 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
                     self.subviews.append(noteView)
                     self.noteViewIsVisible = true
                     noteView.layer.cornerRadius = 15
-                    noteView.layer.borderColor = UIColor.lightGray.cgColor
-                    noteView.layer.borderWidth = 1
                     NSLayoutConstraint.activate([
                         noteView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
                         noteView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
@@ -207,8 +203,6 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.subviews.append(memorizeView)
                 //memorize view delegate self?
                 memorizeView.layer.cornerRadius = 15
-                memorizeView.layer.borderWidth = 1
-                memorizeView.layer.borderColor = UIColor.lightGray.cgColor
                 NSLayoutConstraint.activate([
                     memorizeView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
                     memorizeView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
@@ -252,8 +246,6 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             colorView.delegate = self
             self.subviews.append(colorView)
             colorView.layer.cornerRadius = 15
-            colorView.layer.borderColor = UIColor.lightGray.cgColor
-            colorView.layer.borderWidth = 1
             NSLayoutConstraint.activate([
                 colorView.widthAnchor.constraint(equalToConstant: 200),
                 colorView.heightAnchor.constraint(equalToConstant: 200),
@@ -275,15 +267,9 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func setupHighlighterButton() {
         
-        self.highlightColorButton = UIBarButtonItem(customView: highlighterButtonView)
-        self.highlighterButtonViewButton.backgroundColor = HighlighterColorController.shared.currentColor
-        self.highlighterButtonViewButton.layer.cornerRadius = 5
-        highlighterButtonView.layer.cornerRadius = 5
-        highlighterButtonView.layer.borderColor = UIColor.lightGray.cgColor
-        highlighterButtonView.layer.borderWidth = 1
-        highlightColorButton?.target = self
-        highlightColorButton?.action = #selector(highlighterButtonTapped)
-        self.navigationItem.rightBarButtonItem = self.highlightColorButton
+        let highlightColorButton = UIBarButtonItem(image: UIImage(named:"highlighterBarButton"), style: .plain, target: self, action: #selector(highlighterButtonTapped))
+        highlightColorButton.tintColor = #colorLiteral(red: 0.7338222861, green: 0.1125283316, blue: 0.3782619834, alpha: 1)
+        self.navigationItem.rightBarButtonItem = highlightColorButton
     }
     
     func setupScriptures() {
@@ -293,7 +279,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         NSLayoutConstraint.activate([
             darkView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
             darkView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            darkView.topAnchor.constraint(equalTo: bookmarkButton.bottomAnchor)
+            darkView.topAnchor.constraint(equalTo: versesTableView.topAnchor)
             ])
         darkView.isHidden = true
         let books = ScriptureController.shared.fetchedTestament?.books?.array as! [BooksCD]
@@ -371,7 +357,6 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func updateColorButton () {
         
-        self.highlighterButtonViewButton.backgroundColor = HighlighterColorController.shared.currentColor
         self.highlighterMenuButton.tintColor = HighlighterColorController.shared.currentColor
     }
     
@@ -387,5 +372,9 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func newMasteryBadge() {
         
           tabBarController?.viewControllers?[2].tabBarItem.badgeValue = "New"
+    }
+    
+    func colorViewClosed() {
+        self.colorViewIsVisible = false
     }
 }

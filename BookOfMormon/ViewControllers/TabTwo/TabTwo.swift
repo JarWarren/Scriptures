@@ -13,7 +13,6 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     // MARK: - Outlets and Properties
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var booksSegmentedControl: UISegmentedControl!
-    var barButton: UIBarButtonItem?
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -110,10 +109,9 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     // MARK: Setup
     func setupMainView() {
         
-        self.barButton = self.navigationItem.rightBarButtonItem
-        guard let bookmarkButton = self.navigationItem.rightBarButtonItem else { return }
-        bookmarkButton.target = self
-        bookmarkButton.action = #selector(bookmarkBarButtonTapped)
+        let bookmarkButton = UIBarButtonItem(image: UIImage(named: "bookmarkBarButton"), style: .plain, target: self, action: #selector(bookmarkBarButtonTapped))
+        bookmarkButton.tintColor = #colorLiteral(red: 0.7338222861, green: 0.1125283316, blue: 0.3782619834, alpha: 1)
+        self.navigationItem.rightBarButtonItem = bookmarkButton
     }
     
     func setupTestament() {

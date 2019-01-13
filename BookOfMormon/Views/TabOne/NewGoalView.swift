@@ -38,8 +38,6 @@ class NewGoalView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPickerVi
     func setupView() {
         
         saveButton.layer.cornerRadius = saveButton.frame.height / 2
-        saveButton.layer.borderColor = UIColor.lightGray.cgColor
-        saveButton.layer.borderWidth = 1
         goalTypeSwitch.isOn = false
         goalTypeSwitch.sendActions(for: .valueChanged)
     }

@@ -12,9 +12,6 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tabThreeTableView: UITableView!
     @IBOutlet weak var tabThreeSegmentedControl: UISegmentedControl!
-    var addEntryButton: UIBarButtonItem? {
-        return self.navigationItem.rightBarButtonItem
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,15 +87,16 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func setupMainView() {
         
-        addEntryButton?.title = "New Entry"
-        addEntryButton?.target = self
-        addEntryButton?.action = #selector(addEntryButtonTapped)
+        let barButton = UIBarButtonItem(image: UIImage(named: "newEntryBarButton"), style: .plain, target: self, action: #selector(addEntryButtonTapped))
+        barButton.tintColor = #colorLiteral(red: 0.6307423711, green: 0.558336854, blue: 0.09566646069, alpha: 1)
+        self.navigationItem.rightBarButtonItem = barButton
     }
     
     @objc func addEntryButtonTapped(_ sender: UIBarButtonItem) {
         
         let newEntryView = UIStoryboard(name: "TabThree", bundle: nil).instantiateViewController(withIdentifier: "EntryDetailView") as! EntryDetailView
         newEntryView.parentSelectedIndex = 0
+        tabThreeSegmentedControl.selectedSegmentIndex = 0
         
         navigationController?.pushViewController(newEntryView, animated: true)
     }
@@ -127,6 +125,5 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
             destinationVC.shouldClose = false
         default: return
         }
-        
     }
 }

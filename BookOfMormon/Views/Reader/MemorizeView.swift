@@ -125,16 +125,10 @@ class MemorizeView: UIView {
     func setupView() {
         
         closeButton.layer.cornerRadius = closeButton.frame.height / 2
-        closeButton.layer.borderColor = UIColor.lightGray.cgColor
-        closeButton.layer.borderWidth = 1
         
         memorizeButton.layer.cornerRadius = memorizeButton.frame.height / 2
-        memorizeButton.layer.borderColor = UIColor.lightGray.cgColor
-        memorizeButton.layer.borderWidth = 1
         
         addButton.layer.cornerRadius = addButton.frame.height / 2
-        addButton.layer.borderColor = UIColor.lightGray.cgColor
-        addButton.layer.borderWidth = 1
         
         endLabel.isHidden = true
         leftButton.isHidden = true

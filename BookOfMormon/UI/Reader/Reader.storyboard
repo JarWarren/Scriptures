@@ -185,8 +185,6 @@
                         <outlet property="bookmarkButton" destination="ldv-4d-cJW" id="GTF-PJ-cC5"/>
                         <outlet property="chapterReferenceLabel" destination="cmw-2k-d59" id="L2g-Gl-YQx"/>
                         <outlet property="darkView" destination="4jO-2P-eiN" id="3LN-Nv-Ah3"/>
-                        <outlet property="highlighterButtonView" destination="KRG-xE-bKD" id="8FI-y3-nXQ"/>
-                        <outlet property="highlighterButtonViewButton" destination="gEC-FK-oJ0" id="Qsf-k4-4ti"/>
                         <outlet property="highlighterMenuButton" destination="Fib-qn-wER" id="Uje-gP-8XE"/>
                         <outlet property="leftButton" destination="BQa-oZ-Hy7" id="qbp-DP-dRh"/>
                         <outlet property="rightButton" destination="Cps-h7-8cv" id="eQq-3O-SP1"/>
@@ -194,26 +192,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KnO-nZ-3KW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="KRG-xE-bKD">
-                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEC-FK-oJ0">
-                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
-                            <connections>
-                                <action selector="highlighterButtonTapped:" destination="2bd-t2-jeV" eventType="touchUpInside" id="7eD-7N-L9s"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="gEC-FK-oJ0" firstAttribute="top" secondItem="KRG-xE-bKD" secondAttribute="top" id="0DM-8R-xOH"/>
-                        <constraint firstAttribute="bottom" secondItem="gEC-FK-oJ0" secondAttribute="bottom" id="C9p-bb-4P3"/>
-                        <constraint firstItem="gEC-FK-oJ0" firstAttribute="leading" secondItem="KRG-xE-bKD" secondAttribute="leading" id="Xfr-3I-MiX"/>
-                        <constraint firstAttribute="trailing" secondItem="gEC-FK-oJ0" secondAttribute="trailing" id="mwE-Lx-Oi6"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="Aze-qj-a8D"/>
-                </view>
                 <view alpha="0.40000000000000002" contentMode="scaleToFill" id="4jO-2P-eiN">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -225,12 +203,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bookmark" width="1200" height="1200"/>
-        <image name="copy" width="1200" height="1200"/>
-        <image name="hasNote" width="1200" height="1200"/>
-        <image name="highlight" width="1200" height="1200"/>
-        <image name="memorize" width="1200" height="1200"/>
-        <image name="note" width="1200" height="1200"/>
-        <image name="underscore" width="1200" height="1200"/>
+        <image name="bookmark" width="15" height="24"/>
+        <image name="copy" width="20" height="24"/>
+        <image name="hasNote" width="28" height="28"/>
+        <image name="highlight" width="23" height="24"/>
+        <image name="memorize" width="25.5" height="24"/>
+        <image name="note" width="24" height="24"/>
+        <image name="underscore" width="24" height="24"/>
     </resources>
 </document>
