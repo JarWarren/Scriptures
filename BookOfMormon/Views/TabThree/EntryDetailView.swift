@@ -158,6 +158,6 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
     
     func abortView() {
         
-        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.popToRootViewController(animated: true)
     }
 }
