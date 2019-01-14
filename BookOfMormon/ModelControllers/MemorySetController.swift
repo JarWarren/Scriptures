@@ -17,9 +17,20 @@ class MemorySetController {
     var allMemorySets = [MemorySet]()
     
     // MARK: - CRUD
-    func createNewSet(verseInts: [Int], verseReferences: [String], verseTexts: [String]) {
+    func convertVersesToSet(verses: [VerseCD]) {
         
-        let newSet = MemorySet(verseInts: verseInts, verseReferences: verseReferences, verseTexts: verseTexts)
+        var ints: [Int] = []
+        var refs: [String] = []
+        var texts: [String] = []
+        
+        for verse in verses {
+            
+            ints.append(Int(verse.verse))
+            refs.append(verse.reference ?? "")
+            texts.append(verse.text ?? "")
+        }
+        
+        let newSet = MemorySet(verseInts: ints, verseReferences: refs, verseTexts: texts)
         allMemorySets.append(newSet)
         save()
     }

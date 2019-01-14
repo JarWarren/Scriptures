@@ -61,12 +61,12 @@ class MemorizeView: UIView {
         switch isDoctrine {
         case true:
             if let versesToBeMemorized = section?.verses?.objects(at: indexSet) as? [VerseCD] {
-                VerseController.shared.memorize(verses: versesToBeMemorized)
+                MemorySetController.shared.convertVersesToSet(verses: versesToBeMemorized)
                 delegate?.newMasteryBadge()
             }
         case false:
             if let versesToBeMemorized = chapter?.verses?.objects(at: indexSet) as? [VerseCD] {
-                VerseController.shared.memorize(verses: versesToBeMemorized)
+                MemorySetController.shared.convertVersesToSet(verses: versesToBeMemorized)
                 delegate?.newMasteryBadge()
             }
         }

@@ -15,7 +15,7 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
     @IBOutlet weak var bodyTextView: UITextView!
     @IBOutlet weak var completeButton: UIButton!
     var entry: EntryCD?
-    var verses: MemorizedVersesCD?
+    var memorySet: MemorySet?
     var shouldClose = true
     var masteryTestament: Int?
     var parentSelectedIndex: Int?
@@ -52,23 +52,22 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 prepareToEdit()
             }
         case 1:
-            guard let verseHolder = verses else { abortView(); return }
-            guard let unwrappedVerses = verseHolder.verses?.array as? [VerseCD] else {abortView(); return }
-            switch verseHolder.verses?.count {
+            guard let currentSet = memorySet else { abortView(); return }
+            switch currentSet.verseInts.count {
             case 1:
-                guard let verse = unwrappedVerses.first, let text = unwrappedVerses.first?.text else { abortView(); return }
-                titleTextField.text = verse.reference
-                bodyTextView.text = "\(verse.verse))  " + text
+                guard let text = currentSet.verseTexts.first,
+                    let number = currentSet.verseInts.first,
+                    let reference = currentSet.verseReferences.first else { abortView(); return }
+                titleTextField.text = reference
+                bodyTextView.text = "\(number))  " + text
             default:
-                guard let first = unwrappedVerses.first?.reference, let last = unwrappedVerses.last?.reference else { abortView(); return }
+                guard let first = currentSet.verseReferences.first, let last = currentSet.verseReferences.last else { abortView(); return }
                 titleTextField.text = first + " - " + last
                 var bodyText = ""
-                for verse in unwrappedVerses {
-                    if let verseText = verse.text {
-                        bodyText.append("\(verse.verse))  ")
-                        bodyText.append(verseText)
+                for text in currentSet.verseTexts {
+                    bodyText.append("\(currentSet.verseInts[currentSet.verseTexts.firstIndex(of: text) ?? 0]))  ")
+                        bodyText.append(text)
                         bodyText.append("\n\n")
-                    }
                 }
                 bodyTextView.text = bodyText
             }
@@ -76,7 +75,7 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                          entryButton.widthAnchor.constraint(equalToConstant: 50)])
             entryButton.setTitle("", for: .normal)
             entryButton.layer.cornerRadius = 5
-            updateMemorizeButton(verses: verseHolder)
+            updateMemorizeButton(memorySet: currentSet)
         case 2: return
         default: return
         }
@@ -104,9 +103,9 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 prepareToEdit()
             }
         case 1:
-            guard let verses = verses else { abortView(); return }
-            VerseController.shared.toggleMemorized(verses: verses)
-            updateMemorizeButton(verses: verses)
+            guard let currentSet = memorySet else { abortView(); return }
+            MemorySetController.shared.toggleMemorySetStatus(memorySet: currentSet)
+            updateMemorizeButton(memorySet: currentSet)
         case 2:
             print("mark memorizable mastery as memorized/not")
         default: return
@@ -131,9 +130,9 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
         self.shouldClose = true
     }
     
-    func updateMemorizeButton(verses: MemorizedVersesCD) {
+    func updateMemorizeButton(memorySet: MemorySet) {
         
-        if verses.memorized == true {
+        if memorySet.isMemorized == true {
             entryButton.setBackgroundImage(UIImage(named: "memorized"), for: .normal)
             entryButton.tintColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
             entryButton.backgroundColor = UIColor.white
@@ -158,6 +157,6 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
     
     func abortView() {
         
-//        self.navigationController?.popToRootViewController(animated: true)
+        //        self.navigationController?.popToRootViewController(animated: true)
     }
 }
