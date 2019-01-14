@@ -12,36 +12,6 @@ import CoreData
 
 class VerseController {
     
-    static let shared = VerseController()
-    private init() {}
-    var memorizingVerses: [MemorizedVersesCD]? {
-        
-        let fetchRequest: NSFetchRequest <MemorizedVersesCD> = MemorizedVersesCD.fetchRequest()
-        let memorized = try? CoreDataStack.managedObjectContext.fetch(fetchRequest)
-        return memorized ?? []
-    }
-    
-    func memorize(verses: [VerseCD]) {
-        
-        let newMemorized = MemorizedVersesCD(memorized: false)
-        for verse in verses {
-            newMemorized.addToVerses(verse)
-        }
-        try? CoreDataStack.managedObjectContext.save()
-    }
-    
-    func toggleMemorized(verses: MemorizedVersesCD) {
-        
-        verses.memorized.toggle()
-        try? CoreDataStack.managedObjectContext.save()
-    }
-    
-    func deleteMemorizedVerses(verses: MemorizedVersesCD) {
-        
-        CoreDataStack.managedObjectContext.delete(verses)
-        try? CoreDataStack.managedObjectContext.save()
-    }
-    
     static func addNoteTo(verse: VerseCD, title: String, body: String) {
         
         verse.noteTitle = title
