@@ -10,8 +10,12 @@ import Foundation
 
 extension MemorizedVersesCD {
     
-    convenience init(memorized: Bool = false) {
+    convenience init(verses: [VerseCD]) {
         self.init(context: CoreDataStack.managedObjectContext)
-        self.memorized = memorized
+        self.memorized = false
+        for verse in verses {
+//            self.insertIntoVerses(verse, at: self.verses?.count ?? 0)
+            self.addToVerses(verse)
+        }
     }
 }

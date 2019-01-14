@@ -55,6 +55,8 @@
 		7ECD945421E5273A004327B1 /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945321E5273A004327B1 /* NewGoalView.swift */; };
 		7ECD945621E52750004327B1 /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945521E52750004327B1 /* GoalCell.swift */; };
 		7ECD945A21E538E1004327B1 /* GoalCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945921E538E1004327B1 /* GoalCD.swift */; };
+		7ED2858021ED11EB00577889 /* MemorySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED2857F21ED11EB00577889 /* MemorySet.swift */; };
+		7ED2858221ED148800577889 /* MemorySetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED2858121ED148800577889 /* MemorySetController.swift */; };
 		7EDD2B6821DEB4C0009A834B /* BookmarkCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDD2B6721DEB4C0009A834B /* BookmarkCD.swift */; };
 		7EDD2B6A21DEB543009A834B /* BookmarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDD2B6921DEB543009A834B /* BookmarkController.swift */; };
 		7EFC384221DA801F000F0F75 /* VerseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC384121DA801F000F0F75 /* VerseCell.swift */; };
@@ -120,6 +122,8 @@
 		7ECD945321E5273A004327B1 /* NewGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalView.swift; sourceTree = "<group>"; };
 		7ECD945521E52750004327B1 /* GoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
 		7ECD945921E538E1004327B1 /* GoalCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCD.swift; sourceTree = "<group>"; };
+		7ED2857F21ED11EB00577889 /* MemorySet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorySet.swift; sourceTree = "<group>"; };
+		7ED2858121ED148800577889 /* MemorySetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorySetController.swift; sourceTree = "<group>"; };
 		7EDD2B6721DEB4C0009A834B /* BookmarkCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCD.swift; sourceTree = "<group>"; };
 		7EDD2B6921DEB543009A834B /* BookmarkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
 		7EFC384121DA801F000F0F75 /* VerseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseCell.swift; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 				7E2B63F721E4614F00A01D82 /* HighlighterColorController.swift */,
 				7ECD8AAE21C968C100AED39B /* ScriptureController.swift */,
 				7EC306DE21E161E000CC6103 /* VerseController.swift */,
+				7ED2858121ED148800577889 /* MemorySetController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				7EC5853621E42DC300116A5C /* MemorizedVerse.swift */,
+				7ED2857F21ED11EB00577889 /* MemorySet.swift */,
 			);
 			path = Reader;
 			sourceTree = "<group>";
@@ -538,6 +544,7 @@
 				7ECD8AB721C992F000AED39B /* ChapterCell.swift in Sources */,
 				7ECD945621E52750004327B1 /* GoalCell.swift in Sources */,
 				7ECD945421E5273A004327B1 /* NewGoalView.swift in Sources */,
+				7ED2858021ED11EB00577889 /* MemorySet.swift in Sources */,
 				7E2B63F821E4614F00A01D82 /* HighlighterColorController.swift in Sources */,
 				7EC306E621E18F8100CC6103 /* EntryCD.swift in Sources */,
 				7EAE98DB21E3DCF700255166 /* MemorizeCell.swift in Sources */,
@@ -563,6 +570,7 @@
 				7E748C5F21CB41F100ED9C8F /* ReadingViewController.swift in Sources */,
 				7E129C1A21E01F58001F4A48 /* NoteView.swift in Sources */,
 				7E43B3CB21C5DA75000845DA /* AppDelegate.swift in Sources */,
+				7ED2858221ED148800577889 /* MemorySetController.swift in Sources */,
 				7ECD8ABB21C9AC0B00AED39B /* ChapterHeader.swift in Sources */,
 				7ECD8AB921C9AA2200AED39B /* TestamentKeys.swift in Sources */,
 			);

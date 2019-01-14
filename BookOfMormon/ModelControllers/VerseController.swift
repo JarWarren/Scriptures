@@ -17,15 +17,18 @@ class VerseController {
     var memorizingVerses: [MemorizedVersesCD]? {
         
         let fetchRequest: NSFetchRequest <MemorizedVersesCD> = MemorizedVersesCD.fetchRequest()
+        fetchRequest.relationshipKeyPathsForPrefetching = ["verses"]
+        fetchRequest.shouldRefreshRefetchedObjects = true
         let memorized = try? CoreDataStack.managedObjectContext.fetch(fetchRequest)
         return memorized ?? []
     }
     
     func memorize(verses: [VerseCD]) {
         
-        let newMemorized = MemorizedVersesCD(memorized: false)
-        for verse in verses {
-            newMemorized.addToVerses(verse)
+        let newVerses = MemorizedVersesCD(verses: verses)
+        let verseTexts = newVerses.verses?.array as! [VerseCD]
+        for verse in verseTexts {
+            print(verse.text!)
         }
         try? CoreDataStack.managedObjectContext.save()
     }
