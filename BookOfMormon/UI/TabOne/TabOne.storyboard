@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="ys5-Nt-uz4"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Current"/>
+                                    <segment title="Primary"/>
                                     <segment title="All"/>
                                 </segments>
                                 <color key="tintColor" red="0.2154795229434967" green="0.49386578798294067" blue="0.1332186758518219" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -78,6 +78,7 @@
                                             <outlet property="firstImageView" destination="Tib-SQ-oEh" id="GWl-AS-nCJ"/>
                                             <outlet property="nameLabel" destination="jaF-yN-JJc" id="xsB-qn-Xy6"/>
                                             <outlet property="secondImageView" destination="1J0-u8-tIu" id="Nb5-Lf-jLX"/>
+                                            <segue destination="y7t-cb-99l" kind="show" id="Trh-S9-3ek"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -107,6 +108,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2jL-7B-9wZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3805.5999999999999" y="-314.39280359820094"/>
+        </scene>
+        <!--GoalDetails-->
+        <scene sceneID="idt-Vm-ccj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GoalDetails" id="y7t-cb-99l" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sm1-S9-XQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4569" y="-314"/>
         </scene>
     </scenes>
 </document>

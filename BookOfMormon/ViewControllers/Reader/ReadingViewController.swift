@@ -51,7 +51,8 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        setupNavBar()
+        
+        self.navigationController?.navigationBar.shadowVisibile(false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -310,12 +311,6 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             chapterReferenceLabel.isHidden = true
         }
     }
-    
-    func setupNavBar() {
-        
-        // Remove shadow from Navigation Bar.
-    }
-    
     
     func hideSubviews() {
         darkView.isHidden = true

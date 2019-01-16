@@ -35,6 +35,11 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate, UIPickerView
         self.title = "New Goal"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.shadowVisibile(true)
+    }
+    
     func setupView() {
         
         saveButton.layer.cornerRadius = saveButton.frame.height / 2

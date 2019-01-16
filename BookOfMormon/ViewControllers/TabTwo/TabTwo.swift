@@ -26,6 +26,7 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         super.viewWillAppear(animated)
         setupTestament()
         tabBarController?.tabBar.tintColor = #colorLiteral(red: 0.7338222861, green: 0.1125283316, blue: 0.3782619834, alpha: 1)
+        self.navigationController?.navigationBar.shadowVisibile(false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

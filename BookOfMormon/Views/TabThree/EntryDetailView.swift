@@ -26,6 +26,11 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.shadowVisibile(true)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.popToRootViewController(animated: animated)

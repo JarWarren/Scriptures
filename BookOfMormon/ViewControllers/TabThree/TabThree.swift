@@ -26,6 +26,7 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewWillAppear(animated)
         tabThreeSegmentedControl.sendActions(for: .valueChanged)
         tabBarController?.tabBar.tintColor = #colorLiteral(red: 0.6307423711, green: 0.558336854, blue: 0.09566646069, alpha: 1)
+        self.navigationController?.navigationBar.shadowVisibile(false)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -32,6 +32,7 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
         setupGoal()
         currentGoalView()
         tabBarController?.tabBar.tintColor = #colorLiteral(red: 0, green: 0.5016700625, blue: 0.005194439087, alpha: 1)
+        self.navigationController?.navigationBar.shadowVisibile(false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -151,9 +152,9 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
     // MARK: - Navigation
     func segueToReader() {
         
-        guard let destinationTestament = GoalController.shared.currentGoal?.testament,
-            let destinationBook = GoalController.shared.currentGoal?.currentBook,
-            let destinationChapter = GoalController.shared.currentGoal?.currentChapter else {
+        guard let destinationTestament = GoalController.shared.primaryGoal?.testament,
+            let destinationBook = GoalController.shared.primaryGoal?.currentBook,
+            let destinationChapter = GoalController.shared.primaryGoal?.currentChapter else {
                 newGoalButtonTapped(self)
                 return
         }

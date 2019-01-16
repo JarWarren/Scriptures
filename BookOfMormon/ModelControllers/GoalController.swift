@@ -17,7 +17,7 @@ class GoalController {
         let fetchRequest: NSFetchRequest <GoalCD> = GoalCD.fetchRequest()
         return (try? CoreDataStack.managedObjectContext.fetch(fetchRequest)) ?? []
     }
-    var currentGoal: GoalCD?
+    var primaryGoal: GoalCD?
     
     func createDeadlineGoal(name: String, endDate: Date, startingPoint: [Int]) {
         
@@ -31,8 +31,8 @@ class GoalController {
         try? CoreDataStack.managedObjectContext.save()
     }
     
-    func updateCurrentGoal(goal: GoalCD) {
-        self.currentGoal = goal
+    func updatePrimaryGoal(goal: GoalCD) {
+        self.primaryGoal = goal
         try? CoreDataStack.managedObjectContext.save()
     }
     
