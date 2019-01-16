@@ -15,5 +15,6 @@ extension EntryCD {
         self.entryTitle = title
         self.entryText = text
         self.entryDate = Date()
+        self.entryCategory = 10
     }
 }

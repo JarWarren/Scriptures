@@ -27,7 +27,7 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6" translatesAutoresizingMaskIntoConstraints="NO" id="YoA-4v-pxF">
-                    <rect key="frame" x="0.0" y="214" width="375" height="375"/>
+                    <rect key="frame" x="19" y="251.5" width="337.5" height="337.5"/>
                     <color key="tintColor" red="0.2154795229" green="0.49386578799999997" blue="0.1332186759" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="YoA-4v-pxF" secondAttribute="height" multiplier="1:1" id="axo-eP-EAz"/>
@@ -36,7 +36,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="YoA-4v-pxF" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="7sq-t9-G3p"/>
+                <constraint firstItem="YoA-4v-pxF" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="7sq-t9-G3p"/>
                 <constraint firstItem="YoA-4v-pxF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="D8w-It-h4U"/>
                 <constraint firstItem="YoA-4v-pxF" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="UDW-p7-HpO"/>
                 <constraint firstItem="QZJ-Tp-Uo2" firstAttribute="top" secondItem="YoA-4v-pxF" secondAttribute="bottom" constant="24" id="bmj-Cb-vbU"/>
@@ -50,6 +50,6 @@
         </view>
     </objects>
     <resources>
-        <image name="6" width="3600" height="3600"/>
+        <image name="6" width="2524" height="2524"/>
     </resources>
 </document>

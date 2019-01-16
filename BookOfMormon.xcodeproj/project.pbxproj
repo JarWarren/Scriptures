@@ -12,7 +12,7 @@
 		7E129C1A21E01F58001F4A48 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E129C1921E01F58001F4A48 /* NoteView.swift */; };
 		7E238BD621CB215D001ADF4F /* TabOne.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E238BD521CB215D001ADF4F /* TabOne.storyboard */; };
 		7E238BD821CB21D5001ADF4F /* TabTwo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E238BD721CB21D5001ADF4F /* TabTwo.storyboard */; };
-		7E2B63F621E460CE00A01D82 /* HighlighterColorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B63F521E460CE00A01D82 /* HighlighterColorKey.swift */; };
+		7E2B63F621E460CE00A01D82 /* ColorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B63F521E460CE00A01D82 /* ColorKey.swift */; };
 		7E2B63F821E4614F00A01D82 /* HighlighterColorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B63F721E4614F00A01D82 /* HighlighterColorController.swift */; };
 		7E2CFC6921DD652A000F330B /* DoctrineCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CFC6821DD652A000F330B /* DoctrineCD.swift */; };
 		7E2CFC6C21DD663B000F330B /* SectionCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CFC6A21DD663B000F330B /* SectionCD+CoreDataClass.swift */; };
@@ -34,7 +34,7 @@
 		7EC306E421E18EAD00CC6103 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306E321E18EAD00CC6103 /* EntryController.swift */; };
 		7EC306E621E18F8100CC6103 /* EntryCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306E521E18F8100CC6103 /* EntryCD.swift */; };
 		7EC306E921E19F2700CC6103 /* HighlighterColors.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EC306E821E19F2700CC6103 /* HighlighterColors.xib */; };
-		7EC306EB21E19F3D00CC6103 /* HighlighterColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306EA21E19F3D00CC6103 /* HighlighterColorsView.swift */; };
+		7EC306EB21E19F3D00CC6103 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306EA21E19F3D00CC6103 /* ColorView.swift */; };
 		7EC306EF21E1D8BD00CC6103 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC306EE21E1D8BD00CC6103 /* DateHelper.swift */; };
 		7EC5852F21E4038000116A5C /* Memorize.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EC5852E21E4038000116A5C /* Memorize.xib */; };
 		7EC5853121E403AC00116A5C /* MemorizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC5853021E403AC00116A5C /* MemorizeView.swift */; };
@@ -52,7 +52,7 @@
 		7ECD8ABD21C9B5CA00AED39B /* TabThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */; };
 		7ECD944D21E52697004327B1 /* CurrentGoal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD944C21E52697004327B1 /* CurrentGoal.xib */; };
 		7ECD945221E52726004327B1 /* CurrentGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945121E52726004327B1 /* CurrentGoalView.swift */; };
-		7ECD945421E5273A004327B1 /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945321E5273A004327B1 /* NewGoalView.swift */; };
+		7ECD945421E5273A004327B1 /* NewGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945321E5273A004327B1 /* NewGoalViewController.swift */; };
 		7ECD945621E52750004327B1 /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945521E52750004327B1 /* GoalCell.swift */; };
 		7ECD945A21E538E1004327B1 /* GoalCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD945921E538E1004327B1 /* GoalCD.swift */; };
 		7ED2858021ED11EB00577889 /* MemorySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED2857F21ED11EB00577889 /* MemorySet.swift */; };
@@ -79,7 +79,7 @@
 		7E129C1921E01F58001F4A48 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		7E238BD521CB215D001ADF4F /* TabOne.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabOne.storyboard; sourceTree = "<group>"; };
 		7E238BD721CB21D5001ADF4F /* TabTwo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabTwo.storyboard; sourceTree = "<group>"; };
-		7E2B63F521E460CE00A01D82 /* HighlighterColorKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlighterColorKey.swift; sourceTree = "<group>"; };
+		7E2B63F521E460CE00A01D82 /* ColorKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorKey.swift; sourceTree = "<group>"; };
 		7E2B63F721E4614F00A01D82 /* HighlighterColorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlighterColorController.swift; sourceTree = "<group>"; };
 		7E2CFC6821DD652A000F330B /* DoctrineCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctrineCD.swift; sourceTree = "<group>"; };
 		7E2CFC6A21DD663B000F330B /* SectionCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SectionCD+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 		7EC306E321E18EAD00CC6103 /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
 		7EC306E521E18F8100CC6103 /* EntryCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCD.swift; sourceTree = "<group>"; };
 		7EC306E821E19F2700CC6103 /* HighlighterColors.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighlighterColors.xib; sourceTree = "<group>"; };
-		7EC306EA21E19F3D00CC6103 /* HighlighterColorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlighterColorsView.swift; sourceTree = "<group>"; };
+		7EC306EA21E19F3D00CC6103 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		7EC306EE21E1D8BD00CC6103 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		7EC5852E21E4038000116A5C /* Memorize.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Memorize.xib; sourceTree = "<group>"; };
 		7EC5853021E403AC00116A5C /* MemorizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeView.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		7ECD8ABC21C9B5CA00AED39B /* TabThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabThree.swift; sourceTree = "<group>"; };
 		7ECD944C21E52697004327B1 /* CurrentGoal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentGoal.xib; sourceTree = "<group>"; };
 		7ECD945121E52726004327B1 /* CurrentGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGoalView.swift; sourceTree = "<group>"; };
-		7ECD945321E5273A004327B1 /* NewGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalView.swift; sourceTree = "<group>"; };
+		7ECD945321E5273A004327B1 /* NewGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalViewController.swift; sourceTree = "<group>"; };
 		7ECD945521E52750004327B1 /* GoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
 		7ECD945921E538E1004327B1 /* GoalCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCD.swift; sourceTree = "<group>"; };
 		7ED2857F21ED11EB00577889 /* MemorySet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorySet.swift; sourceTree = "<group>"; };
@@ -356,7 +356,7 @@
 				7EFC385421DACCA8000F0F75 /* CoreDataStack.swift */,
 				7E0EBD7421EE7C08000D1670 /* CustomNavBar.swift */,
 				7EC306EE21E1D8BD00CC6103 /* DateHelper.swift */,
-				7E2B63F521E460CE00A01D82 /* HighlighterColorKey.swift */,
+				7E2B63F521E460CE00A01D82 /* ColorKey.swift */,
 				7ECD8AB821C9AA2200AED39B /* TestamentKeys.swift */,
 				7ECD8AB221C9810700AED39B /* TestamentStructures.swift */,
 			);
@@ -392,7 +392,7 @@
 				7ECD945121E52726004327B1 /* CurrentGoalView.swift */,
 				7ECD945521E52750004327B1 /* GoalCell.swift */,
 				7ED2858321ED272D00577889 /* GoalDetailsViewController.swift */,
-				7ECD945321E5273A004327B1 /* NewGoalView.swift */,
+				7ECD945321E5273A004327B1 /* NewGoalViewController.swift */,
 			);
 			path = TabOne;
 			sourceTree = "<group>";
@@ -441,7 +441,7 @@
 		7EFC384021DA7FDF000F0F75 /* Reader */ = {
 			isa = PBXGroup;
 			children = (
-				7EC306EA21E19F3D00CC6103 /* HighlighterColorsView.swift */,
+				7EC306EA21E19F3D00CC6103 /* ColorView.swift */,
 				7EC5853021E403AC00116A5C /* MemorizeView.swift */,
 				7E129C1921E01F58001F4A48 /* NoteView.swift */,
 				7EFC384121DA801F000F0F75 /* VerseCell.swift */,
@@ -551,7 +551,7 @@
 				7ECD8AAF21C968C100AED39B /* ScriptureController.swift in Sources */,
 				7ECD8AB721C992F000AED39B /* ChapterCell.swift in Sources */,
 				7ECD945621E52750004327B1 /* GoalCell.swift in Sources */,
-				7ECD945421E5273A004327B1 /* NewGoalView.swift in Sources */,
+				7ECD945421E5273A004327B1 /* NewGoalViewController.swift in Sources */,
 				7ED2858021ED11EB00577889 /* MemorySet.swift in Sources */,
 				7E2B63F821E4614F00A01D82 /* HighlighterColorController.swift in Sources */,
 				7EC306E621E18F8100CC6103 /* EntryCD.swift in Sources */,
@@ -560,7 +560,7 @@
 				7EC306E421E18EAD00CC6103 /* EntryController.swift in Sources */,
 				7ECD8AB321C9810700AED39B /* TestamentStructures.swift in Sources */,
 				7EC306DF21E161E000CC6103 /* VerseController.swift in Sources */,
-				7E2B63F621E460CE00A01D82 /* HighlighterColorKey.swift in Sources */,
+				7E2B63F621E460CE00A01D82 /* ColorKey.swift in Sources */,
 				7EFC384221DA801F000F0F75 /* VerseCell.swift in Sources */,
 				7EC306E221E18CB000CC6103 /* EntryDetailView.swift in Sources */,
 				7EFC387221DAD8F7000F0F75 /* VerseCD+CoreDataClass.swift in Sources */,
@@ -570,7 +570,7 @@
 				7EDD2B6821DEB4C0009A834B /* BookmarkCD.swift in Sources */,
 				7EFC386E21DAD647000F0F75 /* ChapterCD+CoreDataClass.swift in Sources */,
 				7EFC386F21DAD647000F0F75 /* ChapterCD+CoreDataProperties.swift in Sources */,
-				7EC306EB21E19F3D00CC6103 /* HighlighterColorsView.swift in Sources */,
+				7EC306EB21E19F3D00CC6103 /* ColorView.swift in Sources */,
 				7E2CFC6C21DD663B000F330B /* SectionCD+CoreDataClass.swift in Sources */,
 				7EFC387321DAD8F7000F0F75 /* VerseCD+CoreDataProperties.swift in Sources */,
 				7E2CFC6921DD652A000F330B /* DoctrineCD.swift in Sources */,

@@ -33,6 +33,13 @@ class EntryController {
         try? CoreDataStack.managedObjectContext.save()
     }
     
+    func changeEntryCategory(entry: EntryCD, category: Int) {
+        
+        let categoryAsInt64 = Int64(category)
+        entry.entryCategory = categoryAsInt64
+        try? CoreDataStack.managedObjectContext.save()
+    }
+    
     func deleteEntry(entry: EntryCD) {
         
         CoreDataStack.managedObjectContext.delete(entry)

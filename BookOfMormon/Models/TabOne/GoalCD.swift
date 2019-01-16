@@ -30,5 +30,6 @@ extension GoalCD {
         self.currentBook = Int64(startingPoint[1])
         self.currentChapter = Int64(startingPoint[2])
         self.currentVerse = 0
+        self.isComplete = false
     }
 }

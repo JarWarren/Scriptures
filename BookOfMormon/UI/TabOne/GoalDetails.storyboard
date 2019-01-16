@@ -18,13 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(finish date)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMy-Jf-dE8">
-                                <rect key="frame" x="147" y="465" width="92" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(goal name)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wN-Yv-QvL">
                                 <rect key="frame" x="24" y="44" width="327" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -37,9 +30,19 @@
                                 <state key="normal" title="    Set as Primary    ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="primaryButtonTapped:" destination="lGo-MP-PCp" eventType="touchUpInside" id="i7Q-VR-m7i"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(current location)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIH-SI-dLx">
-                                <rect key="frame" x="166" y="323" width="133" height="21"/>
+                                <rect key="frame" x="121" y="323" width="133" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(finish date)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMy-Jf-dE8">
+                                <rect key="frame" x="141" y="467" width="92" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -56,6 +59,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3LY-L1-7EY"/>
                     </view>
+                    <connections>
+                        <outlet property="goalFinishDateLabel" destination="EMy-Jf-dE8" id="7RM-TJ-3ZH"/>
+                        <outlet property="goalLocationLabel" destination="zIH-SI-dLx" id="q3u-CD-iIo"/>
+                        <outlet property="goalNameLabel" destination="1wN-Yv-QvL" id="slh-Z3-Xqp"/>
+                        <outlet property="primaryButton" destination="6oD-IQ-fkC" id="Kol-Xc-95U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KEp-Z4-JMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

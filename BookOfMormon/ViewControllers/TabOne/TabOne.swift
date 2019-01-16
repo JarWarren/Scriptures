@@ -32,7 +32,7 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
         setupGoal()
         currentGoalView()
         tabBarController?.tabBar.tintColor = #colorLiteral(red: 0, green: 0.5016700625, blue: 0.005194439087, alpha: 1)
-        self.navigationController?.navigationBar.shadowVisibile(false)
+        self.navigationController?.navigationBar.shadowVisibile(true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

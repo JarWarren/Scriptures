@@ -70,14 +70,14 @@
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmw-2k-d59">
                                 <rect key="frame" x="159" y="20" width="57" height="29"/>
-                                <color key="backgroundColor" red="0.96470600366592407" green="0.96470588445663452" blue="0.96470588445663452" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.97254914045333862" green="0.97254914045333862" blue="0.97254902124404907" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cps-h7-8cv">
                                 <rect key="frame" x="216" y="20" width="159" height="30"/>
-                                <color key="backgroundColor" red="0.96470600366592407" green="0.96470588445663452" blue="0.96470588445663452" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.97254914045333862" green="0.97254914045333862" blue="0.97254902124404907" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
                                 <state key="normal" title="▷">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -88,7 +88,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQa-oZ-Hy7">
                                 <rect key="frame" x="0.0" y="20" width="159" height="30"/>
-                                <color key="backgroundColor" red="0.96470600366592407" green="0.96470588445663452" blue="0.96470588445663452" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.97254914045333862" green="0.97254914045333862" blue="0.97254902124404907" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="◁">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -101,6 +101,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fib-qn-wER">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <color key="backgroundColor" red="0.97254914045333862" green="0.97254914045333862" blue="0.97254902124404907" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="T7Y-9M-XP3"/>
                                             <constraint firstAttribute="width" secondItem="Fib-qn-wER" secondAttribute="height" multiplier="1:1" id="cm9-qI-o2a"/>
@@ -113,6 +114,7 @@
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6HT-Jz-4eX">
                                         <rect key="frame" x="82.5" y="0.0" width="30" height="30"/>
+                                        <color key="backgroundColor" red="0.97254914045333862" green="0.97254914045333862" blue="0.97254902124404907" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="6HT-Jz-4eX" secondAttribute="height" multiplier="1:1" id="SkJ-SC-FeB"/>
                                             <constraint firstAttribute="height" constant="30" id="sB3-ga-Jft"/>
@@ -125,6 +127,7 @@
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdG-dx-Nvg">
                                         <rect key="frame" x="164.5" y="0.0" width="30" height="30"/>
+                                        <color key="backgroundColor" red="0.97254914045333862" green="0.97254914045333862" blue="0.97254902124404907" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="KZw-YZ-7hG"/>
                                             <constraint firstAttribute="width" secondItem="AdG-dx-Nvg" secondAttribute="height" multiplier="1:1" id="cph-Sv-7bG"/>
@@ -137,6 +140,7 @@
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYI-py-BCy">
                                         <rect key="frame" x="247" y="0.0" width="30" height="30"/>
+                                        <color key="backgroundColor" red="0.97254914045333862" green="0.97254914045333862" blue="0.97254902124404907" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="wYI-py-BCy" secondAttribute="height" multiplier="1:1" id="lVN-tW-Ttw"/>
                                             <constraint firstAttribute="height" constant="30" id="sWJ-It-iJU"/>
@@ -149,7 +153,7 @@
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldv-4d-cJW">
                                         <rect key="frame" x="329" y="0.0" width="30" height="30"/>
-                                        <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.97254914045333862" green="0.97254914045333862" blue="0.97254902124404907" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ldv-4d-cJW" secondAttribute="height" multiplier="1:1" id="3Sv-f8-zpw"/>
                                             <constraint firstAttribute="height" constant="30" id="c4v-9B-1Sx"/>
@@ -163,7 +167,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.97254914045333862" green="0.97254914045333862" blue="0.97254902124404907" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="cmw-2k-d59" firstAttribute="top" secondItem="E1f-Ug-mDu" secondAttribute="top" id="2Xa-Zs-IOA"/>
                             <constraint firstItem="NWt-e8-sWF" firstAttribute="top" secondItem="BQa-oZ-Hy7" secondAttribute="bottom" constant="8" id="4KM-Ee-est"/>
@@ -189,6 +193,7 @@
                         <outlet property="darkView" destination="4jO-2P-eiN" id="3LN-Nv-Ah3"/>
                         <outlet property="highlighterMenuButton" destination="Fib-qn-wER" id="Uje-gP-8XE"/>
                         <outlet property="leftButton" destination="BQa-oZ-Hy7" id="qbp-DP-dRh"/>
+                        <outlet property="menuStackView" destination="NWt-e8-sWF" id="DtW-75-HfS"/>
                         <outlet property="rightButton" destination="Cps-h7-8cv" id="eQq-3O-SP1"/>
                         <outlet property="versesTableView" destination="Re6-Ul-msQ" id="4kQ-rn-dWM"/>
                     </connections>
@@ -207,7 +212,7 @@
     <resources>
         <image name="bookmark" width="15" height="24"/>
         <image name="copy" width="20" height="24"/>
-        <image name="hasNote" width="28" height="28"/>
+        <image name="hasNote" width="24" height="24"/>
         <image name="highlight" width="23" height="24"/>
         <image name="memorize" width="25.5" height="24"/>
         <image name="note" width="24" height="24"/>

@@ -10,6 +10,11 @@ import UIKit
 
 class GoalDetailsViewController: UIViewController {
 
+    @IBOutlet weak var goalNameLabel: UILabel!
+    @IBOutlet weak var goalLocationLabel: UILabel!
+    @IBOutlet weak var goalFinishDateLabel: UILabel!
+    @IBOutlet weak var primaryButton: UIButton!
+    
     var goal: GoalCD? {
         didSet {
             updateView()
@@ -26,6 +31,11 @@ class GoalDetailsViewController: UIViewController {
         self.navigationController?.navigationBar.shadowVisibile(true)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.popToRootViewController(animated: animated)
+    }
+    
     func updateView() {
         
         if let titleKey = goal?.testament {
@@ -35,6 +45,11 @@ class GoalDetailsViewController: UIViewController {
     }
     
     func setupView() {
+        
+        self.primaryButton.layer.cornerRadius = primaryButton.frame.height / 2
+    }
+    
+    @IBAction func primaryButtonTapped(_ sender: Any) {
         
         
     }
