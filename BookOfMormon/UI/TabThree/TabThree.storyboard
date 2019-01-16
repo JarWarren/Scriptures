@@ -132,7 +132,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="EntryDetailView" storyboardName="TabThreeDetail" referencedIdentifier="EntryDetailView" id="Zf0-3u-Psf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9B1-b0-AKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4164" y="948"/>
+            <point key="canvasLocation" x="4809" y="516"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

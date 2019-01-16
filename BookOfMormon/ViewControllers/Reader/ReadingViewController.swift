@@ -18,6 +18,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var darkView: UIView!
     @IBOutlet weak var highlighterMenuButton: UIButton!
+    @IBOutlet weak var menuStackView: UIStackView!
     var subviews = [UIView]() {
         didSet {
             print("\(subviews.count) subviews.")
@@ -43,7 +44,8 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupScriptures()
+        setupViewAndScriptures()
+        
         setupTableView()
         setupBookmarkButton()
         setupHighlighterButton()
@@ -51,7 +53,8 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        setupNavBar()
+        
+        setupCustomNavBar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -91,7 +94,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         if cell.verseCoreData?.isHighlighted == true {
             if let color = cell.verseCoreData?.color {
-                cell.backgroundColor = HighlighterColorKey.colorDictionary[color]
+                cell.backgroundColor = ColorKey.colorDictionary[color]
             }
         } else {
             cell.backgroundColor = UIColor.white
@@ -239,7 +242,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         hideSubviews()
         switch colorViewIsVisible {
         case false :
-            guard let colorView = Bundle.main.loadNibNamed("HighlighterColors", owner: nil, options: nil)![0] as? HighlighterColorsView else { return }
+            guard let colorView = Bundle.main.loadNibNamed("HighlighterColors", owner: nil, options: nil)![0] as? ColorView else { return }
             colorView.translatesAutoresizingMaskIntoConstraints = false
             darkenBackground()
             self.view.addSubview(colorView)
@@ -272,7 +275,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationItem.rightBarButtonItem = highlightColorButton
     }
     
-    func setupScriptures() {
+    func setupViewAndScriptures() {
         
         self.view.addSubview(darkView)
         darkView.translatesAutoresizingMaskIntoConstraints = false
@@ -310,12 +313,6 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             chapterReferenceLabel.isHidden = true
         }
     }
-    
-    func setupNavBar() {
-        
-        // Remove shadow from Navigation Bar.
-    }
-    
     
     func hideSubviews() {
         darkView.isHidden = true
@@ -355,7 +352,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         darkView.isHidden = false
     }
     
-    func updateColorButton () {
+    func updateColor () {
         
         self.highlighterMenuButton.tintColor = HighlighterColorController.shared.currentColor
     }
@@ -376,5 +373,24 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func colorViewClosed() {
         self.colorViewIsVisible = false
+    }
+    
+    func setupCustomNavBar() {
+        
+        self.navigationController?.navigationBar.shadowVisibile(false)
+        let viewRect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        
+        let underlineView = UIView(frame: viewRect)
+        underlineView.backgroundColor = #colorLiteral(red: 0.8901082873, green: 0.8902577162, blue: 0.8900884986, alpha: 1)
+        underlineView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(underlineView)
+        
+        NSLayoutConstraint.activate([
+            underlineView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            underlineView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            underlineView.topAnchor.constraint(equalTo: versesTableView.topAnchor),
+            underlineView.heightAnchor.constraint(equalToConstant: 1)])
+        
     }
 }

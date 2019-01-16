@@ -1,5 +1,5 @@
 //
-//  NewGoalView.swift
+//  NewGoalViewController.swift
 //  BookOfMormon
 //
 //  Created by Jared Warren on 1/8/19.
@@ -33,6 +33,16 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate, UIPickerView
         nameTextField.delegate = self
         datePicker.locale = Locale(identifier: "en_US")
         self.title = "New Goal"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.shadowVisibile(true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.popToRootViewController(animated: animated)
     }
     
     func setupView() {

@@ -72,11 +72,18 @@
                     <connections>
                         <outlet property="bodyTextView" destination="yqH-7u-9Iw" id="jHc-XU-AMy"/>
                         <outlet property="completeButton" destination="4yv-mp-br1" id="s8f-re-bAX"/>
+                        <outlet property="darkView" destination="GhG-cQ-Cpa" id="AYv-bS-TrP"/>
                         <outlet property="entryButton" destination="Ske-Nb-3DU" id="bEW-V4-q1o"/>
                         <outlet property="titleTextField" destination="0me-ZU-vrE" id="Dyo-uh-KaZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xu8-ij-gsV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view alpha="0.40000000000000002" contentMode="scaleToFill" id="GhG-cQ-Cpa">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="hnc-yH-QNx"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="4164" y="1265"/>
         </scene>

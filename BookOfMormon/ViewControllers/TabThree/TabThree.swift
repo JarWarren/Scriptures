@@ -26,6 +26,7 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewWillAppear(animated)
         tabThreeSegmentedControl.sendActions(for: .valueChanged)
         tabBarController?.tabBar.tintColor = #colorLiteral(red: 0.6307423711, green: 0.558336854, blue: 0.09566646069, alpha: 1)
+        self.navigationController?.navigationBar.shadowVisibile(true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -60,6 +61,23 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.text = cellEntry.entryTitle
             if let date = cellEntry.entryDate {
                 cell.detailTextLabel?.text = date.mMdDyY
+            }
+            
+            if cellEntry.entryCategory < 10 {
+                
+                cell.imageView?.image = UIImage(named: "blank")
+                if let height = cell.imageView?.heightAnchor,
+                    let width = cell.imageView?.widthAnchor {
+                    NSLayoutConstraint.activate([
+                        height.constraint(equalToConstant: 15),
+                        width.constraint(equalToConstant: 15)])
+                }
+                cell.imageView?.backgroundColor = ColorKey.colorDictionary[cellEntry.entryCategory]
+                cell.imageView?.layer.borderWidth = 1
+                cell.imageView?.layer.borderColor = UIColor.black.cgColor
+                cell.imageView?.layer.cornerRadius = 7
+            } else {
+                cell.imageView?.image = nil
             }
             return cell
         default: return UITableViewCell()

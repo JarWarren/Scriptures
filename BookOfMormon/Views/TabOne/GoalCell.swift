@@ -18,7 +18,7 @@ class GoalCell: UITableViewCell {
             updateCell()
         }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -26,6 +26,12 @@ class GoalCell: UITableViewCell {
     
     func updateCell() {
         
-             self.nameLabel.text = goal?.name
+        self.nameLabel.text = goal?.name
+        
+        if goal?.dailyChapters == 0 && goal?.desiredEndDate != nil {
+            self.secondImageView.image = UIImage(named: "deadline")
+        } else if goal?.dailyChapters != 0 && goal?.desiredEndDate == nil {
+            self.secondImageView.image = UIImage(named: "daily")
+        }
     }
 }

@@ -8,22 +8,29 @@
 
 import UIKit
 
-class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate {
-    
+class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate, ColorViewDelegate {
+   
     @IBOutlet weak var entryButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
     @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet var darkView: UIView!
     var entry: EntryCD?
     var memorySet: MemorySet?
     var shouldClose = true
     var masteryTestament: Int?
     var parentSelectedIndex: Int?
+    var subviews: [UIView] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.shadowVisibile(true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -40,6 +47,14 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
         titleTextField.delegate = self
         bodyTextView.layer.cornerRadius = 5
         bodyTextView.delegate = self
+        self.view.addSubview(darkView)
+        darkView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            darkView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
+            darkView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            darkView.topAnchor.constraint(equalTo: self.view.topAnchor)
+            ])
+        darkView.isHidden = true
         
         switch parentSelectedIndex {
         case 0:
@@ -48,6 +63,7 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 titleTextField.isUserInteractionEnabled = false
                 bodyTextView.isUserInteractionEnabled = false
                 completeButton.setTitle("    Edit    ", for: .normal)
+                setupBarButton()
             } else {
                 prepareToEdit()
             }
@@ -85,6 +101,24 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
         
         titleTextField.resignFirstResponder()
         bodyTextView.resignFirstResponder()
+    }
+    
+    @IBAction func categoryButtonTapped(_ sender: Any) {
+    
+        guard let colorView = Bundle.main.loadNibNamed("HighlighterColors", owner: nil, options: nil)![0] as? ColorView else { return }
+        colorView.translatesAutoresizingMaskIntoConstraints = false
+        colorView.entry = entry
+        darkenBackground()
+        self.view.addSubview(colorView)
+        colorView.delegate = self
+        self.subviews.append(colorView)
+        colorView.layer.cornerRadius = 15
+        NSLayoutConstraint.activate([
+            colorView.widthAnchor.constraint(equalToConstant: 200),
+            colorView.heightAnchor.constraint(equalToConstant: 200),
+            colorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            colorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)])
+        darkenBackground()
     }
     
     @IBAction func completeButtonTapped(_ sender: Any) {
@@ -157,6 +191,35 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
     
     func abortView() {
         
-        //        self.navigationController?.popToRootViewController(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    func setupBarButton() {
+        
+        let categoryButton = UIBarButtonItem(image: UIImage(named: "categoryBarButton"), style: .plain, target: self, action: #selector(categoryButtonTapped))
+        categoryButton.tintColor = #colorLiteral(red: 0.6307423711, green: 0.558336854, blue: 0.09566646069, alpha: 1)
+        self.navigationItem.rightBarButtonItem = categoryButton
+    }
+    
+    func hideSubviews() {
+        
+        for view in subviews {
+            view.isHidden = true
+        }
+        subviews.removeAll()
+    }
+    
+    func updateColor() {
+        
+    }
+    
+    func colorViewClosed() {
+        
+        self.darkView.isHidden = true
+    }
+    
+    func darkenBackground() {
+        
+        self.darkView?.isHidden = false
     }
 }

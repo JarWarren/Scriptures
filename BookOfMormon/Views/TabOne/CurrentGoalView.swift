@@ -22,7 +22,7 @@ class CurrentGoalView: UIView {
     func setupView() {
         
         todayButton.layer.cornerRadius = todayButton.frame.height / 2
-        guard let currentReference = GoalController.shared.currentGoal?.currentReference else { return }
+        guard let currentReference = GoalController.shared.primaryGoal?.currentReference else { return }
         todayButton.setTitle("    \(currentReference)    ", for: .normal)
     }
     
