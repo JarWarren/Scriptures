@@ -116,6 +116,8 @@ class MemorizeView: UIView {
                 rightButton.isHidden = true
                 addButton.isHidden = false
                 endLabel.isHidden = true
+                guard let index = verse?.verse else { return }
+                currentIndex = Int(index - 1)
             }
         case 1:
             currentIndex += 1
@@ -125,7 +127,9 @@ class MemorizeView: UIView {
             }
         default: return
         }
-        endLabel.text = allVerses[currentIndex].reference
+        if currentIndex < allVerses.count {
+            endLabel.text = allVerses[currentIndex].reference
+        }
     }
     
     // MARK: Setup
