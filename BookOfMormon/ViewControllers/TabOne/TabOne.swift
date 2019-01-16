@@ -157,6 +157,7 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
             let readingViewController = UIStoryboard(name: "Reader", bundle: nil).instantiateViewController(withIdentifier: "ReadingViewController") as! ReadingViewController
             readingViewController.currentBook = Int(destinationBook)
             readingViewController.currentChapter = Int(destinationChapter)
+            readingViewController.bookmarkShouldEditGoal = true
             
             self.navigationController?.pushViewController(readingViewController, animated: true)
         }

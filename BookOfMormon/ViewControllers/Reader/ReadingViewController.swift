@@ -28,9 +28,10 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     var currentChapter = 0
     var selectedVerse: VerseCD?
     var selectedIndexPath: IndexPath?
-    var bookmarkLocation = [0, 0, 0]
+    var bookmarkOrGoalLocation = [0, 0, 0]
     var highlightColorButton: UIBarButtonItem?
     var colorViewIsVisible = false
+    var bookmarkShouldEditGoal = false
     var noteViewIsVisible = false {
         didSet {
             switch noteViewIsVisible {
@@ -223,7 +224,11 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             case 4: // Bookmark
                 findBookmarkLocation()
-                BookmarkController.shared.bookmarkAt(location: bookmarkLocation)
+                if bookmarkShouldEditGoal == false {
+                    BookmarkController.shared.bookmarkAt(location: bookmarkOrGoalLocation)
+                } else {
+                    GoalController.shared.updatePrimaryGoalLocation(location: bookmarkOrGoalLocation)
+                }
                 setupBookmarkButton()
                 
             default: return
@@ -271,7 +276,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func setupHighlighterButton() {
         
         let highlightColorButton = UIBarButtonItem(image: UIImage(named:"highlighterBarButton"), style: .plain, target: self, action: #selector(highlighterButtonTapped))
-        highlightColorButton.tintColor = #colorLiteral(red: 0.7338222861, green: 0.1125283316, blue: 0.3782619834, alpha: 1)
+        highlightColorButton.tintColor = self.navigationController?.navigationBar.tintColor
         self.navigationItem.rightBarButtonItem = highlightColorButton
     }
     
@@ -331,20 +336,34 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func setupBookmarkButton() {
-        guard let currentTestament = ScriptureController.shared.selectedTestament,
-            let bookmark = BookmarkController.shared.bookmark else {
+        
+        switch bookmarkShouldEditGoal {
+        case false:
+            guard let currentTestament = ScriptureController.shared.selectedTestament,
+                let bookmark = BookmarkController.shared.bookmark else {
+                    bookmarkButton.tintColor = UIColor.black
+                    bookmarkButton.setImage(UIImage(named: "bookmark"), for: .normal)
+                    return
+            }
+            if TestamentKeys.reverseSelectedTestament[currentTestament] == Int(bookmark.testament) &&
+                self.currentBook == Int(bookmark.book) &&
+                self.currentChapter == Int(bookmark.chapter) {
+                bookmarkButton.tintColor = #colorLiteral(red: 0.7338222861, green: 0.1125283316, blue: 0.3782619834, alpha: 1)
+                bookmarkButton.setImage(UIImage(named: "bookmarked"), for: .normal)
+            } else {
                 bookmarkButton.tintColor = UIColor.black
                 bookmarkButton.setImage(UIImage(named: "bookmark"), for: .normal)
-                return
-        }
-        if TestamentKeys.reverseSelectedTestament[currentTestament] == Int(bookmark.testament) &&
-            self.currentBook == Int(bookmark.book) &&
-            self.currentChapter == Int(bookmark.chapter) {
-            bookmarkButton.tintColor = #colorLiteral(red: 0.7338222861, green: 0.1125283316, blue: 0.3782619834, alpha: 1)
-            bookmarkButton.setImage(UIImage(named: "bookmarked"), for: .normal)
-        } else {
-            bookmarkButton.tintColor = UIColor.black
-            bookmarkButton.setImage(UIImage(named: "bookmark"), for: .normal)
+            }
+        case true:
+            if GoalController.shared.primary?.goal?.currentBook == Int64(currentBook) &&
+                GoalController.shared.primary?.goal?.currentChapter == Int64(currentChapter) {
+                
+                bookmarkButton.setImage(UIImage(named: "goalBookmark"), for: .normal)
+                bookmarkButton.tintColor = #colorLiteral(red: 0, green: 0.5016700625, blue: 0.005194439087, alpha: 1)
+            } else {
+                bookmarkButton.setImage(UIImage(named: "goalBookmark"), for: .normal)
+                bookmarkButton.tintColor = #colorLiteral(red: 0.6313489079, green: 0.557828486, blue: 0.09932992607, alpha: 1)
+            }
         }
     }
     
@@ -363,12 +382,12 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         currentLocation[0] = TestamentKeys.reverseSelectedTestament[ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM] ?? 0
         currentLocation[1] = currentBook
         currentLocation[2] = currentChapter
-        self.bookmarkLocation = currentLocation
+        self.bookmarkOrGoalLocation = currentLocation
     }
     
     func newMasteryBadge() {
         
-          tabBarController?.viewControllers?[2].tabBarItem.badgeValue = "New"
+        tabBarController?.viewControllers?[2].tabBarItem.badgeValue = "New"
     }
     
     func colorViewClosed() {

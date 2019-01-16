@@ -56,12 +56,21 @@ class PrimaryGoalView: UIView {
             
             let bookKey = Int(book)
             let chapterKey = Int(chapter)
-            let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
-            let end = Int(readingAssignment) + chapterKey
+            guard !readingAssignment.isNaN, !readingAssignment.isInfinite else { self.todayButton.setTitle("    Invalid Deadline    ", for: .normal); self.todayButton.isEnabled = false; self.todayButton.backgroundColor = #colorLiteral(red: 1, green: 0.2988327742, blue: 0.217700839, alpha: 1); return }
+            let end = Int(readingAssignment.rounded()) + chapterKey
             let indexSet = IndexSet(integersIn: chapterKey...end)
-            guard let chaptersToBeMemorized = books?[bookKey].chapters?.objects(at: indexSet) as? [ChapterCD] else { return }
-            guard let first = chaptersToBeMemorized.first?.reference, let last = chaptersToBeMemorized.last?.reference else { return }
-            self.todayButton.setTitle("    \(first) - \(last)    ", for: .normal)
+            
+            switch testament {
+            case 2:
+                guard let sectionsToBeMemorized = ScriptureController.shared.fetchedDoctrine?.sections?.objects(at: indexSet) as? [SectionCD] else { return }
+                guard let first = sectionsToBeMemorized.first?.reference, let last = sectionsToBeMemorized.last?.reference else { return }
+                self.todayButton.setTitle("    \(first) - \(last)    ", for: .normal)
+            default:
+                let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
+                guard let chaptersToBeMemorized = books?[bookKey].chapters?.objects(at: indexSet) as? [ChapterCD] else { return }
+                guard let first = chaptersToBeMemorized.first?.reference, let last = chaptersToBeMemorized.last?.reference else { return }
+                self.todayButton.setTitle("    \(first) - \(last)    ", for: .normal)
+            }
         }
     }
 }
