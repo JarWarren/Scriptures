@@ -105,7 +105,7 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
     
     @IBAction func categoryButtonTapped(_ sender: Any) {
     
-        guard let colorView = Bundle.main.loadNibNamed("HighlighterColors", owner: nil, options: nil)![0] as? ColorView else { return }
+        guard let colorView = Bundle.main.loadNibNamed("ColorView", owner: nil, options: nil)![0] as? ColorView else { return }
         colorView.translatesAutoresizingMaskIntoConstraints = false
         colorView.entry = entry
         darkenBackground()

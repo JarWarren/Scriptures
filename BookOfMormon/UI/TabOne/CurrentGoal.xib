@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CurrentGoalView" customModule="BookOfMormon" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PrimaryGoalView" customModule="BookOfMormon" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -26,9 +26,9 @@
                         <action selector="todayButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="n4M-rE-3kQ"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6" translatesAutoresizingMaskIntoConstraints="NO" id="YoA-4v-pxF">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="YoA-4v-pxF">
                     <rect key="frame" x="19" y="251.5" width="337.5" height="337.5"/>
-                    <color key="tintColor" red="0.2154795229" green="0.49386578799999997" blue="0.1332186759" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="YoA-4v-pxF" secondAttribute="height" multiplier="1:1" id="axo-eP-EAz"/>
                     </constraints>
@@ -50,6 +50,6 @@
         </view>
     </objects>
     <resources>
-        <image name="6" width="2524" height="2524"/>
+        <image name="0" width="1200" height="1200"/>
     </resources>
 </document>

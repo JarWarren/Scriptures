@@ -15,15 +15,12 @@ class GoalDetailsViewController: UIViewController {
     @IBOutlet weak var goalFinishDateLabel: UILabel!
     @IBOutlet weak var primaryButton: UIButton!
     
-    var goal: GoalCD? {
-        didSet {
-            updateView()
-        }
-    }
+    var goal: GoalCD?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        updateView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +39,7 @@ class GoalDetailsViewController: UIViewController {
             
             self.title = TestamentKeys.dictionary[Int(titleKey)]
         }
+        goalNameLabel.text = goal?.name
     }
     
     func setupView() {

@@ -38,6 +38,10 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="testament" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="primary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PrimaryGoalCD" inverseName="goal" inverseEntity="PrimaryGoalCD" syncable="YES"/>
+    </entity>
+    <entity name="PrimaryGoalCD" representedClassName="PrimaryGoalCD" syncable="YES" codeGenerationType="class">
+        <relationship name="goal" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="GoalCD" inverseName="primary" inverseEntity="GoalCD" syncable="YES"/>
     </entity>
     <entity name="SectionCD" representedClassName="SectionCD" syncable="YES">
         <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
@@ -67,9 +71,10 @@
         <element name="ChapterCD" positionX="-359.47265625" positionY="90.16015625" width="128" height="105"/>
         <element name="DoctrineCD" positionX="-153" positionY="27" width="128" height="75"/>
         <element name="EntryCD" positionX="-153" positionY="27" width="128" height="105"/>
-        <element name="GoalCD" positionX="-153" positionY="27" width="128" height="195"/>
+        <element name="GoalCD" positionX="-153" positionY="27" width="128" height="210"/>
         <element name="SectionCD" positionX="-144" positionY="36" width="128" height="105"/>
         <element name="TestamentCD" positionX="-63" positionY="-18" width="128" height="75"/>
         <element name="VerseCD" positionX="140.6796875" positionY="-121.98046875" width="128" height="195"/>
+        <element name="PrimaryGoalCD" positionX="-153" positionY="27" width="128" height="60"/>
     </elements>
 </model>

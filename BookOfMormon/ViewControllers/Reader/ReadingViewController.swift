@@ -71,7 +71,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             return sections?[currentChapter].verses?.count ?? 0
         default:
             let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
-            let chapters = books?[currentBook].chapters?.allObjects as? [ChapterCD]
+            let chapters = books?[currentBook].chapters?.array as? [ChapterCD]
             return chapters?[currentChapter].verses?.count ?? 0
         }
     }
@@ -88,7 +88,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         default:
             let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
-            let chapters = books?[currentBook].chapters?.allObjects as? [ChapterCD]
+            let chapters = books?[currentBook].chapters?.array as? [ChapterCD]
             let verses = chapters?[currentChapter].verses?.array as? [VerseCD]
             cell.verseCoreData = verses?[indexPath.row]
         }
@@ -125,7 +125,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         hideSubviews()
         self.selectedVerse = nil
         let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
-        let chapters = books?[currentBook].chapters?.allObjects as? [ChapterCD]
+        let chapters = books?[currentBook].chapters?.array as? [ChapterCD]
         switch sender.tag {
             
         case 0:
@@ -242,7 +242,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         hideSubviews()
         switch colorViewIsVisible {
         case false :
-            guard let colorView = Bundle.main.loadNibNamed("HighlighterColors", owner: nil, options: nil)![0] as? ColorView else { return }
+            guard let colorView = Bundle.main.loadNibNamed("ColorView", owner: nil, options: nil)![0] as? ColorView else { return }
             colorView.translatesAutoresizingMaskIntoConstraints = false
             darkenBackground()
             self.view.addSubview(colorView)
@@ -297,7 +297,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             
         default:
-            let chapters = books[currentBook].chapters?.allObjects as? [ChapterCD]
+            let chapters = books[currentBook].chapters?.array as? [ChapterCD]
             title = books[currentBook].book
             if let chapterNumber = chapters?[currentChapter].chapter {
                 chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"

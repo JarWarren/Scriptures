@@ -17,22 +17,31 @@ class GoalController {
         let fetchRequest: NSFetchRequest <GoalCD> = GoalCD.fetchRequest()
         return (try? CoreDataStack.managedObjectContext.fetch(fetchRequest)) ?? []
     }
-    var primaryGoal: GoalCD?
+    var primary: PrimaryGoalCD? {
+        let fetchRequest: NSFetchRequest <PrimaryGoalCD> = PrimaryGoalCD.fetchRequest()
+        return (try? CoreDataStack.managedObjectContext.fetch(fetchRequest).first ?? PrimaryGoalCD(context: CoreDataStack.managedObjectContext))
+    }
     
     func createDeadlineGoal(name: String, endDate: Date, startingPoint: [Int]) {
         
-        _ = GoalCD(name: name, endDate: endDate, startingPoint: startingPoint)
+        let newGoal = GoalCD(name: name, endDate: endDate, startingPoint: startingPoint)
+        if primary?.goal == nil {
+            primary?.goal = newGoal
+        }
         try? CoreDataStack.managedObjectContext.save()
     }
     
     func createIncrementalGoal(name: String, startPosition: [Int], dailyChapters: Int) {
         
-        _ = GoalCD (name: name, dailyChapters: dailyChapters, startingPoint: startPosition)
+        let newGoal = GoalCD (name: name, dailyChapters: dailyChapters, startingPoint: startPosition)
+        if primary?.goal == nil {
+            primary?.goal = newGoal
+        }
         try? CoreDataStack.managedObjectContext.save()
     }
     
     func updatePrimaryGoal(goal: GoalCD) {
-        self.primaryGoal = goal
+        self.primary?.goal = goal
         try? CoreDataStack.managedObjectContext.save()
     }
     
