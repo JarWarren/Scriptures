@@ -45,6 +45,12 @@ class GoalController {
         try? CoreDataStack.managedObjectContext.save()
     }
     
+    func removePrimaryGoal() {
+        
+        self.primary?.goal = nil
+        try? CoreDataStack.managedObjectContext.save()
+    }
+    
     func updatePrimaryGoalLocation(location: [Int]) {
         
         primary?.goal?.currentBook = Int64(location[1])

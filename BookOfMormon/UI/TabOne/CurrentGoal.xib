@@ -26,11 +26,11 @@
                         <action selector="todayButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="n4M-rE-3kQ"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="YoA-4v-pxF">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="YoA-4v-pxF">
                     <rect key="frame" x="19" y="251.5" width="337.5" height="337.5"/>
                     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="YoA-4v-pxF" secondAttribute="height" multiplier="1:1" id="axo-eP-EAz"/>
+                        <constraint firstAttribute="width" secondItem="YoA-4v-pxF" secondAttribute="height" multiplier="1:1" id="dQj-yj-ako"/>
                     </constraints>
                 </imageView>
             </subviews>

@@ -56,7 +56,13 @@ class PrimaryGoalView: UIView {
             
             let bookKey = Int(book)
             let chapterKey = Int(chapter)
-            guard !readingAssignment.isNaN, !readingAssignment.isInfinite else { self.todayButton.setTitle("    Invalid Deadline    ", for: .normal); self.todayButton.isEnabled = false; self.todayButton.backgroundColor = #colorLiteral(red: 1, green: 0.2988327742, blue: 0.217700839, alpha: 1); return }
+            guard !readingAssignment.isNaN, !readingAssignment.isInfinite else {
+                self.todayButton.setTitle("    Invalid Deadline    ", for: .normal)
+                self.todayButton.isEnabled = false
+                self.todayButton.backgroundColor = #colorLiteral(red: 1, green: 0.2988327742, blue: 0.217700839, alpha: 1)
+                GoalController.shared.removePrimaryGoal()
+                return
+            }
             let end = Int(readingAssignment.rounded()) + chapterKey
             let indexSet = IndexSet(integersIn: chapterKey...end)
             

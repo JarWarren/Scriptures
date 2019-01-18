@@ -33,6 +33,10 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate, UIPickerView
         nameTextField.delegate = self
         datePicker.locale = Locale(identifier: "en_US")
         self.title = "New Goal"
+        var components = DateComponents()
+        components.year = 1
+        guard let starterDate = Calendar.current.date(byAdding: components, to: Date()) else { return }
+        datePicker.date = starterDate
     }
     
     override func viewWillAppear(_ animated: Bool) {

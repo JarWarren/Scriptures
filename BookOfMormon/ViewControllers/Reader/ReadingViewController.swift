@@ -125,31 +125,65 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         hideSubviews()
         self.selectedVerse = nil
-        let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
-        let chapters = books?[currentBook].chapters?.array as? [ChapterCD]
-        switch sender.tag {
-            
-        case 0:
-            currentChapter -= 1
-            rightButton.isHidden = false
-            if currentChapter == 0 {
-                leftButton.isHidden = true
-            }
-            
-        default:
-            currentChapter += 1
-            leftButton.isHidden = false
-            if currentChapter == (books?[currentBook].chapters?.count ?? 1) - 1 {
-                rightButton.isHidden = true
-            }
-            
-        }
         
+        switch ScriptureController.shared.selectedTestament == TestamentKeys.DaC {
+        case true:
+            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as? [SectionCD]
+            switch sender.tag {
+            case 0:
+                currentChapter -= 1
+                rightButton.isHidden = false
+                if currentChapter == 0 {
+                    self.leftButton.isHidden = true
+                }
+            default:
+                currentChapter += 1
+                leftButton.isHidden = false
+                if currentChapter == 137 {
+                    self.rightButton.isHidden = true
+                }
+            }
+            if let sectionNumber = sections?[currentChapter].section {
+                chapterReferenceLabel.text = "Section " + "\(sectionNumber)"
+            }
+        default:
+            let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
+            switch sender.tag {
+                
+            case 0:
+                currentChapter -= 1
+                rightButton.isHidden = false
+                if currentChapter == -1 {
+                    
+                    self.title = books?[currentBook - 1].book
+                    currentChapter = (books?[currentBook - 1].chapters?.count ?? 1) - 1
+                    currentBook -= 1
+                }
+                
+            default:
+                leftButton.isHidden = false
+                
+                currentChapter += 1
+                if currentChapter == (books?[currentBook].chapters?.count ?? 1) {
+                    
+                    self.title = books?[currentBook + 1].book
+                    currentBook += 1
+                    currentChapter = 0
+                }
+            }
+            let chapters = books?[currentBook].chapters?.array as? [ChapterCD]
+            if let chapterNumber = chapters?[currentChapter].chapter {
+                chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
+            }
+            if (currentBook + 1) == ScriptureController.shared.fetchedTestament?.books?.count && (currentChapter + 1) == books?[currentBook].chapters?.count {
+                self.rightButton.isHidden = true
+            }
+            if currentBook == 0 && currentChapter == 0 {
+                self.leftButton.isHidden = true
+            }
+        }
         self.versesTableView.reloadData()
         setupBookmarkButton()
-        if let chapterNumber = chapters?[currentChapter].chapter {
-            chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
-        }
     }
     
     @IBAction func menuButtonTapped(_ sender: UIButton) {
@@ -308,14 +342,14 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
             }
         }
-        if currentChapter == 0 {
+        if currentBook == 0 && currentChapter == 0 {
             leftButton.isHidden = true
         }
-        if currentChapter == (books[currentBook].chapters?.count ?? 1) - 1 {
+        if (currentBook + 1) == books.count && (currentChapter + 1) == books[currentBook].chapters?.count {
             rightButton.isHidden = true
         }
-        if leftButton.isHidden == true && rightButton.isHidden == true {
-            chapterReferenceLabel.isHidden = true
+        if ScriptureController.shared.selectedTestament == TestamentKeys.DaC && currentChapter == 137 {
+            rightButton.isHidden = true
         }
     }
     
@@ -410,6 +444,5 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             underlineView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             underlineView.topAnchor.constraint(equalTo: versesTableView.topAnchor),
             underlineView.heightAnchor.constraint(equalToConstant: 1)])
-        
     }
 }

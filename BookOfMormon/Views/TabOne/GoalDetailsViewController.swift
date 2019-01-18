@@ -20,7 +20,7 @@ class GoalDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateView()
+        setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,18 +33,15 @@ class GoalDetailsViewController: UIViewController {
         self.navigationController?.popToRootViewController(animated: animated)
     }
     
-    func updateView() {
+    func setupView() {
+        
+        self.primaryButton.layer.cornerRadius = primaryButton.frame.height / 2
         
         if let titleKey = goal?.testament {
             
             self.title = TestamentKeys.dictionary[Int(titleKey)]
         }
         goalNameLabel.text = goal?.name
-    }
-    
-    func setupView() {
-        
-        self.primaryButton.layer.cornerRadius = primaryButton.frame.height / 2
     }
     
     @IBAction func primaryButtonTapped(_ sender: Any) {
