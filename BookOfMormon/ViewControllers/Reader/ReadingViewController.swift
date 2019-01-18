@@ -40,7 +40,6 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
-    // TODO: Remove line from bottom of Nav Controller
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {

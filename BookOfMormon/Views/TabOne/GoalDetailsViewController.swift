@@ -42,6 +42,8 @@ class GoalDetailsViewController: UIViewController {
             self.title = TestamentKeys.dictionary[Int(titleKey)]
         }
         goalNameLabel.text = goal?.name
+        
+        // TODO: Switch on primary?.goal?.testament and unpack depending on whether it's a deadline or daily.
     }
     
     @IBAction func primaryButtonTapped(_ sender: Any) {
