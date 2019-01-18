@@ -94,7 +94,7 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         default:
             let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
             if books?[indexPath.section].chapters?.count ?? 0 > indexPath.row {
-                let chapters = books?[indexPath.section].chapters?.allObjects as? [ChapterCD]
+                let chapters = books?[indexPath.section].chapters?.array as? [ChapterCD]
                 if let chapterNumber =  chapters?[indexPath.row].chapter {
                 cell.chapterNumber = Int(chapterNumber)
                 }

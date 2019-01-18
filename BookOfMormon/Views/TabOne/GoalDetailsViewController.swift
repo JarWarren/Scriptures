@@ -15,15 +15,12 @@ class GoalDetailsViewController: UIViewController {
     @IBOutlet weak var goalFinishDateLabel: UILabel!
     @IBOutlet weak var primaryButton: UIButton!
     
-    var goal: GoalCD? {
-        didSet {
-            updateView()
-        }
-    }
+    var goal: GoalCD?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,17 +33,15 @@ class GoalDetailsViewController: UIViewController {
         self.navigationController?.popToRootViewController(animated: animated)
     }
     
-    func updateView() {
+    func setupView() {
+        
+        self.primaryButton.layer.cornerRadius = primaryButton.frame.height / 2
         
         if let titleKey = goal?.testament {
             
             self.title = TestamentKeys.dictionary[Int(titleKey)]
         }
-    }
-    
-    func setupView() {
-        
-        self.primaryButton.layer.cornerRadius = primaryButton.frame.height / 2
+        goalNameLabel.text = goal?.name
     }
     
     @IBAction func primaryButtonTapped(_ sender: Any) {

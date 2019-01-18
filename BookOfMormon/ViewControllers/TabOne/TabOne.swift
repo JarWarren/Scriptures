@@ -8,13 +8,14 @@
 
 import UIKit
 
-class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, CurrentGoalViewDelegate {
+class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, PrimaryGoalViewDelegate {
     
     // MARK: - Outlets and Properties
     @IBOutlet weak var tabOneSegmentedControl: UISegmentedControl!
     @IBOutlet weak var allGoalsTableView: UITableView!
-    var chaptersToRead = 0
+    var chaptersToRead: Double?
     var subviews = [UIView]()
+    var daysLeft: Double?
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -30,7 +31,7 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
         allGoalsTableView.reloadData()
         tabOneSegmentedControl.sendActions(for: .valueChanged)
         setupGoal()
-        currentGoalView()
+        primaryGoalView()
         tabBarController?.tabBar.tintColor = #colorLiteral(red: 0, green: 0.5016700625, blue: 0.005194439087, alpha: 1)
         self.navigationController?.navigationBar.shadowVisibile(true)
     }
@@ -52,14 +53,17 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
     // MARK: Goal Stats
     func setupGoal() {
         
-        //        if var timeLeft = GoalController.shared.currentGoal?.endDate?.timeIntervalSinceNow,
-        //            let goalTestament = GoalController.shared.currentGoal?.goalTestament {
-        //
-        //            timeLeft = (timeLeft / 86400).rounded(.down)
-        //            print(timeLeft)
-        //            let testamentChapters = TestamentKeys.chapters[goalTestament]
-        //            print(testamentChapters! / timeLeft)
-        //        }
+//        if var timeLeft = GoalController.shared.primary?.goal?.desiredEndDate?.timeIntervalSinceNow,
+//            let goalTestament = GoalController.shared.primary?.goal?.testament {
+//            
+//            let key = Int(goalTestament)
+//            timeLeft = (timeLeft / 86400).rounded(.down)
+//            self.daysLeft = timeLeft
+//            print(timeLeft)
+//            guard let testamentChapters = TestamentKeys.chapters[key] else { return }
+//            self.chaptersToRead = testamentChapters / timeLeft
+//            print(chaptersToRead ?? 0)
+//        }
     }
     
     func hideSubviews() {
@@ -70,35 +74,19 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
         subviews.removeAll()
     }
     
-    func currentGoalView() {
+    func primaryGoalView() {
         
-        guard let currentGoalView = Bundle.main.loadNibNamed("CurrentGoal", owner: nil, options: nil)![0] as? CurrentGoalView else { return }
+        guard let primaryGoalView = Bundle.main.loadNibNamed("PrimaryGoal", owner: nil, options: nil)![0] as? PrimaryGoalView else { return }
         tabOneSegmentedControl.selectedSegmentIndex = 0
-        currentGoalView.delegate = self
-        self.view.addSubview(currentGoalView)
-        subviews.append(currentGoalView)
-        currentGoalView.translatesAutoresizingMaskIntoConstraints = false
+        primaryGoalView.delegate = self
+        self.view.addSubview(primaryGoalView)
+        subviews.append(primaryGoalView)
+        primaryGoalView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            currentGoalView.topAnchor.constraint(equalTo: tabOneSegmentedControl.bottomAnchor, constant: 1),
-            currentGoalView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            currentGoalView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            currentGoalView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)])
-    }
-    
-    func newGoalView() {
-        
-        /*
-        guard let newGoalView = Bundle.main.loadNibNamed("NewGoal", owner: nil, options: nil)![0] as? NewGoalView else { return }
-        self.view.addSubview(newGoalView)
-        newGoalView.delegate = self
-        subviews.append(newGoalView)
-        newGoalView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            newGoalView.topAnchor.constraint(equalTo: tabOneSegmentedControl.bottomAnchor, constant: 1),
-            newGoalView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            newGoalView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            newGoalView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)])
-         */
+            primaryGoalView.topAnchor.constraint(equalTo: tabOneSegmentedControl.bottomAnchor, constant: 1),
+            primaryGoalView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            primaryGoalView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            primaryGoalView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)])
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -129,6 +117,11 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
             self.present(alertController, animated: true, completion: nil)
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 44
+    }
 
     // MARK: Actions
     @IBAction func tabOneSegmentedControlValueChanged(_ sender: Any) {
@@ -136,7 +129,7 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
         hideSubviews()
         switch tabOneSegmentedControl.selectedSegmentIndex {
         case 0:
-            currentGoalView()
+            primaryGoalView()
         default: return
         }
     }
@@ -152,9 +145,9 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
     // MARK: - Navigation
     func segueToReader() {
         
-        guard let destinationTestament = GoalController.shared.primaryGoal?.testament,
-            let destinationBook = GoalController.shared.primaryGoal?.currentBook,
-            let destinationChapter = GoalController.shared.primaryGoal?.currentChapter else {
+        guard let destinationTestament = GoalController.shared.primary?.goal?.testament,
+            let destinationBook = GoalController.shared.primary?.goal?.currentBook,
+            let destinationChapter = GoalController.shared.primary?.goal?.currentChapter else {
                 newGoalButtonTapped(self)
                 return
         }
@@ -164,8 +157,16 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
             let readingViewController = UIStoryboard(name: "Reader", bundle: nil).instantiateViewController(withIdentifier: "ReadingViewController") as! ReadingViewController
             readingViewController.currentBook = Int(destinationBook)
             readingViewController.currentChapter = Int(destinationChapter)
+            readingViewController.bookmarkShouldEditGoal = true
             
             self.navigationController?.pushViewController(readingViewController, animated: true)
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationVC = segue.destination as? GoalDetailsViewController,
+            let indexPath = allGoalsTableView.indexPathForSelectedRow else { return }
+        let goal = GoalController.shared.allGoals?[indexPath.row]
+        destinationVC.goal = goal
     }
 }

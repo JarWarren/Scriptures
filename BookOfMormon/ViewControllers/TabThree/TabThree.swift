@@ -69,8 +69,8 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 if let height = cell.imageView?.heightAnchor,
                     let width = cell.imageView?.widthAnchor {
                     NSLayoutConstraint.activate([
-                        height.constraint(equalToConstant: 15),
-                        width.constraint(equalToConstant: 15)])
+                        height.constraint(equalToConstant: 14),
+                        width.constraint(equalToConstant: 14)])
                 }
                 cell.imageView?.backgroundColor = ColorKey.colorDictionary[cellEntry.entryCategory]
                 cell.imageView?.layer.borderWidth = 1
