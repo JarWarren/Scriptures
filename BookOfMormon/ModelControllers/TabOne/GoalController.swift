@@ -46,8 +46,16 @@ class GoalController {
     }
     
     func removePrimaryGoal() {
-        
+        if let goal = primary?.goal {
+            invalidateGoal(goal: goal)
+        }
         self.primary?.goal = nil
+        try? CoreDataStack.managedObjectContext.save()
+    }
+    
+    func setCalculatedChapters(goal: GoalCD, double: Double) {
+        
+        goal.calculatedChapters = double
         try? CoreDataStack.managedObjectContext.save()
     }
     
@@ -55,6 +63,12 @@ class GoalController {
         
         primary?.goal?.currentBook = Int64(location[1])
         primary?.goal?.currentChapter = Int64(location[2])
+    }
+    
+    func invalidateGoal(goal: GoalCD) {
+        
+        goal.name = "Invalid"
+        try? CoreDataStack.managedObjectContext.save()
     }
     
     func delete(goal: GoalCD) {

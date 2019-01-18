@@ -45,6 +45,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="progressPlantImageView" destination="YoA-4v-pxF" id="Qk5-zn-Hlh"/>
                 <outlet property="todayButton" destination="QZJ-Tp-Uo2" id="QHJ-CF-Zs1"/>
             </connections>
         </view>

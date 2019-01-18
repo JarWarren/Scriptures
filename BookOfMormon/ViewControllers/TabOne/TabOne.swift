@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, CurrentGoalViewDelegate {
+class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, PrimaryGoalViewDelegate {
     
     // MARK: - Outlets and Properties
     @IBOutlet weak var tabOneSegmentedControl: UISegmentedControl!
@@ -31,7 +31,7 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
         allGoalsTableView.reloadData()
         tabOneSegmentedControl.sendActions(for: .valueChanged)
         setupGoal()
-        currentGoalView()
+        primaryGoalView()
         tabBarController?.tabBar.tintColor = #colorLiteral(red: 0, green: 0.5016700625, blue: 0.005194439087, alpha: 1)
         self.navigationController?.navigationBar.shadowVisibile(true)
     }
@@ -74,19 +74,19 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
         subviews.removeAll()
     }
     
-    func currentGoalView() {
+    func primaryGoalView() {
         
-        guard let currentGoalView = Bundle.main.loadNibNamed("CurrentGoal", owner: nil, options: nil)![0] as? PrimaryGoalView else { return }
+        guard let primaryGoalView = Bundle.main.loadNibNamed("PrimaryGoal", owner: nil, options: nil)![0] as? PrimaryGoalView else { return }
         tabOneSegmentedControl.selectedSegmentIndex = 0
-        currentGoalView.delegate = self
-        self.view.addSubview(currentGoalView)
-        subviews.append(currentGoalView)
-        currentGoalView.translatesAutoresizingMaskIntoConstraints = false
+        primaryGoalView.delegate = self
+        self.view.addSubview(primaryGoalView)
+        subviews.append(primaryGoalView)
+        primaryGoalView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            currentGoalView.topAnchor.constraint(equalTo: tabOneSegmentedControl.bottomAnchor, constant: 1),
-            currentGoalView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            currentGoalView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            currentGoalView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)])
+            primaryGoalView.topAnchor.constraint(equalTo: tabOneSegmentedControl.bottomAnchor, constant: 1),
+            primaryGoalView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            primaryGoalView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            primaryGoalView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)])
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -129,7 +129,7 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Curr
         hideSubviews()
         switch tabOneSegmentedControl.selectedSegmentIndex {
         case 0:
-            currentGoalView()
+            primaryGoalView()
         default: return
         }
     }
