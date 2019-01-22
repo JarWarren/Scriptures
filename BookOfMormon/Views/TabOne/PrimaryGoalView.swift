@@ -80,7 +80,6 @@ class PrimaryGoalView: UIView {
                 }
             }
             var indexSet = IndexSet(integersIn: chapterKey...endIndex)
-            
             switch testament {
             case 2:
                 if endIndex > 137 {  indexSet = IndexSet(integersIn: chapterKey...137) }
@@ -88,10 +87,13 @@ class PrimaryGoalView: UIView {
                 guard let first = sectionsToBeRead.first?.reference, let last = sectionsToBeRead.last?.section, let referenceCheck = sectionsToBeRead.last?.reference, first != referenceCheck else {
                     if let only = sectionsToBeRead.first?.reference {
                         self.todayButton.setTitle("    \(only)    ", for: .normal)
+                        GoalController.shared.setCurrentReference(reference: only)
                     }
                     return
                 }
                 self.todayButton.setTitle("    \(first) - \(last)    ", for: .normal)
+                GoalController.shared.setCurrentReference(reference: "\(first) - \(last)")
+
             default:
                 let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
                 guard let rangeCheck = books?[bookKey].chapters?.count else { return }
@@ -103,10 +105,12 @@ class PrimaryGoalView: UIView {
                 guard let first = chaptersToBeRead.first?.reference, let last = chaptersToBeRead.last?.chapter, let referenceCheck = chaptersToBeRead.last?.reference, first != referenceCheck else {
                     if let only = chaptersToBeRead.first?.reference {
                         self.todayButton.setTitle("    \(only)    ", for: .normal)
+                        GoalController.shared.setCurrentReference(reference: only)
                     }
                     return
                 }
                 self.todayButton.setTitle("    \(first) - \(last)    ", for: .normal)
+                GoalController.shared.setCurrentReference(reference: "\(first) - \(last)")
             }
         }
     }
@@ -136,10 +140,12 @@ class PrimaryGoalView: UIView {
                 guard let first = sectionsToBeRead.first?.reference, let last = sectionsToBeRead.last?.section, let referenceCheck = sectionsToBeRead.last?.reference, first != referenceCheck else {
                     if let only = sectionsToBeRead.first?.reference {
                         self.todayButton.setTitle("    \(only)    ", for: .normal)
+                        GoalController.shared.setCurrentReference(reference: only)
                     }
                     return
                 }
                 self.todayButton.setTitle("    \(first) - \(last)    ", for: .normal)
+                GoalController.shared.setCurrentReference(reference: "\(first) - \(last)")
             default:
                 let bookKey = Int(book)
                 let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
@@ -152,10 +158,12 @@ class PrimaryGoalView: UIView {
                 guard let first = chaptersToBeRead.first?.reference, let last = chaptersToBeRead.last?.chapter, let referenceCheck = chaptersToBeRead.last?.reference, first != referenceCheck else {
                     if let only = chaptersToBeRead.first?.reference {
                         self.todayButton.setTitle("    \(only)    ", for: .normal)
+                        GoalController.shared.setCurrentReference(reference: only)
                     }
                     return
                 }
                 self.todayButton.setTitle("    \(first) - \(last)    ", for: .normal)
+                GoalController.shared.setCurrentReference(reference: "\(first) - \(last)")
             }
         }
     }
@@ -189,6 +197,7 @@ class PrimaryGoalView: UIView {
         }
         
         print("\(percentageCompletion)% complete")
+        GoalController.shared.setCompletionPercentage(percentage: percentageCompletion)
         if percentageCompletion >= 100 {
             progressPlantImageView.image = UIImage(named: "6")
         } else if percentageCompletion > 83 {

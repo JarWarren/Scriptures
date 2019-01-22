@@ -34,6 +34,12 @@ struct TestamentKeys {
                              3 : "New Testament",
                              4 : "Old Testament"]
     
+    static let abbreviations: [Int64 : String] = [0 : "BoM",
+                                                  1 : "PoGP",
+                                                  2 : "D&C",
+                                                  3 : "NT",
+                                                  4 : "OT"]
+    
     static let chapters = [
         0 : 239.0, // BoM
         1 : 19.0, // PoGP

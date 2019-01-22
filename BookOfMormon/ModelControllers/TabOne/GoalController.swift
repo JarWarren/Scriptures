@@ -25,23 +25,19 @@ class GoalController {
     func createDeadlineGoal(name: String, endDate: Date, startingPoint: [Int]) {
         
         let newGoal = GoalCD(name: name, endDate: endDate, startingPoint: startingPoint)
-        if primary?.goal == nil {
-            primary?.goal = newGoal
-        }
-        try? CoreDataStack.managedObjectContext.save()
+        setDifferentPrimaryGoal(goal: newGoal)
     }
     
     func createIncrementalGoal(name: String, startPosition: [Int], dailyChapters: Int) {
         
         let newGoal = GoalCD (name: name, dailyChapters: dailyChapters, startingPoint: startPosition)
-        if primary?.goal == nil {
-            primary?.goal = newGoal
-        }
-        try? CoreDataStack.managedObjectContext.save()
+        setDifferentPrimaryGoal(goal: newGoal)
     }
     
     func setDifferentPrimaryGoal(goal: GoalCD) {
+        self.primary?.goal?.isPrimary = false
         self.primary?.goal = goal
+        self.primary?.goal?.isPrimary = true
         try? CoreDataStack.managedObjectContext.save()
     }
     
@@ -53,9 +49,19 @@ class GoalController {
         try? CoreDataStack.managedObjectContext.save()
     }
     
-    func setCalculatedChapters(goal: GoalCD, double: Double) {
+    func setCompletionPercentage(percentage: Double) {
         
-        goal.calculatedChapters = double
+        if let goal = self.primary?.goal {
+            goal.percentageCompleted = percentage
+        }
+        try? CoreDataStack.managedObjectContext.save()
+    }
+    
+    func setCurrentReference(reference: String) {
+        
+        if let goal = primary?.goal {
+            goal.currentReference = reference
+        }
         try? CoreDataStack.managedObjectContext.save()
     }
     
