@@ -26,31 +26,41 @@
                         <action selector="todayButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="n4M-rE-3kQ"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="YoA-4v-pxF">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="seeds" translatesAutoresizingMaskIntoConstraints="NO" id="YoA-4v-pxF">
                     <rect key="frame" x="19" y="251.5" width="337.5" height="337.5"/>
                     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="YoA-4v-pxF" secondAttribute="height" multiplier="1:1" id="dQj-yj-ako"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No goal yet..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCN-ur-D0z">
+                    <rect key="frame" x="24" y="44" width="327" height="29"/>
+                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
+                    <color key="textColor" red="0.2154795229" green="0.49386578799999997" blue="0.1332186759" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XCN-ur-D0z" secondAttribute="trailing" constant="24" id="1P9-F0-F1m"/>
                 <constraint firstItem="YoA-4v-pxF" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="7sq-t9-G3p"/>
+                <constraint firstItem="XCN-ur-D0z" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="CZX-51-fJT"/>
                 <constraint firstItem="YoA-4v-pxF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="D8w-It-h4U"/>
                 <constraint firstItem="YoA-4v-pxF" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="UDW-p7-HpO"/>
                 <constraint firstItem="QZJ-Tp-Uo2" firstAttribute="top" secondItem="YoA-4v-pxF" secondAttribute="bottom" constant="24" id="bmj-Cb-vbU"/>
                 <constraint firstItem="QZJ-Tp-Uo2" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="c9B-VG-dyW"/>
+                <constraint firstItem="XCN-ur-D0z" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="sBf-eW-1od"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="QZJ-Tp-Uo2" secondAttribute="bottom" constant="24" id="zvC-5i-hJe"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="percentageLabel" destination="XCN-ur-D0z" id="n9b-bU-Tb5"/>
                 <outlet property="progressPlantImageView" destination="YoA-4v-pxF" id="Qk5-zn-Hlh"/>
                 <outlet property="todayButton" destination="QZJ-Tp-Uo2" id="QHJ-CF-Zs1"/>
             </connections>
         </view>
     </objects>
     <resources>
-        <image name="0" width="1200" height="1200"/>
+        <image name="seeds" width="1200" height="1200"/>
     </resources>
 </document>
