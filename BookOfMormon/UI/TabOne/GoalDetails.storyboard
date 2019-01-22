@@ -18,12 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(goal name)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wN-Yv-QvL">
-                                <rect key="frame" x="24" y="44" width="327" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6oD-IQ-fkC">
                                 <rect key="frame" x="121.5" y="613" width="132" height="30"/>
                                 <color key="backgroundColor" red="0.2154795229" green="0.49386578799999997" blue="0.1332186759" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -34,35 +28,46 @@
                                     <action selector="primaryButtonTapped:" destination="lGo-MP-PCp" eventType="touchUpInside" id="i7Q-VR-m7i"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(current location)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIH-SI-dLx">
-                                <rect key="frame" x="121" y="323" width="133" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(current location)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIH-SI-dLx">
+                                <rect key="frame" x="24" y="44" width="327" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.2154795229" green="0.49386578799999997" blue="0.1332186759" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="(finish date)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMy-Jf-dE8">
+                                <rect key="frame" x="24" y="89" width="327" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(finish date)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMy-Jf-dE8">
-                                <rect key="frame" x="141" y="467" width="92" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="(%)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESs-tJ-J3e">
+                                <rect key="frame" x="24" y="133.5" width="327" height="455.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="96"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="3LY-L1-7EY" firstAttribute="trailing" secondItem="1wN-Yv-QvL" secondAttribute="trailing" constant="24" id="Dt1-BR-Boj"/>
+                            <constraint firstItem="3LY-L1-7EY" firstAttribute="trailing" secondItem="zIH-SI-dLx" secondAttribute="trailing" constant="24" id="7eV-cr-aVC"/>
+                            <constraint firstItem="3LY-L1-7EY" firstAttribute="trailing" secondItem="EMy-Jf-dE8" secondAttribute="trailing" constant="24" id="CkK-xg-m7Y"/>
+                            <constraint firstItem="EMy-Jf-dE8" firstAttribute="leading" secondItem="3LY-L1-7EY" secondAttribute="leading" constant="24" id="VsT-FV-jjh"/>
                             <constraint firstItem="3LY-L1-7EY" firstAttribute="bottom" secondItem="6oD-IQ-fkC" secondAttribute="bottom" constant="24" id="adv-og-veU"/>
-                            <constraint firstItem="1wN-Yv-QvL" firstAttribute="top" secondItem="3LY-L1-7EY" secondAttribute="top" constant="24" id="dTS-Cb-SP0"/>
+                            <constraint firstItem="zIH-SI-dLx" firstAttribute="leading" secondItem="3LY-L1-7EY" secondAttribute="leading" constant="24" id="c8f-wy-qBl"/>
+                            <constraint firstItem="EMy-Jf-dE8" firstAttribute="top" secondItem="zIH-SI-dLx" secondAttribute="bottom" constant="24" id="h5O-1j-Yy4"/>
+                            <constraint firstItem="6oD-IQ-fkC" firstAttribute="top" secondItem="ESs-tJ-J3e" secondAttribute="bottom" constant="24" id="hOe-69-ayx"/>
+                            <constraint firstItem="3LY-L1-7EY" firstAttribute="trailing" secondItem="ESs-tJ-J3e" secondAttribute="trailing" constant="24" id="jbG-RD-qdR"/>
                             <constraint firstItem="6oD-IQ-fkC" firstAttribute="centerX" secondItem="3LY-L1-7EY" secondAttribute="centerX" id="qhc-d9-Vat"/>
-                            <constraint firstItem="1wN-Yv-QvL" firstAttribute="leading" secondItem="3LY-L1-7EY" secondAttribute="leading" constant="24" id="xkV-uG-eRZ"/>
+                            <constraint firstItem="ESs-tJ-J3e" firstAttribute="leading" secondItem="3LY-L1-7EY" secondAttribute="leading" constant="24" id="rYF-oK-neg"/>
+                            <constraint firstItem="ESs-tJ-J3e" firstAttribute="top" secondItem="EMy-Jf-dE8" secondAttribute="bottom" constant="24" id="uk8-a8-dLW"/>
+                            <constraint firstItem="zIH-SI-dLx" firstAttribute="top" secondItem="3LY-L1-7EY" secondAttribute="top" constant="24" id="z4z-Qi-UTG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3LY-L1-7EY"/>
                     </view>
                     <connections>
                         <outlet property="goalFinishDateLabel" destination="EMy-Jf-dE8" id="7RM-TJ-3ZH"/>
                         <outlet property="goalLocationLabel" destination="zIH-SI-dLx" id="q3u-CD-iIo"/>
-                        <outlet property="goalNameLabel" destination="1wN-Yv-QvL" id="slh-Z3-Xqp"/>
+                        <outlet property="goalPercentageLabel" destination="ESs-tJ-J3e" id="9ZU-rW-irQ"/>
                         <outlet property="primaryButton" destination="6oD-IQ-fkC" id="Kol-Xc-95U"/>
                     </connections>
                 </viewController>

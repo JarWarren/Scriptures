@@ -9,10 +9,10 @@
 import UIKit
 
 class GoalDetailsViewController: UIViewController {
-
-    @IBOutlet weak var goalNameLabel: UILabel!
+    
     @IBOutlet weak var goalLocationLabel: UILabel!
     @IBOutlet weak var goalFinishDateLabel: UILabel!
+    @IBOutlet weak var goalPercentageLabel: UILabel!
     @IBOutlet weak var primaryButton: UIButton!
     
     var goal: GoalCD?
@@ -37,15 +37,40 @@ class GoalDetailsViewController: UIViewController {
         
         self.primaryButton.layer.cornerRadius = primaryButton.frame.height / 2
         
-        if let titleKey = goal?.testament {
+        if let percentage = goal?.percentageCompleted, let reference = goal?.currentReference {
             
-            self.title = TestamentKeys.dictionary[Int(titleKey)]
+            var mutatingPercentage = percentage * 10
+            mutatingPercentage = mutatingPercentage.rounded()
+            mutatingPercentage = mutatingPercentage / 10
+            self.goalLocationLabel.text = "\(reference)"
+            self.goalPercentageLabel.text = "\(mutatingPercentage)%"
         }
-        goalNameLabel.text = goal?.name
+        
+        self.title = goal?.name
+        // TODO: Switch on primary?.goal?.testament and unpack depending on whether it's a deadline or daily.
+        switch goal?.desiredEndDate == nil {
+        case true:
+            guard let chapters = goal?.dailyChapters else { return }
+            if chapters == 1 {
+                goalFinishDateLabel.text = "\(chapters) chapter per day."
+            } else {
+                goalFinishDateLabel.text = "\(chapters) chapters per day."
+            }
+        case false:
+            guard let endString = goal?.desiredEndDate?.mMdDyY else { return }
+            goalFinishDateLabel.text = "Finish by " + endString
+        }
+        if goal?.isPrimary == true {
+            self.primaryButton.isUserInteractionEnabled = false
+            self.primaryButton.setTitle("    Primary    ", for: .normal)
+        }
     }
     
     @IBAction func primaryButtonTapped(_ sender: Any) {
         
-        
+        if let goal = goal {
+            GoalController.shared.setDifferentPrimaryGoal(goal: goal)
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
 }

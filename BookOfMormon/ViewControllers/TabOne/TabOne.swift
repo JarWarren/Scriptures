@@ -30,10 +30,12 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Prim
         super.viewWillAppear(animated)
         allGoalsTableView.reloadData()
         tabOneSegmentedControl.sendActions(for: .valueChanged)
-        setupGoal()
         primaryGoalView()
         tabBarController?.tabBar.tintColor = #colorLiteral(red: 0, green: 0.5016700625, blue: 0.005194439087, alpha: 1)
         self.navigationController?.navigationBar.shadowVisibile(true)
+        if let title = GoalController.shared.primary?.goal?.name {
+            self.title = title
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,21 +53,6 @@ class TabOne: UIViewController, UITableViewDelegate, UITableViewDataSource, Prim
     
     
     // MARK: Goal Stats
-    func setupGoal() {
-        
-//        if var timeLeft = GoalController.shared.primary?.goal?.desiredEndDate?.timeIntervalSinceNow,
-//            let goalTestament = GoalController.shared.primary?.goal?.testament {
-//            
-//            let key = Int(goalTestament)
-//            timeLeft = (timeLeft / 86400).rounded(.down)
-//            self.daysLeft = timeLeft
-//            print(timeLeft)
-//            guard let testamentChapters = TestamentKeys.chapters[key] else { return }
-//            self.chaptersToRead = testamentChapters / timeLeft
-//            print(chaptersToRead ?? 0)
-//        }
-    }
-    
     func hideSubviews() {
         
         for view in subviews {
