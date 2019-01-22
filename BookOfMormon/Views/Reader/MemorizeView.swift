@@ -25,6 +25,7 @@ class MemorizeView: UIView {
     var minIndex = 0
     var maxIndex = 0
     var currentIndex = 0
+    var isSingleVerse = true
     var isFinalVerse = false {
         didSet {
             addButton.isHidden = true
@@ -47,16 +48,25 @@ class MemorizeView: UIView {
     }
     
     @IBAction func memorizeButtonTapped(_ sender: Any) {
-        let indexSet = IndexSet(integersIn: minIndex...(currentIndex + minIndex))
+        
+        var indexSet = IndexSet()
+        switch isSingleVerse {
+        case true:
+            let newSet = IndexSet(integersIn: minIndex...minIndex)
+            indexSet = newSet
+        case false:
+            let newSet = IndexSet(integersIn: minIndex...(currentIndex + minIndex))
+            indexSet = newSet
+        }
         switch isDoctrine {
         case true:
             if let versesToBeMemorized = section?.verses?.objects(at: indexSet) as? [VerseCD] {
-                VerseController.shared.memorize(verses: versesToBeMemorized)
+                MemorySetController.shared.convertVersesToSet(verses: versesToBeMemorized)
                 delegate?.newMasteryBadge()
             }
         case false:
             if let versesToBeMemorized = chapter?.verses?.objects(at: indexSet) as? [VerseCD] {
-                VerseController.shared.memorize(verses: versesToBeMemorized)
+                MemorySetController.shared.convertVersesToSet(verses: versesToBeMemorized)
                 delegate?.newMasteryBadge()
             }
         }
@@ -70,10 +80,7 @@ class MemorizeView: UIView {
         leftButton.isHidden = false
         addButton.isHidden = true
         endLabel.isHidden = false
-        
-        guard let index = verse?.verse else { return }
-        currentIndex = Int(index - 1)
-        minIndex = Int(index - 1)
+        isSingleVerse = false
         
         switch isDoctrine {
         case true:
@@ -109,6 +116,8 @@ class MemorizeView: UIView {
                 rightButton.isHidden = true
                 addButton.isHidden = false
                 endLabel.isHidden = true
+                guard let index = verse?.verse else { return }
+                currentIndex = Int(index - 1)
             }
         case 1:
             currentIndex += 1
@@ -118,7 +127,9 @@ class MemorizeView: UIView {
             }
         default: return
         }
-        endLabel.text = allVerses[currentIndex].reference
+        if currentIndex < allVerses.count {
+            endLabel.text = allVerses[currentIndex].reference
+        }
     }
     
     // MARK: Setup
@@ -149,6 +160,10 @@ class MemorizeView: UIView {
             }
             isDoctrine = true
         }
+        
+        guard let index = verse?.verse else { return }
+        currentIndex = Int(index - 1)
+        minIndex = Int(index - 1)
     }
     
     func printVerses(verses: [VerseCD]) {

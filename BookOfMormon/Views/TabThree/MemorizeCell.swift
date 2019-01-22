@@ -12,7 +12,7 @@ class MemorizeCell: UITableViewCell {
     
     @IBOutlet weak var referenceLabel: UILabel!
     @IBOutlet weak var memorizedImage: UIImageView!
-    var memorizedVerseSet: MemorizedVersesCD? {
+    var memorySet: MemorySet? {
         didSet {
             updateCell()
         }
@@ -24,13 +24,13 @@ class MemorizeCell: UITableViewCell {
     }
     
     func updateCell() {
-        guard let verses = memorizedVerseSet?.verses?.array as? [VerseCD] else { return }
-        switch verses.count {
+        guard let currentSet = memorySet else { return }
+        switch currentSet.verseInts.count {
         case 1:
-            guard let onlyVerse = verses.first?.reference else { return }
+            guard let onlyVerse = currentSet.verseReferences.first else { return }
             referenceLabel.text = onlyVerse
         default:
-            guard let first = verses.first?.reference, let last = verses.last?.reference else { return }
+            guard let first = currentSet.verseReferences.first, let last = currentSet.verseReferences.last else { return }
             referenceLabel.text = first + " - " + last
         }
         setupImage()
@@ -39,7 +39,7 @@ class MemorizeCell: UITableViewCell {
     func setupImage() {
         
         memorizedImage.backgroundColor = UIColor.white
-        switch memorizedVerseSet?.memorized {
+        switch memorySet?.isMemorized {
         case true:
             self.memorizedImage.image = UIImage(named: "memorized")
             memorizedImage.layer.borderColor = #colorLiteral(red: 0.6313489079, green: 0.557828486, blue: 0.09932992607, alpha: 1)

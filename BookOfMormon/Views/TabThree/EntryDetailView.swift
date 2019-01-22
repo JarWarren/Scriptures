@@ -8,22 +8,29 @@
 
 import UIKit
 
-class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate {
-    
+class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate, ColorViewDelegate {
+   
     @IBOutlet weak var entryButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
     @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet var darkView: UIView!
     var entry: EntryCD?
-    var verses: MemorizedVersesCD?
+    var memorySet: MemorySet?
     var shouldClose = true
     var masteryTestament: Int?
     var parentSelectedIndex: Int?
+    var subviews: [UIView] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.shadowVisibile(true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -40,6 +47,14 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
         titleTextField.delegate = self
         bodyTextView.layer.cornerRadius = 5
         bodyTextView.delegate = self
+        self.view.addSubview(darkView)
+        darkView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            darkView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
+            darkView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            darkView.topAnchor.constraint(equalTo: self.view.topAnchor)
+            ])
+        darkView.isHidden = true
         
         switch parentSelectedIndex {
         case 0:
@@ -48,27 +63,27 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 titleTextField.isUserInteractionEnabled = false
                 bodyTextView.isUserInteractionEnabled = false
                 completeButton.setTitle("    Edit    ", for: .normal)
+                setupBarButton()
             } else {
                 prepareToEdit()
             }
         case 1:
-            guard let verseHolder = verses else { abortView(); return }
-            guard let unwrappedVerses = verseHolder.verses?.array as? [VerseCD] else {abortView(); return }
-            switch verseHolder.verses?.count {
+            guard let currentSet = memorySet else { abortView(); return }
+            switch currentSet.verseInts.count {
             case 1:
-                guard let verse = unwrappedVerses.first, let text = unwrappedVerses.first?.text else { abortView(); return }
-                titleTextField.text = verse.reference
-                bodyTextView.text = "\(verse.verse))  " + text
+                guard let text = currentSet.verseTexts.first,
+                    let number = currentSet.verseInts.first,
+                    let reference = currentSet.verseReferences.first else { abortView(); return }
+                titleTextField.text = reference
+                bodyTextView.text = "\(number))  " + text
             default:
-                guard let first = unwrappedVerses.first?.reference, let last = unwrappedVerses.last?.reference else { abortView(); return }
+                guard let first = currentSet.verseReferences.first, let last = currentSet.verseReferences.last else { abortView(); return }
                 titleTextField.text = first + " - " + last
                 var bodyText = ""
-                for verse in unwrappedVerses {
-                    if let verseText = verse.text {
-                        bodyText.append("\(verse.verse))  ")
-                        bodyText.append(verseText)
+                for text in currentSet.verseTexts {
+                    bodyText.append("\(currentSet.verseInts[currentSet.verseTexts.firstIndex(of: text) ?? 0]))  ")
+                        bodyText.append(text)
                         bodyText.append("\n\n")
-                    }
                 }
                 bodyTextView.text = bodyText
             }
@@ -76,7 +91,7 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                          entryButton.widthAnchor.constraint(equalToConstant: 50)])
             entryButton.setTitle("", for: .normal)
             entryButton.layer.cornerRadius = 5
-            updateMemorizeButton(verses: verseHolder)
+            updateMemorizeButton(memorySet: currentSet)
         case 2: return
         default: return
         }
@@ -86,6 +101,24 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
         
         titleTextField.resignFirstResponder()
         bodyTextView.resignFirstResponder()
+    }
+    
+    @IBAction func categoryButtonTapped(_ sender: Any) {
+    
+        guard let colorView = Bundle.main.loadNibNamed("ColorView", owner: nil, options: nil)![0] as? ColorView else { return }
+        colorView.translatesAutoresizingMaskIntoConstraints = false
+        colorView.entry = entry
+        darkenBackground()
+        self.view.addSubview(colorView)
+        colorView.delegate = self
+        self.subviews.append(colorView)
+        colorView.layer.cornerRadius = 15
+        NSLayoutConstraint.activate([
+            colorView.widthAnchor.constraint(equalToConstant: 200),
+            colorView.heightAnchor.constraint(equalToConstant: 200),
+            colorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            colorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)])
+        darkenBackground()
     }
     
     @IBAction func completeButtonTapped(_ sender: Any) {
@@ -104,9 +137,9 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 prepareToEdit()
             }
         case 1:
-            guard let verses = verses else { abortView(); return }
-            VerseController.shared.toggleMemorized(verses: verses)
-            updateMemorizeButton(verses: verses)
+            guard let currentSet = memorySet else { abortView(); return }
+            MemorySetController.shared.toggleMemorySetStatus(memorySet: currentSet)
+            updateMemorizeButton(memorySet: currentSet)
         case 2:
             print("mark memorizable mastery as memorized/not")
         default: return
@@ -131,9 +164,9 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
         self.shouldClose = true
     }
     
-    func updateMemorizeButton(verses: MemorizedVersesCD) {
+    func updateMemorizeButton(memorySet: MemorySet) {
         
-        if verses.memorized == true {
+        if memorySet.isMemorized == true {
             entryButton.setBackgroundImage(UIImage(named: "memorized"), for: .normal)
             entryButton.tintColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
             entryButton.backgroundColor = UIColor.white
@@ -158,6 +191,35 @@ class EntryDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate
     
     func abortView() {
         
-//        self.navigationController?.popToRootViewController(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    func setupBarButton() {
+        
+        let categoryButton = UIBarButtonItem(image: UIImage(named: "categoryBarButton"), style: .plain, target: self, action: #selector(categoryButtonTapped))
+        categoryButton.tintColor = #colorLiteral(red: 0.6307423711, green: 0.558336854, blue: 0.09566646069, alpha: 1)
+        self.navigationItem.rightBarButtonItem = categoryButton
+    }
+    
+    func hideSubviews() {
+        
+        for view in subviews {
+            view.isHidden = true
+        }
+        subviews.removeAll()
+    }
+    
+    func updateColor() {
+        
+    }
+    
+    func colorViewClosed() {
+        
+        self.darkView.isHidden = true
+    }
+    
+    func darkenBackground() {
+        
+        self.darkView?.isHidden = false
     }
 }

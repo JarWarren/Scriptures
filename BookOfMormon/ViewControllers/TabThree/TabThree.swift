@@ -26,6 +26,7 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewWillAppear(animated)
         tabThreeSegmentedControl.sendActions(for: .valueChanged)
         tabBarController?.tabBar.tintColor = #colorLiteral(red: 0.6307423711, green: 0.558336854, blue: 0.09566646069, alpha: 1)
+        self.navigationController?.navigationBar.shadowVisibile(true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -39,7 +40,7 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tabThreeSegmentedControl.selectedSegmentIndex {
         case 2: return 25
-        case 1: return VerseController.shared.memorizingVerses?.count ?? 0
+        case 1: return MemorySetController.shared.allMemorySets.count
         case 0: return EntryController.shared.allEntries.count
         default: return 0
         }
@@ -51,8 +52,8 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // TODO: case 2 : Put the specific mastery verses into their own array.
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "memoryCell", for: indexPath) as? MemorizeCell else { return UITableViewCell() }
-            let verseSet = VerseController.shared.memorizingVerses?[indexPath.row]
-            cell.memorizedVerseSet = verseSet
+            let memorySet = MemorySetController.shared.allMemorySets[indexPath.row]
+            cell.memorySet = memorySet
             return cell
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath)
@@ -60,6 +61,23 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.text = cellEntry.entryTitle
             if let date = cellEntry.entryDate {
                 cell.detailTextLabel?.text = date.mMdDyY
+            }
+            
+            if cellEntry.entryCategory < 10 {
+                
+                cell.imageView?.image = UIImage(named: "blank")
+                if let height = cell.imageView?.heightAnchor,
+                    let width = cell.imageView?.widthAnchor {
+                    NSLayoutConstraint.activate([
+                        height.constraint(equalToConstant: 14),
+                        width.constraint(equalToConstant: 14)])
+                }
+                cell.imageView?.backgroundColor = ColorKey.colorDictionary[cellEntry.entryCategory]
+                cell.imageView?.layer.borderWidth = 1
+                cell.imageView?.layer.borderColor = UIColor.black.cgColor
+                cell.imageView?.layer.cornerRadius = 7
+            } else {
+                cell.imageView?.image = nil
             }
             return cell
         default: return UITableViewCell()
@@ -71,8 +89,8 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
         case 1:
             if editingStyle == .delete {
-                guard let deletedMemorization = VerseController.shared.memorizingVerses?[indexPath.row] else { return }
-                VerseController.shared.deleteMemorizedVerses(verses: deletedMemorization)
+                let dyingSet = MemorySetController.shared.allMemorySets[indexPath.row]
+                MemorySetController.shared.deleteSet(memorySet: dyingSet)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
         case 0:
@@ -118,7 +136,7 @@ class TabThree: UIViewController, UITableViewDelegate, UITableViewDataSource {
             destinationVC.parentSelectedIndex = 2
         case 1:
             destinationVC.parentSelectedIndex = 1
-            destinationVC.verses = VerseController.shared.memorizingVerses?[indexPath.row]
+            destinationVC.memorySet = MemorySetController.shared.allMemorySets[indexPath.row]
         case 0:
             destinationVC.parentSelectedIndex = 0
             destinationVC.entry = EntryController.shared.allEntries[indexPath.row]

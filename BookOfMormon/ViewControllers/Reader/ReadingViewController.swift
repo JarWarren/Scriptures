@@ -18,6 +18,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var darkView: UIView!
     @IBOutlet weak var highlighterMenuButton: UIButton!
+    @IBOutlet weak var menuStackView: UIStackView!
     var subviews = [UIView]() {
         didSet {
             print("\(subviews.count) subviews.")
@@ -27,9 +28,10 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     var currentChapter = 0
     var selectedVerse: VerseCD?
     var selectedIndexPath: IndexPath?
-    var bookmarkLocation = [0, 0, 0]
+    var bookmarkOrGoalLocation = [0, 0, 0]
     var highlightColorButton: UIBarButtonItem?
     var colorViewIsVisible = false
+    var bookmarkShouldEditGoal = false
     var noteViewIsVisible = false {
         didSet {
             switch noteViewIsVisible {
@@ -38,12 +40,12 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
-    // TODO: Remove line from bottom of Nav Controller
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupScriptures()
+        setupViewAndScriptures()
+        
         setupTableView()
         setupBookmarkButton()
         setupHighlighterButton()
@@ -51,7 +53,8 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        setupNavBar()
+        
+        setupCustomNavBar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,7 +71,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             return sections?[currentChapter].verses?.count ?? 0
         default:
             let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
-            let chapters = books?[currentBook].chapters?.allObjects as? [ChapterCD]
+            let chapters = books?[currentBook].chapters?.array as? [ChapterCD]
             return chapters?[currentChapter].verses?.count ?? 0
         }
     }
@@ -85,13 +88,13 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         default:
             let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
-            let chapters = books?[currentBook].chapters?.allObjects as? [ChapterCD]
+            let chapters = books?[currentBook].chapters?.array as? [ChapterCD]
             let verses = chapters?[currentChapter].verses?.array as? [VerseCD]
             cell.verseCoreData = verses?[indexPath.row]
         }
         if cell.verseCoreData?.isHighlighted == true {
             if let color = cell.verseCoreData?.color {
-                cell.backgroundColor = HighlighterColorKey.colorDictionary[color]
+                cell.backgroundColor = ColorKey.colorDictionary[color]
             }
         } else {
             cell.backgroundColor = UIColor.white
@@ -121,31 +124,65 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         hideSubviews()
         self.selectedVerse = nil
-        let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
-        let chapters = books?[currentBook].chapters?.allObjects as? [ChapterCD]
-        switch sender.tag {
-            
-        case 0:
-            currentChapter -= 1
-            rightButton.isHidden = false
-            if currentChapter == 0 {
-                leftButton.isHidden = true
-            }
-            
-        default:
-            currentChapter += 1
-            leftButton.isHidden = false
-            if currentChapter == (books?[currentBook].chapters?.count ?? 1) - 1 {
-                rightButton.isHidden = true
-            }
-            
-        }
         
+        switch ScriptureController.shared.selectedTestament == TestamentKeys.DaC {
+        case true:
+            let sections = ScriptureController.shared.fetchedDoctrine?.sections?.array as? [SectionCD]
+            switch sender.tag {
+            case 0:
+                currentChapter -= 1
+                rightButton.isHidden = false
+                if currentChapter == 0 {
+                    self.leftButton.isHidden = true
+                }
+            default:
+                currentChapter += 1
+                leftButton.isHidden = false
+                if currentChapter == 137 {
+                    self.rightButton.isHidden = true
+                }
+            }
+            if let sectionNumber = sections?[currentChapter].section {
+                chapterReferenceLabel.text = "Section " + "\(sectionNumber)"
+            }
+        default:
+            let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
+            switch sender.tag {
+                
+            case 0:
+                currentChapter -= 1
+                rightButton.isHidden = false
+                if currentChapter == -1 {
+                    
+                    self.title = books?[currentBook - 1].book
+                    currentChapter = (books?[currentBook - 1].chapters?.count ?? 1) - 1
+                    currentBook -= 1
+                }
+                
+            default:
+                leftButton.isHidden = false
+                
+                currentChapter += 1
+                if currentChapter == (books?[currentBook].chapters?.count ?? 1) {
+                    
+                    self.title = books?[currentBook + 1].book
+                    currentBook += 1
+                    currentChapter = 0
+                }
+            }
+            let chapters = books?[currentBook].chapters?.array as? [ChapterCD]
+            if let chapterNumber = chapters?[currentChapter].chapter {
+                chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
+            }
+            if (currentBook + 1) == ScriptureController.shared.fetchedTestament?.books?.count && (currentChapter + 1) == books?[currentBook].chapters?.count {
+                self.rightButton.isHidden = true
+            }
+            if currentBook == 0 && currentChapter == 0 {
+                self.leftButton.isHidden = true
+            }
+        }
         self.versesTableView.reloadData()
         setupBookmarkButton()
-        if let chapterNumber = chapters?[currentChapter].chapter {
-            chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
-        }
     }
     
     @IBAction func menuButtonTapped(_ sender: UIButton) {
@@ -220,7 +257,11 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             case 4: // Bookmark
                 findBookmarkLocation()
-                BookmarkController.shared.bookmarkAt(location: bookmarkLocation)
+                if bookmarkShouldEditGoal == false {
+                    BookmarkController.shared.bookmarkAt(location: bookmarkOrGoalLocation)
+                } else {
+                    GoalController.shared.updatePrimaryGoalLocation(location: bookmarkOrGoalLocation)
+                }
                 setupBookmarkButton()
                 
             default: return
@@ -239,7 +280,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         hideSubviews()
         switch colorViewIsVisible {
         case false :
-            guard let colorView = Bundle.main.loadNibNamed("HighlighterColors", owner: nil, options: nil)![0] as? HighlighterColorsView else { return }
+            guard let colorView = Bundle.main.loadNibNamed("ColorView", owner: nil, options: nil)![0] as? ColorView else { return }
             colorView.translatesAutoresizingMaskIntoConstraints = false
             darkenBackground()
             self.view.addSubview(colorView)
@@ -268,11 +309,11 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func setupHighlighterButton() {
         
         let highlightColorButton = UIBarButtonItem(image: UIImage(named:"highlighterBarButton"), style: .plain, target: self, action: #selector(highlighterButtonTapped))
-        highlightColorButton.tintColor = #colorLiteral(red: 0.7338222861, green: 0.1125283316, blue: 0.3782619834, alpha: 1)
+        highlightColorButton.tintColor = self.navigationController?.navigationBar.tintColor
         self.navigationItem.rightBarButtonItem = highlightColorButton
     }
     
-    func setupScriptures() {
+    func setupViewAndScriptures() {
         
         self.view.addSubview(darkView)
         darkView.translatesAutoresizingMaskIntoConstraints = false
@@ -294,28 +335,22 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             
         default:
-            let chapters = books[currentBook].chapters?.allObjects as? [ChapterCD]
+            let chapters = books[currentBook].chapters?.array as? [ChapterCD]
             title = books[currentBook].book
             if let chapterNumber = chapters?[currentChapter].chapter {
                 chapterReferenceLabel.text = "Chapter " + "\(chapterNumber)"
             }
         }
-        if currentChapter == 0 {
+        if currentBook == 0 && currentChapter == 0 {
             leftButton.isHidden = true
         }
-        if currentChapter == (books[currentBook].chapters?.count ?? 1) - 1 {
+        if (currentBook + 1) == books.count && (currentChapter + 1) == books[currentBook].chapters?.count {
             rightButton.isHidden = true
         }
-        if leftButton.isHidden == true && rightButton.isHidden == true {
-            chapterReferenceLabel.isHidden = true
+        if ScriptureController.shared.selectedTestament == TestamentKeys.DaC && currentChapter == 137 {
+            rightButton.isHidden = true
         }
     }
-    
-    func setupNavBar() {
-        
-        // Remove shadow from Navigation Bar.
-    }
-    
     
     func hideSubviews() {
         darkView.isHidden = true
@@ -334,20 +369,34 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func setupBookmarkButton() {
-        guard let currentTestament = ScriptureController.shared.selectedTestament,
-            let bookmark = BookmarkController.shared.bookmark else {
+        
+        switch bookmarkShouldEditGoal {
+        case false:
+            guard let currentTestament = ScriptureController.shared.selectedTestament,
+                let bookmark = BookmarkController.shared.bookmark else {
+                    bookmarkButton.tintColor = UIColor.black
+                    bookmarkButton.setImage(UIImage(named: "bookmark"), for: .normal)
+                    return
+            }
+            if TestamentKeys.reverseSelectedTestament[currentTestament] == Int(bookmark.testament) &&
+                self.currentBook == Int(bookmark.book) &&
+                self.currentChapter == Int(bookmark.chapter) {
+                bookmarkButton.tintColor = #colorLiteral(red: 0.7338222861, green: 0.1125283316, blue: 0.3782619834, alpha: 1)
+                bookmarkButton.setImage(UIImage(named: "bookmarked"), for: .normal)
+            } else {
                 bookmarkButton.tintColor = UIColor.black
                 bookmarkButton.setImage(UIImage(named: "bookmark"), for: .normal)
-                return
-        }
-        if TestamentKeys.reverseSelectedTestament[currentTestament] == Int(bookmark.testament) &&
-            self.currentBook == Int(bookmark.book) &&
-            self.currentChapter == Int(bookmark.chapter) {
-            bookmarkButton.tintColor = #colorLiteral(red: 0.7338222861, green: 0.1125283316, blue: 0.3782619834, alpha: 1)
-            bookmarkButton.setImage(UIImage(named: "bookmarked"), for: .normal)
-        } else {
-            bookmarkButton.tintColor = UIColor.black
-            bookmarkButton.setImage(UIImage(named: "bookmark"), for: .normal)
+            }
+        case true:
+            if GoalController.shared.primary?.goal?.currentBook == Int64(currentBook) &&
+                GoalController.shared.primary?.goal?.currentChapter == Int64(currentChapter) {
+                
+                bookmarkButton.setImage(UIImage(named: "goalBookmark"), for: .normal)
+                bookmarkButton.tintColor = #colorLiteral(red: 0, green: 0.5016700625, blue: 0.005194439087, alpha: 1)
+            } else {
+                bookmarkButton.setImage(UIImage(named: "goalBookmark"), for: .normal)
+                bookmarkButton.tintColor = #colorLiteral(red: 0.6313489079, green: 0.557828486, blue: 0.09932992607, alpha: 1)
+            }
         }
     }
     
@@ -355,7 +404,7 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         darkView.isHidden = false
     }
     
-    func updateColorButton () {
+    func updateColor () {
         
         self.highlighterMenuButton.tintColor = HighlighterColorController.shared.currentColor
     }
@@ -366,15 +415,33 @@ class ReadingViewController: UIViewController, UITableViewDelegate, UITableViewD
         currentLocation[0] = TestamentKeys.reverseSelectedTestament[ScriptureController.shared.selectedTestament ?? TestamentKeys.BoM] ?? 0
         currentLocation[1] = currentBook
         currentLocation[2] = currentChapter
-        self.bookmarkLocation = currentLocation
+        self.bookmarkOrGoalLocation = currentLocation
     }
     
     func newMasteryBadge() {
         
-          tabBarController?.viewControllers?[2].tabBarItem.badgeValue = "New"
+        tabBarController?.viewControllers?[2].tabBarItem.badgeValue = "New"
     }
     
     func colorViewClosed() {
         self.colorViewIsVisible = false
+    }
+    
+    func setupCustomNavBar() {
+        
+        self.navigationController?.navigationBar.shadowVisibile(false)
+        let viewRect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        
+        let underlineView = UIView(frame: viewRect)
+        underlineView.backgroundColor = #colorLiteral(red: 0.8901082873, green: 0.8902577162, blue: 0.8900884986, alpha: 1)
+        underlineView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(underlineView)
+        
+        NSLayoutConstraint.activate([
+            underlineView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            underlineView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            underlineView.topAnchor.constraint(equalTo: versesTableView.topAnchor),
+            underlineView.heightAnchor.constraint(equalToConstant: 1)])
     }
 }

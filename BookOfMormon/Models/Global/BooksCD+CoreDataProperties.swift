@@ -19,7 +19,7 @@ extension BooksCD {
 
     @NSManaged public var book: String?
     @NSManaged public var title: String?
-    @NSManaged public var chapters: NSSet?
+    @NSManaged public var chapters: NSOrderedSet?
     @NSManaged public var testament: TestamentCD?
 
 }

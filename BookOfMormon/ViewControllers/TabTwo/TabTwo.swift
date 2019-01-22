@@ -26,6 +26,7 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         super.viewWillAppear(animated)
         setupTestament()
         tabBarController?.tabBar.tintColor = #colorLiteral(red: 0.7338222861, green: 0.1125283316, blue: 0.3782619834, alpha: 1)
+        self.navigationController?.navigationBar.shadowVisibile(true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -93,7 +94,7 @@ class TabTwo: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         default:
             let books = ScriptureController.shared.fetchedTestament?.books?.array as? [BooksCD]
             if books?[indexPath.section].chapters?.count ?? 0 > indexPath.row {
-                let chapters = books?[indexPath.section].chapters?.allObjects as? [ChapterCD]
+                let chapters = books?[indexPath.section].chapters?.array as? [ChapterCD]
                 if let chapterNumber =  chapters?[indexPath.row].chapter {
                 cell.chapterNumber = Int(chapterNumber)
                 }
