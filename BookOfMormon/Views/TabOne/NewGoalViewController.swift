@@ -102,12 +102,12 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate, UIPickerView
         
         switch hasDeadline {
         case false:
-            goalTypeLabel.text = "Deadline"
+            goalTypeLabel.text = "Deadline:"
             datePicker.isHidden = false
             chaptersLabel.isHidden = true
             chaptersTextField.isHidden = true
         case true:
-            goalTypeLabel.text = "Daily"
+            goalTypeLabel.text = "Daily:"
             datePicker.isHidden = true
             chaptersLabel.isHidden = false
             chaptersTextField.isHidden = false
