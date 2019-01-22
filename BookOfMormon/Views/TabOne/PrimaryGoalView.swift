@@ -14,6 +14,7 @@ class PrimaryGoalView: UIView {
     var delegate: PrimaryGoalViewDelegate?
     var daysLeft: Double?
     var chaptersToRead: Double?
+    @IBOutlet weak var percentageLabel: UILabel!
     @IBOutlet weak var progressPlantImageView: UIImageView!
     
     override func awakeFromNib() {
@@ -25,6 +26,7 @@ class PrimaryGoalView: UIView {
     
     func setupView() {
         
+        percentageLabel.isHidden = true
         todayButton.layer.cornerRadius = todayButton.frame.height / 2
         guard let currentReference = GoalController.shared.primary?.goal?.currentReference else { return }
         todayButton.setTitle("    \(currentReference)    ", for: .normal)
@@ -198,6 +200,11 @@ class PrimaryGoalView: UIView {
         
         print("\(percentageCompletion)% complete")
         GoalController.shared.setCompletionPercentage(percentage: percentageCompletion)
+        var mutatedPercentage = percentageCompletion * 10
+        mutatedPercentage = mutatedPercentage.rounded()
+        mutatedPercentage = mutatedPercentage / 10
+        self.percentageLabel.isHidden = false
+        self.percentageLabel.text = "\(Int(mutatedPercentage))%"
         if percentageCompletion >= 100 {
             progressPlantImageView.image = UIImage(named: "6")
         } else if percentageCompletion > 83 {

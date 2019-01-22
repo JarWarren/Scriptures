@@ -16,6 +16,7 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate, UIPickerView
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var partialProgressButton: UIButton!
+    @IBOutlet weak var partialProgressLabel: UILabel!
     @IBOutlet weak var chaptersTextField: UITextField!
     @IBOutlet weak var chaptersLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
@@ -33,6 +34,8 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate, UIPickerView
         nameTextField.delegate = self
         datePicker.locale = Locale(identifier: "en_US")
         self.title = "New Goal"
+        self.partialProgressLabel.isHidden = true
+        self.partialProgressButton.isHidden = true
         var components = DateComponents()
         components.year = 1
         guard let starterDate = Calendar.current.date(byAdding: components, to: Date()) else { return }
@@ -99,12 +102,12 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate, UIPickerView
         
         switch hasDeadline {
         case false:
-            goalTypeLabel.text = "Deadline"
+            goalTypeLabel.text = "Deadline:"
             datePicker.isHidden = false
             chaptersLabel.isHidden = true
             chaptersTextField.isHidden = true
         case true:
-            goalTypeLabel.text = "Daily"
+            goalTypeLabel.text = "Daily:"
             datePicker.isHidden = true
             chaptersLabel.isHidden = false
             chaptersTextField.isHidden = false
